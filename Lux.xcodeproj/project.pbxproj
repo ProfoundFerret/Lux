@@ -7,15 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C329B6B1325D6B100377547 /* LFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B6A1325D6B000377547 /* LFile.m */; };
+		7C329B731325DDBD00377547 /* LExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B721325DDBB00377547 /* LExtension.m */; };
+		7C329B771325DE5600377547 /* LExtensionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B761325DE5600377547 /* LExtensionController.m */; };
+		7C5132CA1325E76A00469177 /* LInputOutputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5132C91325E76A00469177 /* LInputOutputController.m */; };
+		7C58363F13260BA300B81F6C /* LInputOutput_Computer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C58363E13260BA300B81F6C /* LInputOutput_Computer.m */; };
+		7C5836431326103000B81F6C /* LFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5836421326103000B81F6C /* LFileController.m */; };
 		7C5FE0B513258F0D0008B7DC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5FE0B413258F0D0008B7DC /* Cocoa.framework */; };
 		7C5FE0BF13258F0D0008B7DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C5FE0BD13258F0D0008B7DC /* InfoPlist.strings */; };
 		7C5FE0C213258F0D0008B7DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0C113258F0D0008B7DC /* main.m */; };
 		7C5FE0C513258F0D0008B7DC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7C5FE0C313258F0D0008B7DC /* Credits.rtf */; };
 		7C5FE0C813258F0D0008B7DC /* LuxAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0C713258F0D0008B7DC /* LuxAppDelegate.m */; };
 		7C5FE0CB13258F0D0008B7DC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5FE0C913258F0D0008B7DC /* MainMenu.xib */; };
+		7C5FE0E21325CA600008B7DC /* LStoredObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0E11325CA600008B7DC /* LStoredObject.m */; };
+		7C5FE0E81325CA8C0008B7DC /* LGuiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0E71325CA8C0008B7DC /* LGuiObject.m */; };
+		7C5FE0EB1325CAA50008B7DC /* LControllerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0EA1325CAA50008B7DC /* LControllerObject.m */; };
+		7C5FE0EE1325CAB50008B7DC /* LSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0ED1325CAB40008B7DC /* LSingleton.m */; };
+		7C5FE0F11325CC2D0008B7DC /* Lux.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0F01325CC2B0008B7DC /* Lux.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C329B691325D6B000377547 /* LFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFile.h; sourceTree = "<group>"; };
+		7C329B6A1325D6B000377547 /* LFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFile.m; sourceTree = "<group>"; };
+		7C329B711325DDBA00377547 /* LExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LExtension.h; path = Lux/LExtension.h; sourceTree = "<group>"; };
+		7C329B721325DDBB00377547 /* LExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LExtension.m; path = Lux/LExtension.m; sourceTree = "<group>"; };
+		7C329B751325DE5600377547 /* LExtensionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LExtensionController.h; sourceTree = "<group>"; };
+		7C329B761325DE5600377547 /* LExtensionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LExtensionController.m; sourceTree = "<group>"; };
+		7C5132C81325E76900469177 /* LInputOutputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutputController.h; sourceTree = "<group>"; };
+		7C5132C91325E76A00469177 /* LInputOutputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LInputOutputController.m; sourceTree = "<group>"; };
+		7C58363D13260BA300B81F6C /* LInputOutput_Computer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutput_Computer.h; sourceTree = "<group>"; };
+		7C58363E13260BA300B81F6C /* LInputOutput_Computer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LInputOutput_Computer.m; sourceTree = "<group>"; };
+		7C5836411326103000B81F6C /* LFileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFileController.h; sourceTree = "<group>"; };
+		7C5836421326103000B81F6C /* LFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFileController.m; sourceTree = "<group>"; };
+		7C58364413261AA600B81F6C /* LFileType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFileType.h; sourceTree = "<group>"; };
 		7C5FE0B013258F0D0008B7DC /* Lux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5FE0B413258F0D0008B7DC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7C5FE0B713258F0D0008B7DC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -29,6 +53,16 @@
 		7C5FE0C613258F0D0008B7DC /* LuxAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LuxAppDelegate.h; sourceTree = "<group>"; };
 		7C5FE0C713258F0D0008B7DC /* LuxAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LuxAppDelegate.m; sourceTree = "<group>"; };
 		7C5FE0CA13258F0D0008B7DC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		7C5FE0E01325CA600008B7DC /* LStoredObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LStoredObject.h; sourceTree = "<group>"; };
+		7C5FE0E11325CA600008B7DC /* LStoredObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LStoredObject.m; sourceTree = "<group>"; };
+		7C5FE0E61325CA8C0008B7DC /* LGuiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGuiObject.h; sourceTree = "<group>"; };
+		7C5FE0E71325CA8C0008B7DC /* LGuiObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGuiObject.m; sourceTree = "<group>"; };
+		7C5FE0E91325CAA50008B7DC /* LControllerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LControllerObject.h; sourceTree = "<group>"; };
+		7C5FE0EA1325CAA50008B7DC /* LControllerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LControllerObject.m; sourceTree = "<group>"; };
+		7C5FE0EC1325CAB40008B7DC /* LSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSingleton.h; sourceTree = "<group>"; };
+		7C5FE0ED1325CAB40008B7DC /* LSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSingleton.m; sourceTree = "<group>"; };
+		7C5FE0EF1325CC2B0008B7DC /* Lux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lux.h; sourceTree = "<group>"; };
+		7C5FE0F01325CC2B0008B7DC /* Lux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lux.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,10 +77,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C329B6D1325D6B500377547 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				7C58364413261AA600B81F6C /* LFileType.h */,
+				7C329B691325D6B000377547 /* LFile.h */,
+				7C329B6A1325D6B000377547 /* LFile.m */,
+				7C5836411326103000B81F6C /* LFileController.h */,
+				7C5836421326103000B81F6C /* LFileController.m */,
+			);
+			name = File;
+			sourceTree = "<group>";
+		};
+		7C329B741325DE2E00377547 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7C329B711325DDBA00377547 /* LExtension.h */,
+				7C329B721325DDBB00377547 /* LExtension.m */,
+				7C329B751325DE5600377547 /* LExtensionController.h */,
+				7C329B761325DE5600377547 /* LExtensionController.m */,
+			);
+			name = Extension;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7C5132CC1325E76E00469177 /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				7C58363D13260BA300B81F6C /* LInputOutput_Computer.h */,
+				7C58363E13260BA300B81F6C /* LInputOutput_Computer.m */,
+				7C5132C81325E76900469177 /* LInputOutputController.h */,
+				7C5132C91325E76A00469177 /* LInputOutputController.m */,
+			);
+			name = IO;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		7C5FE0A513258F0D0008B7DC = {
 			isa = PBXGroup;
 			children = (
 				7C5FE0BA13258F0D0008B7DC /* Lux */,
+				7C5FE0BB13258F0D0008B7DC /* Supporting Files */,
 				7C5FE0B313258F0D0008B7DC /* Frameworks */,
 				7C5FE0B113258F0D0008B7DC /* Products */,
 			);
@@ -82,10 +153,15 @@
 		7C5FE0BA13258F0D0008B7DC /* Lux */ = {
 			isa = PBXGroup;
 			children = (
+				7C5FE0EF1325CC2B0008B7DC /* Lux.h */,
+				7C5FE0F01325CC2B0008B7DC /* Lux.m */,
 				7C5FE0C613258F0D0008B7DC /* LuxAppDelegate.h */,
 				7C5FE0C713258F0D0008B7DC /* LuxAppDelegate.m */,
 				7C5FE0C913258F0D0008B7DC /* MainMenu.xib */,
-				7C5FE0BB13258F0D0008B7DC /* Supporting Files */,
+				7C5FE0DC1325C9C60008B7DC /* Superclasses */,
+				7C329B6D1325D6B500377547 /* File */,
+				7C329B741325DE2E00377547 /* Extension */,
+				7C5132CC1325E76E00469177 /* IO */,
 			);
 			path = Lux;
 			sourceTree = "<group>";
@@ -100,6 +176,22 @@
 				7C5FE0C313258F0D0008B7DC /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			path = Lux;
+			sourceTree = "<group>";
+		};
+		7C5FE0DC1325C9C60008B7DC /* Superclasses */ = {
+			isa = PBXGroup;
+			children = (
+				7C5FE0EC1325CAB40008B7DC /* LSingleton.h */,
+				7C5FE0ED1325CAB40008B7DC /* LSingleton.m */,
+				7C5FE0E01325CA600008B7DC /* LStoredObject.h */,
+				7C5FE0E11325CA600008B7DC /* LStoredObject.m */,
+				7C5FE0E61325CA8C0008B7DC /* LGuiObject.h */,
+				7C5FE0E71325CA8C0008B7DC /* LGuiObject.m */,
+				7C5FE0E91325CAA50008B7DC /* LControllerObject.h */,
+				7C5FE0EA1325CAA50008B7DC /* LControllerObject.m */,
+			);
+			name = Superclasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +259,17 @@
 			files = (
 				7C5FE0C213258F0D0008B7DC /* main.m in Sources */,
 				7C5FE0C813258F0D0008B7DC /* LuxAppDelegate.m in Sources */,
+				7C5FE0E21325CA600008B7DC /* LStoredObject.m in Sources */,
+				7C5FE0E81325CA8C0008B7DC /* LGuiObject.m in Sources */,
+				7C5FE0EB1325CAA50008B7DC /* LControllerObject.m in Sources */,
+				7C5FE0EE1325CAB50008B7DC /* LSingleton.m in Sources */,
+				7C5FE0F11325CC2D0008B7DC /* Lux.m in Sources */,
+				7C329B6B1325D6B100377547 /* LFile.m in Sources */,
+				7C329B731325DDBD00377547 /* LExtension.m in Sources */,
+				7C329B771325DE5600377547 /* LExtensionController.m in Sources */,
+				7C5132CA1325E76A00469177 /* LInputOutputController.m in Sources */,
+				7C58363F13260BA300B81F6C /* LInputOutput_Computer.m in Sources */,
+				7C5836431326103000B81F6C /* LFileController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +383,7 @@
 				7C5FE0D013258F0D0008B7DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

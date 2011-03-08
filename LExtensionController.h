@@ -1,0 +1,19 @@
+//
+//  LExtensionController.h
+//  Lux
+//
+//  Created by Kyle Carson on 3/7/11.
+//  Copyright 2011 Kyle Carson. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "LControllerObject.h"
+#import "LExtension.h"
+
+@interface LExtensionController : LControllerObject {
+	NSMutableArray * extensions;
+}
+- (BOOL) addExtension: (LExtension *) extension;
+- (NSArray *) extensionsMatchingDelegate: (Protocol *) protocol;
+@property (readonly, assign) NSMutableArray * extensions;
+@end

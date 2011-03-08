@@ -7,6 +7,7 @@
 //
 
 #import "LuxAppDelegate.h"
+#import "Lux.h"
 
 @implementation LuxAppDelegate
 
@@ -15,6 +16,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	// Insert code here to initialize your application
+}
+
+- (void)  awakeFromNib
+{
+	[[Lux sharedInstance] setup];
 }
 
 @end
