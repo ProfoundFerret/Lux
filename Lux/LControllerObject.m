@@ -42,4 +42,9 @@
 		[gui reloadData];
 	}
 }
+
+- (void) addGui: (LGuiObject *) gui
+{
+	[guis addObject:gui];
+}
 @end

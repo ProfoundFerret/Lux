@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "LSingleton.h"
+#import "LGuiObject.h"
 
 @interface LControllerObject : LSingleton {
 	NSMutableArray * guis;
 }
 - (void) reloadData;
+- (void) addGui: (LGuiObject *) gui;
 @end
