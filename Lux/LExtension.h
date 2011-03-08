@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LStoredObject.h"
+#import "LFileType.h"
 
 #define kINDEX @"index"
 #define kTITLE @"title"
@@ -49,6 +50,23 @@
  */
 - (NSDictionary *) metadataForURL: (NSURL *) url; 
 - (NSArray *) supportedMetadataExtensions;
+@end
+
+
+
+@protocol LPlayerDelegate <NSObject>
+- (void) setAndPlayFile: (NSURL*) url withVolume: (double) volume; // Set the url, start playing it with a given volume
+- (void) stop; // Playing should stop.  File progress, caching, etc can be reset as well.
+- (void) play; // Play file (aka unpause).  File progress should remain.
+- (void) pause; // Pause file.  File progress should remain.
+- (void) setTime: (int) newTime; // Change the current time to newTime (given in milliseconds).  If playing before setTime then keep playing after
+- (void) setVolume: (double) volume; // Change the volume.  volume ranges from 0 to 1.
+
+- (int) currentTime; // Returns the current time in milliseconds
+- (int) totalTime; // Returns the total time in milliseconds
+
+- (LFileType) fileTypeForExtension: (NSString *) extension; // FileType representing extension
+- (NSArray *) supportedExtensions; // NSArray of all supported extensions in lower case
 @end
 
 @interface LExtension : LStoredObject {
