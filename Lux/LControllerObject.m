@@ -37,7 +37,7 @@
 
 - (void) reloadData
 {
-	for (id gui in guis)
+	for (LGuiObject * gui in guis)
 	{
 		[gui reloadData];
 	}
