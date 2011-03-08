@@ -52,6 +52,7 @@
 	extensionController = [aDecoder decodeObjectForKey:kEXTENSION_CONTROLLER];
 	
 	[self registerUserDefaults];
+	[self reloadData];
 	return [self retain];
 }
 
@@ -69,7 +70,7 @@
 
 - (void) reloadData
 {
-	
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:nil];
 }
 
 - (void) registerUserDefaults

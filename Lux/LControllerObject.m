@@ -16,6 +16,8 @@
     self = [super init];
     if (self) {
 		guis = [[NSMutableArray alloc] init];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"reloadData" object:nil];
     }
     
     return self;
