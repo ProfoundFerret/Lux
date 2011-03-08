@@ -26,4 +26,8 @@
     [super dealloc];
 }
 
+- (void) reloadData
+{
+	NSLog(@"%@ hasn't implemented -reloadData", [self class]);
+}
 @end

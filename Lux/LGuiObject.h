@@ -12,5 +12,5 @@
 @private
     
 }
-
+- (void) reloadData;
 @end
