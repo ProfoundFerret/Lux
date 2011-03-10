@@ -12,7 +12,8 @@
 
 #define kURL @"url"
 #define kATTRIBUTES @"attributes"
-#define kSEARCHATTRIBUTES @"search_attributes"
+#define kSEARCHATTRIBUTES @"search attributes"
+#define kFILE_TYPE @"file type"
 
 @implementation LFile
 @synthesize url, attributes;
@@ -24,7 +25,7 @@
 		attributes = [[NSMutableDictionary alloc] init];
 		searchAttributes = [[NSArray alloc] init];
 		
-		//[attributes setObject:[NSDate date] forKey:kADD_DATE];
+		[attributes setObject:[NSDate date] forKey:kADD_DATE];
     }
     
     return self;
@@ -108,6 +109,15 @@
 	id attribute = [attributes objectForKey:identifier];
 	if (attribute) return attribute;
 	return @"";
+}
+
+- (NSDictionary *) dictionary
+{
+	NSMutableDictionary * dictionary = [NSMutableDictionary dictionaryWithDictionary:attributes];
+	[dictionary setObject:[NSNumber numberWithInt:[self fileType]] forKey:kFILE_TYPE];
+	[dictionary setObject:url forKey:kURL];
+	
+	return dictionary;
 }
 
 - (LFileType) fileType

@@ -26,6 +26,8 @@
 
 - (LFileType) fileType;
 
+- (NSDictionary *) dictionary;
+
 @property (readwrite, assign) NSURL * url;
 @property (readwrite, assign) NSMutableDictionary * attributes;
 @end
