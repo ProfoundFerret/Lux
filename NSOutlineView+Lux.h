@@ -10,6 +10,6 @@
 
 
 @interface NSOutlineView (NSOutlineView_Lux)
-- (void) expandParentOfItem:(id)item;
-- (void) expandItem:(id)item;
+- (void) expandParentsOfItem:(id)item;
+- (void) selectItem:(id)item;
 @end

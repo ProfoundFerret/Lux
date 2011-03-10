@@ -10,7 +10,8 @@
 
 
 @implementation NSOutlineView (NSOutlineView_Lux)
-- (void)expandParentsOfItem:(id)item {
+- (void)expandParentsOfItem:(id)item
+{
     while (item != nil) {
         id parent = [self parentForItem: item];
         if (![self isExpandable: parent])
@@ -21,7 +22,8 @@
     }
 }
 
-- (void)selectItem:(id)item {
+- (void)selectItem:(id)item
+{
     NSInteger itemIndex = [self rowForItem:item];
     if (itemIndex < 0) {
         [self expandParentsOfItem: item];
