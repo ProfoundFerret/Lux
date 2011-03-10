@@ -54,7 +54,7 @@
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
-	members = [aDecoder decodeObjectForKey:kMEMBERS];
+	members = [[aDecoder decodeObjectForKey:kMEMBERS] retain];
 	title = [[aDecoder decodeObjectForKey:kPLAYLIST_TITLE] retain];
 	search = [[aDecoder decodeObjectForKey:kSEARCH] retain];
 	smart = [[aDecoder decodeObjectForKey:kSMART] boolValue];
@@ -78,21 +78,24 @@
 
 - (void) update
 {
-	if (! needsUpdated || ! smart) return;
-	needsUpdated = NO;
-	needsSearched = YES;
-	
-	[members release];
-	members = [[NSMutableDictionary alloc] init];
-	NSPredicate * pred = [NSPredicate predicateWithFormat:predicate];
-	NSDictionary * fileList = [[LFileController sharedInstance] files];
-	for (NSString * path in fileList)
+	@synchronized(self)
 	{
-		LFile * file = [fileList objectForKey:path];
-		BOOL shouldAdd = [pred evaluateWithObject:[file dictionary]];
-		if ( shouldAdd )
+		if (! needsUpdated || ! smart) return;
+		needsUpdated = NO;
+		needsSearched = YES;
+		
+		[members release];
+		members = [[NSMutableDictionary alloc] init];
+		NSPredicate * pred = [NSPredicate predicateWithFormat:predicate];
+		NSDictionary * fileList = [[LFileController sharedInstance] files];
+		for (NSString * path in fileList)
 		{
-			[members setObject:file forKey:[file url]];
+			LFile * file = [fileList objectForKey:path];
+			BOOL shouldAdd = [pred evaluateWithObject:[file dictionary]];
+			if ( shouldAdd )
+			{
+				[members setObject:file forKey:[file url]];
+			}
 		}
 	}
 }

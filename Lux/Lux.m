@@ -60,6 +60,7 @@
 	
 	ioController = [LInputOutputController sharedInstance];
 	fileController = [LFileController sharedInstance];
+	playlistController = [LPlaylistController sharedInstance];
 	
 	[ioController load];
 	[ioController update];
@@ -67,6 +68,7 @@
 
 - (void) reloadData
 {
+	[playlistController prepPlaylistsForUpdate];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:nil];
 }
 

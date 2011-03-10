@@ -31,8 +31,8 @@
 {
 	self = [super initWithCoder:aDecoder];
 	
-	playlists = [aDecoder decodeObjectForKey:kPLAYLISTS];
-	activePlaylist = [aDecoder decodeObjectForKey:kACTIVE_PLAYLIST];
+	playlists = [[aDecoder decodeObjectForKey:kPLAYLISTS] retain];
+	activePlaylist = [[aDecoder decodeObjectForKey:kACTIVE_PLAYLIST] retain];
 	
 	return [self retain];
 }
@@ -51,6 +51,8 @@
 	
 	[library addObject:[LPlaylist musicPlaylist]];
 	[library addObject:[LPlaylist videoPlaylist]];
+	
+	[[[Lux sharedInstance] ioController] save];
 }
 
 - (void) addPlaylist: (LPlaylist *) playlist
