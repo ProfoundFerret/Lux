@@ -17,9 +17,9 @@
 #define kTIME @"time"
 #define kGENRE @"genre"
 #define kRATING @"rating"
-#define kPLAY_COUNT @"play count"
-#define kLAST_PLAY_DATE @"last play date"
-#define kADD_DATE @"add date"
+#define kPLAY_COUNT @"playCount"
+#define kLAST_PLAY_DATE @"lastPlayDate"
+#define kADD_DATE @"addDrate"
 #define kYEAR @"year"
 
 #define kKEEPER_ATTRIBUTES [NSArray arrayWithObjects:kTITLE, kARTIST, kALBUM, kTIME, kGENRE, kRATING, kPLAY_COUNT, kLAST_PLAY_DATE, kADD_DATE, kYEAR, nil]
