@@ -54,23 +54,32 @@
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
+	
+	needsUpdated = NO;
+	needsSearched = YES;
+	smart = [[aDecoder decodeObjectForKey:kSMART] boolValue];
+	write = [[aDecoder decodeObjectForKey:kWRITE] boolValue];
+	
 	members = [[aDecoder decodeObjectForKey:kMEMBERS] retain];
+	columns = [[aDecoder decodeObjectForKey:kCOLUMNS] retain];
+	
 	title = [[aDecoder decodeObjectForKey:kPLAYLIST_TITLE] retain];
 	search = [[aDecoder decodeObjectForKey:kSEARCH] retain];
-	smart = [[aDecoder decodeObjectForKey:kSMART] boolValue];
 	predicate = [[aDecoder decodeObjectForKey:kPREDICATE] retain];
-	
-	needsSearched = YES;
-	
+		
 	return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {	
-	[aCoder encodeObject:members forKey:kMEMBERS];
-	[aCoder encodeObject:title forKey:kTITLE];
-	[aCoder encodeObject:search forKey:kSEARCH];
 	[aCoder encodeObject:[NSNumber numberWithInt:smart] forKey:kSMART];
+	[aCoder encodeObject:[NSNumber numberWithInt:write] forKey:kWRITE];
+	
+	[aCoder encodeObject:members forKey:kMEMBERS];
+	[aCoder encodeObject:columns forKey:kCOLUMNS];
+	
+	[aCoder encodeObject:title forKey:kPLAYLIST_TITLE];
+	[aCoder encodeObject:search forKey:kSEARCH];
 	[aCoder encodeObject:predicate forKey:kPREDICATE];
 	
 	[super encodeWithCoder:aCoder];
@@ -80,7 +89,7 @@
 {
 	@synchronized(self)
 	{
-		if (! needsUpdated || ! smart) return;
+		//if (! needsUpdated || ! smart) return;
 		needsUpdated = NO;
 		needsSearched = YES;
 		
@@ -142,6 +151,7 @@
 	needsSearched = YES;
 	oldSearch = search;
 	search = [[aSearch lowercaseString] retain];
+	if (! [search length]) [searchMembers release];
 }
 
 + (LPlaylist *) musicPlaylist

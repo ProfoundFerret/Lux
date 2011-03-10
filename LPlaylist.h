@@ -10,10 +10,12 @@
 #import "LStoredObject.h"
 
 #define kMEMBERS @"members"
-#define kPLAYLIST_TITLE @"playlist title"
+#define kPLAYLIST_TITLE @"playlistTitle"
 #define kSEARCH @"search"
 #define kSMART @"smart"
 #define kPREDICATE @"predicate"
+#define kWRITE @"write"
+#define kCOLUMNS @"columns"
 
 @interface LPlaylist : LStoredObject {
 	NSMutableDictionary * members;
