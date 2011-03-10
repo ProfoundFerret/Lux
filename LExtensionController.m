@@ -13,8 +13,6 @@
 #import "LInputOutput_Computer.h"
 //
 
-#define kEXTENSIONS @"extensions"
-
 @implementation LExtensionController
 @synthesize extensions;
 - (id)init
@@ -35,17 +33,19 @@
     [super dealloc];
 }
 
-- (void) encodeWithCoder:(NSCoder *)aCoder
-{
-	[aCoder encodeObject: extensions forKey:kEXTENSIONS];
-}
-
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
 	
 	extensions = [[aDecoder decodeObjectForKey:kEXTENSIONS] retain];
 	return self;
+}
+
+- (void) encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject: extensions forKey:kEXTENSIONS];
+	
+	[super encodeWithCoder:aCoder];
 }
 
 - (BOOL) addExtension: (LExtension *) extension

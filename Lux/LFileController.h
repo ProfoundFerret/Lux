@@ -10,6 +10,8 @@
 #import "LControllerObject.h"
 #import "LFile.h"
 
+#define kFILES @"files"
+
 @interface LFileController : LControllerObject {
 	NSMutableDictionary * files;
 	

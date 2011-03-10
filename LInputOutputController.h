@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "LControllerObject.h"
 
+#define kSAVE_FILE [@"~/Music/LuxData.plist" stringByExpandingTildeInPath]
+
 @interface LInputOutputController : LControllerObject {
     
 }

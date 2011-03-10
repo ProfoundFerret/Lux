@@ -10,6 +10,11 @@
 #import "LStoredObject.h"
 #import "LFileType.h"
 
+#define kURL @"url"
+#define kATTRIBUTES @"attributes"
+#define kSEARCHATTRIBUTES @"search attributes"
+#define kFILE_TYPE @"fileType"
+
 @interface LFile : LStoredObject {
     NSURL * url;
 	NSMutableDictionary * attributes;

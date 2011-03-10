@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "LExtension.h"
 
+#define kFILE_SEARCH_LOCATIONS @"_IO_fileSearchLocations"
+#define kMUSIC @"~/Music/"
+
 @interface LInputOutput_Computer : LExtension <LInputOutputDelegate> {
     
 }

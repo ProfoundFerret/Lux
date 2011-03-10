@@ -10,11 +10,6 @@
 #import "LFileController.h"
 #import "LExtension.h"
 
-#define kURL @"url"
-#define kATTRIBUTES @"attributes"
-#define kSEARCHATTRIBUTES @"search attributes"
-#define kFILE_TYPE @"file type"
-
 @implementation LFile
 @synthesize url, attributes;
 - (id)init
@@ -122,7 +117,7 @@
 
 - (LFileType) fileType
 {
-	LFileController * fc = [LFileController sharedInstance];
+	//LFileController * fc = [LFileController sharedInstance];
 	//LFileType fileType = [fc fileTypeForFile:self];
 	LFileType fileType = LFileTypeAudio;
 	return fileType;

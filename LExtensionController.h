@@ -10,6 +10,8 @@
 #import "LControllerObject.h"
 #import "LExtension.h"
 
+#define kEXTENSIONS @"extensions"
+
 @interface LExtensionController : LControllerObject {
 	NSMutableArray * extensions;
 }

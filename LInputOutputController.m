@@ -10,8 +10,6 @@
 #import "Lux.h"
 #import "LExtensionController.h"
 
-#define kSAVE_FILE [@"~/Music/LuxData.plist" stringByExpandingTildeInPath]
-
 @implementation LInputOutputController
 
 - (id)init

@@ -8,8 +8,6 @@
 
 #import "LFileController.h"
 
-#define kFILES @"files"
-
 @implementation LFileController
 
 - (id)init
@@ -30,7 +28,7 @@
 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
-	self = [LFileController sharedInstance];
+	self = [super initWithCoder:aDecoder];
 	
 	files = [[aDecoder decodeObjectForKey:kFILES] retain];
 	
@@ -40,6 +38,8 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
 	[aCoder encodeObject:files forKey:kFILES];
+	
+	[super encodeWithCoder:aCoder];
 }
 
 - (NSDictionary *) files

@@ -8,8 +8,6 @@
 
 #import "LInputOutput_Computer.h"
 
-#define kFILE_SEARCH_LOCATIONS @"_IO_fileSearchLocations"
-#define kMUSIC @"~/Music/"
 
 @implementation LInputOutput_Computer
 

@@ -13,6 +13,12 @@
 #import "LInputOutputController.h"
 #import "LFileController.h"
 
+#define kIO_CONTROLLER @"ioController"
+#define kPLAYER_CONTROLLER @"playerController"
+#define kPLAYLIST_CONTROLLER @"playlistController"
+#define kFILE_CONTROLLER @"file controller"
+#define kEXTENSION_CONTROLLER @"extensionController"
+
 @interface Lux : LSingleton {
     LExtensionController * extensionController;
     LInputOutputController * ioController;

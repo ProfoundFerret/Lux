@@ -10,6 +10,7 @@
 		7C329B6B1325D6B100377547 /* LFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B6A1325D6B000377547 /* LFile.m */; };
 		7C329B731325DDBD00377547 /* LExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B721325DDBB00377547 /* LExtension.m */; };
 		7C329B771325DE5600377547 /* LExtensionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B761325DE5600377547 /* LExtensionController.m */; };
+		7C3B909513285D1C007B7DA5 /* _Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909413285D1C007B7DA5 /* _Test.m */; };
 		7C5132CA1325E76A00469177 /* LInputOutputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5132C91325E76A00469177 /* LInputOutputController.m */; };
 		7C58363F13260BA300B81F6C /* LInputOutput_Computer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C58363E13260BA300B81F6C /* LInputOutput_Computer.m */; };
 		7C5836431326103000B81F6C /* LFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5836421326103000B81F6C /* LFileController.m */; };
@@ -24,6 +25,8 @@
 		7C5FE0EB1325CAA50008B7DC /* LControllerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0EA1325CAA50008B7DC /* LControllerObject.m */; };
 		7C5FE0EE1325CAB50008B7DC /* LSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0ED1325CAB40008B7DC /* LSingleton.m */; };
 		7C5FE0F11325CC2D0008B7DC /* Lux.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0F01325CC2B0008B7DC /* Lux.m */; };
+		7CF940FD1326EF92004526D0 /* LFileGui.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF940FC1326EF92004526D0 /* LFileGui.m */; };
+		7CF941091326FE77004526D0 /* LPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF941081326FE77004526D0 /* LPlaylist.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,8 @@
 		7C329B721325DDBB00377547 /* LExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LExtension.m; path = Lux/LExtension.m; sourceTree = "<group>"; };
 		7C329B751325DE5600377547 /* LExtensionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LExtensionController.h; sourceTree = "<group>"; };
 		7C329B761325DE5600377547 /* LExtensionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LExtensionController.m; sourceTree = "<group>"; };
+		7C3B909313285D1B007B7DA5 /* _Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Test.h; sourceTree = "<group>"; };
+		7C3B909413285D1C007B7DA5 /* _Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Test.m; sourceTree = "<group>"; };
 		7C5132C81325E76900469177 /* LInputOutputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutputController.h; sourceTree = "<group>"; };
 		7C5132C91325E76A00469177 /* LInputOutputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LInputOutputController.m; sourceTree = "<group>"; };
 		7C58363D13260BA300B81F6C /* LInputOutput_Computer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutput_Computer.h; sourceTree = "<group>"; };
@@ -63,6 +68,10 @@
 		7C5FE0ED1325CAB40008B7DC /* LSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSingleton.m; sourceTree = "<group>"; };
 		7C5FE0EF1325CC2B0008B7DC /* Lux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lux.h; sourceTree = "<group>"; };
 		7C5FE0F01325CC2B0008B7DC /* Lux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lux.m; sourceTree = "<group>"; };
+		7CF940FB1326EF92004526D0 /* LFileGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFileGui.h; sourceTree = "<group>"; };
+		7CF940FC1326EF92004526D0 /* LFileGui.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFileGui.m; sourceTree = "<group>"; };
+		7CF941071326FE77004526D0 /* LPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPlaylist.h; sourceTree = "<group>"; };
+		7CF941081326FE77004526D0 /* LPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPlaylist.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +92,8 @@
 				7C58364413261AA600B81F6C /* LFileType.h */,
 				7C329B691325D6B000377547 /* LFile.h */,
 				7C329B6A1325D6B000377547 /* LFile.m */,
+				7CF940FB1326EF92004526D0 /* LFileGui.h */,
+				7CF940FC1326EF92004526D0 /* LFileGui.m */,
 				7C5836411326103000B81F6C /* LFileController.h */,
 				7C5836421326103000B81F6C /* LFileController.m */,
 			);
@@ -155,11 +166,14 @@
 			children = (
 				7C5FE0EF1325CC2B0008B7DC /* Lux.h */,
 				7C5FE0F01325CC2B0008B7DC /* Lux.m */,
+				7C3B909313285D1B007B7DA5 /* _Test.h */,
+				7C3B909413285D1C007B7DA5 /* _Test.m */,
 				7C5FE0C613258F0D0008B7DC /* LuxAppDelegate.h */,
 				7C5FE0C713258F0D0008B7DC /* LuxAppDelegate.m */,
 				7C5FE0C913258F0D0008B7DC /* MainMenu.xib */,
 				7C5FE0DC1325C9C60008B7DC /* Superclasses */,
 				7C329B6D1325D6B500377547 /* File */,
+				7CF9410A1326FE97004526D0 /* Playlist */,
 				7C329B741325DE2E00377547 /* Extension */,
 				7C5132CC1325E76E00469177 /* IO */,
 			);
@@ -192,6 +206,16 @@
 				7C5FE0EA1325CAA50008B7DC /* LControllerObject.m */,
 			);
 			name = Superclasses;
+			sourceTree = "<group>";
+		};
+		7CF9410A1326FE97004526D0 /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				7CF941071326FE77004526D0 /* LPlaylist.h */,
+				7CF941081326FE77004526D0 /* LPlaylist.m */,
+			);
+			name = Playlist;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +294,9 @@
 				7C5132CA1325E76A00469177 /* LInputOutputController.m in Sources */,
 				7C58363F13260BA300B81F6C /* LInputOutput_Computer.m in Sources */,
 				7C5836431326103000B81F6C /* LFileController.m in Sources */,
+				7CF940FD1326EF92004526D0 /* LFileGui.m in Sources */,
+				7CF941091326FE77004526D0 /* LPlaylist.m in Sources */,
+				7C3B909513285D1C007B7DA5 /* _Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
