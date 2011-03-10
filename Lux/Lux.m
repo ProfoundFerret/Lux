@@ -8,12 +8,7 @@
 
 #import "Lux.h"
 #import "LExtension.h"
-
-#define kIO_CONTROLLER @"io controller"
-#define kPLAYER_CONTROLLER @"player controller"
-#define kPLAYLIST_CONTROLLER @"playlist controller"
-#define kFILE_CONTROLLER @"file controller"
-#define kEXTENSION_CONTROLLER @"extension controller"
+#import "_Test.h"
 
 @implementation Lux
 @synthesize extensionController, fileController, ioController;
@@ -21,7 +16,6 @@
 {
     self = [super init];
     if (self) {
-		
     }
     
     return self;
@@ -53,6 +47,8 @@
 	
 	[self registerUserDefaults];
 	[self reloadData];
+	
+	[[_Test alloc] init];
 	return [self retain];
 }
 
