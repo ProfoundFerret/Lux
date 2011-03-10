@@ -38,7 +38,7 @@
 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
-	self = [Lux sharedInstance];
+	self = [super initWithCoder:aDecoder];
 
 	ioController = [aDecoder decodeObjectForKey:kIO_CONTROLLER];
 	//playerController = [aDecoder decodeObjectForKey:kPLAYER_CONTROLLER];
@@ -49,7 +49,7 @@
 	[self registerUserDefaults];
 	[self reloadData];
 	
-	[[_Test alloc] init];
+	//[[_Test alloc] init];
 	return [self retain];
 }
 
