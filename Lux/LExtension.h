@@ -28,7 +28,6 @@
 - (NSArray *) update; // return an NSArray of all files' NSURLs
 @end
 
-
 @protocol LMetadataDelegate <NSObject>
 /*
  Will be passed a NSURL of an item that doesn't have metadata.
@@ -52,8 +51,6 @@
 - (NSArray *) supportedMetadataExtensions;
 @end
 
-
-
 @protocol LPlayerDelegate <NSObject>
 - (void) setAndPlayFile: (NSURL*) url withVolume: (double) volume; // Set the url, start playing it with a given volume
 - (void) stop; // Playing should stop.  File progress, caching, etc can be reset as well.
@@ -61,7 +58,6 @@
 - (void) pause; // Pause file.  File progress should remain.
 - (void) setTime: (int) newTime; // Change the current time to newTime (given in milliseconds).  If playing before setTime then keep playing after
 - (void) setVolume: (double) volume; // Change the volume.  volume ranges from 0 to 1.
-
 - (int) currentTime; // Returns the current time in milliseconds
 - (int) totalTime; // Returns the total time in milliseconds
 

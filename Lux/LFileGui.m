@@ -8,6 +8,10 @@
 
 #import "LFileGui.h"
 #import "LFileController.h"
+#import "LExtension.h"
+#import "LPlaylistController.h"
+
+#define controller [LFileController sharedInstance]
 
 @implementation LFileGui
 @synthesize visibleFiles;
@@ -18,7 +22,7 @@
     if (self) {
 		visibleFiles = [[NSArray alloc] init];
 		
-		[[LFileController sharedInstance] addGui:self];
+		[controller addGui:self];
     }
     
     return self;
@@ -49,7 +53,7 @@
 	
 	return [f url];
 	
-	if ([[tableColumn identifier] isEqualToString:@"index"])
+	if ([[tableColumn identifier] isEqualToString:kINDEX])
 	{
 		return [NSNumber numberWithLong:row + 1];
 	} else {
@@ -66,16 +70,13 @@
 		return;
 	}	
 	
-	id clickedItem = [visibleFiles objectAtIndex:clickedIndex];
-	
-	NSLog(@"%@", clickedItem);
-	
+	//id clickedItem = [visibleFiles objectAtIndex:clickedIndex];
 	// TODO: Play it
 }
 
 - (void) reloadData
 {
-	visibleFiles = [[[[LFileController sharedInstance] files] allValues] retain];
+	visibleFiles = [[[[[LPlaylistController sharedInstance] visiblePlaylist] members] allValues] retain];
 	[fileList reloadData];
 }
 @end

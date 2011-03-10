@@ -32,6 +32,7 @@
 	BOOL needsSearched;
 	
 	BOOL smart;
+	BOOL write;
 }
 - (void) update;
 
@@ -45,7 +46,9 @@
 
 @property (readwrite, assign) NSString * title;
 @property (readwrite, assign) BOOL needsUpdated;
-@property (readwrite, assign) NSArray * columns;
 @property (readwrite, assign) BOOL smart;
+@property (readwrite, assign) BOOL write;
+@property (readwrite, assign) NSArray * columns;
 @property (readwrite, assign) NSString * predicate;
+@property (readonly, assign) NSString * search;
 @end

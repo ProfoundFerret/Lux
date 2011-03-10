@@ -7,16 +7,15 @@
 //
 
 #import "LPlaylistController.h"
-
+#import "Lux.h"
 
 @implementation LPlaylistController
-@synthesize activePlaylist, playlists;
+@synthesize activePlaylist, playlists, visiblePlaylist;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-		playlists = [[NSMutableArray alloc] init];
 		[self setupLibraryPlaylists];
     }
     
@@ -33,7 +32,7 @@
 	self = [super initWithCoder:aDecoder];
 	
 	playlists = [aDecoder decodeObjectForKey:kPLAYLISTS];
-	activePlaylist = [aDecoder decodeObjectForKey:kACTIVEPLAYLIST];
+	activePlaylist = [aDecoder decodeObjectForKey:kACTIVE_PLAYLIST];
 	
 	return [self retain];
 }
@@ -41,12 +40,15 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {	
 	[aCoder encodeObject:playlists forKey:kPLAYLISTS];
-	[aCoder encodeObject:activePlaylist forKey:kACTIVEPLAYLIST];
+	[aCoder encodeObject:activePlaylist forKey:kACTIVE_PLAYLIST];
 }
 
 - (void) setupLibraryPlaylists
 {
+	playlists = [[NSMutableDictionary alloc] init];
+	
 	NSMutableArray * library = [self getPlaylistsFromGroup:kLIBRARY];
+	
 	[library addObject:[LPlaylist musicPlaylist]];
 	[library addObject:[LPlaylist videoPlaylist]];
 }
@@ -107,8 +109,18 @@
 	return activePlaylist;
 }
 
+- (LPlaylist *) visiblePlaylist
+{
+	if (visiblePlaylist == nil)
+	{
+		visiblePlaylist = [self activePlaylist];
+	}
+	return visiblePlaylist;
+}
+
 - (void) searchChangedTo: (NSString *) search
 {
 	[[self activePlaylist] setSearch:search];
+	[[Lux sharedInstance] reloadData];
 }
 @end

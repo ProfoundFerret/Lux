@@ -12,11 +12,12 @@
 
 #define kPLAYLISTS @"Playlists"
 #define kLIBRARY @"Library"
-#define kACTIVEPLAYLIST @"activePlaylist"
+#define kACTIVE_PLAYLIST @"activePlaylist"
 
 @interface LPlaylistController : LControllerObject {
     NSMutableDictionary * playlists;
 	LPlaylist * activePlaylist;
+	LPlaylist * visiblePlaylist;
 }
 
 - (void) setupLibraryPlaylists;
@@ -33,5 +34,6 @@
 - (void) searchChangedTo: (NSString *) search;
 
 @property (readwrite, assign) NSMutableDictionary * playlists;
-@property (readonly, retain) LPlaylist * activePlaylist;
+@property (readonly, assign, nonatomic) LPlaylist * activePlaylist;
+@property (readwrite, assign, nonatomic) LPlaylist * visiblePlaylist;
 @end

@@ -12,14 +12,20 @@
 #import "LFileController.h"
 #import "LExtension.h"
 
+#define kMUSIC @"Music"
+#define kVIDEO @"Video"
+
 @implementation LPlaylist
-@synthesize title, needsUpdated, columns, smart, predicate;
+@synthesize title, needsUpdated, columns, smart, predicate, search, write;
 - (id)init
 {
     self = [super init];
     if (self) {
 		needsUpdated = YES;
 		needsSearched = YES;
+		smart = NO;
+		write = YES;
+		
 		members = [[NSMutableDictionary alloc] init];
 		searchMembers = [[NSMutableDictionary alloc] init];
 		columns = [[NSArray alloc] initWithObjects:kINDEX, kTITLE, kARTIST, kALBUM, nil];
@@ -27,8 +33,6 @@
 		search = @"";
 		oldSearch = @"";
 		predicate = @"";
-		
-		smart = NO;
     }
     
     return self;
@@ -139,24 +143,29 @@
 
 + (LPlaylist *) musicPlaylist
 {
-	LPlaylist * playlist = [[LPlaylist alloc] init];
+	LPlaylist * playlist = [[[LPlaylist alloc] init] autorelease];
 	
 	NSString * predicate = [[NSString alloc] initWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeAudio];
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
+	[playlist setTitle:kMUSIC];
 	
-	NSLog(@"%@",[playlist members]);
+	[playlist setWrite:NO];
 	
 	return playlist;
 }
 
 + (LPlaylist *) videoPlaylist
 {
-	LPlaylist * playlist = [[LPlaylist alloc] init];
+	LPlaylist * playlist = [[[LPlaylist alloc] init] autorelease];
 	
 	NSString * predicate = [[NSString alloc] initWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeVideo];
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
+	[playlist setTitle:kVIDEO];
+	
+	
+	[playlist setWrite:NO];
 	
 	return playlist;
 }
