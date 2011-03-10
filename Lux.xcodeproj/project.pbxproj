@@ -11,6 +11,7 @@
 		7C329B731325DDBD00377547 /* LExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B721325DDBB00377547 /* LExtension.m */; };
 		7C329B771325DE5600377547 /* LExtensionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B761325DE5600377547 /* LExtensionController.m */; };
 		7C3B909513285D1C007B7DA5 /* _Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909413285D1C007B7DA5 /* _Test.m */; };
+		7C3B909813286564007B7DA5 /* LPlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909713286564007B7DA5 /* LPlaylistController.m */; };
 		7C5132CA1325E76A00469177 /* LInputOutputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5132C91325E76A00469177 /* LInputOutputController.m */; };
 		7C58363F13260BA300B81F6C /* LInputOutput_Computer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C58363E13260BA300B81F6C /* LInputOutput_Computer.m */; };
 		7C5836431326103000B81F6C /* LFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5836421326103000B81F6C /* LFileController.m */; };
@@ -38,6 +39,8 @@
 		7C329B761325DE5600377547 /* LExtensionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LExtensionController.m; sourceTree = "<group>"; };
 		7C3B909313285D1B007B7DA5 /* _Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Test.h; sourceTree = "<group>"; };
 		7C3B909413285D1C007B7DA5 /* _Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Test.m; sourceTree = "<group>"; };
+		7C3B909613286563007B7DA5 /* LPlaylistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPlaylistController.h; sourceTree = "<group>"; };
+		7C3B909713286564007B7DA5 /* LPlaylistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPlaylistController.m; sourceTree = "<group>"; };
 		7C5132C81325E76900469177 /* LInputOutputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutputController.h; sourceTree = "<group>"; };
 		7C5132C91325E76A00469177 /* LInputOutputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LInputOutputController.m; sourceTree = "<group>"; };
 		7C58363D13260BA300B81F6C /* LInputOutput_Computer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutput_Computer.h; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 			children = (
 				7CF941071326FE77004526D0 /* LPlaylist.h */,
 				7CF941081326FE77004526D0 /* LPlaylist.m */,
+				7C3B909613286563007B7DA5 /* LPlaylistController.h */,
+				7C3B909713286564007B7DA5 /* LPlaylistController.m */,
 			);
 			name = Playlist;
 			path = ..;
@@ -297,6 +302,7 @@
 				7CF940FD1326EF92004526D0 /* LFileGui.m in Sources */,
 				7CF941091326FE77004526D0 /* LPlaylist.m in Sources */,
 				7C3B909513285D1C007B7DA5 /* _Test.m in Sources */,
+				7C3B909813286564007B7DA5 /* LPlaylistController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

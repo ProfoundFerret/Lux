@@ -12,6 +12,7 @@
 #import "LExtensionController.h"
 #import "LInputOutputController.h"
 #import "LFileController.h"
+#import "LPlaylistController.h"
 
 #define kIO_CONTROLLER @"ioController"
 #define kPLAYER_CONTROLLER @"playerController"
@@ -23,6 +24,7 @@
     LExtensionController * extensionController;
     LInputOutputController * ioController;
 	LFileController * fileController;
+	LPlaylistController * playlistController;
 }
 - (void) setup;
 - (void) reloadData;

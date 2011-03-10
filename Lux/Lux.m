@@ -15,6 +15,7 @@
 - (id)init
 {
     self = [super init];
+	
     if (self) {
     }
     
@@ -30,7 +31,7 @@
 {
 	[aCoder encodeObject:ioController forKey:kIO_CONTROLLER];
 	//[aCoder encodeObject:playerController forKey:kPLAYER_CONTROLLER];
-	//[aCoder encodeObject:playlistController forKey:kPLAYLIST_CONTROLLER];
+	[aCoder encodeObject:playlistController forKey:kPLAYLIST_CONTROLLER];
 	[aCoder encodeObject:fileController forKey:kFILE_CONTROLLER];
 	[aCoder encodeObject:extensionController forKey:kEXTENSION_CONTROLLER];
 }
@@ -41,7 +42,7 @@
 
 	ioController = [aDecoder decodeObjectForKey:kIO_CONTROLLER];
 	//playerController = [aDecoder decodeObjectForKey:kPLAYER_CONTROLLER];
-	//playlistController = [aDecoder decodeObjectForKey:kPLAYLIST_CONTROLLER];
+	playlistController = [aDecoder decodeObjectForKey:kPLAYLIST_CONTROLLER];
 	fileController = [aDecoder decodeObjectForKey:kFILE_CONTROLLER];
 	extensionController = [aDecoder decodeObjectForKey:kEXTENSION_CONTROLLER];
 	
