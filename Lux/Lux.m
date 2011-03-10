@@ -39,14 +39,14 @@
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
+	extensionController = [aDecoder decodeObjectForKey:kEXTENSION_CONTROLLER];
+	[self registerUserDefaults];
 
 	ioController = [aDecoder decodeObjectForKey:kIO_CONTROLLER];
+	fileController = [aDecoder decodeObjectForKey:kFILE_CONTROLLER];
 	//playerController = [aDecoder decodeObjectForKey:kPLAYER_CONTROLLER];
 	playlistController = [aDecoder decodeObjectForKey:kPLAYLIST_CONTROLLER];
-	fileController = [aDecoder decodeObjectForKey:kFILE_CONTROLLER];
-	extensionController = [aDecoder decodeObjectForKey:kEXTENSION_CONTROLLER];
 	
-	[self registerUserDefaults];
 	[self reloadData];
 	
 	//[[_Test alloc] init];
@@ -59,10 +59,11 @@
 	[self registerUserDefaults];
 	
 	ioController = [LInputOutputController sharedInstance];
+	[ioController load];
+	
 	fileController = [LFileController sharedInstance];
 	playlistController = [LPlaylistController sharedInstance];
 	
-	[ioController load];
 	[ioController update];
 }
 
