@@ -32,10 +32,11 @@
 - (id) attributeForIdentifier: (id) identifier;
 
 - (LFileType) fileType;
+- (void) updateMetadata;
 
 - (NSDictionary *) dictionary;
 
-@property (readwrite, assign) NSURL * url;
+@property (readwrite, assign, nonatomic) NSURL * url;
 @property (readwrite, assign) NSMutableDictionary * attributes;
 @property (readwrite, assign, nonatomic) NSString * extension;
 @end

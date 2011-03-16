@@ -9,6 +9,7 @@
 #import "LFile.h"
 #import "LFileController.h"
 #import "LExtension.h"
+#import "LMetadataController.h"
 
 #import "LPlayerController.h"
 
@@ -131,5 +132,20 @@
 	LFileType fileType = [fc fileTypeForFile:self];
 	
 	return fileType;
+}
+
+- (void) setUrl:(NSURL *)newUrl
+{
+	url = newUrl;
+
+	[self updateMetadata];
+}
+
+- (void) updateMetadata
+{
+	[[LMetadataController sharedInstance] parseMetadataForFile:self];
+	
+	searchAttributes = [[NSArray alloc] init];
+	[self searchAttributes];
 }
 @end

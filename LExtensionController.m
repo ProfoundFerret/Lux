@@ -12,6 +12,7 @@
 //
 #import "LInputOutput_Computer.h"
 #import "LPlayer_QTKit.h"
+#import "LMetadata_MP3.h"
 //
 
 @implementation LExtensionController
@@ -32,6 +33,7 @@
 {
 	[self addExtension: [[LInputOutput_Computer alloc] init]];
 	[self addExtension: [[LPlayer_QTKit alloc] init]];
+	[self addExtension: [[LMetadata_MP3 alloc] init]];
 }
 
 - (void)dealloc
