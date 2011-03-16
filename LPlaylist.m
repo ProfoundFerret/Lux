@@ -14,6 +14,7 @@
 
 #define kMUSIC @"Music"
 #define kVIDEO @"Video"
+#define kSTREAMING @"Streaming"
 
 @implementation LPlaylist
 @synthesize title, needsUpdated, columns, smart, predicate, search, write;
@@ -57,6 +58,7 @@
 	
 	needsUpdated = NO;
 	needsSearched = YES;
+	
 	smart = [[aDecoder decodeObjectForKey:kSMART] boolValue];
 	write = [[aDecoder decodeObjectForKey:kWRITE] boolValue];
 	
@@ -89,7 +91,7 @@
 {
 	@synchronized(self)
 	{
-		//if (! needsUpdated || ! smart) return;
+		if (! needsUpdated || ! smart) return;
 		needsUpdated = NO;
 		needsSearched = YES;
 		
@@ -97,6 +99,7 @@
 		members = [[NSMutableDictionary alloc] init];
 		NSPredicate * pred = [NSPredicate predicateWithFormat:predicate];
 		NSDictionary * fileList = [[LFileController sharedInstance] files];
+
 		for (NSString * path in fileList)
 		{
 			LFile * file = [fileList objectForKey:path];
@@ -120,7 +123,6 @@
 {
 	if (! needsSearched) return searchMembers;
 	needsSearched = NO;
-	
 	
 	NSDictionary * toBeSearched;
 	
@@ -146,7 +148,7 @@
 	return searchMembers;
 }
 
--(void) setSearch:(NSString *) aSearch
+- (void) setSearch:(NSString *) aSearch
 {
 	needsSearched = YES;
 	oldSearch = search;
@@ -177,6 +179,19 @@
 	[playlist setSmart:YES];
 	[playlist setTitle:kVIDEO];
 	
+	[playlist setWrite:NO];
+	
+	return playlist;
+}
+
++ (LPlaylist *) streamingPlaylist
+{
+	LPlaylist * playlist = [[[LPlaylist alloc] init] autorelease];
+	
+	NSString * predicate = [[NSString alloc] initWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeStreaming];
+	[playlist setPredicate:predicate];
+	[playlist setSmart:YES];
+	[playlist setTitle:kSTREAMING];
 	
 	[playlist setWrite:NO];
 	

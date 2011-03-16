@@ -7,9 +7,10 @@
 //
 
 #import "LFileController.h"
+#import "Lux.h"
 
 @implementation LFileController
-
+@synthesize activeFile;
 - (id)init
 {
     self = [super init];
@@ -29,7 +30,6 @@
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
-	
 	files = [[aDecoder decodeObjectForKey:kFILES] retain];
 	
 	return [self retain];
@@ -78,5 +78,39 @@
 {
 	LFile * f = [[self createFileByURL:url] retain];
 	[self addFileByFile:f];
+}
+
+- (LFileType) fileTypeForFile:(LFile *)file
+{
+	static NSMutableDictionary * fileTypesForFiles;
+	if (! fileTypesForFiles)
+	{
+		fileTypesForFiles = [[NSMutableDictionary alloc] init];
+	}
+	NSString * fileExtension = [file extension];
+	if (! [fileTypesForFiles objectForKey:fileExtension])
+	{
+		LExtension <LPlayerDelegate> * player = [[[Lux sharedInstance] playerController] playerForFile:file];
+		
+		if (player)
+		{
+			NSNumber * fileType = [NSNumber numberWithInt:[player fileTypeForExtension:fileExtension]];
+		
+			[fileTypesForFiles setObject:fileType forKey:fileExtension];
+		}
+	}
+	return [[fileTypesForFiles objectForKey:fileExtension] intValue];
+}
+
+- (void) fileFinishedPlaying: (LFile *)file
+{
+	NSNumber * number = [[file attributes] objectForKey:kPLAY_COUNT];
+	int increment = [number intValue] + 1;
+	number = [NSNumber numberWithInt:increment];
+	[[file attributes] setObject:number forKey:kPLAY_COUNT];
+}
+- (void) fileStartedPlaying: (LFile *)file
+{
+	NSLog(@"File Started");
 }
 @end

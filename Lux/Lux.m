@@ -11,7 +11,7 @@
 #import "_Test.h"
 
 @implementation Lux
-@synthesize extensionController, fileController, ioController;
+@synthesize extensionController, fileController, ioController, playerController, playlistController;
 - (id)init
 {
     self = [super init];
@@ -29,22 +29,24 @@
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-	[aCoder encodeObject:ioController forKey:kIO_CONTROLLER];
-	//[aCoder encodeObject:playerController forKey:kPLAYER_CONTROLLER];
-	[aCoder encodeObject:playlistController forKey:kPLAYLIST_CONTROLLER];
-	[aCoder encodeObject:fileController forKey:kFILE_CONTROLLER];
 	[aCoder encodeObject:extensionController forKey:kEXTENSION_CONTROLLER];
+	[aCoder encodeObject:ioController forKey:kIO_CONTROLLER];
+	[aCoder encodeObject:playerController forKey:kPLAYER_CONTROLLER];
+	[aCoder encodeObject:fileController forKey:kFILE_CONTROLLER];
+	[aCoder encodeObject:playlistController forKey:kPLAYLIST_CONTROLLER];
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
+	
 	extensionController = [aDecoder decodeObjectForKey:kEXTENSION_CONTROLLER];
 	[self registerUserDefaults];
 
 	ioController = [aDecoder decodeObjectForKey:kIO_CONTROLLER];
+	playerController = [aDecoder decodeObjectForKey:kPLAYER_CONTROLLER];
+	
 	fileController = [aDecoder decodeObjectForKey:kFILE_CONTROLLER];
-	//playerController = [aDecoder decodeObjectForKey:kPLAYER_CONTROLLER];
 	playlistController = [aDecoder decodeObjectForKey:kPLAYLIST_CONTROLLER];
 	
 	[self reloadData];
@@ -55,11 +57,13 @@
 
 - (void) setup
 {
+	ioController = [LInputOutputController sharedInstance];
+	[ioController load];
+	
     extensionController = [LExtensionController sharedInstance];
 	[self registerUserDefaults];
 	
-	ioController = [LInputOutputController sharedInstance];
-	[ioController load];
+	playerController = [LPlayerController sharedInstance];
 	
 	fileController = [LFileController sharedInstance];
 	playlistController = [LPlaylistController sharedInstance];
@@ -70,7 +74,7 @@
 - (void) reloadData
 {
 	[playlistController prepPlaylistsForUpdate];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kRELOAD_DATA object:nil];
 }
 
 - (void) registerUserDefaults
@@ -79,7 +83,7 @@
 	
 	NSMutableDictionary * stdDefaults = [NSMutableDictionary dictionary];
 	
-	[stdDefaults setValue:[NSNumber numberWithDouble:0.5] forKey:@"volume"];
+	[stdDefaults setValue:[NSNumber numberWithDouble:0.5] forKey:kVOLUME];
 	
 	for (LExtension * extension in [extensionController extensions])
 	{

@@ -26,18 +26,18 @@
     [super dealloc];
 }
 
-- (void) encodeWithCoder:(NSCoder *)aCoder
-{
-	
-}
-
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
-	return self;
-}
-
 - (NSDictionary *) defaultUserDefaults
 {
 	return [NSDictionary dictionary];
+}
+
+- (int) majorVersion
+{
+	return 0;
+}
+
+- (int) minorVersion
+{
+	return 0;
 }
 @end

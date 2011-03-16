@@ -51,8 +51,7 @@
 	
 	[library addObject:[LPlaylist musicPlaylist]];
 	[library addObject:[LPlaylist videoPlaylist]];
-	
-	[[[Lux sharedInstance] ioController] save];
+	[library addObject:[LPlaylist streamingPlaylist]];
 }
 
 - (void) addPlaylist: (LPlaylist *) playlist

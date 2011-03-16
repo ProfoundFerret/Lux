@@ -13,12 +13,25 @@
 
 @synthesize window;
 
-- (void)  awakeFromNib
+- (void) applicationWillFinishLaunching:(NSNotification *)notification
 {
+}
+
+- (id) init
+{
+	self = [super init];
+	
 	if(getenv("NSZombieEnabled") || getenv("NSAutoreleaseFreedObjectCheckEnabled")) {
         NSLog(@"NSZombieEnabled/NSAutoreleaseFreedObjectCheckEnabled enabled!");
 	}
+	
 	[[Lux sharedInstance] setup];
+	return self;
+}
+
+- (void) applicationWillTerminate:(NSNotification *)notification
+{
+	[[[Lux sharedInstance] ioController] _save];
 }
 
 @end

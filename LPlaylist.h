@@ -45,6 +45,7 @@
 
 + (LPlaylist *) musicPlaylist;
 + (LPlaylist *) videoPlaylist;
++ (LPlaylist *) streamingPlaylist;
 
 @property (readwrite, assign) NSString * title;
 @property (readwrite, assign) BOOL needsUpdated;

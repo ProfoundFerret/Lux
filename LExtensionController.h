@@ -15,6 +15,7 @@
 @interface LExtensionController : LControllerObject {
 	NSMutableArray * extensions;
 }
+- (void) loadDefaultExtensions;
 - (BOOL) addExtension: (LExtension *) extension;
 - (NSArray *) extensionsMatchingDelegate: (Protocol *) protocol;
 @property (readonly, assign) NSMutableArray * extensions;

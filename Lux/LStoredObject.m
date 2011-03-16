@@ -33,6 +33,7 @@
 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
+	self = [self init];
 	return self;
 }
 

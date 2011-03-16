@@ -10,8 +10,10 @@
 #import "LFileController.h"
 #import "LExtension.h"
 
+#import "LPlayerController.h"
+
 @implementation LFile
-@synthesize url, attributes;
+@synthesize url, attributes, extension;
 - (id)init
 {
     self = [super init];
@@ -19,6 +21,7 @@
 		url = [[NSURL alloc] init];
 		attributes = [[NSMutableDictionary alloc] init];
 		searchAttributes = [[NSArray alloc] init];
+		extension = @"";
 		
 		[attributes setObject:[NSDate date] forKey:kADD_DATE];
     }
@@ -31,6 +34,7 @@
 	url = [[aDecoder decodeObjectForKey:kURL] retain];
 	attributes = [[aDecoder decodeObjectForKey:kATTRIBUTES] retain];
 	searchAttributes = [[aDecoder decodeObjectForKey:kSEARCHATTRIBUTES] retain];
+	extension = [[aDecoder decodeObjectForKey:kEXTENSION] retain];
 	
 	return self;
 }
@@ -40,6 +44,7 @@
 	[aCoder encodeObject:url forKey:kURL];
 	[aCoder encodeObject:attributes forKey:kATTRIBUTES];
 	[aCoder encodeObject:[self searchAttributes] forKey:kSEARCHATTRIBUTES];
+	[aCoder encodeObject:[self extension] forKey:kEXTENSION];
 }
 
 - (void)dealloc
@@ -53,7 +58,11 @@
 
 - (NSString *) extension
 {
-	return [[url pathExtension] lowercaseString];
+	if (! [extension length]) 
+	{	
+		extension = [[[url pathExtension] lowercaseString] retain];
+	}
+	return extension;
 }
 
 - (BOOL) matchesSearchSet: (NSArray *) searchSet
@@ -116,10 +125,11 @@
 }
 
 - (LFileType) fileType
-{
-	//LFileController * fc = [LFileController sharedInstance];
-	//LFileType fileType = [fc fileTypeForFile:self];
-	LFileType fileType = LFileTypeAudio;
+{	
+	LFileController * fc = [LFileController sharedInstance];
+	
+	LFileType fileType = [fc fileTypeForFile:self];
+	
 	return fileType;
 }
 @end

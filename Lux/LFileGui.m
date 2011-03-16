@@ -9,6 +9,7 @@
 #import "LFileGui.h"
 #import "LFileController.h"
 #import "LExtension.h"
+#import "LPlayerController.h"
 #import "LPlaylistController.h"
 
 #define controller [LFileController sharedInstance]
@@ -70,8 +71,11 @@
 		return;
 	}	
 	
-	//id clickedItem = [visibleFiles objectAtIndex:clickedIndex];
-	// TODO: Play it
+	id clickedItem = [visibleFiles objectAtIndex:clickedIndex];
+	if ([clickedItem isKindOfClass:[LFile class]])
+	{
+		[[LPlayerController sharedInstance] playFile:clickedItem];
+	}
 }
 
 - (void) reloadData

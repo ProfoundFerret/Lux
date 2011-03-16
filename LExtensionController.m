@@ -11,6 +11,7 @@
 
 //
 #import "LInputOutput_Computer.h"
+#import "LPlayer_QTKit.h"
 //
 
 @implementation LExtensionController
@@ -21,10 +22,16 @@
     if (self) {
 		extensions = [[NSMutableArray alloc] init];
 		
-		[self addExtension: [[LInputOutput_Computer alloc] init]];
+		[self loadDefaultExtensions];
     }
     
     return self;
+}
+
+- (void) loadDefaultExtensions
+{
+	[self addExtension: [[LInputOutput_Computer alloc] init]];
+	[self addExtension: [[LPlayer_QTKit alloc] init]];
 }
 
 - (void)dealloc
@@ -43,7 +50,7 @@
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-	[aCoder encodeObject: extensions forKey:kEXTENSIONS];
+	[aCoder encodeObject:extensions forKey:kEXTENSIONS];
 	
 	[super encodeWithCoder:aCoder];
 }

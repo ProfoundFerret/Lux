@@ -49,6 +49,8 @@
 	NSLog(@"Loading");
 	
 	[NSKeyedUnarchiver unarchiveObjectWithFile:kSAVE_FILE];
+	
+	NSLog(@"Load Finished");
 }
 
 - (void) update
@@ -70,7 +72,6 @@
 		}
 		
 		[[Lux sharedInstance] reloadData];
-		[self save];
 	}
 	[pool drain];
 }

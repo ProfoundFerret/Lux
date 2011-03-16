@@ -12,13 +12,15 @@
 
 #define kURL @"url"
 #define kATTRIBUTES @"attributes"
-#define kSEARCHATTRIBUTES @"search attributes"
+#define kSEARCHATTRIBUTES @"searchAttributes"
 #define kFILE_TYPE @"fileType"
+#define kEXTENSION @"extension"
 
 @interface LFile : LStoredObject {
     NSURL * url;
 	NSMutableDictionary * attributes;
 	NSArray * searchAttributes;
+	NSString * extension;
 }
 - (NSString *) extension;
 
@@ -35,4 +37,5 @@
 
 @property (readwrite, assign) NSURL * url;
 @property (readwrite, assign) NSMutableDictionary * attributes;
+@property (readwrite, assign, nonatomic) NSString * extension;
 @end

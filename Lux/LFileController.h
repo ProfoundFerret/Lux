@@ -23,4 +23,9 @@
 - (BOOL) addFileByFile: (LFile *) file;
 - (void) addFilesByURL: (NSArray *) files;
 - (void) addFileByURL: (NSURL *) url;
+- (LFileType) fileTypeForFile:(LFile *)file;
+
+- (void) fileFinishedPlaying: (LFile *)file;
+- (void) fileStartedPlaying: (LFile *)file;
+@property (readwrite, assign) LFile * activeFile;
 @end

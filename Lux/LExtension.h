@@ -19,7 +19,7 @@
 #define kRATING @"rating"
 #define kPLAY_COUNT @"playCount"
 #define kLAST_PLAY_DATE @"lastPlayDate"
-#define kADD_DATE @"addDrate"
+#define kADD_DATE @"addDate"
 #define kYEAR @"year"
 
 #define kKEEPER_ATTRIBUTES [NSArray arrayWithObjects:kTITLE, kARTIST, kALBUM, kTIME, kGENRE, kRATING, kPLAY_COUNT, kLAST_PLAY_DATE, kADD_DATE, kYEAR, nil]
@@ -61,13 +61,15 @@
 - (int) currentTime; // Returns the current time in milliseconds
 - (int) totalTime; // Returns the total time in milliseconds
 
-- (LFileType) fileTypeForExtension: (NSString *) extension; // FileType representing extension
+- (LFileType) fileTypeForExtension: (NSString *) extension; // FileType representing extension, will only be run once per extension per application launch
 - (NSArray *) supportedExtensions; // NSArray of all supported extensions in lower case
 @end
 
-@interface LExtension : LStoredObject {
+@interface LExtension : LStoredObject <NSCoding> {
 @private
     
 }
 - (NSDictionary *) defaultUserDefaults;
+- (int) majorVersion;
+- (int) minorVersion;
 @end

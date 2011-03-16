@@ -13,18 +13,23 @@
 #import "LInputOutputController.h"
 #import "LFileController.h"
 #import "LPlaylistController.h"
+#import "LPlayerController.h"
 
 #define kIO_CONTROLLER @"ioController"
 #define kPLAYER_CONTROLLER @"playerController"
 #define kPLAYLIST_CONTROLLER @"playlistController"
-#define kFILE_CONTROLLER @"file controller"
+#define kFILE_CONTROLLER @"fileController"
 #define kEXTENSION_CONTROLLER @"extensionController"
+
+#define kVOLUME @"volume"
+#define kRELOAD_DATA @"reloadData"
 
 @interface Lux : LSingleton {
     LExtensionController * extensionController;
     LInputOutputController * ioController;
 	LFileController * fileController;
 	LPlaylistController * playlistController;
+	LPlayerController * playerController;
 }
 - (void) setup;
 - (void) reloadData;
@@ -32,4 +37,6 @@
 @property (readonly) LExtensionController * extensionController;
 @property (readonly) LInputOutputController * ioController;
 @property (readonly) LFileController * fileController;
+@property (readonly) LPlayerController * playerController;
+@property (readonly) LPlaylistController * playlistController;
 @end
