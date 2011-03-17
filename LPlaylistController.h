@@ -34,6 +34,6 @@
 - (void) searchChangedTo: (NSString *) search;
 
 @property (readwrite, assign) NSMutableDictionary * playlists;
-@property (readonly, assign, nonatomic) LPlaylist * activePlaylist;
+@property (readwrite, assign, nonatomic) LPlaylist * activePlaylist;
 @property (readwrite, assign, nonatomic) LPlaylist * visiblePlaylist;
 @end

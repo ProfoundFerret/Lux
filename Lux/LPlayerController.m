@@ -41,29 +41,35 @@
 
 - (void) _playFile: (LFile *) file
 {
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	
-	if (! file) return;
-	LExtension * newPlayer = [self playerForFile: file];
-	
-	if (! newPlayer)
+	@synchronized(self)
 	{
-		isPlaying = NO;
-		return; // Shouldn't pop up but you never know.
+		NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+		
+		LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+		[[LPlaylistController sharedInstance] setActivePlaylist:visiblePlaylist];
+		
+		if (! file) return;
+		LExtension * newPlayer = [self playerForFile: file];
+		
+		if (! newPlayer)
+		{
+			isPlaying = NO;
+			return; // Shouldn't pop up but you never know.
+		}
+		[self stopPlayer];
+		
+		double volume = [self volumeForFile:file];
+		
+		player = newPlayer;
+		[[LFileController sharedInstance] setActiveFile:file];
+		[player setAndPlayFile:[file url] withVolume:volume];
+		[[LFileController sharedInstance] fileStartedPlaying:file];
+		isPlaying = YES;
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:kPLAY_NOTIFICATION object:nil];
+		
+		[pool drain];
 	}
-	[self stopPlayer];
-	
-	double volume = [self volumeForFile:file];
-	
-	player = newPlayer;
-	[[LFileController sharedInstance] setActiveFile:file];
-	[player setAndPlayFile:[file url] withVolume:volume];
-	[[LFileController sharedInstance] fileStartedPlaying:file];
-	isPlaying = YES;
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:kPLAY_NOTIFICATION object:nil];
-	
-	[pool drain];
 }
 
 - (LExtension <LPlayerDelegate> *) playerForFile: (LFile *) file
@@ -130,8 +136,8 @@
 	
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
 	[[LFileController sharedInstance] fileFinishedPlaying:activeFile]; 
-	LFile * nextFile = [self nextFile];
-	if (nextFile) [self playFile:nextFile];
+	
+	[self playNextFile];
 }
 
 - (LFile *) nextFile
