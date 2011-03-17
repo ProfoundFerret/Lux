@@ -50,6 +50,12 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTime) name:kSTOP_NOTIFICATION object:nil];
 	
 	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+	
+	NSImage * playPauseImage = [playPauseButton image];
+	NSSize newSize = [playPauseImage size];
+	newSize.height = newSize.height * .7;
+	newSize.width = newSize.width * .7;
+	[playPauseImage setSize:newSize];
 }
 
 - (void) updateTime;
