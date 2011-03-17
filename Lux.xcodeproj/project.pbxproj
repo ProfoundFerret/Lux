@@ -11,6 +11,8 @@
 		7C06031013318110000C0556 /* LMetadata_MP3.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C06030F13318110000C0556 /* LMetadata_MP3.m */; };
 		7C06031313318203000C0556 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C06031213318203000C0556 /* AudioToolbox.framework */; };
 		7C06031613319B12000C0556 /* Play.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C06031513319B12000C0556 /* Play.pdf */; };
+		7C0603181331AD19000C0556 /* Backward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C0603171331AD19000C0556 /* Backward.pdf */; };
+		7C06031A1331AD30000C0556 /* Forward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C0603191331AD2F000C0556 /* Forward.pdf */; };
 		7C329B6B1325D6B100377547 /* LFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B6A1325D6B000377547 /* LFile.m */; };
 		7C329B731325DDBD00377547 /* LExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B721325DDBB00377547 /* LExtension.m */; };
 		7C329B771325DE5600377547 /* LExtensionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B761325DE5600377547 /* LExtensionController.m */; };
@@ -47,6 +49,8 @@
 		7C06030F13318110000C0556 /* LMetadata_MP3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMetadata_MP3.m; sourceTree = "<group>"; };
 		7C06031213318203000C0556 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioToolbox.framework; sourceTree = "<group>"; };
 		7C06031513319B12000C0556 /* Play.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Play.pdf; sourceTree = "<group>"; };
+		7C0603171331AD19000C0556 /* Backward.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Backward.pdf; sourceTree = "<group>"; };
+		7C0603191331AD2F000C0556 /* Forward.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Forward.pdf; sourceTree = "<group>"; };
 		7C329B691325D6B000377547 /* LFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFile.h; sourceTree = "<group>"; };
 		7C329B6A1325D6B000377547 /* LFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFile.m; sourceTree = "<group>"; };
 		7C329B711325DDBA00377547 /* LExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LExtension.h; path = Lux/LExtension.h; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				7C06031513319B12000C0556 /* Play.pdf */,
+				7C0603171331AD19000C0556 /* Backward.pdf */,
+				7C0603191331AD2F000C0556 /* Forward.pdf */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -356,6 +362,8 @@
 				7C5FE0C513258F0D0008B7DC /* Credits.rtf in Resources */,
 				7C5FE0CB13258F0D0008B7DC /* MainMenu.xib in Resources */,
 				7C06031613319B12000C0556 /* Play.pdf in Resources */,
+				7C0603181331AD19000C0556 /* Backward.pdf in Resources */,
+				7C06031A1331AD30000C0556 /* Forward.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

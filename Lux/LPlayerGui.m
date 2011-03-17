@@ -7,7 +7,9 @@
 //
 
 #import "LPlayerGui.h"
+#import "LPlayerController.h"
 
+#define controller [LPlayerController sharedInstance]
 
 @implementation LPlayerGui
 
@@ -24,6 +26,18 @@
 - (void)dealloc
 {
     [super dealloc];
+}
+
+- (void) awakeFromNib
+{
+	[playPauseButton setTarget:controller];
+	[playPauseButton setAction:@selector(playPauseOrStartPlaying)];
+	
+	[previousButton setTarget:controller];
+	[previousButton setAction:@selector(playPreviousFile)];
+	
+	[nextButton setTarget:controller];
+	[nextButton setAction:@selector(playNextFile)];
 }
 
 @end

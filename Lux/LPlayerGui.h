@@ -10,8 +10,8 @@
 #import "LGuiObject.h"
 
 @interface LPlayerGui : LGuiObject {
-@private
-    
+	IBOutlet NSButton * playPauseButton;
+	IBOutlet NSButton * nextButton;
+	IBOutlet NSButton * previousButton;
 }
-
 @end
