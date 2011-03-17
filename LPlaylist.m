@@ -198,6 +198,9 @@
 	[playlist setSmart:YES];
 	[playlist setTitle:kSTREAMING];
 	
+	NSArray * columns = [[NSArray alloc] initWithObjects:kINDEX, kTITLE, nil];
+	[playlist setColumns:columns];
+	
 	[playlist setWrite:NO];
 	
 	return playlist;
