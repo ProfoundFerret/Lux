@@ -99,7 +99,7 @@
 	NSInteger row = [playlistList selectedRow];
 	id item = [playlistList itemAtRow:row];
 	[controller setVisiblePlaylist:item];
-	[searchField setStringValue:[visiblePlaylist search]];
+	[searchField setStringValue:[item search]];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"visiblePlaylistChanged" object:visiblePlaylist];
 	
