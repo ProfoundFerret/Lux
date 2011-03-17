@@ -112,6 +112,6 @@
 }
 - (void) fileStartedPlaying: (LFile *)file
 {
-	NSLog(@"File Started");
+
 }
 @end
