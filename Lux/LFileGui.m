@@ -93,11 +93,11 @@
 	visibleFiles = [[[visiblePlaylist members] allValues] retain];
 	[self showCorrectColumns];
 	
-	NSIndexSet * indexSet = [visiblePlaylist selectedIndexSet];
-	[fileList selectRowIndexes:indexSet byExtendingSelection:NO];
-	
 	[fileList reloadData];
 	
+	NSIndexSet * indexSet = [visiblePlaylist selectedIndexSet];
+	[fileList selectRowIndexes:indexSet byExtendingSelection:NO];
+	[fileList scrollRowToVisible:[indexSet firstIndex]];
 }
 
 - (void) setupColumns
