@@ -9,6 +9,7 @@
 #import "LPlaylistGui.h"
 #import "Lux.h"
 #import "LPlaylistController.h"
+#import "LPlaylist.h"
 
 #import "NSOutlineView+Lux.h"
 
@@ -41,6 +42,9 @@
 	
 	[searchField setTarget:self];
 	[searchField setAction:@selector(searchChanged)];
+	
+	[addPlaylistButton setTarget:self];
+	[addPlaylistButton setAction:@selector(addPlaylist)];
 }
 
 - (NSInteger) outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
@@ -101,14 +105,29 @@
 	[controller setVisiblePlaylist:item];
 	[searchField setStringValue:[item search]];
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"visiblePlaylistChanged" object:visiblePlaylist];
-	
 	[[Lux sharedInstance] reloadData];
 }
 
 - (BOOL) outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item
 {
 	return (! [item isKindOfClass:[NSString class]]);
+}
+
+- (void) outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
+	if ([item isKindOfClass:[LPlaylist class]])
+	{
+		[item setTitle:[object retain]];
+	}
+}
+
+- (BOOL) outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item
+{
+	if ([item isKindOfClass:[LPlaylist class]])
+	{
+		return [item write];
+	}
+	return NO;
 }
 
 - (LPlaylist *) visiblePlaylist
@@ -128,5 +147,21 @@
 - (void) reloadData
 {
 	[playlistList reloadData];
+}
+
+- (void) addPlaylist
+{
+	LPlaylist * playlist = [[LPlaylist alloc] init];
+	
+	[controller addPlaylist: playlist];
+	
+	[[Lux sharedInstance] reloadData];
+	
+	[playlistList expandItem:nil expandChildren:YES];
+	[playlistList selectItem:playlist];
+	
+	NSInteger fileRow = [playlistList rowForItem:playlist];
+	
+	[playlistList editColumn:0 row:fileRow withEvent:nil select:YES];
 }
 @end

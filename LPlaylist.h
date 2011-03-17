@@ -16,6 +16,9 @@
 #define kPREDICATE @"predicate"
 #define kWRITE @"write"
 #define kCOLUMNS @"columns"
+#define kSELECTED_INDEX_SET @"selectedIndexSet"
+
+#define kUNTITLED_PLAYLIST @"Untitled Playlist"
 
 @interface LPlaylist : LStoredObject {
 	NSMutableDictionary * members;
@@ -35,8 +38,11 @@
 	
 	BOOL smart;
 	BOOL write;
+	
+	NSIndexSet * selectedIndexSet;
 }
 - (void) update;
+- (void) setTitle: (NSString *) title;
 
 - (NSMutableDictionary *) members;
 
@@ -47,11 +53,12 @@
 + (LPlaylist *) videoPlaylist;
 + (LPlaylist *) streamingPlaylist;
 
-@property (readwrite, assign) NSString * title;
+@property (readonly, assign) NSString * title;
 @property (readwrite, assign) BOOL needsUpdated;
 @property (readwrite, assign) BOOL smart;
 @property (readwrite, assign) BOOL write;
 @property (readwrite, assign) NSArray * columns;
 @property (readwrite, assign) NSString * predicate;
 @property (readonly, assign) NSString * search;
+@property (readwrite, assign) NSIndexSet * selectedIndexSet;
 @end

@@ -38,6 +38,7 @@
 {	
 	[fileList setDataSource:self];
 	[fileList setTarget:self];
+	[fileList setDelegate:self];
 	[fileList setDoubleAction:@selector(doubleClickAction)];
 	
 	[self setupColumns];
@@ -63,6 +64,14 @@
 	}
 }
 
+- (void) tableViewSelectionDidChange:(NSNotification *)notification
+{
+	NSIndexSet * indexSet = [[fileList selectedRowIndexes] retain];
+	
+	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+	[visiblePlaylist setSelectedIndexSet: indexSet];
+}
+
 - (void) doubleClickAction
 {
 	NSInteger clickedIndex = [fileList clickedRow];
@@ -80,9 +89,15 @@
 
 - (void) reloadData
 {
-	visibleFiles = [[[[[LPlaylistController sharedInstance] visiblePlaylist] members] allValues] retain];
+	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+	visibleFiles = [[[visiblePlaylist members] allValues] retain];
 	[self showCorrectColumns];
+	
+	NSIndexSet * indexSet = [visiblePlaylist selectedIndexSet];
+	[fileList selectRowIndexes:indexSet byExtendingSelection:NO];
+	
 	[fileList reloadData];
+	
 }
 
 - (void) setupColumns

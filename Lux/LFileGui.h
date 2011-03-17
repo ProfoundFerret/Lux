@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LGuiObject.h"
 
-@interface LFileGui : LGuiObject <NSTableViewDataSource> {
+@interface LFileGui : LGuiObject <NSTableViewDataSource, NSTableViewDelegate> {
     IBOutlet NSTableView *fileList;
 	
 	NSArray * visibleFiles;

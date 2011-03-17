@@ -17,7 +17,7 @@
 #define kSTREAMING @"Streaming"
 
 @implementation LPlaylist
-@synthesize title, needsUpdated, columns, smart, predicate, search, write;
+@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedIndexSet;
 - (id)init
 {
     self = [super init];
@@ -30,10 +30,12 @@
 		members = [[NSMutableDictionary alloc] init];
 		searchMembers = [[NSMutableDictionary alloc] init];
 		columns = [[NSArray alloc] initWithObjects:kINDEX, kTITLE, kARTIST, kALBUM, nil];
-		title = @"";
+		title = kUNTITLED_PLAYLIST;
 		search = @"";
 		oldSearch = @"";
 		predicate = @"";
+		
+		selectedIndexSet = [[NSIndexSet alloc] init];
     }
     
     return self;
@@ -48,6 +50,8 @@
 	[title release];
 	[search release];
 	[oldSearch release];
+	
+	[selectedIndexSet release];
 	
     [super dealloc];
 }
@@ -68,6 +72,8 @@
 	title = [[aDecoder decodeObjectForKey:kPLAYLIST_TITLE] retain];
 	search = [[aDecoder decodeObjectForKey:kSEARCH] retain];
 	predicate = [[aDecoder decodeObjectForKey:kPREDICATE] retain];
+	
+	selectedIndexSet = [[aDecoder decodeObjectForKey:kSELECTED_INDEX_SET] retain];
 		
 	return self;
 }
@@ -83,6 +89,8 @@
 	[aCoder encodeObject:title forKey:kPLAYLIST_TITLE];
 	[aCoder encodeObject:search forKey:kSEARCH];
 	[aCoder encodeObject:predicate forKey:kPREDICATE];
+	
+	[aCoder encodeObject:selectedIndexSet forKey:kSELECTED_INDEX_SET];
 	
 	[super encodeWithCoder:aCoder];
 }
@@ -204,5 +212,12 @@
 	[playlist setWrite:NO];
 	
 	return playlist;
+}
+
+- (void) setTitle: (NSString *) newTitle
+{
+	if (! write) return;
+	
+	title = newTitle;
 }
 @end

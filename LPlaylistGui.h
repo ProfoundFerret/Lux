@@ -13,9 +13,11 @@
 @interface LPlaylistGui : LGuiObject <NSOutlineViewDelegate, NSOutlineViewDataSource> {
     IBOutlet NSOutlineView * playlistList;
 	IBOutlet NSSearchField * searchField;
+	IBOutlet NSButton * addPlaylistButton;
 	
 	LPlaylist * visiblePlaylist;
 }
 - (void) searchChanged;
 - (LPlaylist *) visiblePlaylist;
+- (void) addPlaylist;
 @end
