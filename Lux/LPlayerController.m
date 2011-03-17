@@ -61,6 +61,8 @@
 	[[LFileController sharedInstance] fileStartedPlaying:file];
 	isPlaying = YES;
 	
+	[[NSNotificationCenter defaultCenter] postNotificationName:kPLAY_NOTIFICATION object:nil];
+	
 	[pool drain];
 }
 
@@ -86,8 +88,15 @@
 
 - (void) playPause
 {
-	if (isPlaying) [player pause];
-	else [player play];
+	if (isPlaying)
+	{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kPAUSE_NOTIFICATION object:nil];
+		[player pause];
+	} else 
+	{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kUNPAUSE_NOTIFICATION object:nil];
+		[player play];
+	}
 	isPlaying = ! isPlaying;
 }
 
@@ -104,9 +113,9 @@
 	}
 }
 
-- (void) setVolume: (double) newVolume
+- (void) updateVolume
 {
-	[player setVolume:newVolume];
+	[player setVolume:[self volumeForFile: [[LFileController sharedInstance] activeFile]]];
 }
 
 - (void) setTime: (int) newTime
@@ -117,6 +126,7 @@
 - (void) fileDidEnd
 {
 	[self stopPlayer];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kSTOP_NOTIFICATION object:nil];
 	
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
 	[[LFileController sharedInstance] fileFinishedPlaying:activeFile]; 
@@ -179,5 +189,15 @@
 	double volume = [[defaults objectForKey:kVOLUME] doubleValue];
 	
 	return volume;
+}
+
+- (int) curTime
+{
+	return [player currentTime];
+}
+
+- (int) totalTime
+{
+	return [player totalTime];
 }
 @end

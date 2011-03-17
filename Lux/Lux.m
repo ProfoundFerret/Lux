@@ -74,7 +74,7 @@
 - (void) reloadData
 {
 	[playlistController prepPlaylistsForUpdate];
-	[[NSNotificationCenter defaultCenter] postNotificationName:kRELOAD_DATA object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kRELOAD_DATA_NOTIFICATION object:nil];
 }
 
 - (void) registerUserDefaults

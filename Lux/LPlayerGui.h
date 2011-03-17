@@ -13,5 +13,10 @@
 	IBOutlet NSButton * playPauseButton;
 	IBOutlet NSButton * nextButton;
 	IBOutlet NSButton * previousButton;
+	IBOutlet NSSlider * volumeSlider;
+	IBOutlet NSSlider * progressSlider;
 }
+- (void) changeProgress;
+- (void) changeVolume;
+- (void) updateTime;
 @end

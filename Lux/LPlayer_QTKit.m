@@ -93,12 +93,14 @@
 - (int) currentTime
 {
 	QTTime currentTime = [player currentTime];
+	if (currentTime.timeScale == 0) return 0;
 	return (int) (currentTime.timeValue * 1000 / currentTime.timeScale);
 }
 
 - (int) totalTime
 {
 	QTTime totalTime = [player duration];
+	if (totalTime.timeScale == 0) return 0;
 	return (int) (totalTime.timeValue * 1000 / totalTime.timeScale);
 }
 

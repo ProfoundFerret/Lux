@@ -22,7 +22,7 @@
 #define kEXTENSION_CONTROLLER @"extensionController"
 
 #define kVOLUME @"volume"
-#define kRELOAD_DATA @"reloadData"
+#define kRELOAD_DATA_NOTIFICATION @"reloadData_notification"
 
 @interface Lux : LSingleton {
     LExtensionController * extensionController;
