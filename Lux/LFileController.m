@@ -62,6 +62,7 @@
 	if ([file fileType] == LFileTypeUnknown) return NO;
 	
 	[files setObject:file forKey:[file url]];
+	[file updateMetadata];
 	
 	return YES;
 }

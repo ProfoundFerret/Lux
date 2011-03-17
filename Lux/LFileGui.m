@@ -39,6 +39,8 @@
 	[fileList setDataSource:self];
 	[fileList setTarget:self];
 	[fileList setDoubleAction:@selector(doubleClickAction)];
+	
+	[self setupColumns];
 }
 
 #pragma mark Data Source Methods
@@ -51,8 +53,6 @@
 - (id) tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
 	LFile * f = [visibleFiles objectAtIndex:row];
-	
-	return [f url];
 	
 	if ([[tableColumn identifier] isEqualToString:kINDEX])
 	{
@@ -81,6 +81,29 @@
 - (void) reloadData
 {
 	visibleFiles = [[[[[LPlaylistController sharedInstance] visiblePlaylist] members] allValues] retain];
+	[self showCorrectColumns];
 	[fileList reloadData];
+}
+
+- (void) setupColumns
+{
+	NSMutableArray * columns = kKEEPER_ATTRIBUTES;
+	
+	for (NSString * col in columns)
+	{
+		NSTableColumn * column = [[[NSTableColumn alloc] initWithIdentifier:col] autorelease];
+		[[column headerCell] setStringValue:[col capitalizedString]];
+		[fileList addTableColumn:column];
+	}
+	[self showCorrectColumns];
+}
+
+- (void) showCorrectColumns
+{
+	NSMutableArray * columns = [NSArray arrayWithArray:[[[LPlaylistController sharedInstance] visiblePlaylist] columns]];
+	for (NSTableColumn * column in [fileList tableColumns])
+	{
+		[column setHidden:(! [columns containsObject:[column identifier]])];
+	}
 }
 @end

@@ -134,13 +134,6 @@
 	return fileType;
 }
 
-- (void) setUrl:(NSURL *)newUrl
-{
-	url = newUrl;
-
-	[self updateMetadata];
-}
-
 - (void) updateMetadata
 {
 	[[LMetadataController sharedInstance] parseMetadataForFile:self];
