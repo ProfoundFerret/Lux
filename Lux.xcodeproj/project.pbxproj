@@ -114,7 +114,6 @@
 		D98C3E33133D4D430010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/LPlaylist.h; sourceTree = "<group>"; };
 		D98C3E37133D4D960010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/LPlaylistController.m; sourceTree = "<group>"; };
 		D98C3E3B133D4E8C0010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/LFileController.m; sourceTree = "<group>"; };
-		D98C3E3E133D4FDD0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fr; path = fr.lproj/LPlaylistController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,7 +465,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D98C3E30133D4C820010DF04 /* en */,
-				D98C3E3E133D4FDD0010DF04 /* fr */,
 			);
 			name = LPlaylistController.h;
 			sourceTree = "<group>";
