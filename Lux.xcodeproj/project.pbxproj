@@ -18,12 +18,10 @@
 		7C329B771325DE5600377547 /* LExtensionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B761325DE5600377547 /* LExtensionController.m */; };
 		7C3826A0133C595400FDD40E /* LTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C38269F133C595200FDD40E /* LTableView.m */; };
 		7C3B909513285D1C007B7DA5 /* _Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909413285D1C007B7DA5 /* _Test.m */; };
-		7C3B909813286564007B7DA5 /* LPlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909713286564007B7DA5 /* LPlaylistController.m */; };
 		7C3B909B13286BF9007B7DA5 /* LPlaylistGui.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909A13286BF8007B7DA5 /* LPlaylistGui.m */; };
 		7C3B909E1328A758007B7DA5 /* NSOutlineView+Lux.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909D1328A752007B7DA5 /* NSOutlineView+Lux.m */; };
 		7C5132CA1325E76A00469177 /* LInputOutputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5132C91325E76A00469177 /* LInputOutputController.m */; };
 		7C58363F13260BA300B81F6C /* LInputOutput_Computer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C58363E13260BA300B81F6C /* LInputOutput_Computer.m */; };
-		7C5836431326103000B81F6C /* LFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5836421326103000B81F6C /* LFileController.m */; };
 		7C5FE0B513258F0D0008B7DC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5FE0B413258F0D0008B7DC /* Cocoa.framework */; };
 		7C5FE0BF13258F0D0008B7DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C5FE0BD13258F0D0008B7DC /* InfoPlist.strings */; };
 		7C5FE0C213258F0D0008B7DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FE0C113258F0D0008B7DC /* main.m */; };
@@ -41,7 +39,9 @@
 		7C67EA97132ACF9900E055B2 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C67EA96132ACF9900E055B2 /* QTKit.framework */; };
 		7C772136133D355E0078411C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7C772135133D355E0078411C /* icon.icns */; };
 		7CF940FD1326EF92004526D0 /* LFileGui.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF940FC1326EF92004526D0 /* LFileGui.m */; };
-		7CF941091326FE77004526D0 /* LPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF941081326FE77004526D0 /* LPlaylist.m */; };
+		D98C3E2C133D4C100010DF04 /* LPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C3E2E133D4C100010DF04 /* LPlaylist.m */; };
+		D98C3E36133D4D960010DF04 /* LPlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C3E38133D4D960010DF04 /* LPlaylistController.m */; };
+		D98C3E3A133D4E8C0010DF04 /* LFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C3E3C133D4E8C0010DF04 /* LFileController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,8 +63,6 @@
 		7C38269F133C595200FDD40E /* LTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTableView.m; sourceTree = "<group>"; };
 		7C3B909313285D1B007B7DA5 /* _Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Test.h; sourceTree = "<group>"; };
 		7C3B909413285D1C007B7DA5 /* _Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Test.m; sourceTree = "<group>"; };
-		7C3B909613286563007B7DA5 /* LPlaylistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPlaylistController.h; sourceTree = "<group>"; };
-		7C3B909713286564007B7DA5 /* LPlaylistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPlaylistController.m; sourceTree = "<group>"; };
 		7C3B909913286BF8007B7DA5 /* LPlaylistGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPlaylistGui.h; sourceTree = "<group>"; };
 		7C3B909A13286BF8007B7DA5 /* LPlaylistGui.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPlaylistGui.m; sourceTree = "<group>"; };
 		7C3B909C1328A750007B7DA5 /* NSOutlineView+Lux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutlineView+Lux.h"; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 		7C58363D13260BA300B81F6C /* LInputOutput_Computer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutput_Computer.h; sourceTree = "<group>"; };
 		7C58363E13260BA300B81F6C /* LInputOutput_Computer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LInputOutput_Computer.m; sourceTree = "<group>"; };
 		7C5836411326103000B81F6C /* LFileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFileController.h; sourceTree = "<group>"; };
-		7C5836421326103000B81F6C /* LFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFileController.m; sourceTree = "<group>"; };
 		7C58364413261AA600B81F6C /* LFileType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFileType.h; sourceTree = "<group>"; };
 		7C5FE0B013258F0D0008B7DC /* Lux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5FE0B413258F0D0008B7DC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -109,11 +106,18 @@
 		7C772135133D355E0078411C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		7CF940FB1326EF92004526D0 /* LFileGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFileGui.h; sourceTree = "<group>"; };
 		7CF940FC1326EF92004526D0 /* LFileGui.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFileGui.m; sourceTree = "<group>"; };
-		7CF941071326FE77004526D0 /* LPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPlaylist.h; sourceTree = "<group>"; };
-		7CF941081326FE77004526D0 /* LPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPlaylist.m; sourceTree = "<group>"; };
 		D98C3E28133D3FFD0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = /Users/adrienmacpro/Desktop/Lux/Lux/fr.lproj/MainMenu.xib; sourceTree = "<absolute>"; };
 		D98C3E29133D3FFD0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = /Users/adrienmacpro/Desktop/Lux/Lux/fr.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
 		D98C3E2A133D3FFD0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = /Users/adrienmacpro/Desktop/Lux/Lux/fr.lproj/Credits.rtf; sourceTree = "<absolute>"; };
+		D98C3E2D133D4C100010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/LPlaylist.m; sourceTree = "<group>"; };
+		D98C3E2F133D4C1B0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/LPlaylist.m; sourceTree = "<group>"; };
+		D98C3E30133D4C820010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/LPlaylistController.h; sourceTree = "<group>"; };
+		D98C3E33133D4D430010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/LPlaylist.h; sourceTree = "<group>"; };
+		D98C3E35133D4D480010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/LPlaylist.h; sourceTree = "<group>"; };
+		D98C3E37133D4D960010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/LPlaylistController.m; sourceTree = "<group>"; };
+		D98C3E3B133D4E8C0010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/LFileController.m; sourceTree = "<group>"; };
+		D98C3E3D133D4E910010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/LFileController.m; sourceTree = "<group>"; };
+		D98C3E3E133D4FDD0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/LPlaylistController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +165,7 @@
 				7CF940FB1326EF92004526D0 /* LFileGui.h */,
 				7CF940FC1326EF92004526D0 /* LFileGui.m */,
 				7C5836411326103000B81F6C /* LFileController.h */,
-				7C5836421326103000B81F6C /* LFileController.m */,
+				D98C3E3C133D4E8C0010DF04 /* LFileController.m */,
 			);
 			name = File;
 			sourceTree = "<group>";
@@ -316,12 +320,12 @@
 		7CF9410A1326FE97004526D0 /* Playlist */ = {
 			isa = PBXGroup;
 			children = (
-				7CF941071326FE77004526D0 /* LPlaylist.h */,
-				7CF941081326FE77004526D0 /* LPlaylist.m */,
+				D98C3E34133D4D430010DF04 /* LPlaylist.h */,
+				D98C3E2E133D4C100010DF04 /* LPlaylist.m */,
 				7C3B909913286BF8007B7DA5 /* LPlaylistGui.h */,
 				7C3B909A13286BF8007B7DA5 /* LPlaylistGui.m */,
-				7C3B909613286563007B7DA5 /* LPlaylistController.h */,
-				7C3B909713286564007B7DA5 /* LPlaylistController.m */,
+				D98C3E31133D4C820010DF04 /* LPlaylistController.h */,
+				D98C3E38133D4D960010DF04 /* LPlaylistController.m */,
 			);
 			name = Playlist;
 			path = ..;
@@ -361,6 +365,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
 			);
 			mainGroup = 7C5FE0A513258F0D0008B7DC;
 			productRefGroup = 7C5FE0B113258F0D0008B7DC /* Products */;
@@ -406,11 +411,11 @@
 				7C329B771325DE5600377547 /* LExtensionController.m in Sources */,
 				7C5132CA1325E76A00469177 /* LInputOutputController.m in Sources */,
 				7C58363F13260BA300B81F6C /* LInputOutput_Computer.m in Sources */,
-				7C5836431326103000B81F6C /* LFileController.m in Sources */,
+				D98C3E3A133D4E8C0010DF04 /* LFileController.m in Sources */,
 				7CF940FD1326EF92004526D0 /* LFileGui.m in Sources */,
-				7CF941091326FE77004526D0 /* LPlaylist.m in Sources */,
+				D98C3E2C133D4C100010DF04 /* LPlaylist.m in Sources */,
 				7C3B909513285D1C007B7DA5 /* _Test.m in Sources */,
-				7C3B909813286564007B7DA5 /* LPlaylistController.m in Sources */,
+				D98C3E36133D4D960010DF04 /* LPlaylistController.m in Sources */,
 				7C3B909B13286BF9007B7DA5 /* LPlaylistGui.m in Sources */,
 				7C3B909E1328A758007B7DA5 /* NSOutlineView+Lux.m in Sources */,
 				7C67EA8F132AC95800E055B2 /* LPlayerController.m in Sources */,
@@ -450,6 +455,50 @@
 				D98C3E28133D3FFD0010DF04 /* fr */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		D98C3E2E133D4C100010DF04 /* LPlaylist.m */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D98C3E2D133D4C100010DF04 /* en */,
+				D98C3E2F133D4C1B0010DF04 /* fr */,
+			);
+			name = LPlaylist.m;
+			sourceTree = "<group>";
+		};
+		D98C3E31133D4C820010DF04 /* LPlaylistController.h */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D98C3E30133D4C820010DF04 /* en */,
+				D98C3E3E133D4FDD0010DF04 /* fr */,
+			);
+			name = LPlaylistController.h;
+			sourceTree = "<group>";
+		};
+		D98C3E34133D4D430010DF04 /* LPlaylist.h */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D98C3E33133D4D430010DF04 /* en */,
+				D98C3E35133D4D480010DF04 /* fr */,
+			);
+			name = LPlaylist.h;
+			sourceTree = "<group>";
+		};
+		D98C3E38133D4D960010DF04 /* LPlaylistController.m */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D98C3E37133D4D960010DF04 /* en */,
+			);
+			name = LPlaylistController.m;
+			sourceTree = "<group>";
+		};
+		D98C3E3C133D4E8C0010DF04 /* LFileController.m */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D98C3E3B133D4E8C0010DF04 /* en */,
+				D98C3E3D133D4E910010DF04 /* fr */,
+			);
+			name = LFileController.m;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
