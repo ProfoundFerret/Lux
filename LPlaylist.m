@@ -11,6 +11,7 @@
 #import "LExtension.h"
 #import "LFileController.h"
 #import "LExtension.h"
+#import "Lux.h"
 
 #define kMUSIC @"Music"
 #define kVIDEO @"Video"
@@ -129,7 +130,9 @@
 
 - (NSMutableDictionary *) searchMembers
 {
+	NSLog(@"Gonna search?");
 	if (! needsSearched) return searchMembers;
+	NSLog(@"SEARCHING!");
 	needsSearched = NO;
 	
 	NSDictionary * toBeSearched;
@@ -159,9 +162,9 @@
 - (void) setSearch:(NSString *) aSearch
 {
 	needsSearched = YES;
-	oldSearch = search;
+	oldSearch = [search retain];
 	search = [[aSearch lowercaseString] retain];
-	if (! [search length]) [searchMembers release];
+	[[Lux sharedInstance] reloadData];
 }
 
 + (LPlaylist *) musicPlaylist
