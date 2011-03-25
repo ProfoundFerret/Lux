@@ -121,11 +121,16 @@
 	}
 }
 
-- (NSMutableDictionary *) members
+- (NSDictionary *) allMembers
+{
+	return [NSDictionary dictionaryWithDictionary:members];
+}
+
+- (NSDictionary *) members
 {
 	[self update];
 	
-	NSMutableDictionary * mList;
+	NSDictionary * mList;
 	if ([search length])
 	{
 		[self updateSearch];

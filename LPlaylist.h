@@ -46,7 +46,8 @@
 
 - (void) setTitle: (NSString *) title;
 
-- (NSMutableDictionary *) members;
+- (NSDictionary *) members;
+- (NSDictionary *) allMembers;
 
 - (void) setSearch:(NSString *) aSearch;
 
