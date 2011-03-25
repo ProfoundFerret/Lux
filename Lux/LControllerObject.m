@@ -7,7 +7,7 @@
 //
 
 #import "LControllerObject.h"
-
+#import "Lux.h"
 
 @implementation LControllerObject
 
@@ -17,7 +17,7 @@
     if (self) {
 		guis = [[NSMutableArray alloc] init];
 		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"reloadData_notification" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kRELOAD_DATA_NOTIFICATION object:nil];
     }
     
     return self;
