@@ -121,4 +121,23 @@
 		[column setHidden:(! [columns containsObject:[column identifier]])];
 	}
 }
+
+- (NSMenu *) menuForEvent: (NSEvent *) event
+{
+	NSPoint where = [fileList convertPoint:[event locationInWindow] fromView:nil];
+	NSInteger row = [fileList rowAtPoint:where];
+	
+	if (row < 0) return nil;
+	
+	NSIndexSet * selectedRows = [fileList selectedRowIndexes];
+	NSArray * files;
+	if ([selectedRows containsIndex:row])
+	{
+		files = [visibleFiles objectsAtIndexes:selectedRows];
+	} else {
+		files = [NSArray arrayWithObject:[visibleFiles objectAtIndex:row]];
+	}
+		
+	return [[LFileController sharedInstance] menuForFiles: files];
+}
 @end

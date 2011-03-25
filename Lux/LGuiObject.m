@@ -30,4 +30,9 @@
 {
 	NSLog(@"%@ hasn't implemented -reloadData", [self class]);
 }
+
+- (NSMenu *) menuForEvent: (NSEvent *) event
+{
+	return [[NSMenu alloc] init];
+}
 @end

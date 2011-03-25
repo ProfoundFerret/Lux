@@ -206,4 +206,9 @@
 {
 	return [player totalTime];
 }
+
+- (void) playMenuItem: (NSMenuItem *) menuItem
+{
+	[self playFile:[menuItem representedObject]];
+}
 @end

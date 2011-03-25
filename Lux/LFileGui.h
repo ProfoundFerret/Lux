@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "LGuiObject.h"
+#import "LTableView.h"
 
 @interface LFileGui : LGuiObject <NSTableViewDataSource, NSTableViewDelegate> {
-    IBOutlet NSTableView *fileList;
+    IBOutlet LTableView *fileList;
 	
 	NSArray * visibleFiles;
 }

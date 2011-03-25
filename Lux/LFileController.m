@@ -9,6 +9,9 @@
 #import "LFileController.h"
 #import "Lux.h"
 
+#define kPLAY_TEXT @"Play"
+#define kSHOW_IN_FINDER_TEXT @"Show In Finder"
+
 @implementation LFileController
 @synthesize activeFile;
 - (id)init
@@ -113,5 +116,35 @@
 - (void) fileStartedPlaying: (LFile *)file
 {
 
+}
+
+- (NSMenu *) menuForFiles: (NSArray *) menuFiles
+{
+	NSMenu * menu = [[NSMenu alloc] init];
+	[menu setAutoenablesItems:NO];
+	
+	NSMenuItem * play = [[NSMenuItem alloc] init];
+	[play setTitle:kPLAY_TEXT];
+	[play setTarget:[LPlayerController sharedInstance]];
+	[play setRepresentedObject:[menuFiles objectAtIndex:0]];
+	[play setAction:@selector(playMenuitem:)];
+	[play setKeyEquivalent:@" "];
+	[play setKeyEquivalentModifierMask:0];
+	[menu addItem:play];
+	
+	NSMenuItem * finder = [[NSMenuItem alloc] initWithTitle:kSHOW_IN_FINDER_TEXT action:@selector(showInFinder:) keyEquivalent:@""];
+	[finder setEnabled:YES];
+	[finder setRepresentedObject:menuFiles];
+	[menu addItem:finder];
+	
+	return menu;
+}
+
+- (void) showInFinder: (NSMenuItem *) item
+{
+	for (LFile *file in [item representedObject])
+	{
+		[[NSWorkspace sharedWorkspace] selectFile:[[file url] absoluteString] inFileViewerRootedAtPath:nil];
+	}
 }
 @end

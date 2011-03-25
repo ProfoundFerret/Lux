@@ -27,5 +27,9 @@
 
 - (void) fileFinishedPlaying: (LFile *)file;
 - (void) fileStartedPlaying: (LFile *)file;
+
+- (NSMenu *) menuForFiles: (NSArray *) files;
+
+- (void) showInFinder: (NSMenuItem *) item;
 @property (readwrite, assign) LFile * activeFile;
 @end

@@ -35,6 +35,7 @@
 - (double) volumeForFile: (LFile *) file;
 - (int) curTime;
 - (int) totalTime;
+- (void) playMenuItem: (NSMenuItem *) menuItem;
 
 - (NSArray *) extensions;
 

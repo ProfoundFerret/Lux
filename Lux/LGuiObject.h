@@ -13,4 +13,5 @@
     
 }
 - (void) reloadData;
+- (NSMenu *) menuForEvent: (NSEvent *) event;
 @end
