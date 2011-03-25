@@ -121,7 +121,7 @@
 
 - (void) searchChangedTo: (NSString *) search
 {
-	[[self activePlaylist] setSearch:search];
+	[[self visiblePlaylist] setSearch:search];
 	[[Lux sharedInstance] reloadData];
 }
 @end
