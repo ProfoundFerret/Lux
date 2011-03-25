@@ -1,0 +1,26 @@
+{
+    Actions = {
+        "add:" = id; 
+        "addScaled:" = id; 
+        "copy:" = id; 
+        "cut:" = id; 
+        "delete:" = id; 
+        "gotoBeginning:" = id; 
+        "gotoEnd:" = id; 
+        "gotoNextSelectionPoint:" = id; 
+        "gotoPosterFrame:" = id; 
+        "gotoPreviousSelectionPoint:" = id; 
+        "paste:" = id; 
+        "pause:" = id; 
+        "play:" = id; 
+        "replace:" = id; 
+        "selectAll:" = id; 
+        "selectNone:" = id; 
+        "stepBackward:" = id; 
+        "stepForward:" = id; 
+        "trim:" = id; 
+    }; 
+    ClassName = QTMovieView; 
+    Outlets = {}; 
+    SuperClass = NSView; 
+}

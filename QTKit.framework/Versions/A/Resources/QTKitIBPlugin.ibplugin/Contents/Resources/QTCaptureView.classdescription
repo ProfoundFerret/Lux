@@ -1,0 +1,9 @@
+{
+    Actions = {
+    };
+    Outlets = {
+        delegate = NSObject;
+    };
+    ClassName = QTCaptureView; 
+    SuperClass = NSView; 
+}

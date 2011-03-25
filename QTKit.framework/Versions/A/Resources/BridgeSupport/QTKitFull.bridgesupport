@@ -1,0 +1,1980 @@
+<?xml version='1.0'?>
+<signatures version='0.9'>
+<depends_on path='/System/Library/Frameworks/IOSurface.framework'/>
+<depends_on path='/System/Library/Frameworks/AudioToolbox.framework'/>
+<depends_on path='/System/Library/Frameworks/Foundation.framework'/>
+<depends_on path='/System/Library/Frameworks/AppKit.framework'/>
+<depends_on path='/System/Library/Frameworks/IOKit.framework'/>
+<depends_on path='/System/Library/Frameworks/QuickTime.framework'/>
+<depends_on path='/System/Library/Frameworks/CoreAudio.framework'/>
+<depends_on path='/System/Library/Frameworks/OpenGL.framework'/>
+<depends_on path='/System/Library/Frameworks/QuartzCore.framework'/>
+<depends_on path='/System/Library/Frameworks/Carbon.framework'/>
+<depends_on path='/System/Library/Frameworks/CoreServices.framework'/>
+<depends_on path='/System/Library/Frameworks/CoreFoundation.framework'/>
+<depends_on path='/System/Library/Frameworks/ApplicationServices.framework'/>
+<depends_on path='/System/Library/Frameworks/CoreVideo.framework'/>
+<struct name='QTTime' type64='{_QTTime=&quot;timeValue&quot;q&quot;timeScale&quot;q&quot;flags&quot;q}' type='{_QTTime=&quot;timeValue&quot;q&quot;timeScale&quot;l&quot;flags&quot;l}'>
+<field name='timeValue'/>
+<field name='timeScale'/>
+<field name='flags'/>
+</struct>
+<struct name='QTTimeRange' type64='{_QTTimeRange=&quot;time&quot;{_QTTime=&quot;timeValue&quot;q&quot;timeScale&quot;q&quot;flags&quot;q}&quot;duration&quot;{_QTTime=&quot;timeValue&quot;q&quot;timeScale&quot;q&quot;flags&quot;q}}' type='{_QTTimeRange=&quot;time&quot;{_QTTime=&quot;timeValue&quot;q&quot;timeScale&quot;l&quot;flags&quot;l}&quot;duration&quot;{_QTTime=&quot;timeValue&quot;q&quot;timeScale&quot;l&quot;flags&quot;l}}'>
+<field name='time'/>
+<field name='duration'/>
+</struct>
+<constant name='QTAddImageCodecQuality' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTAddImageCodecType' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureConnectionAttributeDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureConnectionAttributeWillChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureConnectionAudioAveragePowerLevelsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureConnectionAudioMasterVolumeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureConnectionAudioPeakHoldLevelsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureConnectionAudioVolumesAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureConnectionChangedAttributeKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureConnectionEnabledAudioChannelsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureConnectionFormatDescriptionDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureConnectionFormatDescriptionWillChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceAVCTransportControlsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceAVCTransportControlsPlaybackModeKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceAVCTransportControlsSpeedKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceAttributeDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceAttributeWillChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceAvailableInputSourcesAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceChangedAttributeKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceFormatDescriptionsDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceFormatDescriptionsWillChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceInputSourceIdentifierAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceInputSourceIdentifierKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceInputSourceLocalizedDisplayNameKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceLinkedDevicesAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceSuspendedAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceWasConnectedNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureDeviceWasDisconnectedNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureSessionErrorKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTCaptureSessionRuntimeErrorNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTDataReferenceTypeFile' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTDataReferenceTypeHandle' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTDataReferenceTypePointer' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTDataReferenceTypeResource' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTDataReferenceTypeURL' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTDisallowedForInitializationPurposeException' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTErrorCaptureInputKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTErrorCaptureOutputKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTErrorDeviceKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTErrorExcludingDeviceKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTErrorFileSizeKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTErrorRecordingSuccesfullyFinishedKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTErrorTimeKey' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTFormatDescriptionAudioChannelLayoutAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTFormatDescriptionAudioMagicCookieAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTFormatDescriptionAudioStreamBasicDescriptionAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTFormatDescriptionVideoCleanApertureDisplaySizeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTFormatDescriptionVideoEncodedPixelsSizeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTFormatDescriptionVideoProductionApertureDisplaySizeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTIndefiniteTime' declared_type='QTTime' type64='{_QTTime=qqq}' const='true' type='{_QTTime=qll}'/>
+<constant name='QTKitErrorDomain' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCharacteristicAudio' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCharacteristicCanSendVideo' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCharacteristicCanStep' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCharacteristicHasNoDuration' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCharacteristicHasSkinData' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCharacteristicHasVideoFrameRate' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCharacteristicNonLinear' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCharacteristicProvidesActions' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCharacteristicProvidesKeyFocus' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCharacteristicVisual' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaCreationTimeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaDurationAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaModificationTimeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaQualityAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaSampleCountAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTimeScaleAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaType3D' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeBase' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeClosedCaption' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeFlash' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeHint' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeMPEG' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeMovie' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeMusic' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeMuxed' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeQTVR' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeQuartzComposer' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeSkin' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeSound' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeSprite' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeStream' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeSubtitle' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeText' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeTimeCode' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeTween' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMediaTypeVideo' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieActiveSegmentAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieApertureModeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieApertureModeClassic' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieApertureModeClean' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieApertureModeDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieApertureModeEncodedPixels' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieApertureModeProduction' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieAskUnresolvedDataRefsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieAutoAlternatesAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieChapterDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieChapterListDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieChapterName' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieChapterStartTime' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieChapterTargetTrackAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieCloseWindowRequestNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieCopyrightAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieCreationTimeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieCurrentSizeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieCurrentTimeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieDataAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieDataReferenceAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieDataSizeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieDelegateAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieDidEndNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieDisplayNameAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieDontInteractWithUserAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieDurationAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieEditabilityDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieEditableAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieEditedNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieEnterFullScreenRequestNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieExitFullScreenRequestNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieExport' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieExportManufacturer' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieExportSettings' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieExportType' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFileNameAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFileOffsetAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFlatten' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageDeinterlaceFields' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageHighQuality' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageOpenGLContext' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImagePixelFormat' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageRepresentationsType' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageSessionMode' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageSingleField' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageSize' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageType' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageTypeCGImageRef' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageTypeCIImage' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageTypeCVOpenGLTextureRef' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageTypeCVPixelBufferRef' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieFrameImageTypeNSImage' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieHasApertureModeDimensionsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieHasAudioAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieHasDurationAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieHasVideoAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieIsActiveAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieIsInteractiveAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieIsLinearAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieIsSteppableAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieLoadStateAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieLoadStateDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieLoadStateErrorAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieLoopModeDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieLoopsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieLoopsBackAndForthAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieMessageNotificationParameter' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieMessageStringPostedNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieModificationTimeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieMutedAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieNaturalSizeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieNaturalSizeDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieOpenAsyncOKAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieOpenAsyncRequiredAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieOpenForPlaybackAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMoviePasteboardAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMoviePasteboardType' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMoviePlaysAllFramesAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMoviePlaysSelectionOnlyAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMoviePosterTimeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMoviePreferredMutedAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMoviePreferredRateAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMoviePreferredVolumeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMoviePreviewModeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMoviePreviewRangeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieRateAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieRateChangesPreservePitchAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieRateDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieRateDidChangeNotificationParameter' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieResolveDataRefsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieSelectionAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieSelectionDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieSizeDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieStatusCodeNotificationParameter' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieStatusFlagsNotificationParameter' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieStatusStringNotificationParameter' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieStatusStringPostedNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieTargetIDNotificationParameter' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieTargetNameNotificationParameter' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieTimeDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieTimeScaleAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieURLAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieUneditableException' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieViewControllerVisibleBinding' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieViewFillColorBinding' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieViewMovieBinding' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieViewPreservesAspectRatioBinding' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieVolumeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTMovieVolumeDidChangeNotification' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTSampleBufferDateRecordedAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTSampleBufferExplicitSceneChange' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTSampleBufferHostTimeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTSampleBufferSMPTETimeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTSampleBufferSceneChangeTypeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTSampleBufferTimeStampDiscontinuitySceneChange' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackBoundsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackCreationTimeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackDimensionsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackDisplayNameAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackEnabledAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackFormatSummaryAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackHasApertureModeDimensionsAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackIDAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackIsChapterTrackAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackLayerAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackMediaTypeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackModificationTimeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackRangeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackTimeScaleAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackUsageInMovieAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackUsageInPosterAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackUsageInPreviewAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTTrackVolumeAttribute' declared_type='NSString*' const='true' type='@'/>
+<constant name='QTZeroTime' declared_type='QTTime' type64='{_QTTime=qqq}' const='true' type='{_QTTime=qll}'/>
+<enum name='MAC_OS_X_VERSION_10_4' value='1040'/>
+<enum name='MAC_OS_X_VERSION_10_5' value='1050'/>
+<enum name='MAC_OS_X_VERSION_10_6' value='1060'/>
+<enum name='NSINTEGER_DEFINED' value='1'/>
+<enum name='NSIntegerMax' value64='9223372036854775807' value='2147483647'/>
+<enum name='NSIntegerMin' value64='-9223372036854775808' value='-2147483648'/>
+<enum name='NSUIntegerMax' value64='18446744073709551615' value='4294967295'/>
+<enum name='QTCaptureDeviceAVCTransportControlsFastForwardSpeed' value='13000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsFastReverseSpeed' value='-13000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsFastestForwardSpeed' value='19000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsFastestReverseSpeed' value='-19000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsNormalForwardSpeed' value='10000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsNormalReverseSpeed' value='-10000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsNotPlayingMode' value='0'/>
+<enum name='QTCaptureDeviceAVCTransportControlsPlayingMode' value='1'/>
+<enum name='QTCaptureDeviceAVCTransportControlsSlowForwardSpeed' value='7000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsSlowReverseSpeed' value='-7000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsSlowestForwardSpeed' value='1000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsSlowestReverseSpeed' value='-1000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsStoppedSpeed' value='0'/>
+<enum name='QTCaptureDeviceAVCTransportControlsVeryFastForwardSpeed' value='16000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsVeryFastReverseSpeed' value='-16000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsVerySlowForwardSpeed' value='4000'/>
+<enum name='QTCaptureDeviceAVCTransportControlsVerySlowReverseSpeed' value='-4000'/>
+<enum name='QTCaptureFileOutputBufferDestinationNewFile' value='1'/>
+<enum name='QTCaptureFileOutputBufferDestinationOldFile' value='2'/>
+<enum name='QTErrorDeviceAlreadyUsedbyAnotherSession' value='1101'/>
+<enum name='QTErrorDeviceExcludedByAnotherDevice' value='1302'/>
+<enum name='QTErrorDeviceInUseByAnotherApplication' value='1301'/>
+<enum name='QTErrorDeviceNotConnected' value='1300'/>
+<enum name='QTErrorDeviceWasDisconnected' value='1203'/>
+<enum name='QTErrorDiskFull' value='1202'/>
+<enum name='QTErrorIncompatibleInput' value='1002'/>
+<enum name='QTErrorIncompatibleOutput' value='1003'/>
+<enum name='QTErrorInvalidInputsOrOutputs' value='1100'/>
+<enum name='QTErrorMaximumDurationReached' value='1205'/>
+<enum name='QTErrorMaximumFileSizeReached' value='1206'/>
+<enum name='QTErrorMaximumNumberOfSamplesForFileFormatReached' value='1208'/>
+<enum name='QTErrorMediaChanged' value='1204'/>
+<enum name='QTErrorMediaDiscontinuity' value='1207'/>
+<enum name='QTErrorNoDataCaptured' value='1200'/>
+<enum name='QTErrorSessionConfigurationChanged' value='1201'/>
+<enum name='QTErrorUnknown' value='-1'/>
+<enum name='QTIncludeAggressiveTypes' value='4'/>
+<enum name='QTIncludeAllTypes' value='65535'/>
+<enum name='QTIncludeCommonTypes' value='0'/>
+<enum name='QTIncludeDynamicTypes' value='8'/>
+<enum name='QTIncludeStillImageTypes' value='1'/>
+<enum name='QTIncludeTranslatableTypes' value='2'/>
+<enum name='QTKIT_VERSION_7_0' value='70000'/>
+<enum name='QTKIT_VERSION_7_2' value='70200'/>
+<enum name='QTKIT_VERSION_7_6_3' value='70603'/>
+<enum name='QTKIT_VERSION_7_6_6' value='70606'/>
+<enum name='QTKIT_VERSION_MAX_ALLOWED' value='70606'/>
+<enum name='QTKIT_VERSION_MIN_REQUIRED' value='70603'/>
+<enum name='QTMovieLoadStateComplete' value='100000'/>
+<enum name='QTMovieLoadStateError' value='-1'/>
+<enum name='QTMovieLoadStateLoaded' value='2000'/>
+<enum name='QTMovieLoadStateLoading' value='1000'/>
+<enum name='QTMovieLoadStatePlayable' value='10000'/>
+<enum name='QTMovieLoadStatePlaythroughOK' value='20000'/>
+<enum name='QTMovieOperationBeginPhase' value='0'/>
+<enum name='QTMovieOperationEndPhase' value='2'/>
+<enum name='QTMovieOperationUpdatePercentPhase' value='1'/>
+<enum name='QTSampleBufferAudioBufferListOptionAssure16ByteAlignment' value='1'/>
+<enum name='codecHighQuality' value='768'/>
+<enum name='codecLosslessQuality' value='1024'/>
+<enum name='codecLowQuality' value='256'/>
+<enum name='codecMaxQuality' value='1023'/>
+<enum name='codecMinQuality' value='0'/>
+<enum name='codecNormalQuality' value='512'/>
+<enum name='graphicsModeComposition' value='259'/>
+<enum name='graphicsModePerComponentAlpha' value='272'/>
+<enum name='graphicsModePreBlackAlpha' value='258'/>
+<enum name='graphicsModePreMulColorAlpha' value='261'/>
+<enum name='graphicsModePreWhiteAlpha' value='257'/>
+<enum name='graphicsModeStraightAlpha' value='256'/>
+<enum name='graphicsModeStraightAlphaBlend' value='260'/>
+<enum name='kQTFileType3DMF' value='860114246'/>
+<enum name='kQTFileType3GP2' value='862416946'/>
+<enum name='kQTFileType3GPP' value='862417008'/>
+<enum name='kQTFileTypeAIFC' value='1095321155'/>
+<enum name='kQTFileTypeAIFF' value='1095321158'/>
+<enum name='kQTFileTypeAMC' value='1634558752'/>
+<enum name='kQTFileTypeAMR' value='1634562592'/>
+<enum name='kQTFileTypeAVI' value='1449547552'/>
+<enum name='kQTFileTypeAudioCDTrack' value='1953653099'/>
+<enum name='kQTFileTypeBMP' value='1112363110'/>
+<enum name='kQTFileTypeDVC' value='1685480225'/>
+<enum name='kQTFileTypeFLC' value='1179403040'/>
+<enum name='kQTFileTypeFlash' value='1398228556'/>
+<enum name='kQTFileTypeFlashPix' value='1179675000'/>
+<enum name='kQTFileTypeGIF' value='1195984486'/>
+<enum name='kQTFileTypeJFIF' value='1246774599'/>
+<enum name='kQTFileTypeJPEG' value='1246774599'/>
+<enum name='kQTFileTypeJPEG2000' value='1785737760'/>
+<enum name='kQTFileTypeMIDI' value='1298752617'/>
+<enum name='kQTFileTypeMP4' value='1836082996'/>
+<enum name='kQTFileTypeMacPaint' value='1347310663'/>
+<enum name='kQTFileTypeMovie' value='1299148630'/>
+<enum name='kQTFileTypeMuLaw' value='1431060823'/>
+<enum name='kQTFileTypePDF' value='1346651680'/>
+<enum name='kQTFileTypePICS' value='1346978643'/>
+<enum name='kQTFileTypePNG' value='1347307366'/>
+<enum name='kQTFileTypePhotoShop' value='943870035'/>
+<enum name='kQTFileTypePicture' value='1346978644'/>
+<enum name='kQTFileTypeQuickDrawGXPicture' value='1902405496'/>
+<enum name='kQTFileTypeQuickTimeImage' value='1903454566'/>
+<enum name='kQTFileTypeSDV' value='1935963680'/>
+<enum name='kQTFileTypeSGIImage' value='777209673'/>
+<enum name='kQTFileTypeSoundDesignerII' value='1399075430'/>
+<enum name='kQTFileTypeSystemSevenSound' value='1936091500'/>
+<enum name='kQTFileTypeTIFF' value='1414088262'/>
+<enum name='kQTFileTypeTargaImage' value='1414547779'/>
+<enum name='kQTFileTypeText' value='1413830740'/>
+<enum name='kQTFileTypeWave' value='1463899717'/>
+<enum name='kQTTimeIsIndefinite' value='1'/>
+<function name='QTEqualTimeRanges'>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+<arg name='range2' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function name='QTGetTimeInterval'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<arg name='timeInterval' declared_type='NSTimeInterval*' type='^d' type_modifier='o'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function name='QTGetTimeRecord'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<arg name='timeRecord' declared_type='TimeRecord*' type='^{TimeRecord={wide=Ii}i^{TimeBaseRecord}}' type_modifier='o'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function name='QTIntersectionTimeRange'>
+<arg name='range1' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+<arg name='range2' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+<retval declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+</function>
+<function name='QTMakeTime'>
+<arg name='timeValue' declared_type='long long' type='q'/>
+<arg name='timeScale' declared_type='long' type64='q' type='l'/>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</function>
+<function name='QTMakeTimeRange'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<arg name='duration' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<retval declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+</function>
+<function name='QTMakeTimeScaled'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<arg name='timeScale' declared_type='long' type64='q' type='l'/>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</function>
+<function name='QTMakeTimeWithTimeInterval'>
+<arg name='timeInterval' declared_type='NSTimeInterval' type='d'/>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</function>
+<function name='QTMakeTimeWithTimeRecord'>
+<arg name='timeRecord' declared_type='TimeRecord' type='{TimeRecord={wide=Ii}i^{TimeBaseRecord}}'/>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</function>
+<function name='QTOSTypeForString'>
+<arg name='string' declared_type='NSString*' type='@'/>
+<retval declared_type='OSType' type64='I' type='L'/>
+</function>
+<function name='QTStringForOSType'>
+<arg name='type' declared_type='OSType' type64='I' type='L'/>
+<retval declared_type='NSString*' type='@'/>
+</function>
+<function name='QTStringFromSMPTETime'>
+<arg name='time' declared_type='SMPTETime' type='{SMPTETime=ssIIIssss}'/>
+<retval declared_type='NSString*' type='@'/>
+</function>
+<function name='QTStringFromTime'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<retval declared_type='NSString*' type='@'/>
+</function>
+<function name='QTStringFromTimeRange'>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+<retval declared_type='NSString*' type='@'/>
+</function>
+<function name='QTTimeCompare'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<arg name='otherTime' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<retval declared_type='NSComparisonResult' type64='q' type='i'/>
+</function>
+<function name='QTTimeDecrement'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<arg name='decrement' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</function>
+<function name='QTTimeFromString'>
+<arg name='string' declared_type='NSString*' type='@'/>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</function>
+<function name='QTTimeInTimeRange'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function name='QTTimeIncrement'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<arg name='increment' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</function>
+<function name='QTTimeIsIndefinite'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function name='QTTimeRangeEnd'>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</function>
+<function name='QTTimeRangeFromString'>
+<arg name='string' declared_type='NSString*' type='@'/>
+<retval declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+</function>
+<function name='QTUnionTimeRange'>
+<arg name='range1' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+<arg name='range2' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+<retval declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+</function>
+<class name='NSCoder'>
+<method selector='decodeQTTimeForKey:'>
+<arg name='key' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='decodeQTTimeRangeForKey:'>
+<arg name='key' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+</method>
+<method selector='decodeSMPTETimeForKey:'>
+<arg name='key' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='SMPTETime' type='{SMPTETime=ssIIIssss}'/>
+</method>
+<method selector='encodeQTTime:forKey:'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='0'/>
+<arg name='key' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='encodeQTTimeRange:forKey:'>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='0'/>
+<arg name='key' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='encodeSMPTETime:forKey:'>
+<arg name='time' declared_type='SMPTETime' type='{SMPTETime=ssIIIssss}' index='0'/>
+<arg name='key' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='NSObject'>
+<method selector='captureOutput:didDropVideoFrameWithSampleBuffer:fromConnection:'>
+<arg name='captureOutput' declared_type='QTCaptureOutput*' type='@' index='0'/>
+<arg name='sampleBuffer' declared_type='QTSampleBuffer*' type='@' index='1'/>
+<arg name='connection' declared_type='QTCaptureConnection*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:didFinishRecordingToOutputFileAtURL:forConnections:dueToError:'>
+<arg name='captureOutput' declared_type='QTCaptureFileOutput*' type='@' index='0'/>
+<arg name='outputFileURL' declared_type='NSURL*' type='@' index='1'/>
+<arg name='connections' declared_type='NSArray*' type='@' index='2'/>
+<arg name='error' declared_type='NSError*' type='@' index='3'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:didOutputAudioSampleBuffer:fromConnection:'>
+<arg name='captureOutput' declared_type='QTCaptureOutput*' type='@' index='0'/>
+<arg name='sampleBuffer' declared_type='QTSampleBuffer*' type='@' index='1'/>
+<arg name='connection' declared_type='QTCaptureConnection*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:didOutputSampleBuffer:fromConnection:'>
+<arg name='captureOutput' declared_type='QTCaptureFileOutput*' type='@' index='0'/>
+<arg name='sampleBuffer' declared_type='QTSampleBuffer*' type='@' index='1'/>
+<arg name='connection' declared_type='QTCaptureConnection*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:didOutputVideoFrame:withSampleBuffer:fromConnection:'>
+<arg name='captureOutput' declared_type='QTCaptureOutput*' type='@' index='0'/>
+<arg name='videoFrame' declared_type='CVImageBufferRef' type='^{__CVBuffer=}' index='1'/>
+<arg name='sampleBuffer' declared_type='QTSampleBuffer*' type='@' index='2'/>
+<arg name='connection' declared_type='QTCaptureConnection*' type='@' index='3'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:didOutputVideoFrame:withSampleBuffer:fromConnection:'>
+<arg name='captureOutput' declared_type='QTCaptureOutput*' type='@' index='0'/>
+<arg name='videoFrame' declared_type='CVImageBufferRef' type='^{__CVBuffer=}' index='1'/>
+<arg name='sampleBuffer' declared_type='QTSampleBuffer*' type='@' index='2'/>
+<arg name='connection' declared_type='QTCaptureConnection*' type='@' index='3'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:didPauseRecordingToOutputFileAtURL:forConnections:'>
+<arg name='captureOutput' declared_type='QTCaptureFileOutput*' type='@' index='0'/>
+<arg name='fileURL' declared_type='NSURL*' type='@' index='1'/>
+<arg name='connections' declared_type='NSArray*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:didResumeRecordingToOutputFileAtURL:forConnections:'>
+<arg name='captureOutput' declared_type='QTCaptureFileOutput*' type='@' index='0'/>
+<arg name='fileURL' declared_type='NSURL*' type='@' index='1'/>
+<arg name='connections' declared_type='NSArray*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:didStartRecordingToOutputFileAtURL:forConnections:'>
+<arg name='captureOutput' declared_type='QTCaptureFileOutput*' type='@' index='0'/>
+<arg name='fileURL' declared_type='NSURL*' type='@' index='1'/>
+<arg name='connections' declared_type='NSArray*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:mustChangeOutputFileAtURL:forConnections:dueToError:'>
+<arg name='captureOutput' declared_type='QTCaptureFileOutput*' type='@' index='0'/>
+<arg name='outputFileURL' declared_type='NSURL*' type='@' index='1'/>
+<arg name='connections' declared_type='NSArray*' type='@' index='2'/>
+<arg name='error' declared_type='NSError*' type='@' index='3'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:shouldChangeOutputFileAtURL:forConnections:dueToError:'>
+<arg name='captureOutput' declared_type='QTCaptureFileOutput*' type='@' index='0'/>
+<arg name='outputFileURL' declared_type='NSURL*' type='@' index='1'/>
+<arg name='connections' declared_type='NSArray*' type='@' index='2'/>
+<arg name='error' declared_type='NSError*' type='@' index='3'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='captureOutput:willFinishRecordingToOutputFileAtURL:forConnections:dueToError:'>
+<arg name='captureOutput' declared_type='QTCaptureFileOutput*' type='@' index='0'/>
+<arg name='outputFileURL' declared_type='NSURL*' type='@' index='1'/>
+<arg name='connections' declared_type='NSArray*' type='@' index='2'/>
+<arg name='error' declared_type='NSError*' type='@' index='3'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='captureOutput:willStartRecordingToOutputFileAtURL:forConnections:'>
+<arg name='captureOutput' declared_type='QTCaptureFileOutput*' type='@' index='0'/>
+<arg name='fileURL' declared_type='NSURL*' type='@' index='1'/>
+<arg name='connections' declared_type='NSArray*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='externalMovie:'>
+<arg name='dictionary' declared_type='NSDictionary*' type='@' index='0'/>
+<retval declared_type='QTMovie*' type='@'/>
+</method>
+<method selector='menuForEventDelegate:'>
+<arg name='event' declared_type='NSEvent*' type='@' index='0'/>
+<retval declared_type='NSMenu*' type='@'/>
+</method>
+<method selector='movie:linkToURL:'>
+<arg name='movie' declared_type='QTMovie*' type='@' index='0'/>
+<arg name='url' declared_type='NSURL*' type='@' index='1'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='movie:shouldContinueOperation:withPhase:atPercent:withAttributes:'>
+<arg name='movie' declared_type='QTMovie*' type='@' index='0'/>
+<arg name='op' declared_type='NSString*' type='@' index='1'/>
+<arg name='phase' declared_type='QTMovieOperationPhase' type='i' index='2'/>
+<arg name='percent' declared_type='NSNumber*' type='@' index='3'/>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='4'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='movieShouldLoadData:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='movieShouldTask:'>
+<arg name='movie' declared_type='id' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='view:willDisplayImage:'>
+<arg name='view' declared_type='QTMovieView*' type='@' index='0'/>
+<arg name='image' declared_type='CIImage*' type='@' index='1'/>
+<retval declared_type='CIImage*' type='@'/>
+</method>
+<method selector='view:willDisplayImage:'>
+<arg name='view' declared_type='QTCaptureView*' type='@' index='0'/>
+<arg name='image' declared_type='CIImage*' type='@' index='1'/>
+<retval declared_type='CIImage*' type='@'/>
+</method>
+</class>
+<class name='NSValue'>
+<method selector='QTTimeRangeValue'>
+<retval declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}'/>
+</method>
+<method selector='QTTimeValue'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='SMPTETimeValue'>
+<retval declared_type='SMPTETime' type='{SMPTETime=ssIIIssss}'/>
+</method>
+<method selector='valueWithQTTime:' class_method='true'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='0'/>
+<retval declared_type='NSValue*' type='@'/>
+</method>
+<method selector='valueWithQTTimeRange:' class_method='true'>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='0'/>
+<retval declared_type='NSValue*' type='@'/>
+</method>
+<method selector='valueWithSMPTETime:' class_method='true'>
+<arg name='time' declared_type='SMPTETime' type='{SMPTETime=ssIIIssss}' index='0'/>
+<retval declared_type='NSValue*' type='@'/>
+</method>
+</class>
+<class name='QTCaptureAudioPreviewOutput'>
+<method selector='outputDeviceUniqueID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='setOutputDeviceUniqueID:'>
+<arg name='uniqueID' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setVolume:'>
+<arg name='volume' declared_type='float' type='f' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='volume'>
+<retval declared_type='float' type='f'/>
+</method>
+</class>
+<class name='QTCaptureConnection'>
+<method selector='attributeForKey:'>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='attributeIsReadOnly:'>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='connectionAttributes'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='formatDescription'>
+<retval declared_type='QTFormatDescription*' type='@'/>
+</method>
+<method selector='isEnabled'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='mediaType'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='owner'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='setAttribute:forKey:'>
+<arg name='attribute' declared_type='id' type='@' index='0'/>
+<arg name='key' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setConnectionAttributes:'>
+<arg name='connectionAttributes' declared_type='NSDictionary*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setEnabled:'>
+<arg name='enabled' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='QTCaptureDecompressedAudioOutput'>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='outputAudioSampleBuffer:fromConnection:'>
+<arg name='sampleBuffer' declared_type='QTSampleBuffer*' type='@' index='0'/>
+<arg name='connection' declared_type='QTCaptureConnection*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg name='delegate' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='QTCaptureDecompressedVideoOutput'>
+<method selector='automaticallyDropsLateVideoFrames'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='minimumVideoFrameInterval'>
+<retval declared_type='NSTimeInterval' type='d'/>
+</method>
+<method selector='outputVideoFrame:withSampleBuffer:fromConnection:'>
+<arg name='videoFrame' declared_type='CVImageBufferRef' type='^{__CVBuffer=}' index='0'/>
+<arg name='sampleBuffer' declared_type='QTSampleBuffer*' type='@' index='1'/>
+<arg name='connection' declared_type='QTCaptureConnection*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='pixelBufferAttributes'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='setAutomaticallyDropsLateVideoFrames:'>
+<arg name='automaticallyDropsLateVideoFrames' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg name='delegate' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMinimumVideoFrameInterval:'>
+<arg name='minimumVideoFrameInterval' declared_type='NSTimeInterval' type='d' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPixelBufferAttributes:'>
+<arg name='pixelBufferAttributes' declared_type='NSDictionary*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='QTCaptureDevice'>
+<method selector='attributeForKey:'>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='attributeIsReadOnly:'>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='close'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='defaultInputDeviceWithMediaType:' class_method='true'>
+<arg name='mediaType' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='QTCaptureDevice*' type='@'/>
+</method>
+<method selector='deviceAttributes'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='deviceWithUniqueID:' class_method='true'>
+<arg name='deviceUniqueID' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='QTCaptureDevice*' type='@'/>
+</method>
+<method selector='formatDescriptions'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='hasMediaType:'>
+<arg name='mediaType' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='inputDevices' class_method='true'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='inputDevicesWithMediaType:' class_method='true'>
+<arg name='mediaType' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='isConnected'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isInUseByAnotherApplication'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isOpen'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='localizedDisplayName'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='modelUniqueID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='open:'>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='setAttribute:forKey:'>
+<arg name='attribute' declared_type='id' type='@' index='0'/>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDeviceAttributes:'>
+<arg name='deviceAttributes' declared_type='NSDictionary*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='uniqueID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='QTCaptureDeviceInput'>
+<method selector='device'>
+<retval declared_type='QTCaptureDevice*' type='@'/>
+</method>
+<method selector='deviceInputWithDevice:' class_method='true'>
+<arg name='device' declared_type='QTCaptureDevice*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithDevice:'>
+<arg name='device' declared_type='QTCaptureDevice*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='QTCaptureFileOutput'>
+<method selector='compressionOptionsForConnection:'>
+<arg name='connection' declared_type='QTCaptureConnection*' type='@' index='0'/>
+<retval declared_type='QTCompressionOptions*' type='@'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='isRecordingPaused'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='maximumRecordedDuration'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='maximumRecordedFileSize'>
+<retval declared_type='UInt64' type='Q'/>
+</method>
+<method selector='maximumVideoSize'>
+<retval declared_type='NSSize' type64='{CGSize=dd}' type='{_NSSize=ff}'/>
+</method>
+<method selector='minimumVideoFrameInterval'>
+<retval declared_type='NSTimeInterval' type='d'/>
+</method>
+<method selector='outputFileURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='pauseRecording'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='recordToOutputFileURL:'>
+<arg name='url' declared_type='NSURL*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='recordToOutputFileURL:bufferDestination:'>
+<arg name='url' declared_type='NSURL*' type='@' index='0'/>
+<arg name='bufferDestination' declared_type='QTCaptureFileOutputBufferDestination' type64='Q' type='I' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='recordedDuration'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='recordedFileSize'>
+<retval declared_type='UInt64' type='Q'/>
+</method>
+<method selector='resumeRecording'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCompressionOptions:forConnection:'>
+<arg name='compressionOptions' declared_type='QTCompressionOptions*' type='@' index='0'/>
+<arg name='connection' declared_type='QTCaptureConnection*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg name='delegate' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMaximumRecordedDuration:'>
+<arg name='maximumRecordedDuration' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMaximumRecordedFileSize:'>
+<arg name='maximumRecordedFileSize' declared_type='UInt64' type='Q' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMaximumVideoSize:'>
+<arg name='maximumVideoSize' declared_type='NSSize' type64='{CGSize=dd}' type='{_NSSize=ff}' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMinimumVideoFrameInterval:'>
+<arg name='minimumVideoFrameInterval' declared_type='NSTimeInterval' type='d' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='QTCaptureInput'>
+<method selector='connections'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+</class>
+<class name='QTCaptureOutput'>
+<method selector='connections'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+</class>
+<class name='QTCaptureSession'>
+<method selector='addInput:error:'>
+<arg name='input' declared_type='QTCaptureInput*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='addOutput:error:'>
+<arg name='output' declared_type='QTCaptureOutput*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='inputs'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='isRunning'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='outputs'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='removeInput:'>
+<arg name='input' declared_type='QTCaptureInput*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='removeOutput:'>
+<arg name='output' declared_type='QTCaptureOutput*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='startRunning'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='stopRunning'>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='QTCaptureVideoPreviewOutput'>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='outputVideoFrame:withSampleBuffer:fromConnection:'>
+<arg name='videoFrame' declared_type='CVImageBufferRef' type='^{__CVBuffer=}' index='0'/>
+<arg name='sampleBuffer' declared_type='QTSampleBuffer*' type='@' index='1'/>
+<arg name='connection' declared_type='QTCaptureConnection*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='pixelBufferAttributes'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='setDelegate:'>
+<arg name='delegate' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPixelBufferAttributes:'>
+<arg name='pixelBufferAttributes' declared_type='NSDictionary*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='QTCaptureView'>
+<method selector='availableVideoPreviewConnections'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='captureSession'>
+<retval declared_type='QTCaptureSession*' type='@'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='fillColor'>
+<retval declared_type='NSColor*' type='@'/>
+</method>
+<method selector='preservesAspectRatio'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='previewBounds'>
+<retval declared_type='NSRect' type64='{CGRect={CGPoint=dd}{CGSize=dd}}' type='{_NSRect={_NSPoint=ff}{_NSSize=ff}}'/>
+</method>
+<method selector='setCaptureSession:'>
+<arg name='captureSession' declared_type='QTCaptureSession*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg name='delegate' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFillColor:'>
+<arg name='fillColor' declared_type='NSColor*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPreservesAspectRatio:'>
+<arg name='preservesAspectRatio' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setVideoPreviewConnection:'>
+<arg name='videoPreviewConnection' declared_type='QTCaptureConnection*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='videoPreviewConnection'>
+<retval declared_type='QTCaptureConnection*' type='@'/>
+</method>
+</class>
+<class name='QTCompressionOptions'>
+<method selector='compressionOptionsIdentifiersForMediaType:' class_method='true'>
+<arg name='mediaType' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='compressionOptionsWithIdentifier:' class_method='true'>
+<arg name='identifier' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='isEqualToCompressionOptions:'>
+<arg name='compressionOptions' declared_type='QTCompressionOptions*' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='localizedCompressionOptionsSummary'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='localizedDisplayName'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='mediaType'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='QTDataReference'>
+<method selector='MIMEType'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='dataRef'>
+<retval declared_type='Handle' type='^*'/>
+</method>
+<method selector='dataRefData'>
+<retval declared_type='NSData*' type='@'/>
+</method>
+<method selector='dataRefType'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='dataReferenceWithDataRef:type:' class_method='true'>
+<arg name='dataRef' declared_type='Handle' type='^*' index='0'/>
+<arg name='type' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='dataReferenceWithDataRefData:type:' class_method='true'>
+<arg name='dataRefData' declared_type='NSData*' type='@' index='0'/>
+<arg name='type' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='dataReferenceWithReferenceToData:' class_method='true'>
+<arg name='data' declared_type='NSData*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='dataReferenceWithReferenceToData:name:MIMEType:' class_method='true'>
+<arg name='data' declared_type='NSData*' type='@' index='0'/>
+<arg name='name' declared_type='NSString*' type='@' index='1'/>
+<arg name='MIMEType' declared_type='NSString*' type='@' index='2'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='dataReferenceWithReferenceToFile:' class_method='true'>
+<arg name='fileName' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='dataReferenceWithReferenceToURL:' class_method='true'>
+<arg name='url' declared_type='NSURL*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithDataRef:type:'>
+<arg name='dataRef' declared_type='Handle' type='^*' index='0'/>
+<arg name='type' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithDataRefData:type:'>
+<arg name='dataRefData' declared_type='NSData*' type='@' index='0'/>
+<arg name='type' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithReferenceToData:'>
+<arg name='data' declared_type='NSData*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithReferenceToData:name:MIMEType:'>
+<arg name='data' declared_type='NSData*' type='@' index='0'/>
+<arg name='name' declared_type='NSString*' type='@' index='1'/>
+<arg name='MIMEType' declared_type='NSString*' type='@' index='2'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithReferenceToFile:'>
+<arg name='fileName' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithReferenceToURL:'>
+<arg name='url' declared_type='NSURL*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='name'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='referenceData'>
+<retval declared_type='NSData*' type='@'/>
+</method>
+<method selector='referenceFile'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='referenceURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='setDataRef:'>
+<arg name='dataRef' declared_type='Handle' type='^*' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDataRefType:'>
+<arg name='type' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='QTFormatDescription'>
+<method selector='attributeForKey:'>
+<arg name='key' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='formatDescriptionAttributes'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='formatType'>
+<retval declared_type='UInt32' type64='I' type='L'/>
+</method>
+<method selector='isEqualToFormatDescription:'>
+<arg name='formatDescription' declared_type='QTFormatDescription*' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='localizedFormatSummary'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='mediaType'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='quickTimeSampleDescription'>
+<retval declared_type='NSData*' type='@'/>
+</method>
+</class>
+<class name='QTMedia'>
+<method selector='attributeForKey:'>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='hasCharacteristic:'>
+<arg name='characteristic' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='mediaAttributes'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='setAttribute:forKey:'>
+<arg name='value' declared_type='id' type='@' index='0'/>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMediaAttributes:'>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='track'>
+<retval declared_type='QTTrack*' type='@'/>
+</method>
+</class>
+<class name='QTMovie'>
+<method selector='addChapters:withAttributes:error:'>
+<arg name='chapters' declared_type='NSArray*' type='@' index='0'/>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='1'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='addImage:forDuration:withAttributes:'>
+<arg name='image' declared_type='NSImage*' type='@' index='0'/>
+<arg name='duration' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='1'/>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='appendSelectionFromMovie:'>
+<arg name='movie' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='attachToCurrentThread'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='attributeForKey:'>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='autoplay'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='canInitWithDataReference:' class_method='true'>
+<arg name='dataReference' declared_type='QTDataReference*' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='canInitWithFile:' class_method='true'>
+<arg name='fileName' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='canInitWithPasteboard:' class_method='true'>
+<arg name='pasteboard' declared_type='NSPasteboard*' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='canInitWithURL:' class_method='true'>
+<arg name='url' declared_type='NSURL*' type='@' index='0'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='canUpdateMovieFile'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='chapterCount'>
+<retval declared_type='NSInteger' type64='q' type='i'/>
+</method>
+<method selector='chapterIndexForTime:'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='0'/>
+<retval declared_type='NSInteger' type64='q' type='i'/>
+</method>
+<method selector='chapters'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='currentFrameImage'>
+<retval declared_type='NSImage*' type='@'/>
+</method>
+<method selector='currentTime'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='deleteSegment:'>
+<arg name='segment' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='detachFromCurrentThread'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='duration'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='enterQTKitOnThread' class_method='true'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='enterQTKitOnThreadDisablingThreadSafetyProtection' class_method='true'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='exitQTKitOnThread' class_method='true'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='frameImageAtTime:'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='0'/>
+<retval declared_type='NSImage*' type='@'/>
+</method>
+<method selector='frameImageAtTime:withAttributes:error:'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='0'/>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='1'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='2'/>
+<retval declared_type='void*' type='^v'/>
+</method>
+<method selector='generateApertureModeDimensions'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='gotoBeginning'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='gotoEnd'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='gotoNextSelectionPoint'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='gotoPosterTime'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='gotoPreviousSelectionPoint'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='hasChapters'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='initToWritableData:error:'>
+<arg name='data' declared_type='NSMutableData*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initToWritableDataReference:error:'>
+<arg name='dataReference' declared_type='QTDataReference*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initToWritableFile:error:'>
+<arg name='filename' declared_type='NSString*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithAttributes:error:'>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithData:error:'>
+<arg name='data' declared_type='NSData*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithDataReference:error:'>
+<arg name='dataReference' declared_type='QTDataReference*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithFile:error:'>
+<arg name='fileName' declared_type='NSString*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithMovie:timeRange:error:'>
+<arg name='movie' declared_type='QTMovie*' type='@' index='0'/>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='1'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='2'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithPasteboard:error:'>
+<arg name='pasteboard' declared_type='NSPasteboard*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithURL:error:'>
+<arg name='url' declared_type='NSURL*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='insertEmptySegmentAt:'>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='insertSegmentOfMovie:fromRange:scaledToRange:'>
+<arg name='movie' declared_type='QTMovie*' type='@' index='0'/>
+<arg name='srcRange' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='1'/>
+<arg name='dstRange' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='insertSegmentOfMovie:timeRange:atTime:'>
+<arg name='movie' declared_type='QTMovie*' type='@' index='0'/>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='1'/>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='insertSegmentOfTrack:fromRange:scaledToRange:'>
+<arg name='track' declared_type='QTTrack*' type='@' index='0'/>
+<arg name='srcRange' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='1'/>
+<arg name='dstRange' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='2'/>
+<retval declared_type='QTTrack*' type='@'/>
+</method>
+<method selector='insertSegmentOfTrack:timeRange:atTime:'>
+<arg name='track' declared_type='QTTrack*' type='@' index='0'/>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='1'/>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='2'/>
+<retval declared_type='QTTrack*' type='@'/>
+</method>
+<method selector='invalidate'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='isIdling'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='movie' class_method='true'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='movieAttributes'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='movieFileTypes:' class_method='true'>
+<arg name='types' declared_type='QTMovieFileTypeOptions' type='i' index='0'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='movieFormatRepresentation'>
+<retval declared_type='NSData*' type='@'/>
+</method>
+<method selector='movieNamed:error:' class_method='true'>
+<arg name='name' declared_type='NSString*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='movieTypesWithOptions:' class_method='true'>
+<arg name='types' declared_type='QTMovieFileTypeOptions' type='i' index='0'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='movieUnfilteredFileTypes' class_method='true'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='movieUnfilteredPasteboardTypes' class_method='true'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='movieWithAttributes:error:' class_method='true'>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='movieWithData:error:' class_method='true'>
+<arg name='data' declared_type='NSData*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='movieWithDataReference:error:' class_method='true'>
+<arg name='dataReference' declared_type='QTDataReference*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='movieWithFile:error:' class_method='true'>
+<arg name='fileName' declared_type='NSString*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='movieWithPasteboard:error:' class_method='true'>
+<arg name='pasteboard' declared_type='NSPasteboard*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='movieWithTimeRange:error:'>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='movieWithURL:error:' class_method='true'>
+<arg name='url' declared_type='NSURL*' type='@' index='0'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='1'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='muted'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='play'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='posterImage'>
+<retval declared_type='NSImage*' type='@'/>
+</method>
+<method selector='rate'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='removeApertureModeDimensions'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='removeChapters'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='removeTrack:'>
+<arg name='track' declared_type='QTTrack*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='replaceSelectionWithSelectionFromMovie:'>
+<arg name='movie' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='scaleSegment:newDuration:'>
+<arg name='segment' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='0'/>
+<arg name='newDuration' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='selectionDuration'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='selectionEnd'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='selectionStart'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='setAttribute:forKey:'>
+<arg name='value' declared_type='id' type='@' index='0'/>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCurrentTime:'>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg name='delegate' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setIdling:'>
+<arg name='state' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMovieAttributes:'>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMuted:'>
+<arg name='mute' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setRate:'>
+<arg name='rate' declared_type='float' type='f' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setSelection:'>
+<arg name='selection' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setVolume:'>
+<arg name='volume' declared_type='float' type='f' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='startTimeOfChapter:'>
+<arg name='chapterIndex' declared_type='NSInteger' type64='q' type='i' index='0'/>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='stepBackward'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='stepForward'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='stop'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='tracks'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='tracksOfMediaType:'>
+<arg name='type' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='updateMovieFile'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='volume'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='writeToFile:withAttributes:'>
+<arg name='fileName' declared_type='NSString*' type='@' index='0'/>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='1'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='writeToFile:withAttributes:error:'>
+<arg name='fileName' declared_type='NSString*' type='@' index='0'/>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='1'/>
+<arg name='errorPtr' declared_type='NSError**' type='^@' index='2'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<class name='QTMovieLayer'>
+<method selector='initWithMovie:'>
+<arg name='movie' declared_type='QTMovie*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='layerWithMovie:' class_method='true'>
+<arg name='movie' declared_type='QTMovie*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='movie'>
+<retval declared_type='QTMovie*' type='@'/>
+</method>
+<method selector='setMovie:'>
+<arg name='movie' declared_type='QTMovie*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='QTMovieView'>
+<method selector='add:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='addScaled:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='areStepButtonsVisible'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='areZoomButtonsVisible'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='controllerBarHeight'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='copy:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='cut:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='delete:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='fillColor'>
+<retval declared_type='NSColor*' type='@'/>
+</method>
+<method selector='gotoBeginning:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='gotoEnd:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='gotoNextSelectionPoint:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='gotoPosterFrame:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='gotoPreviousSelectionPoint:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='isBackButtonVisible'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isControllerVisible'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isCustomButtonVisible'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isEditable'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isHotSpotButtonVisible'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isTranslateButtonVisible'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isVolumeButtonVisible'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='movie'>
+<retval declared_type='QTMovie*' type='@'/>
+</method>
+<method selector='movieBounds'>
+<retval declared_type='NSRect' type64='{CGRect={CGPoint=dd}{CGSize=dd}}' type='{_NSRect={_NSPoint=ff}{_NSSize=ff}}'/>
+</method>
+<method selector='movieControllerBounds'>
+<retval declared_type='NSRect' type64='{CGRect={CGPoint=dd}{CGSize=dd}}' type='{_NSRect={_NSPoint=ff}{_NSSize=ff}}'/>
+</method>
+<method selector='paste:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='pause:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='play:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='preservesAspectRatio'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='replace:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='selectAll:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='selectNone:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setBackButtonVisible:'>
+<arg name='state' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setControllerVisible:'>
+<arg name='controllerVisible' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCustomButtonVisible:'>
+<arg name='state' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg name='delegate' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setEditable:'>
+<arg name='editable' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFillColor:'>
+<arg name='fillColor' declared_type='NSColor*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setHotSpotButtonVisible:'>
+<arg name='state' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMovie:'>
+<arg name='movie' declared_type='QTMovie*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPreservesAspectRatio:'>
+<arg name='preservesAspectRatio' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShowsResizeIndicator:'>
+<arg name='show' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setStepButtonsVisible:'>
+<arg name='state' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setTranslateButtonVisible:'>
+<arg name='state' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setVolumeButtonVisible:'>
+<arg name='state' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setZoomButtonsVisible:'>
+<arg name='state' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='stepBackward:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='stepForward:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='trim:'>
+<arg name='sender' declared_type='id' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='QTSampleBuffer'>
+<method selector='attributeForKey:'>
+<arg name='key' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='audioBufferListWithOptions:'>
+<arg name='options' declared_type='QTSampleBufferAudioBufferListOptions' type64='Q' type='I' index='0'/>
+<retval declared_type='AudioBufferList*' type='^{AudioBufferList=I[1{AudioBuffer=II^v}]}'/>
+</method>
+<method selector='bytesForAllSamples'>
+<retval declared_type='void*' type='^v'/>
+</method>
+<method selector='decodeTime'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='decrementSampleUseCount'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='duration'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='formatDescription'>
+<retval declared_type='QTFormatDescription*' type='@'/>
+</method>
+<method selector='getAudioStreamPacketDescriptions:inRange:'>
+<arg name='audioStreamPacketDescriptions' declared_type='AudioStreamPacketDescription*' type='^{AudioStreamPacketDescription=qII}' index='0'/>
+<arg name='range' declared_type='NSRange' type64='{_NSRange=QQ}' type='{_NSRange=II}' index='1'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='incrementSampleUseCount'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='lengthForAllSamples'>
+<retval declared_type='NSUInteger' type64='Q' type='I'/>
+</method>
+<method selector='numberOfSamples'>
+<retval declared_type='NSUInteger' type64='Q' type='I'/>
+</method>
+<method selector='presentationTime'>
+<retval declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}'/>
+</method>
+<method selector='sampleBufferAttributes'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='sampleUseCount'>
+<retval declared_type='NSUInteger' type64='Q' type='I'/>
+</method>
+</class>
+<class name='QTTrack'>
+<method selector='addImage:forDuration:withAttributes:'>
+<arg name='image' declared_type='NSImage*' type='@' index='0'/>
+<arg name='duration' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='1'/>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='apertureModeDimensionsForMode:'>
+<arg name='mode' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='NSSize' type64='{CGSize=dd}' type='{_NSSize=ff}'/>
+</method>
+<method selector='attributeForKey:'>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='0'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='deleteSegment:'>
+<arg name='segment' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='generateApertureModeDimensions'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='insertEmptySegmentAt:'>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='insertSegmentOfTrack:fromRange:scaledToRange:'>
+<arg name='track' declared_type='QTTrack*' type='@' index='0'/>
+<arg name='srcRange' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='1'/>
+<arg name='dstRange' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='insertSegmentOfTrack:timeRange:atTime:'>
+<arg name='track' declared_type='QTTrack*' type='@' index='0'/>
+<arg name='range' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='1'/>
+<arg name='time' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='2'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='isEnabled'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='media'>
+<retval declared_type='QTMedia*' type='@'/>
+</method>
+<method selector='movie'>
+<retval declared_type='QTMovie*' type='@'/>
+</method>
+<method selector='removeApertureModeDimensions'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='scaleSegment:newDuration:'>
+<arg name='segment' declared_type='QTTimeRange' type64='{_QTTimeRange={_QTTime=qqq}{_QTTime=qqq}}' type='{_QTTimeRange={_QTTime=qll}{_QTTime=qll}}' index='0'/>
+<arg name='newDuration' declared_type='QTTime' type64='{_QTTime=qqq}' type='{_QTTime=qll}' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setApertureModeDimensions:forMode:'>
+<arg name='dimensions' declared_type='NSSize' type64='{CGSize=dd}' type='{_NSSize=ff}' index='0'/>
+<arg name='mode' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAttribute:forKey:'>
+<arg name='value' declared_type='id' type='@' index='0'/>
+<arg name='attributeKey' declared_type='NSString*' type='@' index='1'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setEnabled:'>
+<arg name='enabled' declared_type='BOOL' type='B' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setTrackAttributes:'>
+<arg name='attributes' declared_type='NSDictionary*' type='@' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setVolume:'>
+<arg name='volume' declared_type='float' type='f' index='0'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='trackAttributes'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='volume'>
+<retval declared_type='float' type='f'/>
+</method>
+</class>
+<informal_protocol name='QTCaptureDecompressedAudioOutput_Delegate'>
+<method type='v20@0:4@8@12@16' selector='captureOutput:didOutputAudioSampleBuffer:fromConnection:'>
+<arg name='captureOutput' index='0'/>
+<arg name='sampleBuffer' index='1'/>
+<arg name='connection' index='2'/>
+</method>
+</informal_protocol>
+<informal_protocol name='QTCaptureDecompressedVideoOutput_Delegate'>
+<method type='v20@0:4@8@12@16' selector='captureOutput:didDropVideoFrameWithSampleBuffer:fromConnection:'>
+<arg name='captureOutput' index='0'/>
+<arg name='sampleBuffer' index='1'/>
+<arg name='connection' index='2'/>
+</method>
+</informal_protocol>
+<informal_protocol name='QTCaptureFileOutput_Delegate'>
+<method type='v24@0:4@8@12@16@20' selector='captureOutput:didFinishRecordingToOutputFileAtURL:forConnections:dueToError:'>
+<arg name='captureOutput' index='0'/>
+<arg name='outputFileURL' index='1'/>
+<arg name='connections' index='2'/>
+<arg name='error' index='3'/>
+</method>
+<method type='v20@0:4@8@12@16' selector='captureOutput:didOutputSampleBuffer:fromConnection:'>
+<arg name='captureOutput' index='0'/>
+<arg name='sampleBuffer' index='1'/>
+<arg name='connection' index='2'/>
+</method>
+<method type='v20@0:4@8@12@16' selector='captureOutput:didPauseRecordingToOutputFileAtURL:forConnections:'>
+<arg name='captureOutput' index='0'/>
+<arg name='fileURL' index='1'/>
+<arg name='connections' index='2'/>
+</method>
+<method type='v20@0:4@8@12@16' selector='captureOutput:didResumeRecordingToOutputFileAtURL:forConnections:'>
+<arg name='captureOutput' index='0'/>
+<arg name='fileURL' index='1'/>
+<arg name='connections' index='2'/>
+</method>
+<method type='v20@0:4@8@12@16' selector='captureOutput:didStartRecordingToOutputFileAtURL:forConnections:'>
+<arg name='captureOutput' index='0'/>
+<arg name='fileURL' index='1'/>
+<arg name='connections' index='2'/>
+</method>
+<method type='v24@0:4@8@12@16@20' selector='captureOutput:mustChangeOutputFileAtURL:forConnections:dueToError:'>
+<arg name='captureOutput' index='0'/>
+<arg name='outputFileURL' index='1'/>
+<arg name='connections' index='2'/>
+<arg name='error' index='3'/>
+</method>
+<method type='B24@0:4@8@12@16@20' selector='captureOutput:shouldChangeOutputFileAtURL:forConnections:dueToError:'>
+<arg name='captureOutput' index='0'/>
+<arg name='outputFileURL' index='1'/>
+<arg name='connections' index='2'/>
+<arg name='error' index='3'/>
+</method>
+<method type='v24@0:4@8@12@16@20' selector='captureOutput:willFinishRecordingToOutputFileAtURL:forConnections:dueToError:'>
+<arg name='captureOutput' index='0'/>
+<arg name='outputFileURL' index='1'/>
+<arg name='connections' index='2'/>
+<arg name='error' index='3'/>
+</method>
+<method type='v20@0:4@8@12@16' selector='captureOutput:willStartRecordingToOutputFileAtURL:forConnections:'>
+<arg name='captureOutput' index='0'/>
+<arg name='fileURL' index='1'/>
+<arg name='connections' index='2'/>
+</method>
+</informal_protocol>
+<informal_protocol name='QTMovieView_Delegate'>
+<method type='@12@0:4@8' selector='menuForEventDelegate:'>
+<arg name='event' index='0'/>
+</method>
+</informal_protocol>
+<informal_protocol name='QTMovie_Delegate'>
+<method type='@12@0:4@8' selector='externalMovie:'>
+<arg name='dictionary' index='0'/>
+</method>
+<method type='B16@0:4@8@12' selector='movie:linkToURL:'>
+<arg name='movie' index='0'/>
+<arg name='url' index='1'/>
+</method>
+<method type='B28@0:4@8@12i16@20@24' selector='movie:shouldContinueOperation:withPhase:atPercent:withAttributes:'>
+<arg name='movie' index='0'/>
+<arg name='op' index='1'/>
+<arg name='phase' index='2'/>
+<arg name='percent' index='3'/>
+<arg name='attributes' index='4'/>
+</method>
+<method type='B12@0:4@8' selector='movieShouldLoadData:'>
+<arg name='sender' index='0'/>
+</method>
+<method type='B12@0:4@8' selector='movieShouldTask:'>
+<arg name='movie' index='0'/>
+</method>
+</informal_protocol>
+</signatures>
