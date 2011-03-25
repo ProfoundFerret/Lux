@@ -8,10 +8,13 @@
 
 #import "LPlayerGui.h"
 #import "LPlayerController.h"
+#import "Lux.h"
 
 #define controller [LPlayerController sharedInstance]
 
 @implementation LPlayerGui
+
+@synthesize totalFiles;
 
 - (id)init
 {
@@ -56,6 +59,7 @@
 	newSize.height = newSize.height * .7;
 	newSize.width = newSize.width * .7;
 	[playPauseImage setSize:newSize];
+    
 }
 
 - (void) updateTime;
@@ -67,6 +71,9 @@
 - (void) changeVolume
 {
 	[controller updateVolume];
+    NSUInteger filesCount = [[[LPlaylistController sharedInstance] activePlaylist] members].count;
+        
+    [totalFiles setStringValue:[NSString stringWithFormat: @"%i", filesCount]];
 }
 
 - (void) changeProgress
