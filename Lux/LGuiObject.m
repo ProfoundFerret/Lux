@@ -33,6 +33,6 @@
 
 - (NSMenu *) menuForEvent: (NSEvent *) event
 {
-	return [[NSMenu alloc] init];
+	return [[[NSMenu alloc] init] autorelease];
 }
 @end
