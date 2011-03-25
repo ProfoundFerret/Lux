@@ -42,11 +42,12 @@
 	NSIndexSet * selectedIndexSet;
 }
 - (void) update;
+- (void) updateSearch;
+
 - (void) setTitle: (NSString *) title;
 
 - (NSMutableDictionary *) members;
 
-- (NSMutableDictionary *) searchMembers;
 - (void) setSearch:(NSString *) aSearch;
 
 + (LPlaylist *) musicPlaylist;

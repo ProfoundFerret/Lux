@@ -124,13 +124,21 @@
 - (NSMutableDictionary *) members
 {
 	[self update];
-	if ([search length]) return [self searchMembers];
-	return members;
+	
+	NSMutableDictionary * mList;
+	if ([search length])
+	{
+		[self updateSearch];
+		mList = [NSDictionary dictionaryWithDictionary:searchMembers];
+	} else {
+		mList = [NSDictionary dictionaryWithDictionary:members];
+	}
+	return mList;
 }
 
-- (NSMutableDictionary *) searchMembers
+- (void) updateSearch
 {
-	if (! needsSearched) return searchMembers;
+	if (! needsSearched || ! [search length]) return;
 	needsSearched = NO;
 	
 	NSDictionary * toBeSearched;
@@ -154,7 +162,6 @@
 			[searchMembers setObject:f forKey:[f url]];
 		}
 	}
-	return searchMembers;
 }
 
 - (void) setSearch:(NSString *) aSearch
