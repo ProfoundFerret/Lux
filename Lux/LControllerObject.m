@@ -16,8 +16,6 @@
     self = [super init];
     if (self) {
 		guis = [[NSMutableArray alloc] init];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kRELOAD_DATA_NOTIFICATION object:nil];
     }
     
     return self;

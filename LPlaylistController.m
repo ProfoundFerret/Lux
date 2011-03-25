@@ -50,6 +50,7 @@
 	playlists = [[NSMutableDictionary alloc] init];
 	
 	NSMutableArray * library = [self getPlaylistsFromGroup:kLIBRARY];
+	[library removeAllObjects];
 	
 	[library addObject:[LPlaylist musicPlaylist]];
 	[library addObject:[LPlaylist videoPlaylist]];
@@ -125,5 +126,11 @@
 {
 	[[self visiblePlaylist] setSearch:search];
 	[[Lux sharedInstance] reloadData];
+}
+
+- (void) reloadData
+{
+	[self prepPlaylistsForUpdate];
+	[super reloadData];
 }
 @end
