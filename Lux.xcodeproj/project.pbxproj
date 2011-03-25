@@ -111,6 +111,9 @@
 		7CF940FC1326EF92004526D0 /* LFileGui.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFileGui.m; sourceTree = "<group>"; };
 		7CF941071326FE77004526D0 /* LPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPlaylist.h; sourceTree = "<group>"; };
 		7CF941081326FE77004526D0 /* LPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPlaylist.m; sourceTree = "<group>"; };
+		D98C3E28133D3FFD0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = /Users/adrienmacpro/Desktop/Lux/Lux/fr.lproj/MainMenu.xib; sourceTree = "<absolute>"; };
+		D98C3E29133D3FFD0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = /Users/adrienmacpro/Desktop/Lux/Lux/fr.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
+		D98C3E2A133D3FFD0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = /Users/adrienmacpro/Desktop/Lux/Lux/fr.lproj/Credits.rtf; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +429,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7C5FE0BE13258F0D0008B7DC /* en */,
+				D98C3E29133D3FFD0010DF04 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -434,6 +438,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7C5FE0C413258F0D0008B7DC /* en */,
+				D98C3E2A133D3FFD0010DF04 /* fr */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -442,6 +447,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7C5FE0CA13258F0D0008B7DC /* en */,
+				D98C3E28133D3FFD0010DF04 /* fr */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
