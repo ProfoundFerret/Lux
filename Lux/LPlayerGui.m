@@ -71,9 +71,11 @@
 - (void) changeVolume
 {
 	[controller updateVolume];
+    
     NSUInteger filesCount = [[[LPlaylistController sharedInstance] activePlaylist] members].count;
-        
     [totalFiles setStringValue:[NSString stringWithFormat: @"%i", filesCount]];
+    
+    // this only updates when the volume is changed... go place it somewhere else where it gets updated on its own .... (?)
 }
 
 - (void) changeProgress
