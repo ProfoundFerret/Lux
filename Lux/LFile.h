@@ -21,6 +21,8 @@
 	NSMutableDictionary * attributes;
 	NSArray * searchAttributes;
 	NSString * extension;
+	
+	NSDictionary * dictionary;
 }
 - (NSString *) extension;
 

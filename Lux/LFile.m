@@ -118,11 +118,14 @@
 
 - (NSDictionary *) dictionary
 {
-	NSMutableDictionary * dictionary = [NSMutableDictionary dictionaryWithDictionary:attributes];
-	[dictionary setObject:[NSNumber numberWithInt:[self fileType]] forKey:kFILE_TYPE];
-	[dictionary setObject:url forKey:kURL];
+	if (dictionary) return [NSDictionary dictionaryWithDictionary:dictionary];
 	
-	return dictionary;
+	NSMutableDictionary * d = [NSMutableDictionary dictionaryWithDictionary:attributes];
+	[d setObject:[NSNumber numberWithInt:[self fileType]] forKey:kFILE_TYPE];
+	[d setObject:url forKey:kURL];
+	
+	dictionary = [[NSDictionary alloc] initWithDictionary:d];
+	return [self dictionary];
 }
 
 - (LFileType) fileType
