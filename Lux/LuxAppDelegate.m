@@ -32,7 +32,6 @@
 - (void) applicationWillTerminate:(NSNotification *)notification
 {
 	[[[Lux sharedInstance] ioController] _save];
-    //nice again
 }
 
 @end
