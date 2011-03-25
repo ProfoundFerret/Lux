@@ -71,6 +71,8 @@
 			[[[Lux sharedInstance] fileController] addFilesByURL:extensionURLs];
 		}
 		
+		NSLog(@"Update Finished");
+		
 		[[Lux sharedInstance] reloadData];
 	}
 	[pool drain];
