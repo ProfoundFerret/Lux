@@ -130,9 +130,7 @@
 
 - (NSMutableDictionary *) searchMembers
 {
-	NSLog(@"Gonna search?");
 	if (! needsSearched) return searchMembers;
-	NSLog(@"SEARCHING!");
 	needsSearched = NO;
 	
 	NSDictionary * toBeSearched;
