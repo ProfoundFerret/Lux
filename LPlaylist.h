@@ -57,8 +57,8 @@
 @property (readwrite, assign) BOOL needsUpdated;
 @property (readwrite, assign) BOOL smart;
 @property (readwrite, assign) BOOL write;
-@property (readwrite, assign) NSArray * columns;
-@property (readwrite, assign) NSString * predicate;
+@property (readwrite, retain) NSArray * columns;
+@property (readwrite, retain) NSString * predicate;
 @property (readonly, assign) NSString * search;
-@property (readwrite, assign) NSIndexSet * selectedIndexSet;
+@property (readwrite, retain) NSIndexSet * selectedIndexSet;
 @end

@@ -169,7 +169,7 @@
 {
 	LPlaylist * playlist = [[[LPlaylist alloc] init] autorelease];
 	
-	NSString * predicate = [[NSString alloc] initWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeAudio];
+	NSString * predicate = [NSString stringWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeAudio];
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
 	[playlist setTitle:kMUSIC];
@@ -183,13 +183,13 @@
 {
 	LPlaylist * playlist = [[[LPlaylist alloc] init] autorelease];
 	
-	NSString * predicate = [[NSString alloc] initWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeVideo];
+	NSString * predicate = [NSString stringWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeVideo];
 	
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
 	[playlist setTitle:kVIDEO];
 	
-	NSArray * columns = [[NSArray alloc] initWithObjects:kINDEX, kTITLE, nil];
+	NSArray * columns = [NSArray arrayWithObjects:kINDEX, kTITLE, nil];
 	[playlist setColumns:columns];
 	
 	[playlist setWrite:NO];
@@ -201,13 +201,13 @@
 {
 	LPlaylist * playlist = [[[LPlaylist alloc] init] autorelease];
 	
-	NSString * predicate = [[NSString alloc] initWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeStreaming];
+	NSString * predicate = [NSString stringWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeStreaming];
 
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
 	[playlist setTitle:kSTREAMING];
 	
-	NSArray * columns = [[NSArray alloc] initWithObjects:kINDEX, kTITLE, nil];
+	NSArray * columns = [NSArray arrayWithObjects:kINDEX, kTITLE, nil];
 	[playlist setColumns:columns];
 	
 	[playlist setWrite:NO];

@@ -66,7 +66,7 @@
 
 - (void) tableViewSelectionDidChange:(NSNotification *)notification
 {
-	NSIndexSet * indexSet = [[fileList selectedRowIndexes] retain];
+	NSIndexSet * indexSet = [fileList selectedRowIndexes];
 	
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	[visiblePlaylist setSelectedIndexSet: indexSet];

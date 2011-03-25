@@ -151,7 +151,7 @@
 
 - (void) addPlaylist
 {
-	LPlaylist * playlist = [[LPlaylist alloc] init];
+	LPlaylist * playlist = [[[LPlaylist alloc] init] autorelease];
 	
 	[controller addPlaylist: playlist];
 	
