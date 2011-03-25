@@ -16,6 +16,7 @@
 		7C329B6B1325D6B100377547 /* LFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B6A1325D6B000377547 /* LFile.m */; };
 		7C329B731325DDBD00377547 /* LExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B721325DDBB00377547 /* LExtension.m */; };
 		7C329B771325DE5600377547 /* LExtensionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B761325DE5600377547 /* LExtensionController.m */; };
+		7C3826A0133C595400FDD40E /* LTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C38269F133C595200FDD40E /* LTableView.m */; };
 		7C3B909513285D1C007B7DA5 /* _Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909413285D1C007B7DA5 /* _Test.m */; };
 		7C3B909813286564007B7DA5 /* LPlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909713286564007B7DA5 /* LPlaylistController.m */; };
 		7C3B909B13286BF9007B7DA5 /* LPlaylistGui.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909A13286BF8007B7DA5 /* LPlaylistGui.m */; };
@@ -57,6 +58,8 @@
 		7C329B721325DDBB00377547 /* LExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LExtension.m; path = Lux/LExtension.m; sourceTree = "<group>"; };
 		7C329B751325DE5600377547 /* LExtensionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LExtensionController.h; sourceTree = "<group>"; };
 		7C329B761325DE5600377547 /* LExtensionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LExtensionController.m; sourceTree = "<group>"; };
+		7C38269E133C595100FDD40E /* LTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTableView.h; sourceTree = "<group>"; };
+		7C38269F133C595200FDD40E /* LTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTableView.m; sourceTree = "<group>"; };
 		7C3B909313285D1B007B7DA5 /* _Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Test.h; sourceTree = "<group>"; };
 		7C3B909413285D1C007B7DA5 /* _Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Test.m; sourceTree = "<group>"; };
 		7C3B909613286563007B7DA5 /* LPlaylistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPlaylistController.h; sourceTree = "<group>"; };
@@ -169,6 +172,15 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		7C3826A1133C598800FDD40E /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				7C38269E133C595100FDD40E /* LTableView.h */,
+				7C38269F133C595200FDD40E /* LTableView.m */,
+			);
+			name = Subclasses;
+			sourceTree = "<group>";
+		};
 		7C3B909F1328A794007B7DA5 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +267,7 @@
 		7C5FE0BB13258F0D0008B7DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7C3826A1133C598800FDD40E /* Subclasses */,
 				7C3B909F1328A794007B7DA5 /* Categories */,
 				7C5FE0BC13258F0D0008B7DC /* Lux-Info.plist */,
 				7C5FE0BD13258F0D0008B7DC /* InfoPlist.strings */,
@@ -398,6 +411,7 @@
 				7C67EA95132AC9CA00E055B2 /* LPlayer_QTKit.m in Sources */,
 				7C05ED8C133045EA00986D46 /* LMetadataController.m in Sources */,
 				7C06031013318110000C0556 /* LMetadata_MP3.m in Sources */,
+				7C3826A0133C595400FDD40E /* LTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
