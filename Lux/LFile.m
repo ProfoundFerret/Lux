@@ -10,8 +10,10 @@
 #import "LFileController.h"
 #import "LExtension.h"
 #import "LMetadataController.h"
-
+#import "LPlaylist.h"
+#import "LPlaylistController.h"
 #import "LPlayerController.h"
+
 
 @implementation LFile
 @synthesize url, attributes, extension;
@@ -129,7 +131,7 @@
 }
 
 - (LFileType) fileType
-{	
+{
 	LFileController * fc = [LFileController sharedInstance];
 	
 	LFileType fileType = [fc fileTypeForFile:self];
@@ -143,5 +145,15 @@
 	
 	searchAttributes = [[NSArray alloc] init];
 	[self searchAttributes];
+}
+
+- (NSArray *) playlists
+{
+	NSMutableArray * playlists = [NSMutableArray array];
+	for (LPlaylist * playlist in [[LPlaylistController sharedInstance] getPlaylists])
+	{
+		if ([[playlist allMembers] objectForKey:[self url]]) [playlists addObject:playlist];
+	}
+	return [NSArray arrayWithArray:playlists];
 }
 @end

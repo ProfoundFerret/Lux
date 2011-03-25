@@ -38,6 +38,8 @@
 
 - (NSDictionary *) dictionary;
 
+- (NSArray *) playlists;
+
 @property (readwrite, assign) NSURL * url;
 @property (readwrite, assign) NSMutableDictionary * attributes;
 @property (readwrite, assign, nonatomic) NSString * extension;
