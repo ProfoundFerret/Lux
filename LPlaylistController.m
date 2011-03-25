@@ -33,6 +33,7 @@
 	
 	playlists = [[aDecoder decodeObjectForKey:kPLAYLISTS] retain];
 	activePlaylist = [[aDecoder decodeObjectForKey:kACTIVE_PLAYLIST] retain];
+	visiblePlaylist = [[aDecoder decodeObjectForKey:kVISIBLE_PLAYLIST] retain];
 	
 	return [self retain];
 }
@@ -41,6 +42,7 @@
 {	
 	[aCoder encodeObject:playlists forKey:kPLAYLISTS];
 	[aCoder encodeObject:activePlaylist forKey:kACTIVE_PLAYLIST];
+	[aCoder encodeObject:visiblePlaylist forKey:kVISIBLE_PLAYLIST];
 }
 
 - (void) setupLibraryPlaylists
