@@ -76,8 +76,8 @@
 					<bool key="NSToolbarPrefersToBeShown">YES</bool>
 					<bool key="NSToolbarShowsBaselineSeparator">YES</bool>
 					<bool key="NSToolbarAllowsUserCustomization">YES</bool>
-					<bool key="NSToolbarAutosavesConfiguration">NO</bool>
-					<int key="NSToolbarDisplayMode">2</int>
+					<bool key="NSToolbarAutosavesConfiguration">YES</bool>
+					<int key="NSToolbarDisplayMode">1</int>
 					<int key="NSToolbarSizeMode">1</int>
 					<object class="NSMutableDictionary" key="NSToolbarIBIdentifiedItems">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -105,7 +105,7 @@
 								<object class="NSButton" key="NSToolbarItemView" id="840416794">
 									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
-									<string key="NSFrame">{{6, 14}, {49, 25}}</string>
+									<string key="NSFrame">{{2, 14}, {49, 25}}</string>
 									<reference key="NSSuperview"/>
 									<reference key="NSNextKeyView"/>
 									<bool key="NSEnabled">YES</bool>
