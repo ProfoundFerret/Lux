@@ -66,7 +66,7 @@
 {
 	if (item == nil)
 	{
-		return [[[controller playlists] allKeys] objectAtIndex:index];
+		return [[(NSDictionary *) [controller playlists] allKeys] objectAtIndex:index];
 	} else {
 		return [[controller getPlaylistsFromGroup:item] objectAtIndex:index];
 	}
