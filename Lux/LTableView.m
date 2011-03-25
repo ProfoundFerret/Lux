@@ -7,7 +7,9 @@
 //
 
 #import "LTableView.h"
-
+#import "LFileController.h"
+#import "LPlaylistController.h"
+#import "LGuiObject.h"
 
 @implementation LTableView
 
@@ -24,6 +26,16 @@
 - (void)dealloc
 {
     [super dealloc];
+}
+
+- (NSMenu *) menuForEvent: (NSEvent *) event
+{
+	if ([[self delegate] respondsToSelector:@selector(menuForEvent:)])
+	{
+		LGuiObject <NSTableViewDelegate> * delegate = [self delegate];
+		return [delegate menuForEvent: event];
+	}
+	return [LTableView defaultMenu];
 }
 
 @end
