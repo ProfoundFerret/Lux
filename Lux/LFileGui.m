@@ -98,6 +98,8 @@
 	NSIndexSet * indexSet = [visiblePlaylist selectedIndexSet];
 	[fileList selectRowIndexes:indexSet byExtendingSelection:NO];
 	[fileList scrollRowToVisible:[indexSet firstIndex]];
+	
+	[self updateTotalFiles];
 }
 
 - (void) setupColumns
@@ -111,6 +113,13 @@
 		[fileList addTableColumn:column];
 	}
 	[self showCorrectColumns];
+}
+
+- (void) updateTotalFiles
+{
+	NSInteger total = [visibleFiles count];
+	
+	[totalFiles setIntegerValue: total];
 }
 
 - (void) showCorrectColumns

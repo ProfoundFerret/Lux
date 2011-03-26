@@ -12,10 +12,12 @@
 
 @interface LFileGui : LGuiObject <NSTableViewDataSource, NSTableViewDelegate> {
     IBOutlet LTableView *fileList;
+	IBOutlet NSTextField * totalFiles;
 	
 	NSArray * visibleFiles;
 }
 - (void) showCorrectColumns;
 - (void) setupColumns;
+- (void) updateTotalFiles;
 @property (readwrite, assign) NSArray * visibleFiles;
 @end

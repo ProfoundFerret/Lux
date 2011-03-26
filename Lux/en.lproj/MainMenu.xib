@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">10J869</string>
+		<string key="IBDocument.SystemVersion">10J567</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1305</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.HIToolboxVersion">462.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">1305</string>
@@ -700,7 +700,7 @@
 															<string key="NSFrameSize">{545, 379}</string>
 															<reference key="NSSuperview" ref="126523728"/>
 															<reference key="NSWindow"/>
-															<reference key="NSNextKeyView" ref="205942786"/>
+															<reference key="NSNextKeyView" ref="277529028"/>
 															<bool key="NSEnabled">YES</bool>
 															<object class="NSTableHeaderView" key="NSHeaderView" id="141653823">
 																<reference key="NSNextResponder" ref="277529028"/>
@@ -843,7 +843,7 @@
 											<string key="NSFrameSize">{547, 397}</string>
 											<reference key="NSSuperview" ref="21983326"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="277529028"/>
+											<reference key="NSNextKeyView" ref="126523728"/>
 											<int key="NSsFlags">562</int>
 											<reference key="NSVScroller" ref="205942786"/>
 											<reference key="NSHScroller" ref="798217703"/>
@@ -896,10 +896,9 @@
 						<object class="NSTextField" id="249390720">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">289</int>
-							<string key="NSFrame">{{582, 8}, {73, 17}}</string>
+							<string key="NSFrame">{{582, 8}, {69, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="254724615">
 								<int key="NSCellFlags">605158976</int>
@@ -3071,14 +3070,6 @@
 					<int key="connectionID">613</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">totalFiles</string>
-						<reference key="source" ref="330436886"/>
-						<reference key="destination" ref="249390720"/>
-					</object>
-					<int key="connectionID">616</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">performFindPanelAction:</string>
 						<reference key="source" ref="1014"/>
@@ -3117,6 +3108,14 @@
 						<reference key="destination" ref="484207078"/>
 					</object>
 					<int key="connectionID">628</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">totalFiles</string>
+						<reference key="source" ref="438728345"/>
+						<reference key="destination" ref="249390720"/>
+					</object>
+					<int key="connectionID">631</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -4867,6 +4866,11 @@
 					<string>615.IBPluginDependency</string>
 					<string>617.IBPluginDependency</string>
 					<string>618.IBPluginDependency</string>
+					<string>619.IBPluginDependency</string>
+					<string>620.IBPluginDependency</string>
+					<string>621.IBPluginDependency</string>
+					<string>622.IBPluginDependency</string>
+					<string>623.IBPluginDependency</string>
 					<string>629.IBPluginDependency</string>
 					<string>630.IBPluginDependency</string>
 					<string>72.IBPluginDependency</string>
@@ -5179,6 +5183,11 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
@@ -5218,7 +5227,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">630</int>
+			<int key="maxID">631</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5227,14 +5236,35 @@
 					<string key="className">LFileGui</string>
 					<string key="superclassName">LGuiObject</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">fileList</string>
-						<string key="NS.object.0">LTableView</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>fileList</string>
+							<string>totalFiles</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>LTableView</string>
+							<string>NSTextField</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">fileList</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">fileList</string>
-							<string key="candidateClassName">LTableView</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>fileList</string>
+							<string>totalFiles</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">fileList</string>
+								<string key="candidateClassName">LTableView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">totalFiles</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -5261,7 +5291,6 @@
 							<string>playPauseButton</string>
 							<string>previousButton</string>
 							<string>progressSlider</string>
-							<string>totalFiles</string>
 							<string>volumeSlider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -5270,7 +5299,6 @@
 							<string>NSButton</string>
 							<string>NSButton</string>
 							<string>NSSlider</string>
-							<string>NSTextField</string>
 							<string>NSSlider</string>
 						</object>
 					</object>
@@ -5282,7 +5310,6 @@
 							<string>playPauseButton</string>
 							<string>previousButton</string>
 							<string>progressSlider</string>
-							<string>totalFiles</string>
 							<string>volumeSlider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -5302,10 +5329,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">progressSlider</string>
 								<string key="candidateClassName">NSSlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">totalFiles</string>
-								<string key="candidateClassName">NSTextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">volumeSlider</string>

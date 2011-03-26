@@ -15,12 +15,10 @@
 	IBOutlet NSButton * previousButton;
 	IBOutlet NSSlider * volumeSlider;
 	IBOutlet NSSlider * progressSlider;
-    IBOutlet NSTextField *totalFiles;
 
 }
 - (void) changeProgress;
 - (void) changeVolume;
 - (void) updateTime;
-@property (nonatomic, retain) IBOutlet NSTextField *totalFiles;
 
 @end
