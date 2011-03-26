@@ -121,13 +121,13 @@
 										</object>
 										<reference key="NSControlView" ref="840416794"/>
 										<int key="NSButtonFlags">-2033958657</int>
-										<int key="NSButtonFlags2">160</int>
+										<int key="NSButtonFlags2">402653344</int>
 										<object class="NSCustomResource" key="NSNormalImage" id="142395379">
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">Backward</string>
 										</object>
 										<string key="NSAlternateContents"/>
-										<string key="NSKeyEquivalent"/>
+										<string key="NSKeyEquivalent"></string>
 										<int key="NSPeriodicDelay">400</int>
 										<int key="NSPeriodicInterval">75</int>
 									</object>
@@ -347,7 +347,7 @@
 											<string key="NSResourceName">Play</string>
 										</object>
 										<string key="NSAlternateContents"/>
-										<string key="NSKeyEquivalent"/>
+										<string type="base64-UTF8" key="NSKeyEquivalent">IA</string>
 										<int key="NSPeriodicDelay">400</int>
 										<int key="NSPeriodicInterval">75</int>
 									</object>
@@ -384,13 +384,13 @@
 										<reference key="NSSupport" ref="1007137894"/>
 										<reference key="NSControlView" ref="140128653"/>
 										<int key="NSButtonFlags">-2033958657</int>
-										<int key="NSButtonFlags2">160</int>
+										<int key="NSButtonFlags2">402653344</int>
 										<object class="NSCustomResource" key="NSNormalImage" id="22930150">
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">Forward</string>
 										</object>
 										<string key="NSAlternateContents"/>
-										<string key="NSKeyEquivalent"/>
+										<string key="NSKeyEquivalent"></string>
 										<int key="NSPeriodicDelay">400</int>
 										<int key="NSPeriodicInterval">75</int>
 									</object>
@@ -894,13 +894,13 @@
 								<reference key="NSSupport" ref="1007137894"/>
 								<reference key="NSControlView" ref="850210573"/>
 								<int key="NSButtonFlags">-2033958657</int>
-								<int key="NSButtonFlags2">163</int>
+								<int key="NSButtonFlags2">268435619</int>
 								<object class="NSCustomResource" key="NSNormalImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">NSAddTemplate</string>
 								</object>
 								<string key="NSAlternateContents"/>
-								<string key="NSKeyEquivalent"/>
+								<string key="NSKeyEquivalent">n</string>
 								<int key="NSPeriodicDelay">400</int>
 								<int key="NSPeriodicInterval">75</int>
 							</object>
@@ -1090,7 +1090,7 @@
 								<bool key="EncodedWithXMLCoder">YES</bool>
 								<object class="NSMenuItem" id="705341025">
 									<reference key="NSMenu" ref="720053764"/>
-									<string key="NSTitle">New</string>
+									<string key="NSTitle">New Playlist</string>
 									<string key="NSKeyEquiv">n</string>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
@@ -5374,17 +5374,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">LuxAppDelegate</string>
 					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">updateDockMenu:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">updateDockMenu:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">updateDockMenu:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">window</string>
 						<string key="NS.object.0">NSWindow</string>
