@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface LuxAppDelegate : NSObject <NSApplicationDelegate> {
-@private
+
 	NSWindow *window;
 }
 

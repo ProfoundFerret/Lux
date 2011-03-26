@@ -12,7 +12,7 @@
 
 @interface LFileGui : LGuiObject <NSTableViewDataSource, NSTableViewDelegate> {
     IBOutlet LTableView *fileList;
-	IBOutlet NSTextField * totalFiles;
+	IBOutlet NSTextField *totalFiles;
 	
 	NSArray * visibleFiles;
 }

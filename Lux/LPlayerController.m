@@ -211,4 +211,38 @@
 {
 	[self playFile:[menuItem representedObject]];
 }
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+    return [menuItem isEnabled];
+}
+
+- (NSMenu *) dockMenu {
+	NSMenu * dynamicMenu = [[NSMenu alloc] init];
+	
+	NSMenuItem *playPauseOrStart = [[[NSMenuItem alloc] init] autorelease];
+	if (isPlaying)
+	{
+		[playPauseOrStart setTitle:@"Pause"];
+	} else {
+		[playPauseOrStart setTitle:@"Play"];
+	}
+	[playPauseOrStart setTarget:self];
+	[playPauseOrStart setAction:@selector(playPauseOrStartPlaying)];
+	[dynamicMenu addItem:playPauseOrStart];
+	
+	NSMenuItem *nextTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
+	[nextTrackDockMenu setTitle:@"Next Track"];
+	[nextTrackDockMenu setTarget:self];
+	[nextTrackDockMenu setAction:@selector(playNextFile)];
+	[dynamicMenu addItem:nextTrackDockMenu];
+	
+	NSMenuItem *previousTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
+	[previousTrackDockMenu setTitle:@"Previous Track"];
+	[previousTrackDockMenu setTarget:self];
+	[previousTrackDockMenu setAction:@selector(playPreviousFile)];
+	[dynamicMenu addItem:previousTrackDockMenu];
+	
+	return dynamicMenu;
+}
+
 @end

@@ -36,10 +36,12 @@
 - (int) curTime;
 - (int) totalTime;
 - (void) playMenuItem: (NSMenuItem *) menuItem;
+- (NSMenu *) dockMenu;
 
 - (NSArray *) extensions;
 
 - (void) _playFile: (LFile *) file;
+
 
 @property (readonly) LExtension <LPlayerDelegate> * player;
 @end

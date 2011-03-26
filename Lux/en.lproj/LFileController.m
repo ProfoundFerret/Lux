@@ -142,6 +142,7 @@
 	[finder setTitle:kSHOW_IN_FINDER_TEXT];
 	[finder setAction: @selector(showInFinder:)];
 	[finder setTarget: self];
+
 	[finder setRepresentedObject:menuFiles];
 	[menu addItem:finder];
 	
