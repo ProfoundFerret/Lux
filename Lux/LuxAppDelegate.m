@@ -8,6 +8,7 @@
 
 #import "LuxAppDelegate.h"
 #import "Lux.h"
+#import "LPlayerController.h"
 
 @implementation LuxAppDelegate
 
@@ -26,12 +27,22 @@
 	}
 	
 	[[Lux sharedInstance] setup];
+    
+    [[[Lux sharedInstance] playerController] setupTheDockMenu];
+
+        
 	return self;
 }
 
 - (void) applicationWillTerminate:(NSNotification *)notification
 {
 	[[[Lux sharedInstance] ioController] _save];
+}
+
+
+- (NSMenu *)applicationDockMenu:(NSApplication *)sender
+{
+    return [[[Lux sharedInstance] playerController] returnTheDockMenu];
 }
 
 @end

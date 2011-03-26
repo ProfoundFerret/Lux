@@ -127,10 +127,13 @@
 	[play setTitle:kPLAY_TEXT];
 	[play setTarget:[LPlayerController sharedInstance]];
 	[play setRepresentedObject:[menuFiles objectAtIndex:0]];
-	[play setAction:@selector(playMenuitem:)];
+	[play setAction:@selector(playMenuItem:)];
 	[menu addItem:play];
 	
-	NSMenuItem * finder = [[[NSMenuItem alloc] initWithTitle:kSHOW_IN_FINDER_TEXT action:@selector(showInFinder:) keyEquivalent:@""] autorelease];
+//	NSMenuItem * finder = [[[NSMenuItem alloc] initWithTitle:kSHOW_IN_FINDER_TEXT action:@selector(showInFinder:) keyEquivalent:@""] autorelease];
+    NSMenuItem * finder = [[[NSMenuItem alloc] init] autorelease];
+    [finder setTitle:kSHOW_IN_FINDER_TEXT];
+    [finder setAction:@selector(showInFinder:)];
 	[finder setEnabled:YES];
 	[finder setRepresentedObject:menuFiles];
 	[menu addItem:finder];

@@ -19,6 +19,9 @@
 @interface LPlayerController : LControllerObject {
 	LExtension <LPlayerDelegate> * player;
 	BOOL isPlaying;
+    
+    NSMenu *dynamicMenu;
+    NSMenuItem *dynamicItem;
 }
 - (void) playFile: (LFile *) file;
 - (void) playPauseOrStartPlaying;
@@ -36,10 +39,13 @@
 - (int) curTime;
 - (int) totalTime;
 - (void) playMenuItem: (NSMenuItem *) menuItem;
+- (void) setupTheDockMenu;
+- (NSMenu *) returnTheDockMenu;
 
 - (NSArray *) extensions;
 
 - (void) _playFile: (LFile *) file;
+
 
 @property (readonly) LExtension <LPlayerDelegate> * player;
 @end

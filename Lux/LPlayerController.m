@@ -211,4 +211,51 @@
 {
 	[self playFile:[menuItem representedObject]];
 }
+
+- (void) setupTheDockMenu
+{
+	NSLog(@"setting up the Dock Menu...");
+    // If dynamicMenu is nil, instantiate it
+    if (dynamicMenu == nil)
+    {
+        dynamicMenu = [[NSMenu alloc] init];
+        
+        NSMenuItem *aboutDockMenu = [[[NSMenuItem alloc] init] autorelease];
+        [aboutDockMenu setTitle:@"About Lux..."];
+        [aboutDockMenu setAction:@selector(orderFrontStandardAboutPanel:)];
+        [dynamicMenu addItem:aboutDockMenu];
+        
+        NSMenuItem *playPauseOrStart = [[[NSMenuItem alloc] init] autorelease];
+        [playPauseOrStart setTitle:@"Play / Pause"];
+        [playPauseOrStart setTarget:[LPlayerController sharedInstance]];
+        [playPauseOrStart setAction:@selector(playPauseOrStartPlaying)];
+        [dynamicMenu addItem:playPauseOrStart];
+
+        NSMenuItem *previousTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
+        [previousTrackDockMenu setTitle:@"<<  Previous Track"];
+        [previousTrackDockMenu setTarget:[LPlayerController sharedInstance]];
+        [previousTrackDockMenu setAction:@selector(playPreviousFile)];
+        [dynamicMenu addItem:previousTrackDockMenu];
+
+        NSMenuItem *nextTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
+        [nextTrackDockMenu setTitle:@"    Next Track  >>"];
+        [nextTrackDockMenu setTarget:[LPlayerController sharedInstance]];
+        [nextTrackDockMenu setAction:@selector(playNextFile)];
+        [dynamicMenu addItem:nextTrackDockMenu];
+
+    } else {
+        [dynamicItem setTitle:@"Enjoy Lux !"];
+    }
+
+
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+    return [menuItem isEnabled];
+}
+
+- (NSMenu *) returnTheDockMenu {
+    return dynamicMenu;
+}
+
 @end
