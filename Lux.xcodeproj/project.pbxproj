@@ -106,8 +106,6 @@
 		7C772135133D355E0078411C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		7CF940FB1326EF92004526D0 /* LFileGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFileGui.h; sourceTree = "<group>"; };
 		7CF940FC1326EF92004526D0 /* LFileGui.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFileGui.m; sourceTree = "<group>"; };
-		D98C3E29133D3FFD0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = /Users/adrienmacpro/Desktop/Lux/Lux/fr.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
-		D98C3E2A133D3FFD0010DF04 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = /Users/adrienmacpro/Desktop/Lux/Lux/fr.lproj/Credits.rtf; sourceTree = "<absolute>"; };
 		D98C3E2D133D4C100010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/LPlaylist.m; sourceTree = "<group>"; };
 		D98C3E30133D4C820010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/LPlaylistController.h; sourceTree = "<group>"; };
 		D98C3E33133D4D430010DF04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/LPlaylist.h; sourceTree = "<group>"; };
@@ -429,7 +427,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				7C5FE0BE13258F0D0008B7DC /* en */,
-				D98C3E29133D3FFD0010DF04 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -438,7 +435,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				7C5FE0C413258F0D0008B7DC /* en */,
-				D98C3E2A133D3FFD0010DF04 /* fr */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
