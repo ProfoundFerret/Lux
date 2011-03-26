@@ -13,6 +13,8 @@
 #import "LPlaylistController.h"
 
 #define controller [LFileController sharedInstance]
+#define kFILES_COUNT_TEXT @"%d Files";
+#define kFILE_COUNT_TEXT @"%d File";
 
 @implementation LFileGui
 @synthesize visibleFiles;
@@ -119,7 +121,15 @@
 {
 	NSInteger total = [visibleFiles count];
 	
-	[totalFiles setIntegerValue: total];
+	NSString * files;
+	if (total == 1)
+	{
+		files = kFILE_COUNT_TEXT;
+	} else { 
+		files = kFILES_COUNT_TEXT;
+	}
+	
+	[totalFiles setStringValue:[NSString stringWithFormat:files, total]]; 
 }
 
 - (void) showCorrectColumns
