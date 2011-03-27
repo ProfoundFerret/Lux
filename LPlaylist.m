@@ -226,6 +226,11 @@
 	return playlist;
 }
 
+- (void) addFilesByMenuItem: (NSMenuItem *) menuItem
+{
+	[self addFiles: [menuItem representedObject]];
+}
+
 - (void) addFiles: (NSArray *) newMembers
 {
 	for (LFile * file in newMembers)
@@ -234,15 +239,24 @@
 	}
 }
 
-- (void) addFilesByMenuItem: (NSMenuItem *) menuItem
-{
-	[self addFiles: [menuItem representedObject]];
-}
-
 - (void) addFile: (LFile *) file
 {
 	NSArray * files = [NSArray arrayWithObject:file];
 	[self addFiles: files];
+}
+
+- (void) removeFiles: (NSArray *) newMembers
+{
+	for (LFile * file in newMembers)
+	{
+		[members removeObjectForKey:[file url]];
+	}
+}
+
+- (void) removeFile: (LFile *) file
+{
+	NSArray * files = [NSArray arrayWithObject:file];
+	[self removeFiles: files];
 }
 
 - (void) setTitle: (NSString *) newTitle

@@ -52,6 +52,8 @@
 
 - (void) addFiles: (NSArray *) members;
 - (void) addFile: (LFile *) file;
+- (void) removeFiles: (NSArray *) members;
+- (void) removeFile: (LFile *) file;
 
 - (void) setSearch:(NSString *) aSearch;
 
