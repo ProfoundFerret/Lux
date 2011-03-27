@@ -48,13 +48,14 @@
 - (void) setupLibraryPlaylists
 {
 	playlists = [[NSMutableDictionary alloc] init];
-	[self getPlaylists];
 	NSMutableArray * library = [self getPlaylistsFromGroup:kLIBRARY];
 	[library removeAllObjects];
 	
 	[library addObject:[LPlaylist musicPlaylist]];
 	[library addObject:[LPlaylist videoPlaylist]];
 	[library addObject:[LPlaylist streamingPlaylist]];
+	
+	[self getPlaylists];
 }
 
 - (void) addPlaylist: (LPlaylist *) playlist
