@@ -153,14 +153,14 @@
 	
 	[menu addItem:[NSMenuItem separatorItem]];
 
-	NSMenuItem * addToPlaylist = [[NSMenuItem alloc] init];
+	NSMenuItem * addToPlaylist = [[[NSMenuItem alloc] init] autorelease];
 	[addToPlaylist setTitle: kADD_TO_PLAYLIST_TEXT];
 	NSMenu * addToPlaylistMenu = [[[NSMenu alloc] init] autorelease];
 	[addToPlaylistMenu setAutoenablesItems:NO];
 	[addToPlaylist setSubmenu: addToPlaylistMenu];
 	[menu addItem: addToPlaylist];
 	
-	NSMenuItem * addToNewPlaylist = [[NSMenuItem alloc] init];
+	NSMenuItem * addToNewPlaylist = [[[NSMenuItem alloc] init] autorelease];
 	[addToPlaylistMenu addItem:addToNewPlaylist];
 	[addToNewPlaylist setTitle:kNEW_PLAYLIST];
 	[addToNewPlaylist setTarget:[LPlaylistController sharedInstance]];
@@ -173,7 +173,7 @@
 	}	
 	for (LPlaylist * playlist in addToPlaylists)
 	{
-		NSMenuItem * playlistMenuItem = [[NSMenuItem alloc] init];
+		NSMenuItem * playlistMenuItem = [[[NSMenuItem alloc] init] autorelease];
 		[playlistMenuItem setTitle: [playlist title]];
 		[playlistMenuItem setTarget:playlist];
 		[playlistMenuItem setAction:@selector(addFilesByMenuItem:)];
@@ -182,7 +182,7 @@
 		[addToPlaylistMenu addItem:playlistMenuItem];
 	}
 	
-	NSMenuItem * deleteFromPlaylist = [[NSMenuItem alloc] init];
+	NSMenuItem * deleteFromPlaylist = [[[NSMenuItem alloc] init] autorelease];
 	[menu addItem:deleteFromPlaylist];
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	NSString * deleteFromPlaylistText = [NSString stringWithFormat:@"%@ \"%@\"", kDELETE_FROM_TEXT, [visiblePlaylist title]];
