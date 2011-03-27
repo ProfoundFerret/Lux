@@ -121,7 +121,7 @@
 {
     
     [GrowlApplicationBridge notifyWithTitle:@"Lux - Playing :"
-                                description:[NSString stringWithFormat:@"%@  -  %@\n%@\n%@",[[file attributes] objectForKey:kTITLE],[[file attributes] objectForKey:kARTIST],[[file attributes] objectForKey:kALBUM]]
+                                description:[NSString stringWithFormat:@"%@  -  %@\n%@\n%@",[[file attributes] objectForKey:kTITLE],[[file attributes] objectForKey:kARTIST],[[file attributes] objectForKey:kALBUM],[[file attributes] objectForKey:kRATING]]
                            notificationName:@"Basic"
                                    iconData:nil
                                    priority:0
