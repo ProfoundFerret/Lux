@@ -18,6 +18,13 @@
 
 #define kRECENT_FILES @"recentFiles"
 
+#define kPLAY_TEXT @"Play"
+#define kPAUSE_TEXT @"Pause"
+#define kNEXT_TEXT @"Next"
+#define kPREVIOUS_TEXT @"Previous"
+
+#define kMAX_RECENT_FILES 10
+
 @interface LPlayerController : LControllerObject {
 	LExtension <LPlayerDelegate> * player;
 	BOOL isPlaying;

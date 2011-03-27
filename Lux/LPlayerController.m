@@ -12,8 +12,6 @@
 #import "LPlaylistController.h"
 #import "Lux.h"
 
-#define kMAX_RECENT_FILES 10
-
 @implementation LPlayerController
 @synthesize player, recentFiles;
 - (id)init
@@ -236,27 +234,27 @@
 }
 
 - (NSMenu *) dockMenu {
-	NSMenu * dynamicMenu = [[NSMenu alloc] init];
+	NSMenu * dynamicMenu = [[[NSMenu alloc] init] autorelease];
 	
 	NSMenuItem *playPauseOrStart = [[[NSMenuItem alloc] init] autorelease];
 	if (isPlaying)
 	{
-		[playPauseOrStart setTitle:@"Pause"];
+		[playPauseOrStart setTitle:kPAUSE_TEXT];
 	} else {
-		[playPauseOrStart setTitle:@"Play"];
+		[playPauseOrStart setTitle:kPLAY_TEXT];
 	}
 	[playPauseOrStart setTarget:self];
 	[playPauseOrStart setAction:@selector(playPauseOrStartPlaying)];
 	[dynamicMenu addItem:playPauseOrStart];
 	
 	NSMenuItem *nextTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
-	[nextTrackDockMenu setTitle:@"Next Track"];
+	[nextTrackDockMenu setTitle:kNEXT_TEXT];
 	[nextTrackDockMenu setTarget:self];
 	[nextTrackDockMenu setAction:@selector(playNextFile)];
 	[dynamicMenu addItem:nextTrackDockMenu];
 	
 	NSMenuItem *previousTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
-	[previousTrackDockMenu setTitle:@"Previous Track"];
+	[previousTrackDockMenu setTitle:kPREVIOUS_TEXT];
 	[previousTrackDockMenu setTarget:self];
 	[previousTrackDockMenu setAction:@selector(playPreviousFile)];
 	[dynamicMenu addItem:previousTrackDockMenu];
