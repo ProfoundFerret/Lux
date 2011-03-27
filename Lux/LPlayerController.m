@@ -82,6 +82,7 @@
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:kPLAY_NOTIFICATION object:nil];
 		
+		[recentFiles removeObject:file];
 		if ([recentFiles count] > kMAX_RECENT_FILES) [recentFiles removeObjectAtIndex:0];
 		[recentFiles addObject:file];
 		
@@ -234,7 +235,7 @@
 }
 
 - (NSMenu *) dockMenu {
-	NSMenu * dynamicMenu = [[[NSMenu alloc] init] autorelease];
+	NSMenu * dockMenu = [[[NSMenu alloc] init] autorelease];
 	
 	NSMenuItem *playPauseOrStart = [[[NSMenuItem alloc] init] autorelease];
 	if (isPlaying)
@@ -245,21 +246,41 @@
 	}
 	[playPauseOrStart setTarget:self];
 	[playPauseOrStart setAction:@selector(playPauseOrStartPlaying)];
-	[dynamicMenu addItem:playPauseOrStart];
+	[dockMenu addItem:playPauseOrStart];
 	
 	NSMenuItem *nextTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
 	[nextTrackDockMenu setTitle:kNEXT_TEXT];
 	[nextTrackDockMenu setTarget:self];
 	[nextTrackDockMenu setAction:@selector(playNextFile)];
-	[dynamicMenu addItem:nextTrackDockMenu];
+	[dockMenu addItem:nextTrackDockMenu];
 	
 	NSMenuItem *previousTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
 	[previousTrackDockMenu setTitle:kPREVIOUS_TEXT];
 	[previousTrackDockMenu setTarget:self];
 	[previousTrackDockMenu setAction:@selector(playPreviousFile)];
-	[dynamicMenu addItem:previousTrackDockMenu];
+	[dockMenu addItem:previousTrackDockMenu];
 	
-	return dynamicMenu;
+	if ([recentFiles count] > 1)
+	{
+		NSMenuItem *playRecent = [[[NSMenuItem alloc] init] autorelease];
+		[playRecent setTitle:kPLAY_RECENT_TEXT];
+		[dockMenu addItem:playRecent];
+		NSMenu * recentFileMenu = [[[NSMenu alloc] init] autorelease];
+		[playRecent setSubmenu:recentFileMenu];
+		
+		for (NSInteger i = [recentFiles count] - 2; i >= 0; i--) // Subtract 2 because: index starts at 0 AND exclude the current song
+		{
+			LFile * file = [recentFiles objectAtIndex:i];
+			NSMenuItem * fileMenuItem = [[[NSMenuItem alloc] init] autorelease];
+			[fileMenuItem setTitle:[[file attributes] objectForKey:kTITLE]];
+			[fileMenuItem setTarget:self];
+			[fileMenuItem setAction:@selector(playMenuItem:)];
+			[fileMenuItem setRepresentedObject:file];
+			[recentFileMenu addItem:fileMenuItem];	
+		}
+	}
+	
+	return dockMenu;
 }
 
 @end

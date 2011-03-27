@@ -22,6 +22,7 @@
 #define kPAUSE_TEXT @"Pause"
 #define kNEXT_TEXT @"Next"
 #define kPREVIOUS_TEXT @"Previous"
+#define kPLAY_RECENT_TEXT @"Play Recent"
 
 #define kMAX_RECENT_FILES 10
 
