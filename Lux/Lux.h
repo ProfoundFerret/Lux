@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "LSingleton.h"
 
+#import "LuxAppDelegate.h"
+
 #import "LExtensionController.h"
 #import "LInputOutputController.h"
 #import "LFileController.h"

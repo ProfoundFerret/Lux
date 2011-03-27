@@ -50,16 +50,8 @@
 	if (growlBundle && [growlBundle load]) {
 		// Register ourselves as a Growl delegate
 		[GrowlApplicationBridge setGrowlDelegate:self];
-        
-        [GrowlApplicationBridge notifyWithTitle:@"Alert"
-                                    description:@"Hello!"
-                               notificationName:@"Basic"
-                                       iconData:nil
-                                       priority:2
-                                       isSticky:NO
-                                   clickContext:[NSDate date]];
-        
-        NSLog(@"i am here");
+            
+        NSLog(@"Growl registered and ready to go !");
 	}
 	else {
 		NSLog(@"ERROR: Could not load Growl.framework");

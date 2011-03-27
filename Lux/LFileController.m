@@ -119,6 +119,14 @@
 }
 - (void) fileStartedPlaying: (LFile *)file
 {
+    
+    [GrowlApplicationBridge notifyWithTitle:@"Lux - Playing :"
+                                description:[NSString stringWithFormat:@"%@  -  %@\n%@\n%@",[[file attributes] objectForKey:kTITLE],[[file attributes] objectForKey:kARTIST],[[file attributes] objectForKey:kALBUM]]
+                           notificationName:@"Basic"
+                                   iconData:nil
+                                   priority:0
+                                   isSticky:NO
+                               clickContext:nil];
 
 }
 
