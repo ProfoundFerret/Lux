@@ -55,9 +55,10 @@
 - (void) removeFiles: (NSArray *) members;
 - (void) removeFile: (LFile *) file;
 
-- (void) setSearch:(NSString *) aSearch;
-
 - (void) addFilesByMenuItem: (NSMenuItem *) menuItem;
+- (void) removeFilesByMenuItem: (NSMenuItem *) menuItem;
+
+- (void) setSearch:(NSString *) aSearch;
 
 + (LPlaylist *) musicPlaylist;
 + (LPlaylist *) videoPlaylist;

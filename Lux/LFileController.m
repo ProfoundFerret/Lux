@@ -14,6 +14,7 @@
 #define kSHOW_IN_FINDER_TEXT @"Show In Finder"
 #define kADD_TO_PLAYLIST_TEXT @"Add To Playlist"
 #define kNEW_PLAYLIST @"New Playlist"
+#define kDELETE_FROM_TEXT @"Delete From"
 
 @implementation LFileController
 @synthesize activeFile;
@@ -130,6 +131,7 @@
 	} else {
 		addToPlaylists = [[LPlaylistController sharedInstance] getPlaylists];
 	}
+	
 	NSMenu * menu = [[[NSMenu alloc] init] autorelease];
 	[menu setAutoenablesItems:NO];
 	
@@ -168,18 +170,26 @@
 	if ([addToPlaylists count])
 	{
 		[addToPlaylistMenu addItem:[NSMenuItem separatorItem]];
-	
-		for (LPlaylist * playlist in addToPlaylists)
-		{
-			NSMenuItem * playlistMenuItem = [[NSMenuItem alloc] init];
-			[playlistMenuItem setTitle: [playlist title]];
-			[playlistMenuItem setTarget:playlist];
-			[playlistMenuItem setAction:@selector(addFilesByMenuItem:)];
-			[playlistMenuItem setRepresentedObject:menuFiles];
-			
-			[addToPlaylistMenu addItem:playlistMenuItem];
-		}
+	}	
+	for (LPlaylist * playlist in addToPlaylists)
+	{
+		NSMenuItem * playlistMenuItem = [[NSMenuItem alloc] init];
+		[playlistMenuItem setTitle: [playlist title]];
+		[playlistMenuItem setTarget:playlist];
+		[playlistMenuItem setAction:@selector(addFilesByMenuItem:)];
+		[playlistMenuItem setRepresentedObject:menuFiles];
+		
+		[addToPlaylistMenu addItem:playlistMenuItem];
 	}
+	
+	NSMenuItem * deleteFromPlaylist = [[NSMenuItem alloc] init];
+	[menu addItem:deleteFromPlaylist];
+	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+	NSString * deleteFromPlaylistText = [NSString stringWithFormat:@"%@ \"%@\"", kDELETE_FROM_TEXT, [visiblePlaylist title]];
+	[deleteFromPlaylist setTitle:deleteFromPlaylistText];
+	[deleteFromPlaylist setTarget:visiblePlaylist];
+	[deleteFromPlaylist setAction:@selector(removeFilesByMenuItem:)];
+	[deleteFromPlaylist setRepresentedObject:menuFiles];
 	
 	return menu;
 }

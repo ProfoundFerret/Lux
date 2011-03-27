@@ -237,6 +237,8 @@
 	{
 		[members setObject: file forKey: [file url]];
 	}
+	
+	[[Lux sharedInstance] reloadData];
 }
 
 - (void) addFile: (LFile *) file
@@ -251,12 +253,20 @@
 	{
 		[members removeObjectForKey:[file url]];
 	}
+	
+	[[Lux sharedInstance] reloadData];
 }
 
 - (void) removeFile: (LFile *) file
 {
 	NSArray * files = [NSArray arrayWithObject:file];
 	[self removeFiles: files];
+}
+
+- (void) removeFilesByMenuItem: (NSMenuItem *) menuItem
+{
+	NSArray * files = [menuItem representedObject];
+	[self removeFiles:files];
 }
 
 - (void) setTitle: (NSString *) newTitle
