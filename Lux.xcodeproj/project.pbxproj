@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A2E601C133FC21200DFA2D7 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2E601B133FC21200DFA2D7 /* Growl.framework */; };
+		7A2E601D133FD1DD00DFA2D7 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A2E601B133FC21200DFA2D7 /* Growl.framework */; };
 		7A89531D133F7BAB004F7FA6 /* Growl License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7A89531B133F7BAB004F7FA6 /* Growl License.txt */; };
 		7A89531E133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 7A89531C133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict */; };
 		7A895376133FBC60004F7FA6 /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A895375133FBC60004F7FA6 /* OSAKit.framework */; };
@@ -55,6 +56,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7A2E601D133FD1DD00DFA2D7 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
