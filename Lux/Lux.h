@@ -31,9 +31,11 @@
 	LPlaylistController * playlistController;
 	LPlayerController * playerController;
 }
+
 - (void) setup;
 - (void) reloadData;
 - (void) registerUserDefaults;
+
 @property (readonly) LExtensionController * extensionController;
 @property (readonly) LInputOutputController * ioController;
 @property (readonly) LFileController * fileController;
