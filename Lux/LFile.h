@@ -39,6 +39,7 @@
 - (NSDictionary *) dictionary;
 
 - (NSArray *) playlists;
+- (NSArray *) notPlaylists;
 
 @property (readwrite, assign) NSURL * url;
 @property (readwrite, assign) NSMutableDictionary * attributes;

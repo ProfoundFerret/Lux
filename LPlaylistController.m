@@ -48,7 +48,7 @@
 - (void) setupLibraryPlaylists
 {
 	playlists = [[NSMutableDictionary alloc] init];
-	
+	[self getPlaylists];
 	NSMutableArray * library = [self getPlaylistsFromGroup:kLIBRARY];
 	[library removeAllObjects];
 	
@@ -125,6 +125,15 @@
 - (void) searchChangedTo: (NSString *) search
 {
 	[[self visiblePlaylist] setSearch:search];
+	[[Lux sharedInstance] reloadData];
+}
+
+- (void) addFilesToNewPlaylistByMenuItem: (NSMenuItem *) menuItem
+{
+	LPlaylist * newPlaylist = [[LPlaylist alloc] init];
+	[newPlaylist addFiles: [menuItem representedObject]];
+	
+	[self addPlaylist:newPlaylist];
 	[[Lux sharedInstance] reloadData];
 }
 

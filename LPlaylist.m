@@ -7,7 +7,6 @@
 //
 
 #import "LPlaylist.h"
-#import "LFile.h"
 #import "LExtension.h"
 #import "LFileController.h"
 #import "LExtension.h"
@@ -225,6 +224,25 @@
 	[playlist setWrite:NO];
 	
 	return playlist;
+}
+
+- (void) addFiles: (NSArray *) newMembers
+{
+	for (LFile * file in newMembers)
+	{
+		[members setObject: file forKey: [file url]];
+	}
+}
+
+- (void) addFilesByMenuItem: (NSMenuItem *) menuItem
+{
+	[self addFiles: [menuItem representedObject]];
+}
+
+- (void) addFile: (LFile *) file
+{
+	NSArray * files = [NSArray arrayWithObject:file];
+	[self addFiles: files];
 }
 
 - (void) setTitle: (NSString *) newTitle

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LStoredObject.h"
+#import "LFile.h"
 
 #define kMEMBERS @"members"
 #define kPLAYLIST_TITLE @"playlistTitle"
@@ -49,7 +50,12 @@
 - (NSDictionary *) members;
 - (NSDictionary *) allMembers;
 
+- (void) addFiles: (NSArray *) members;
+- (void) addFile: (LFile *) file;
+
 - (void) setSearch:(NSString *) aSearch;
+
+- (void) addFilesByMenuItem: (NSMenuItem *) menuItem;
 
 + (LPlaylist *) musicPlaylist;
 + (LPlaylist *) videoPlaylist;

@@ -34,6 +34,8 @@
 
 - (void) searchChangedTo: (NSString *) search;
 
+- (void) addFilesToNewPlaylistByMenuItem: (NSMenuItem *) menuItem;
+
 @property (readwrite, assign) NSMutableDictionary * playlists;
 @property (readwrite, assign, nonatomic) LPlaylist * activePlaylist;
 @property (readwrite, assign, nonatomic) LPlaylist * visiblePlaylist;

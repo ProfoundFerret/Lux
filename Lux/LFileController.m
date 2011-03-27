@@ -7,10 +7,13 @@
 //
 
 #import "LFileController.h"
+#import	"LPlaylistController.h"
 #import "Lux.h"
 
 #define kPLAY_TEXT @"Play"
 #define kSHOW_IN_FINDER_TEXT @"Show In Finder"
+#define kADD_TO_PLAYLIST_TEXT @"Add To Playlist"
+#define kNEW_PLAYLIST @"New Playlist"
 
 @implementation LFileController
 @synthesize activeFile;
@@ -120,31 +123,63 @@
 
 - (NSMenu *) menuForFiles: (NSArray *) menuFiles
 {
+	NSArray * addToPlaylists;
+	if ([menuFiles count] == 1)
+	{
+		addToPlaylists = [[menuFiles objectAtIndex:0] notPlaylists];
+	} else {
+		addToPlaylists = [[LPlaylistController sharedInstance] getPlaylists];
+	}
 	NSMenu * menu = [[[NSMenu alloc] init] autorelease];
 	[menu setAutoenablesItems:NO];
 	
 	NSMenuItem * play = [[[NSMenuItem alloc] init] autorelease];
-	NSString * title = [[[menuFiles objectAtIndex:0] attributes] objectForKey:kTITLE];
+	[menu addItem:play];
+	NSString * title = [(NSDictionary *) [[menuFiles objectAtIndex:0] attributes] objectForKey:kTITLE];
 	NSString * playText = [NSString stringWithFormat:@"%@ \"%@\"", kPLAY_TEXT, title];
 	[play setTitle:playText];
 	[play setTarget:[LPlayerController sharedInstance]];
 	[play setRepresentedObject:[menuFiles objectAtIndex:0]];
 	[play setAction:@selector(playMenuItem:)];
-	[menu addItem:play];
-	
-	//[menu addItem:[NSMenuItem separatorItem]];
-	
-	//NSMenuItem * addToPlaylist = [[NSMenuItem alloc] init];
-	
-	[menu addItem:[NSMenuItem separatorItem]];
 	
 	NSMenuItem * finder = [[[NSMenuItem alloc] init] autorelease];
-	[finder setTitle:kSHOW_IN_FINDER_TEXT];
-	[finder setAction: @selector(showInFinder:)];
-	[finder setTarget: self];
-
-	[finder setRepresentedObject:menuFiles];
 	[menu addItem:finder];
+	[finder setTitle:kSHOW_IN_FINDER_TEXT];
+	[finder setTarget: self];
+	[finder setAction: @selector(showInFinder:)];
+	[finder setRepresentedObject:menuFiles];
+	
+	[menu addItem:[NSMenuItem separatorItem]];
+
+	NSMenuItem * addToPlaylist = [[NSMenuItem alloc] init];
+	[addToPlaylist setTitle: kADD_TO_PLAYLIST_TEXT];
+	NSMenu * addToPlaylistMenu = [[[NSMenu alloc] init] autorelease];
+	[addToPlaylistMenu setAutoenablesItems:NO];
+	[addToPlaylist setSubmenu: addToPlaylistMenu];
+	[menu addItem: addToPlaylist];
+	
+	NSMenuItem * addToNewPlaylist = [[NSMenuItem alloc] init];
+	[addToPlaylistMenu addItem:addToNewPlaylist];
+	[addToNewPlaylist setTitle:kNEW_PLAYLIST];
+	[addToNewPlaylist setTarget:[LPlaylistController sharedInstance]];
+	[addToNewPlaylist setAction:@selector(addFilesToNewPlaylistByMenuItem:)];
+	[addToNewPlaylist setRepresentedObject:menuFiles];
+	
+	if ([addToPlaylists count])
+	{
+		[addToPlaylistMenu addItem:[NSMenuItem separatorItem]];
+	
+		for (LPlaylist * playlist in addToPlaylists)
+		{
+			NSMenuItem * playlistMenuItem = [[NSMenuItem alloc] init];
+			[playlistMenuItem setTitle: [playlist title]];
+			[playlistMenuItem setTarget:playlist];
+			[playlistMenuItem setAction:@selector(addFilesByMenuItem:)];
+			[playlistMenuItem setRepresentedObject:menuFiles];
+			
+			[addToPlaylistMenu addItem:playlistMenuItem];
+		}
+	}
 	
 	return menu;
 }

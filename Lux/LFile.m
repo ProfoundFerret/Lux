@@ -145,6 +145,8 @@
 	
 	searchAttributes = [[NSArray alloc] init];
 	[self searchAttributes];
+	
+	dictionary = nil;
 }
 
 - (NSArray *) playlists
@@ -153,6 +155,16 @@
 	for (LPlaylist * playlist in [[LPlaylistController sharedInstance] getPlaylists])
 	{
 		if ([[playlist allMembers] objectForKey:[self url]]) [playlists addObject:playlist];
+	}
+	return [NSArray arrayWithArray:playlists];
+}
+
+- (NSArray *) notPlaylists
+{
+	NSMutableArray * playlists = [NSMutableArray array];
+	for (LPlaylist * playlist in [[LPlaylistController sharedInstance] getPlaylists])
+	{
+		if (! [[playlist allMembers] objectForKey:[self url]]) [playlists addObject:playlist];
 	}
 	return [NSArray arrayWithArray:playlists];
 }
