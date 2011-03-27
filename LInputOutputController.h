@@ -17,8 +17,6 @@
 - (NSArray *) extensions;
 
 - (void) save;
-- (void) _save;
 - (void) load;
 - (void) update;
-- (void) _update;
 @end

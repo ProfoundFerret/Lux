@@ -51,8 +51,6 @@
 
 - (NSArray *) extensions;
 
-- (void) _playFile: (LFile *) file;
-
 @property (readonly) NSMutableArray * recentFiles;
 @property (readonly) LExtension <LPlayerDelegate> * player;
 @end

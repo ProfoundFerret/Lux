@@ -7,8 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Growl/Growl.h>
 
-@interface LuxAppDelegate : NSObject <NSApplicationDelegate> {
+
+@interface LuxAppDelegate : NSObject <NSApplicationDelegate, GrowlApplicationBridgeDelegate> {
 
 	NSWindow *window;
 }

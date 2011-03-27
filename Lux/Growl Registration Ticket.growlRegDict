@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Growl Registration Ticket.growlRegDict
+   Lux
+
+   Created by Adrien Bertrand on 03/27/11.
+   Copyright 2011 Adrien Bertrand. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        <key>TicketVersion</key>
+        <integer>1</integer>
+        <key>AllNotifications</key>
+        <array>
+            <string>Example</string>
+        </array>
+        <key>DefaultNotifications</key>
+        <array>
+            <string>Example</string>
+        </array>
+    </dict>
+</plist>

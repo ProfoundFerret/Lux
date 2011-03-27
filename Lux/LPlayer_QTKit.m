@@ -8,6 +8,7 @@
 
 #import "LPlayer_QTKit.h"
 #import "Lux.h"
+#import "LuxAppDelegate.h"
 
 #define controller [LPlayerController sharedInstance]
 
@@ -46,6 +47,7 @@
 {
 	[player play];
 	isPlaying = YES;
+
 }
 
 - (void) pause

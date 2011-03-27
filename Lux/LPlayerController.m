@@ -11,6 +11,7 @@
 #import "LFileController.h"
 #import "LPlaylistController.h"
 #import "Lux.h"
+#import "LuxAppDelegate.h"
 
 @implementation LPlayerController
 @synthesize player, recentFiles;
@@ -50,15 +51,9 @@
 
 - (void) playFile: (LFile*) file
 {
-	[NSThread detachNewThreadSelector:@selector(_playFile:) toTarget:self withObject:file];
-}
-
-- (void) _playFile: (LFile *) file
-{
 	@synchronized(self)
 	{
-		NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-		
+        
 		LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 		[[LPlaylistController sharedInstance] setActivePlaylist:visiblePlaylist];
 		
@@ -85,8 +80,7 @@
 		[recentFiles removeObject:file];
 		if ([recentFiles count] > kMAX_RECENT_FILES) [recentFiles removeObjectAtIndex:0];
 		[recentFiles addObject:file];
-		
-		[pool drain];
+        
 	}
 }
 
@@ -122,6 +116,7 @@
 		[player play];
 	}
 	isPlaying = ! isPlaying;
+
 }
 
 - (void) playPauseOrStartPlaying
@@ -140,6 +135,7 @@
 - (void) updateVolume
 {
 	[player setVolume:[self volumeForFile: [[LFileController sharedInstance] activeFile]]];
+ 
 }
 
 - (void) setTime: (int) newTime

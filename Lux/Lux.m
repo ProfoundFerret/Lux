@@ -9,6 +9,8 @@
 #import "Lux.h"
 #import "LExtension.h"
 #import "_Test.h"
+#import <Growl/Growl.h>
+
 
 @implementation Lux
 @synthesize extensionController, fileController, ioController, playerController, playlistController;
@@ -69,9 +71,13 @@
 	playlistController = [LPlaylistController sharedInstance];
 	
 	[ioController update];
+    
+
 }
 
-
+- (NSDictionary *)registrationDictionaryForGrowl {
+    return [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Growl Registration Ticket" ofType:@"growlRegDict"]];
+}
 
 - (void) reloadData
 {
