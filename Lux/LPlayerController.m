@@ -12,12 +12,15 @@
 #import "LPlaylistController.h"
 #import "Lux.h"
 
+#define kMAX_RECENT_FILES 10
+
 @implementation LPlayerController
-@synthesize player;
+@synthesize player, recentFiles;
 - (id)init
 {
     self = [super init];
     if (self) {
+		recentFiles = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -27,6 +30,19 @@
 {
 	[player release];
     [super dealloc];
+}
+
+- (void) encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject:recentFiles forKey:kRECENT_FILES];
+}
+
+- (id) initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super initWithCoder:aDecoder];
+	
+	recentFiles = [[aDecoder decodeObjectForKey:kRECENT_FILES] retain];
+	return [self retain];
 }
 
 - (NSArray *) extensions
@@ -67,6 +83,9 @@
 		isPlaying = YES;
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:kPLAY_NOTIFICATION object:nil];
+		
+		if ([recentFiles count] > kMAX_RECENT_FILES) [recentFiles removeObjectAtIndex:0];
+		[recentFiles addObject:file];
 		
 		[pool drain];
 	}

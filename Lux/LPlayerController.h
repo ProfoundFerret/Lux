@@ -16,9 +16,12 @@
 #define kPLAY_NOTIFICATION @"play_notification"
 #define kSTOP_NOTIFICATION @"stop_notification"
 
+#define kRECENT_FILES @"recentFiles"
+
 @interface LPlayerController : LControllerObject {
 	LExtension <LPlayerDelegate> * player;
 	BOOL isPlaying;
+	NSMutableArray * recentFiles;
 }
 - (void) playFile: (LFile *) file;
 - (void) playPauseOrStartPlaying;
@@ -42,6 +45,6 @@
 
 - (void) _playFile: (LFile *) file;
 
-
+@property (readonly) NSMutableArray * recentFiles;
 @property (readonly) LExtension <LPlayerDelegate> * player;
 @end
