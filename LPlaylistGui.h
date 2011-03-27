@@ -14,10 +14,13 @@
     IBOutlet NSOutlineView * playlistList;
 	IBOutlet NSSearchField * searchField;
 	IBOutlet NSButton * addPlaylistButton;
+	IBOutlet NSMenuItem * searchMenuItem;
+	IBOutlet NSMenuItem * newPlaylistMenuItem;
 	
 	LPlaylist * visiblePlaylist;
 }
 - (void) searchChanged;
 - (LPlaylist *) visiblePlaylist;
 - (void) addPlaylist;
+- (void) selectSearchField;
 @end

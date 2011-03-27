@@ -45,6 +45,12 @@
 	
 	[addPlaylistButton setTarget:self];
 	[addPlaylistButton setAction:@selector(addPlaylist)];
+	
+	[searchMenuItem setTarget:self];
+	[searchMenuItem setAction:@selector(selectSearchField)];
+	
+	[newPlaylistMenuItem setTarget:self];
+	[newPlaylistMenuItem setAction:@selector(addPlaylist)];
 }
 
 - (NSInteger) outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
@@ -163,5 +169,10 @@
 	NSInteger fileRow = [playlistList rowForItem:playlist];
 	
 	[playlistList editColumn:0 row:fileRow withEvent:nil select:YES];
+}
+
+- (void) selectSearchField
+{
+	[searchField selectText:nil];
 }
 @end
