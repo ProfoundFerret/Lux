@@ -10,9 +10,10 @@
 #import <Growl/Growl.h>
 
 
-@interface LuxAppDelegate : NSObject <NSApplicationDelegate, GrowlApplicationBridgeDelegate> {
+@interface LuxAppDelegate : NSObject <NSApplicationDelegate> {
 
 	NSWindow *window;
+
 }
 
 @property (assign) IBOutlet NSWindow *window;

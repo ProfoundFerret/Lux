@@ -19,6 +19,20 @@
 {
 }
 
+- (NSDictionary *) registrationDictionaryForGrowl
+{
+    NSArray *notifications;
+    notifications = [NSArray arrayWithObjects: @"Basic", nil];    
+    NSDictionary *dict;
+    
+    dict = [NSDictionary dictionaryWithObjectsAndKeys:
+            notifications, GROWL_NOTIFICATIONS_ALL,
+            notifications, GROWL_NOTIFICATIONS_DEFAULT, nil];
+    
+    return (dict);
+    
+} // registrationDictionaryForGrowl
+
 - (id) init
 {
 	self = [super init];
@@ -39,9 +53,9 @@
         
         [GrowlApplicationBridge notifyWithTitle:@"Alert"
                                     description:@"Hello!"
-                               notificationName:@"Example Notification"
+                               notificationName:@"Basic"
                                        iconData:nil
-                                       priority:0
+                                       priority:2
                                        isSticky:NO
                                    clickContext:[NSDate date]];
         
@@ -50,7 +64,7 @@
 	else {
 		NSLog(@"ERROR: Could not load Growl.framework");
 	}
-    
+        
 	return self;
 }
 

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A2E601C133FC21200DFA2D7 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2E601B133FC21200DFA2D7 /* Growl.framework */; };
 		7A89531D133F7BAB004F7FA6 /* Growl License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7A89531B133F7BAB004F7FA6 /* Growl License.txt */; };
 		7A89531E133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 7A89531C133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict */; };
-		7A89535F133FB02C004F7FA6 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A89535E133FB02C004F7FA6 /* Growl.framework */; };
-		7A895360133FB031004F7FA6 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A89535E133FB02C004F7FA6 /* Growl.framework */; };
+		7A895376133FBC60004F7FA6 /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A895375133FBC60004F7FA6 /* OSAKit.framework */; };
 		7C05ED8C133045EA00986D46 /* LMetadataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C05ED8B133045E500986D46 /* LMetadataController.m */; };
 		7C06031013318110000C0556 /* LMetadata_MP3.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C06030F13318110000C0556 /* LMetadata_MP3.m */; };
 		7C06031313318203000C0556 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C06031213318203000C0556 /* AudioToolbox.framework */; };
@@ -49,22 +49,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7A89532C133F7F72004F7FA6 /* CopyFiles */ = {
+		7A2E6019133FC17D00DFA2D7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7A895360133FB031004F7FA6 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A2E601B133FC21200DFA2D7 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		7A89531B133F7BAB004F7FA6 /* Growl License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Growl License.txt"; sourceTree = "<group>"; };
 		7A89531C133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
-		7A89535E133FB02C004F7FA6 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		7A895375133FBC60004F7FA6 /* OSAKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSAKit.framework; path = System/Library/Frameworks/OSAKit.framework; sourceTree = SDKROOT; };
 		7C05ED8A133045E100986D46 /* LMetadataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMetadataController.h; sourceTree = "<group>"; };
 		7C05ED8B133045E500986D46 /* LMetadataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMetadataController.m; sourceTree = "<group>"; };
 		7C06030E13318110000C0556 /* LMetadata_MP3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMetadata_MP3.h; sourceTree = "<group>"; };
@@ -138,10 +138,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A895376133FBC60004F7FA6 /* OSAKit.framework in Frameworks */,
 				7C5FE0B513258F0D0008B7DC /* Cocoa.framework in Frameworks */,
 				7C67EA97132ACF9900E055B2 /* QTKit.framework in Frameworks */,
 				7C06031313318203000C0556 /* AudioToolbox.framework in Frameworks */,
-				7A89535F133FB02C004F7FA6 /* Growl.framework in Frameworks */,
+				7A2E601C133FC21200DFA2D7 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +249,8 @@
 		7C5FE0B313258F0D0008B7DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7A89535E133FB02C004F7FA6 /* Growl.framework */,
+				7A2E601B133FC21200DFA2D7 /* Growl.framework */,
+				7A895375133FBC60004F7FA6 /* OSAKit.framework */,
 				7C06031213318203000C0556 /* AudioToolbox.framework */,
 				7C67EA96132ACF9900E055B2 /* QTKit.framework */,
 				7C5FE0B413258F0D0008B7DC /* Cocoa.framework */,
@@ -358,7 +360,7 @@
 				7C5FE0AC13258F0D0008B7DC /* Sources */,
 				7C5FE0AD13258F0D0008B7DC /* Frameworks */,
 				7C5FE0AE13258F0D0008B7DC /* Resources */,
-				7A89532C133F7F72004F7FA6 /* CopyFiles */,
+				7A2E6019133FC17D00DFA2D7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -516,7 +518,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"/Volumes/Growl 1.2.1 SDK/Frameworks\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -537,7 +538,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"/Volumes/Growl 1.2.1 SDK/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
