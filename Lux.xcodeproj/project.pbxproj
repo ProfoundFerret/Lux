@@ -46,6 +46,7 @@
 		7C772136133D355E0078411C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7C772135133D355E0078411C /* icon.icns */; };
 		7CC5F5BF133EB3A600D82E44 /* LFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC5F5BE133EB3A600D82E44 /* LFileController.m */; };
 		7CDC964B13400E3900D59F77 /* Pause.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CDC964A13400E3900D59F77 /* Pause.pdf */; };
+		7CDC965C13401AD300D59F77 /* LOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDC965B13401AD300D59F77 /* LOutlineView.m */; };
 		7CF940FD1326EF92004526D0 /* LFileGui.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF940FC1326EF92004526D0 /* LFileGui.m */; };
 		D9F2453C133FED7A0060B569 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F2453B133FED7A0060B569 /* Sparkle.framework */; };
 		D9F2453E133FED840060B569 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9F2453B133FED7A0060B569 /* Sparkle.framework */; };
@@ -134,6 +135,8 @@
 		7C772135133D355E0078411C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		7CC5F5BE133EB3A600D82E44 /* LFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFileController.m; sourceTree = "<group>"; };
 		7CDC964A13400E3900D59F77 /* Pause.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Pause.pdf; sourceTree = "<group>"; };
+		7CDC965A13401AD300D59F77 /* LOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOutlineView.h; sourceTree = "<group>"; };
+		7CDC965B13401AD300D59F77 /* LOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOutlineView.m; sourceTree = "<group>"; };
 		7CF940FB1326EF92004526D0 /* LFileGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFileGui.h; sourceTree = "<group>"; };
 		7CF940FC1326EF92004526D0 /* LFileGui.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFileGui.m; sourceTree = "<group>"; };
 		D9F2453B133FED7A0060B569 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 			children = (
 				7C38269E133C595100FDD40E /* LTableView.h */,
 				7C38269F133C595200FDD40E /* LTableView.m */,
+				7CDC965A13401AD300D59F77 /* LOutlineView.h */,
+				7CDC965B13401AD300D59F77 /* LOutlineView.m */,
 			);
 			name = Subclasses;
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 				7C2B7C36133EBBEC001BD5DC /* LExtensionController.m in Sources */,
 				7C2B7C3B133EBC0F001BD5DC /* LPlaylist.m in Sources */,
 				7C2B7C3C133EBC0F001BD5DC /* LPlaylistController.m in Sources */,
+				7CDC965C13401AD300D59F77 /* LOutlineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

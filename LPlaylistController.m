@@ -9,6 +9,9 @@
 #import "LPlaylistController.h"
 #import "Lux.h"
 
+#define kDUPLICATE_TEXT @"Duplicate"
+#define kDELETE_TEXT @"Delete"
+
 @implementation LPlaylistController
 @synthesize activePlaylist, playlists, visiblePlaylist;
 
@@ -63,10 +66,21 @@
 	[self addPlaylist:playlist toGroupNamed:kPLAYLISTS];
 }
 
+- (void) removePlaylist:(LPlaylist *)playlist
+{
+	[self removePlaylist:playlist fromGroupNamed:kPLAYLISTS];
+}
+
 - (void) addPlaylist: (LPlaylist *) playlist toGroupNamed:(NSString *) name
 {
 	NSMutableArray * playlistGroup = [self getPlaylistsFromGroup:name];
 	[playlistGroup addObject:playlist];
+}
+
+- (void) removePlaylist:(LPlaylist *)playlist fromGroupNamed:(NSString *)name
+{
+	NSMutableArray * playlistGroup = [self getPlaylistsFromGroup:name];
+	[playlistGroup removeObject:playlist];
 }
 
 - (NSMutableArray *) getPlaylists
@@ -136,6 +150,49 @@
 	
 	[self addPlaylist:newPlaylist];
 	[[Lux sharedInstance] reloadData];
+}
+
+- (void) dupliatePlaylistByMenuItem: (NSMenuItem *) menuItem
+{
+	LPlaylist * duplicatedPlaylist = [[menuItem representedObject] copy];
+	
+	[self addPlaylist:duplicatedPlaylist];
+	
+	[[Lux sharedInstance] reloadData];
+}
+
+- (void) deletePlaylistByMenuItem: (NSMenuItem *) menuItem
+{
+	LPlaylist * playlist = [menuItem representedObject];
+	
+	[self removePlaylist:playlist];
+	
+	[[Lux sharedInstance] reloadData];
+}
+
+- (NSMenu *) menuForPlaylist: (LPlaylist *) playlist
+{
+	NSMenu * menu = [[[NSMenu alloc] init] autorelease];
+	[menu setAutoenablesItems:NO];
+	
+	NSMenuItem * duplicate = [[[NSMenuItem alloc] init] autorelease];
+	[menu addItem:duplicate];
+	[duplicate setTitle:kDUPLICATE_TEXT];
+	[duplicate setTarget:self];
+	[duplicate setAction:@selector(dupliatePlaylistByMenuItem:)];
+	[duplicate setRepresentedObject:playlist];
+	
+	if ([playlist write])
+	{
+		NSMenuItem * delete = [[[NSMenuItem alloc] init] autorelease];
+		[menu addItem:delete];
+		[delete setTitle:kDELETE_TEXT];
+		[delete setTarget:self];
+		[delete setAction:@selector(deletePlaylistByMenuItem:)];
+		[delete setRepresentedObject:playlist];
+	}
+	
+	return menu;
 }
 
 - (void) reloadData

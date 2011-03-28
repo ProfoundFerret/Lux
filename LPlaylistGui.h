@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "LPlaylist.h"
 #import "LGuiObject.h"
+#import "LOutlineView.h"
 
 @interface LPlaylistGui : LGuiObject <NSOutlineViewDelegate, NSOutlineViewDataSource> {
-    IBOutlet NSOutlineView * playlistList;
+    IBOutlet LOutlineView * playlistList;
 	IBOutlet NSSearchField * searchField;
 	IBOutlet NSButton * addPlaylistButton;
 	IBOutlet NSMenuItem * searchMenuItem;

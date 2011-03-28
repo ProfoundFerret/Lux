@@ -60,6 +60,8 @@
 
 - (void) setSearch:(NSString *) aSearch;
 
+- (void) setMembers: (NSDictionary *) newMembers;
+
 + (LPlaylist *) musicPlaylist;
 + (LPlaylist *) videoPlaylist;
 + (LPlaylist *) streamingPlaylist;
@@ -72,4 +74,5 @@
 @property (readwrite, retain) NSString * predicate;
 @property (readonly, assign) NSString * search;
 @property (readwrite, retain) NSIndexSet * selectedIndexSet;
+@property (readwrite, assign) BOOL needsSearched;
 @end

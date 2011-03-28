@@ -175,4 +175,17 @@
 {
 	[searchField selectText:nil];
 }
+
+- (NSMenu *) menuForEvent: (NSEvent *) event
+{
+	NSPoint where = [playlistList convertPoint:[event locationInWindow] fromView:nil];
+	NSInteger row = [playlistList rowAtPoint:where];
+	
+	if (row < 0) return nil;
+	
+	NSIndexSet * selectedRows = [playlistList selectedRowIndexes];
+	LPlaylist * playlist = [playlistList itemAtRow:[selectedRows firstIndex]];
+	
+	return [[LPlaylistController sharedInstance] menuForPlaylist: playlist];
+}
 @end

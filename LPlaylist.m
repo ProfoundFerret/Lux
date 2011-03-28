@@ -17,7 +17,7 @@
 #define kSTREAMING @"Streaming"
 
 @implementation LPlaylist
-@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedIndexSet;
+@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedIndexSet, needsSearched;
 - (id)init
 {
     self = [super init];
@@ -95,6 +95,28 @@
 	[super encodeWithCoder:aCoder];
 }
 
+- (id) copy
+{
+	LPlaylist * playlist = [[LPlaylist alloc] init];
+	
+	[playlist setNeedsUpdated:needsUpdated];
+	[playlist setNeedsSearched: needsSearched];
+	
+	[playlist setSmart:smart];
+	
+	[playlist setMembers:[members copy]];
+	[playlist setColumns:[columns copy]];
+	
+	[playlist setTitle:[title copy]];
+	
+	[playlist setSearch:[search copy]];
+	[playlist setPredicate:[predicate copy]];
+	
+	[playlist setSelectedIndexSet:[selectedIndexSet copy]];
+	
+	return playlist;
+}
+
 - (void) update
 {
 	@synchronized(self)
@@ -123,6 +145,11 @@
 - (NSDictionary *) allMembers
 {
 	return [NSDictionary dictionaryWithDictionary:members];
+}
+
+- (void) setMembers: (NSDictionary *) newMembers
+{
+	members = [newMembers retain];
 }
 
 - (NSDictionary *) members
