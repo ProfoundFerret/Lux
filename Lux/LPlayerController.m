@@ -233,7 +233,29 @@
 
 - (NSMenu *) dockMenu {
 	NSMenu * dockMenu = [[[NSMenu alloc] init] autorelease];
+    
+    LFile * activeFile = [[LFileController sharedInstance] activeFile];
+    
+    NSString * artist = [[activeFile attributes] objectForKey:kARTIST];
+    NSString * title = [[activeFile attributes] objectForKey:kTITLE];
 	
+	NSMenuItem *currentSongInfo = [[[NSMenuItem alloc] init] autorelease];
+    
+    if (isPlaying) {
+    if ([artist length])
+	{
+		[currentSongInfo setTitle:[NSString stringWithFormat:@"%@ - %@", title, artist]];
+	} else {
+		[currentSongInfo setTitle:[NSString stringWithFormat:@"%@", title]];
+	}
+    } else {
+        [currentSongInfo setTitle:[NSString stringWithFormat:@"%@", kNOTHING_PLAYING]];
+    }
+	[currentSongInfo setEnabled:NO];
+	[dockMenu addItem:currentSongInfo];
+    
+    [dockMenu addItem:[NSMenuItem separatorItem]];
+    
 	NSMenuItem *playPauseOrStart = [[[NSMenuItem alloc] init] autorelease];
 	if (isPlaying)
 	{
