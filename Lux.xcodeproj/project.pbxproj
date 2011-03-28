@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7A2E601C133FC21200DFA2D7 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2E601B133FC21200DFA2D7 /* Growl.framework */; };
 		7A2E601D133FD1DD00DFA2D7 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A2E601B133FC21200DFA2D7 /* Growl.framework */; };
-		7A89531D133F7BAB004F7FA6 /* Growl License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7A89531B133F7BAB004F7FA6 /* Growl License.txt */; };
 		7A89531E133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 7A89531C133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict */; };
 		7A895376133FBC60004F7FA6 /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A895375133FBC60004F7FA6 /* OSAKit.framework */; };
 		7C05ED8C133045EA00986D46 /* LMetadataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C05ED8B133045E500986D46 /* LMetadataController.m */; };
@@ -67,7 +66,6 @@
 
 /* Begin PBXFileReference section */
 		7A2E601B133FC21200DFA2D7 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
-		7A89531B133F7BAB004F7FA6 /* Growl License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Growl License.txt"; sourceTree = "<group>"; };
 		7A89531C133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		7A895375133FBC60004F7FA6 /* OSAKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSAKit.framework; path = System/Library/Frameworks/OSAKit.framework; sourceTree = SDKROOT; };
 		7C05ED8A133045E100986D46 /* LMetadataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMetadataController.h; sourceTree = "<group>"; };
@@ -280,7 +278,6 @@
 		7C5FE0BA13258F0D0008B7DC /* Lux */ = {
 			isa = PBXGroup;
 			children = (
-				7A89531B133F7BAB004F7FA6 /* Growl License.txt */,
 				7A89531C133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict */,
 				7C06031413319B02000C0556 /* Images */,
 				7C5FE0EF1325CC2B0008B7DC /* Lux.h */,
@@ -417,7 +414,6 @@
 				7C0603181331AD19000C0556 /* Backward.pdf in Resources */,
 				7C06031A1331AD30000C0556 /* Forward.pdf in Resources */,
 				7C772136133D355E0078411C /* icon.icns in Resources */,
-				7A89531D133F7BAB004F7FA6 /* Growl License.txt in Resources */,
 				7A89531E133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
