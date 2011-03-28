@@ -17,6 +17,7 @@
 
 - (void) applicationWillFinishLaunching:(NSNotification *)notification
 {
+
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender
@@ -25,7 +26,6 @@
     [window makeKeyAndOrderFront:sender];
     return YES;
 }
-
 
 - (NSDictionary *) registrationDictionaryForGrowl
 {
@@ -39,7 +39,12 @@
     
     return (dict);
     
-} // registrationDictionaryForGrowl
+}
+
+- (void) awakeFromNib
+{
+	[window makeKeyAndOrderFront:nil];
+}
 
 - (id) init
 {

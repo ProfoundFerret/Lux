@@ -83,6 +83,8 @@
 {
 	NSMutableArray * playlistGroup = [self getPlaylistsFromGroup:name];
 	[playlistGroup removeObject:playlist];
+	
+	[[Lux sharedInstance] reloadData];
 }
 
 - (NSMutableArray *) getPlaylists
@@ -163,13 +165,18 @@
 	[[Lux sharedInstance] reloadData];
 }
 
-- (void) addFilesToNewPlaylistByMenuItem: (NSMenuItem *) menuItem
+- (void) addFilesToNewPlaylist: (NSArray *) files
 {
 	LPlaylist * newPlaylist = [[LPlaylist alloc] init];
-	[newPlaylist addFiles: [menuItem representedObject]];
-	
+	[newPlaylist addFiles:files];
 	[self addPlaylist:newPlaylist];
 	[[Lux sharedInstance] reloadData];
+}
+
+- (void) addFilesToNewPlaylistByMenuItem: (NSMenuItem *) menuItem
+{
+	NSArray * newFiles = [menuItem representedObject];
+	[self addFilesToNewPlaylist: newFiles];
 }
 
 - (void) dupliatePlaylistByMenuItem: (NSMenuItem *) menuItem
@@ -183,8 +190,6 @@
 	LPlaylist * playlist = [menuItem representedObject];
 	
 	[self removePlaylist:playlist];
-	
-	[[Lux sharedInstance] reloadData];
 }
 
 - (void) convertToRegularPlaylistByMenuItem: (NSMenuItem *) menuItem

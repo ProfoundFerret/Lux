@@ -11,9 +11,7 @@
 
 
 @interface LuxAppDelegate : NSObject <NSApplicationDelegate> {
-
 	NSWindow *window;
-
 }
 
 -(void) setupGrowl;

@@ -25,6 +25,7 @@
 
 - (void) addPlaylist: (LPlaylist *) playlist;
 - (void) addPlaylist: (LPlaylist *) playlist toGroupNamed:(NSString *) name;
+- (void) addFilesToNewPlaylist: (NSArray *) files;
 
 - (void) removePlaylist: (LPlaylist *) playlist;
 - (void) removePlaylist: (LPlaylist *) playlist fromGroupNamed: (NSString *) name;
