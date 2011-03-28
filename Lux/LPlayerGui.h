@@ -15,17 +15,37 @@
 	IBOutlet NSButton * previousButton;
 	IBOutlet NSSlider * volumeSlider;
 	IBOutlet NSSlider * progressSlider;
+	
+	IBOutlet NSMenuItem * playPauseMenuItem;
+	IBOutlet NSMenuItem * nextMenuItem;
+	IBOutlet NSMenuItem * previousMenuItem;
+	IBOutlet NSMenuItem * playRecentMenuItem;
+	IBOutlet NSMenuItem * repeatMenuItem;
+	IBOutlet NSMenuItem * shuffleMenuItem;
 
 }
 - (void) changeProgress;
 - (void) changeVolume;
 - (void) updateTime;
 
-- (void) updatePlayPauseImage;
+- (void) updatePlayPause;
 - (void) resizePlayPauseImage;
 
 - (void) play;
 - (void) pause;
 - (void) unpause;
 - (void) stop;
+
+- (void) repeatChanged;
+- (void) updateNextPrevious;
+
+- (void) playPauseMenuItem: (NSMenuItem *) menuItem;
+- (void) nextMenuItem: (NSMenuItem *) menuItem;
+- (void) previousMenuItem: (NSMenuItem *) menuItem;
+- (void) repeatMenuItem: (NSMenuItem *) menuItem;
+- (void) shuffleMenuItem: (NSMenuItem *) menuItem;
+
+- (void) updateRecentFiles;
+- (void) updateRepeat;
+- (void) updateShuffle;
 @end

@@ -27,6 +27,8 @@
 #define kNEXT_TEXT @"Next"
 #define kPREVIOUS_TEXT @"Previous"
 #define kPLAY_RECENT_TEXT @"Play Recent"
+#define kREPEAT_TEXT @"Repeat"
+#define kSHUFFLE_TEXT @"Shuffle"
 
 #define kMAX_RECENT_FILES 10
 
@@ -53,6 +55,9 @@
 - (int) totalTime;
 - (void) playMenuItem: (NSMenuItem *) menuItem;
 - (NSMenu *) dockMenu;
+
+- (NSMenu *) recentFilesMenu;
+- (NSMenuItem *) repeatMenuItem;
 
 - (NSArray *) extensions;
 

@@ -163,12 +163,23 @@
 	
 	[[Lux sharedInstance] reloadData];
 	
+	[self renamePlaylist: playlist];
+}
+
+- (void) renamePlaylist: (LPlaylist *) playlist
+{
 	[playlistList expandItem:nil expandChildren:YES];
 	[playlistList selectItem:playlist];
 	
 	NSInteger fileRow = [playlistList rowForItem:playlist];
 	
 	[playlistList editColumn:0 row:fileRow withEvent:nil select:YES];
+}
+
+- (void) renamePlaylistByMenuItem: (NSMenuItem *) menuItem
+{
+	LPlaylist * playlist = [menuItem representedObject];
+	[self renamePlaylist:playlist];
 }
 
 - (void) selectSearchField
@@ -183,9 +194,20 @@
 	
 	if (row < 0) return nil;
 	
-	NSIndexSet * selectedRows = [playlistList selectedRowIndexes];
-	LPlaylist * playlist = [playlistList itemAtRow:[selectedRows firstIndex]];
+	LPlaylist * playlist = [playlistList itemAtRow:row];
 	
-	return [[LPlaylistController sharedInstance] menuForPlaylist: playlist];
+	NSMenu * menu = [[LPlaylistController sharedInstance] menuForPlaylist: playlist];
+	
+	if ([playlist write])
+	{
+		NSMenuItem * rename = [[[NSMenuItem alloc] init] autorelease];
+		[menu addItem:rename];
+		[rename setTitle:kRENAME_TEXT];
+		[rename setAction:@selector(renamePlaylistByMenuItem:)];
+		[rename setTarget:self];
+		[rename setRepresentedObject:playlist];
+	}
+	
+	return menu;
 }
 @end

@@ -11,6 +11,8 @@
 #import "LGuiObject.h"
 #import "LOutlineView.h"
 
+#define kRENAME_TEXT @"Rename"
+
 @interface LPlaylistGui : LGuiObject <NSOutlineViewDelegate, NSOutlineViewDataSource> {
     IBOutlet LOutlineView * playlistList;
 	IBOutlet NSSearchField * searchField;
@@ -23,5 +25,9 @@
 - (void) searchChanged;
 - (LPlaylist *) visiblePlaylist;
 - (void) addPlaylist;
+
 - (void) selectSearchField;
+
+- (void) renamePlaylist: (LPlaylist *) playlist;
+- (void) renamePlaylistByMenuItem: (NSMenuItem *) menuItem;
 @end
