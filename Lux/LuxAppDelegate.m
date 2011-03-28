@@ -67,7 +67,7 @@
 		// Register ourselves as a Growl delegate
 		[GrowlApplicationBridge setGrowlDelegate:self];
         
-        NSLog(@"Growl registered and ready to go !");
+        NSLog(@"Growl Registered");
 	}
 	else {
 		NSLog(@"ERROR: Could not load Growl.framework");
@@ -76,7 +76,7 @@
 
 - (void) applicationWillTerminate:(NSNotification *)notification
 {
-	[[[Lux sharedInstance] ioController] save];
+	[[[Lux sharedInstance] ioController] _save];
 }
 
 

@@ -29,14 +29,20 @@
 
 - (void) save
 {
-    @synchronized(self)
+	[NSThread detachNewThreadSelector:@selector(_save) toTarget:self withObject:nil];
+}
+
+- (void) _save
+{
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init]; 
+	@synchronized(self)
 	{
 		NSLog(@"Saving");
 		
 		[NSKeyedArchiver archiveRootObject:[Lux sharedInstance] toFile:kSAVE_FILE];
 	}
+	[pool drain];
 }
-
 
 - (void) load
 {
@@ -49,7 +55,13 @@
 
 - (void) update
 {
-    @synchronized(self)
+	[NSThread detachNewThreadSelector:@selector(_update) toTarget:self withObject:nil];
+}
+
+- (void) _update
+{
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init]; 
+	@synchronized(self)
 	{
 		NSLog(@"Updating");
 		
@@ -62,8 +74,9 @@
 		NSLog(@"Update Finished");
 		
 		[[Lux sharedInstance] reloadData];
-	}}
-
+	}
+	[pool drain];
+}
 
 - (void) addFileByURL: (NSURL *) url
 {
