@@ -119,11 +119,33 @@
 }
 - (void) fileStartedPlaying: (LFile *)file
 {
-    
-    [GrowlApplicationBridge notifyWithTitle:@"Lux - Playing :"
-                                description:[NSString stringWithFormat:@"%@  -  %@\n%@\n%@",[[file attributes] objectForKey:kTITLE],[[file attributes] objectForKey:kARTIST],[[file attributes] objectForKey:kALBUM],[[file attributes] objectForKey:kRATING]]
+    NSString * title = [[file attributes] objectForKey:kTITLE];
+	NSMutableString * artist = [[file attributes] objectForKey:kARTIST];
+	NSMutableString * album = [[file attributes] objectForKey:kALBUM];
+	
+	NSMutableString * artistText;
+	NSMutableString * albumText;
+	if ([artist length])
+	{
+		artistText = [NSString stringWithFormat:@"%@\n", artist];
+	} else {
+		artistText = [NSMutableString stringWithString:@""];
+	}
+	
+	if ([album length])
+	{
+		albumText = [NSString stringWithFormat:@"%@\n", album];
+	} else {
+		albumText = [NSMutableString stringWithString:@""];
+	}
+	
+	NSImage * image = [[file dictionary] objectForKey:kIMAGE];
+	NSData * imageData = [image TIFFRepresentation];
+	
+    [GrowlApplicationBridge notifyWithTitle:title
+                                description:[NSString stringWithFormat:@"%@%@", artistText, albumText]
                            notificationName:@"Basic"
-                                   iconData:nil
+                                   iconData:imageData
                                    priority:0
                                    isSticky:NO
                                clickContext:nil];

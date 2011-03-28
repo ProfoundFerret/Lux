@@ -16,6 +16,8 @@
 #define kFILE_TYPE @"fileType"
 #define kEXTENSION @"extension"
 
+#define kIMAGE @"image"
+
 @interface LFile : LStoredObject {
     NSURL * url;
 	NSMutableDictionary * attributes;
