@@ -76,11 +76,26 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pause) name:kPAUSE_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unpause) name:kUNPAUSE_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stop) name:kSTOP_NOTIFICATION object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRepeat) name:kREPEAT_CHANGED_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(repeatChanged) name:kREPEAT_CHANGED_NOTIFICATION object:nil];
 	
 	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     
 	[self updatePlayPause];
+}
+
+- (void) playPauseMenuItem:(NSMenuItem *)menuItem
+{
+	[[LPlayerController sharedInstance] playPauseOrStartPlaying];
+}
+
+- (void) nextMenuItem:(NSMenuItem *)menuItem
+{
+	[[LPlayerController sharedInstance] playNextFile];
+}
+
+- (void) previousMenuItem:(NSMenuItem *)menuItem
+{
+	[[LPlayerController sharedInstance] playPreviousFile];
 }
 
 - (void) updateRecentFiles
@@ -100,11 +115,29 @@
 	
 }
 
+- (void) updateNextPrevious
+{
+	BOOL nextFile = (BOOL) [[LPlayerController sharedInstance] nextFile];
+	[nextMenuItem setEnabled:nextFile];
+	[nextButton setEnabled:nextFile];
+	
+	BOOL previousFile = (BOOL) [[LPlayerController sharedInstance] previousFile];
+	[previousMenuItem setEnabled:previousFile];
+	[previousButton setEnabled:previousFile];
+}
+
+- (void) repeatChanged
+{
+	[self updateRepeat];
+	[self updateNextPrevious];
+}
+
 - (void) play
 {
 	[self updateTime];
 	[self updatePlayPause];
 	[self updateRecentFiles];
+	[self updateNextPrevious];
 }
 
 - (void) pause

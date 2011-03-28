@@ -36,6 +36,9 @@
 - (void) unpause;
 - (void) stop;
 
+- (void) repeatChanged;
+- (void) updateNextPrevious;
+
 - (void) playPauseMenuItem: (NSMenuItem *) menuItem;
 - (void) nextMenuItem: (NSMenuItem *) menuItem;
 - (void) previousMenuItem: (NSMenuItem *) menuItem;
