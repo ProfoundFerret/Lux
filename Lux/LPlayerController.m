@@ -249,16 +249,16 @@
             [currentSongInfo setTitle:[NSString stringWithFormat:@"%@ - %@", title, artist]];
             [dockMenu addItem:currentSongInfo];
         } else {
-            [currentSongInfo setTitle:[NSString stringWithFormat:@"%@", title]];
+            [currentSongInfo setTitle:title];
             [dockMenu addItem:currentSongInfo];
         }
         if (! isPlaying) {
             [itispaused setEnabled:NO];
-            [itispaused setTitle:[NSString stringWithFormat:@"%@", kIT_IS_PAUSED]];
+            [itispaused setTitle:kIT_IS_PAUSED];
             [dockMenu addItem:itispaused];
         }
     } else {
-        [currentSongInfo setTitle:[NSString stringWithFormat:@"%@", kNOTHING_PLAYING]];
+        [currentSongInfo setTitle:kNOTHING_PLAYING];
         [dockMenu addItem:currentSongInfo];
 
     }
