@@ -20,5 +20,12 @@
 - (void) changeProgress;
 - (void) changeVolume;
 - (void) updateTime;
+
 - (void) updatePlayPauseImage;
+- (void) resizePlayPauseImage;
+
+- (void) play;
+- (void) pause;
+- (void) unpause;
+- (void) stop;
 @end
