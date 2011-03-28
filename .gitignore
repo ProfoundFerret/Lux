@@ -5,6 +5,7 @@
 *.perspectivev3
 *.pyc 
 *~.nib/
+*/.DS_STore
 build/*
 
 # old skool
