@@ -203,6 +203,7 @@
 	}	
 	for (LPlaylist * playlist in addToPlaylists)
 	{
+		if ([playlist smart]) continue;
 		NSMenuItem * playlistMenuItem = [[[NSMenuItem alloc] init] autorelease];
 		[playlistMenuItem setTitle: [playlist title]];
 		[playlistMenuItem setTarget:playlist];
@@ -212,14 +213,17 @@
 		[addToPlaylistMenu addItem:playlistMenuItem];
 	}
 	
-	NSMenuItem * deleteFromPlaylist = [[[NSMenuItem alloc] init] autorelease];
-	[menu addItem:deleteFromPlaylist];
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
-	NSString * deleteFromPlaylistText = [NSString stringWithFormat:@"%@ \"%@\"", kDELETE_FROM_TEXT, [visiblePlaylist title]];
-	[deleteFromPlaylist setTitle:deleteFromPlaylistText];
-	[deleteFromPlaylist setTarget:visiblePlaylist];
-	[deleteFromPlaylist setAction:@selector(removeFilesByMenuItem:)];
-	[deleteFromPlaylist setRepresentedObject:menuFiles];
+	if (! [visiblePlaylist smart])
+	{
+		NSMenuItem * deleteFromPlaylist = [[[NSMenuItem alloc] init] autorelease];
+		[menu addItem:deleteFromPlaylist];
+		NSString * deleteFromPlaylistText = [NSString stringWithFormat:@"%@ \"%@\"", kDELETE_FROM_TEXT, [visiblePlaylist title]];
+		[deleteFromPlaylist setTitle:deleteFromPlaylistText];
+		[deleteFromPlaylist setTarget:visiblePlaylist];
+		[deleteFromPlaylist setAction:@selector(removeFilesByMenuItem:)];
+		[deleteFromPlaylist setRepresentedObject:menuFiles];
+	}
 	
 	return menu;
 }
