@@ -117,7 +117,7 @@
 		isPlaying = ! isPlaying;
 		[[NSNotificationCenter defaultCenter] postNotificationName:kUNPAUSE_NOTIFICATION object:nil];
 	}
-
+    
 }
 
 - (void) playPauseOrStartPlaying
@@ -136,7 +136,7 @@
 - (void) updateVolume
 {
 	[player setVolume:[self volumeForFile: [[LFileController sharedInstance] activeFile]]];
- 
+    
 }
 
 - (void) setTime: (int) newTime
@@ -240,19 +240,28 @@
     NSString * title = [[activeFile attributes] objectForKey:kTITLE];
 	
 	NSMenuItem *currentSongInfo = [[[NSMenuItem alloc] init] autorelease];
+    [currentSongInfo setEnabled:NO];
+    NSMenuItem *itispaused = [[[NSMenuItem alloc] init] autorelease];
     
-    if (isPlaying) {
-    if ([artist length])
-	{
-		[currentSongInfo setTitle:[NSString stringWithFormat:@"%@ - %@", title, artist]];
-	} else {
-		[currentSongInfo setTitle:[NSString stringWithFormat:@"%@", title]];
-	}
+    if (activeFile) {
+        if ([artist length])
+        {
+            [currentSongInfo setTitle:[NSString stringWithFormat:@"%@ - %@", title, artist]];
+            [dockMenu addItem:currentSongInfo];
+        } else {
+            [currentSongInfo setTitle:[NSString stringWithFormat:@"%@", title]];
+            [dockMenu addItem:currentSongInfo];
+        }
+        if (! isPlaying) {
+            [itispaused setEnabled:NO];
+            [itispaused setTitle:[NSString stringWithFormat:@"%@", kIT_IS_PAUSED]];
+            [dockMenu addItem:itispaused];
+        }
     } else {
         [currentSongInfo setTitle:[NSString stringWithFormat:@"%@", kNOTHING_PLAYING]];
+        [dockMenu addItem:currentSongInfo];
+
     }
-	[currentSongInfo setEnabled:NO];
-	[dockMenu addItem:currentSongInfo];
     
     [dockMenu addItem:[NSMenuItem separatorItem]];
     

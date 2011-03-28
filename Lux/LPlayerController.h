@@ -16,7 +16,9 @@
 #define kPAUSE_NOTIFICATION @"unpause_notification"
 #define kPLAY_NOTIFICATION @"play_notification"
 #define kSTOP_NOTIFICATION @"stop_notification"
-#define kNOTHING_PLAYING @"Nothing is playing..."
+#define kNOTHING_PLAYING @"Nothing playing"
+#define kIT_IS_PAUSED @"(Paused)"
+
 
 #define kRECENT_FILES @"recentFiles"
 
