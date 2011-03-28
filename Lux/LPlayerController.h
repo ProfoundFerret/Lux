@@ -10,6 +10,7 @@
 #import "LControllerObject.h"
 #import "LExtension.h"
 #import "LFile.h"
+#import "LPlayerGui.h"
 
 #define kUNPAUSE_NOTIFICATION @"unpause_notification"
 #define kPAUSE_NOTIFICATION @"unpause_notification"
@@ -27,9 +28,11 @@
 #define kMAX_RECENT_FILES 10
 
 @interface LPlayerController : LControllerObject {
+    LPlayerGui * _playerGui;
 	LExtension <LPlayerDelegate> * player;
 	BOOL isPlaying;
 	NSMutableArray * recentFiles;
+    
 }
 - (void) playFile: (LFile *) file;
 - (void) playPauseOrStartPlaying;
@@ -53,4 +56,5 @@
 
 @property (readonly) NSMutableArray * recentFiles;
 @property (readonly) LExtension <LPlayerDelegate> * player;
+@property (nonatomic, retain) LPlayerGui *playerGui;
 @end

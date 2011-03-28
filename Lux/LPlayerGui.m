@@ -60,6 +60,16 @@
     
 }
 
+- (void) changePlayPauseButtonImage:(BOOL)isPlaying
+{
+    if (isPlaying) {
+    [playPauseButton setImage:[NSImage imageNamed:@"Forward.pdf"]];
+    } else {
+    [playPauseButton setImage:[NSImage imageNamed:@"Play.pdf"]];
+    }
+    NSLog(@"changing image");
+}
+
 - (void) updateTime;
 {
 	[progressSlider setMaxValue:[controller totalTime]];

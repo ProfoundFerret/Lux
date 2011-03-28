@@ -19,6 +19,14 @@
 {
 }
 
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender
+                    hasVisibleWindows:(BOOL)flag
+{
+    [window makeKeyAndOrderFront:sender];
+    return YES;
+}
+
+
 - (NSDictionary *) registrationDictionaryForGrowl
 {
     NSArray *notifications;
@@ -43,6 +51,14 @@
 	
 	[[Lux sharedInstance] setup];
     
+    [self setupGrowl]; 
+              
+	return self;
+}
+
+
+- (void) setupGrowl
+{
     NSBundle *myBundle = [NSBundle bundleForClass:[LuxAppDelegate class]];
 	NSString *growlPath = [[myBundle privateFrameworksPath] stringByAppendingPathComponent:@"Growl.framework"];
 	NSBundle *growlBundle = [NSBundle bundleWithPath:growlPath];
@@ -50,14 +66,12 @@
 	if (growlBundle && [growlBundle load]) {
 		// Register ourselves as a Growl delegate
 		[GrowlApplicationBridge setGrowlDelegate:self];
-            
+        
         NSLog(@"Growl registered and ready to go !");
 	}
 	else {
 		NSLog(@"ERROR: Could not load Growl.framework");
 	}
-        
-	return self;
 }
 
 - (void) applicationWillTerminate:(NSNotification *)notification

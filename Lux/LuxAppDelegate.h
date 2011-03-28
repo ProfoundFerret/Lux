@@ -16,6 +16,8 @@
 
 }
 
+-(void) setupGrowl;
+
 @property (assign) IBOutlet NSWindow *window;
 
 @end

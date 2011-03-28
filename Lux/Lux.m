@@ -69,7 +69,7 @@
 	
 	fileController = [LFileController sharedInstance];
 	playlistController = [LPlaylistController sharedInstance];
-	
+    	
 	[ioController update];
     
 

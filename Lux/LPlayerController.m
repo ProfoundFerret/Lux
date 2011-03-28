@@ -15,6 +15,7 @@
 
 @implementation LPlayerController
 @synthesize player, recentFiles;
+@synthesize playerGui = _playerGui;
 - (id)init
 {
     self = [super init];
@@ -116,6 +117,8 @@
 		[player play];
 	}
 	isPlaying = ! isPlaying;
+    [_playerGui changePlayPauseButtonImage:isPlaying];
+    NSLog(@"apres fonction");
 
 }
 
