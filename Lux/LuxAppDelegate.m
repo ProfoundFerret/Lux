@@ -43,7 +43,7 @@
 
 - (void) awakeFromNib
 {
-	[window makeKeyAndOrderFront:nil];
+
 }
 
 - (id) init
