@@ -161,11 +161,16 @@
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
 	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger nextIndex;
-	if (! activeFile)
+	if (! activeFile && ! [activePlaylist shuffle])
 	{
 		nextIndex = 0;
 	} else {
-		nextIndex = [allFiles indexOfObject:activeFile] + 1;
+		if ([activePlaylist shuffle])
+		{
+			nextIndex = arc4random() % [allFiles count];
+		} else {
+			nextIndex = [allFiles indexOfObject:activeFile] + 1;
+		}
 		if ([allFiles count] <= nextIndex)
 		{
 			if ([activePlaylist repeat])
@@ -184,24 +189,29 @@
 	NSArray * allFiles = [[[[LPlaylistController sharedInstance] activePlaylist] members] allValues];
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
 	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
-	NSUInteger previousIndex;
-	if (! activeFile)
+	NSUInteger nextIndex;
+	if (! activeFile && ! [activePlaylist shuffle])
 	{
-		previousIndex = 0;
+		nextIndex = [allFiles count] - 1;
 	} else {
 		if ([allFiles indexOfObject:activeFile] == 0)
 		{
 			if ([activePlaylist repeat])
 			{
-				previousIndex = [allFiles count] - 1;
+				nextIndex = [allFiles count] - 1;
 			} else {
 				return nil;
 			}
 		} else {
-			previousIndex = [allFiles indexOfObject:activeFile] - 1;
+			if ([activePlaylist shuffle])
+			{
+				nextIndex = arc4random() % [allFiles count];
+			} else {
+				nextIndex = [allFiles indexOfObject:activeFile] - 1;
+			}
 		}
 	}
-	return [allFiles objectAtIndex:previousIndex];
+	return [allFiles objectAtIndex:nextIndex];
 }
 
 - (void) playNextFile
@@ -310,6 +320,8 @@
 	[dockMenu addItem:[NSMenuItem separatorItem]];
 	
 	[dockMenu addItem:[self repeatMenuItem]];
+	
+	[dockMenu addItem:[self shuffleMenuItem]];
 	 
 	
 	return dockMenu;
@@ -341,7 +353,6 @@
 	[repeat setTitle:kREPEAT_TEXT];
 	[repeat setTarget:activePlaylist];
 	[repeat setAction:@selector(toggleRepeat)];
-	[repeat setRepresentedObject:activePlaylist];
 	if ([activePlaylist repeat])
 	{
 		[repeat setState:NSOnState];
@@ -349,6 +360,23 @@
 		[repeat setState:NSOffState];
 	}
 	return repeat;
+}
+
+- (NSMenuItem *) shuffleMenuItem
+{
+	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
+	
+	NSMenuItem * shuffle = [[[NSMenuItem alloc] init] autorelease];
+	[shuffle setTitle:kSHUFFLE_TEXT];
+	[shuffle setTarget:activePlaylist];
+	[shuffle setAction:@selector(toggleShuffle)];
+	if ([activePlaylist shuffle])
+	{
+		[shuffle setState:NSOnState];
+	} else {
+		[shuffle setState:NSOffState];
+	}
+	return shuffle;
 }
 
 @end

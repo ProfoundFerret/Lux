@@ -19,8 +19,10 @@
 #define kCOLUMNS @"columns"
 #define kSELECTED_INDEX_SET @"selectedIndexSet"
 #define kREPEAT @"repeat"
+#define kSHUFFLE @"shuffle"
 
 #define kREPEAT_CHANGED_NOTIFICATION @"repeatchanged_notification"
+#define kSHUFFLE_CHANGED_NOTIFICATION @"shufflechanged_notification"
 
 #define kUNTITLED_PLAYLIST @"Untitled Playlist"
 
@@ -44,6 +46,7 @@
 	BOOL write;
 	
 	BOOL repeat;
+	BOOL shuffle;
 	
 	NSIndexSet * selectedIndexSet;
 }
@@ -70,6 +73,9 @@
 - (void) toggleRepeat;
 - (void) setRepeat: (BOOL) newRepeat;
 
+- (void) toggleShuffle;
+- (void) setShuffle: (BOOL) newShuffle;
+
 + (LPlaylist *) musicPlaylist;
 + (LPlaylist *) videoPlaylist;
 + (LPlaylist *) streamingPlaylist;
@@ -78,7 +84,8 @@
 @property (readwrite, assign) BOOL needsUpdated;
 @property (readwrite, assign) BOOL smart;
 @property (readwrite, assign) BOOL write;
-@property (readonly, assign) BOOL repeat;
+@property (readonly) BOOL repeat;
+@property (readonly) BOOL shuffle;
 @property (readwrite, retain) NSArray * columns;
 @property (readwrite, retain) NSString * predicate;
 @property (readonly, assign) NSString * search;

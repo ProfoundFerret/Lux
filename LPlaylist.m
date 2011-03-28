@@ -17,7 +17,7 @@
 #define kSTREAMING @"Streaming"
 
 @implementation LPlaylist
-@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedIndexSet, needsSearched, repeat;
+@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedIndexSet, needsSearched, repeat, shuffle;
 - (id)init
 {
     self = [super init];
@@ -26,7 +26,9 @@
 		needsSearched = YES;
 		smart = NO;
 		write = YES;
+		
 		repeat = NO;
+		shuffle = NO;
 		
 		members = [[NSMutableDictionary alloc] init];
 		searchMembers = [[NSMutableDictionary alloc] init];
@@ -77,6 +79,7 @@
 	selectedIndexSet = [[aDecoder decodeObjectForKey:kSELECTED_INDEX_SET] retain];
 	
 	repeat = [aDecoder decodeBoolForKey:kREPEAT];
+	shuffle = [aDecoder decodeBoolForKey:kSHUFFLE];
 		
 	return self;
 }
@@ -96,6 +99,7 @@
 	[aCoder encodeObject:selectedIndexSet forKey:kSELECTED_INDEX_SET];
 	
 	[aCoder encodeBool:repeat forKey:kREPEAT];
+	[aCoder encodeBool:shuffle forKey:kSHUFFLE];
 	
 	[super encodeWithCoder:aCoder];
 }
@@ -120,6 +124,7 @@
 	[playlist setSelectedIndexSet:[selectedIndexSet copy]];
 	
 	[playlist setRepeat:repeat];
+	[playlist setShuffle:shuffle];
 	
 	return playlist;
 }
@@ -319,8 +324,22 @@
 
 - (void) setRepeat:(BOOL) newRepeat
 {
+	if (newRepeat == repeat) return;
 	repeat = newRepeat;
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kREPEAT_CHANGED_NOTIFICATION object:nil];
+}
+
+- (void) toggleShuffle
+{
+	shuffle = ! shuffle;
+	[[NSNotificationCenter defaultCenter] postNotificationName:kSHUFFLE_CHANGED_NOTIFICATION object:nil];
+}
+
+- (void) setShuffle: (BOOL) newShuffle
+{
+	if (newShuffle == shuffle) return;
+	shuffle = newShuffle;
+	[[NSNotificationCenter defaultCenter] postNotificationName:kSHUFFLE_CHANGED_NOTIFICATION object:nil];
 }
 @end

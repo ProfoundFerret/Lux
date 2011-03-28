@@ -58,6 +58,7 @@
 
 - (NSMenu *) recentFilesMenu;
 - (NSMenuItem *) repeatMenuItem;
+- (NSMenuItem *) shuffleMenuItem;
 
 - (NSArray *) extensions;
 

@@ -50,15 +50,15 @@
 	
 	[[playPauseMenuItem menu] setAutoenablesItems:NO];
 	
-	[playPauseMenuItem setTarget:self];
-	[playPauseMenuItem setAction:@selector(playPauseMenuItem)];
+	[playPauseMenuItem setTarget:[LPlayerController sharedInstance]];
+	[playPauseMenuItem setAction:@selector(playPauseOrStartPlaying)];
 	
-	[nextMenuItem setTarget:self];
-	[nextMenuItem setAction:@selector(nextMenuItem)];
+	[nextMenuItem setTarget:[LPlayerController sharedInstance]];
+	[nextMenuItem setAction:@selector(playNextFile)];
 	[nextMenuItem setTitle:kNEXT_TEXT];
 	
-	[previousMenuItem setTarget:self];
-	[previousMenuItem setAction:@selector(previousMenuItem)];
+	[previousMenuItem setTarget:[LPlayerController sharedInstance]];
+	[previousMenuItem setAction:@selector(playPreviousFile)];
 	[previousMenuItem setTitle:kPREVIOUS_TEXT];
 	
 	[playRecentMenuItem setTitle:kPLAY_RECENT_TEXT];
@@ -67,6 +67,7 @@
 	[repeatMenuItem setAction:@selector(toggleRepeat)];
 	
 	[shuffleMenuItem setTitle:kSHUFFLE_TEXT];
+	[shuffleMenuItem setAction:@selector(toggleShuffle)];
 	
 	[self updateRecentFiles];
 	[self updateRepeat];
@@ -78,25 +79,11 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unpause) name:kUNPAUSE_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stop) name:kSTOP_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(repeatChanged) name:kREPEAT_CHANGED_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shuffleChanged) name:kSHUFFLE_CHANGED_NOTIFICATION object:nil];
 	
 	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     
 	[self updatePlayPause];
-}
-
-- (void) playPauseMenuItem:(NSMenuItem *)menuItem
-{
-	[[LPlayerController sharedInstance] playPauseOrStartPlaying];
-}
-
-- (void) nextMenuItem:(NSMenuItem *)menuItem
-{
-	[[LPlayerController sharedInstance] playNextFile];
-}
-
-- (void) previousMenuItem:(NSMenuItem *)menuItem
-{
-	[[LPlayerController sharedInstance] playPreviousFile];
 }
 
 - (void) updateRecentFiles
@@ -113,7 +100,7 @@
 
 - (void) updateShuffle
 {
-	NSMenuItem * shuffleMenu = [[LPlayerController sharedInstance] repeatMenuItem];
+	NSMenuItem * shuffleMenu = [[LPlayerController sharedInstance] shuffleMenuItem];
 	[shuffleMenuItem setTarget:[shuffleMenu target]];
 	[shuffleMenuItem setState:[shuffleMenu state]];
 }
@@ -133,6 +120,11 @@
 {
 	[self updateRepeat];
 	[self updateNextPrevious];
+}
+
+- (void) shuffleChanged
+{
+	[self updateShuffle];
 }
 
 - (void) play

@@ -37,13 +37,8 @@
 - (void) stop;
 
 - (void) repeatChanged;
+- (void) shuffleChanged;
 - (void) updateNextPrevious;
-
-- (void) playPauseMenuItem: (NSMenuItem *) menuItem;
-- (void) nextMenuItem: (NSMenuItem *) menuItem;
-- (void) previousMenuItem: (NSMenuItem *) menuItem;
-- (void) repeatMenuItem: (NSMenuItem *) menuItem;
-- (void) shuffleMenuItem: (NSMenuItem *) menuItem;
 
 - (void) updateRecentFiles;
 - (void) updateRepeat;
