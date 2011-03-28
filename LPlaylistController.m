@@ -11,6 +11,7 @@
 
 #define kDUPLICATE_TEXT @"Duplicate"
 #define kDELETE_TEXT @"Delete"
+#define kCONVERT_TO_REGULAR_PLAYLIST_TEXT @"Convert to Regular Playlist"
 
 @implementation LPlaylistController
 @synthesize activePlaylist, playlists, visiblePlaylist;
@@ -68,6 +69,7 @@
 
 - (void) removePlaylist:(LPlaylist *)playlist
 {
+	if (! [playlist write]) return;
 	[self removePlaylist:playlist fromGroupNamed:kPLAYLISTS];
 }
 
@@ -143,6 +145,24 @@
 	[[Lux sharedInstance] reloadData];
 }
 
+- (void) duplicatePlaylist:(LPlaylist *)playlist
+{
+	LPlaylist * duplicatedPlaylist = [playlist copy];
+	
+	[self addPlaylist:duplicatedPlaylist];
+	
+	[[Lux sharedInstance] reloadData];
+}
+
+- (void) convertToRegularPlaylist:(LPlaylist *)playlist
+{
+	if (! [playlist write] || ! [playlist smart]) return;
+	
+	[playlist setSmart:NO];
+	
+	[[Lux sharedInstance] reloadData];
+}
+
 - (void) addFilesToNewPlaylistByMenuItem: (NSMenuItem *) menuItem
 {
 	LPlaylist * newPlaylist = [[LPlaylist alloc] init];
@@ -154,11 +174,8 @@
 
 - (void) dupliatePlaylistByMenuItem: (NSMenuItem *) menuItem
 {
-	LPlaylist * duplicatedPlaylist = [[menuItem representedObject] copy];
-	
-	[self addPlaylist:duplicatedPlaylist];
-	
-	[[Lux sharedInstance] reloadData];
+	LPlaylist * playlist = [menuItem representedObject];
+	[self duplicatePlaylist:playlist];
 }
 
 - (void) deletePlaylistByMenuItem: (NSMenuItem *) menuItem
@@ -168,6 +185,13 @@
 	[self removePlaylist:playlist];
 	
 	[[Lux sharedInstance] reloadData];
+}
+
+- (void) convertToRegularPlaylistByMenuItem: (NSMenuItem *) menuItem
+{
+	LPlaylist * playlist = [menuItem representedObject];
+	
+	[self convertToRegularPlaylist:playlist];
 }
 
 - (NSMenu *) menuForPlaylist: (LPlaylist *) playlist
@@ -182,8 +206,19 @@
 	[duplicate setAction:@selector(dupliatePlaylistByMenuItem:)];
 	[duplicate setRepresentedObject:playlist];
 	
+	if ([playlist write] && [playlist smart])
+	{
+		NSMenuItem * convertToRegular = [[[NSMenuItem alloc] init] autorelease];
+		[menu addItem:convertToRegular];
+		[convertToRegular setTitle:kCONVERT_TO_REGULAR_PLAYLIST_TEXT];
+		[convertToRegular setTarget:self];
+		[convertToRegular setAction:@selector(convertToRegularPlaylistByMenuItem:)];
+		[convertToRegular setRepresentedObject:playlist];
+	}
+	
 	if ([playlist write])
 	{
+		[menu addItem:[NSMenuItem separatorItem]];
 		NSMenuItem * delete = [[[NSMenuItem alloc] init] autorelease];
 		[menu addItem:delete];
 		[delete setTitle:kDELETE_TEXT];

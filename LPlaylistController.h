@@ -29,6 +29,9 @@
 - (void) removePlaylist: (LPlaylist *) playlist;
 - (void) removePlaylist: (LPlaylist *) playlist fromGroupNamed: (NSString *) name;
 
+- (void) duplicatePlaylist: (LPlaylist *) playlist;
+- (void) convertToRegularPlaylist: (LPlaylist *) playlist;
+
 - (NSMutableArray *) getPlaylists;
 - (NSMutableArray *) getPlaylistsFromGroup: (NSString *) name;
 - (NSMutableArray *) allPlaylists;
@@ -42,6 +45,7 @@
 - (void) addFilesToNewPlaylistByMenuItem: (NSMenuItem *) menuItem;
 - (void) dupliatePlaylistByMenuItem: (NSMenuItem *) menuItem;
 - (void) deletePlaylistByMenuItem: (NSMenuItem *) menuItem;
+- (void) convertToRegularPlaylistByMenuItem: (NSMenuItem *) menuItem;
 
 @property (readwrite, assign) NSMutableDictionary * playlists;
 @property (readwrite, assign, nonatomic) LPlaylist * activePlaylist;
