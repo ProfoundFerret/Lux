@@ -71,6 +71,7 @@
 	[self updateRecentFiles];
 	[self updateRepeat];
 	[self updateShuffle];
+	[self updateNextPrevious];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(play) name:kPLAY_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pause) name:kPAUSE_NOTIFICATION object:nil];
@@ -112,16 +113,18 @@
 
 - (void) updateShuffle
 {
-	
+	NSMenuItem * shuffleMenu = [[LPlayerController sharedInstance] repeatMenuItem];
+	[shuffleMenuItem setTarget:[shuffleMenu target]];
+	[shuffleMenuItem setState:[shuffleMenu state]];
 }
 
 - (void) updateNextPrevious
 {
-	BOOL nextFile = (BOOL) [[LPlayerController sharedInstance] nextFile];
+	BOOL nextFile = [[LPlayerController sharedInstance] nextFile] != nil;
 	[nextMenuItem setEnabled:nextFile];
 	[nextButton setEnabled:nextFile];
 	
-	BOOL previousFile = (BOOL) [[LPlayerController sharedInstance] previousFile];
+	BOOL previousFile = [[LPlayerController sharedInstance] previousFile] != nil;
 	[previousMenuItem setEnabled:previousFile];
 	[previousButton setEnabled:previousFile];
 }
