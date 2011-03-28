@@ -159,6 +159,7 @@
 {
 	NSArray * allFiles = [[[[LPlaylistController sharedInstance] activePlaylist] members] allValues];
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
+	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger nextIndex;
 	if (! activeFile)
 	{
@@ -167,8 +168,12 @@
 		nextIndex = [allFiles indexOfObject:activeFile] + 1;
 		if ([allFiles count] <= nextIndex)
 		{
-			return nil;
-			// nextIndex = 0; // TODO: Only if repeat is on
+			if ([activePlaylist repeat])
+			{
+				nextIndex = 0;
+			} else {
+				return nil;
+			}
 		}
 	}
 	return [allFiles objectAtIndex:nextIndex];
@@ -178,6 +183,7 @@
 {
 	NSArray * allFiles = [[[[LPlaylistController sharedInstance] activePlaylist] members] allValues];
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
+	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger previousIndex;
 	if (! activeFile)
 	{
@@ -185,8 +191,12 @@
 	} else {
 		if ([allFiles indexOfObject:activeFile] == 0)
 		{
-			return nil;
-			// TODO: Play the very last song if repeat is on
+			if ([activePlaylist repeat])
+			{
+				previousIndex = [allFiles count] - 1;
+			} else {
+				return nil;
+			}
 		} else {
 			previousIndex = [allFiles indexOfObject:activeFile] - 1;
 		}
@@ -293,22 +303,52 @@
 		NSMenuItem *playRecent = [[[NSMenuItem alloc] init] autorelease];
 		[playRecent setTitle:kPLAY_RECENT_TEXT];
 		[dockMenu addItem:playRecent];
-		NSMenu * recentFileMenu = [[[NSMenu alloc] init] autorelease];
+		NSMenu * recentFileMenu = [self recentFilesMenu];
 		[playRecent setSubmenu:recentFileMenu];
-		
-		for (NSInteger i = [recentFiles count] - 2; i >= 0; i--) // Subtract 2 because: index starts at 0 AND exclude the current song
-		{
-			LFile * file = [recentFiles objectAtIndex:i];
-			NSMenuItem * fileMenuItem = [[[NSMenuItem alloc] init] autorelease];
-			[fileMenuItem setTitle:[[file attributes] objectForKey:kTITLE]];
-			[fileMenuItem setTarget:self];
-			[fileMenuItem setAction:@selector(playMenuItem:)];
-			[fileMenuItem setRepresentedObject:file];
-			[recentFileMenu addItem:fileMenuItem];	
-		}
 	}
 	
+	[dockMenu addItem:[NSMenuItem separatorItem]];
+	
+	[dockMenu addItem:[self repeatMenuItem]];
+	 
+	
 	return dockMenu;
+}
+
+- (NSMenu *) recentFilesMenu
+{
+	NSMenu * recentFileMenu = [[[NSMenu alloc] init] autorelease];
+	
+	for (NSInteger i = [recentFiles count] - 2; i >= 0; i--) // Subtract 2 because: index starts at 0 AND exclude the current song
+	{
+		LFile * file = [recentFiles objectAtIndex:i];
+		NSMenuItem * fileMenuItem = [[[NSMenuItem alloc] init] autorelease];
+		[fileMenuItem setTitle:[[file attributes] objectForKey:kTITLE]];
+		[fileMenuItem setTarget:self];
+		[fileMenuItem setAction:@selector(playMenuItem:)];
+		[fileMenuItem setRepresentedObject:file];
+		[recentFileMenu addItem:fileMenuItem];	
+	}
+	
+	return recentFileMenu;
+}
+
+- (NSMenuItem *) repeatMenuItem
+{
+	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
+	
+	NSMenuItem * repeat = [[[NSMenuItem alloc] init] autorelease];
+	[repeat setTitle:kREPEAT_TEXT];
+	[repeat setTarget:activePlaylist];
+	[repeat setAction:@selector(toggleRepeat)];
+	[repeat setRepresentedObject:activePlaylist];
+	if ([activePlaylist repeat])
+	{
+		[repeat setState:NSOnState];
+	} else {
+		[repeat setState:NSOffState];
+	}
+	return repeat;
 }
 
 @end

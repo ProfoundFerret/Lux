@@ -17,7 +17,7 @@
 #define kSTREAMING @"Streaming"
 
 @implementation LPlaylist
-@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedIndexSet, needsSearched;
+@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedIndexSet, needsSearched, repeat;
 - (id)init
 {
     self = [super init];
@@ -26,6 +26,7 @@
 		needsSearched = YES;
 		smart = NO;
 		write = YES;
+		repeat = NO;
 		
 		members = [[NSMutableDictionary alloc] init];
 		searchMembers = [[NSMutableDictionary alloc] init];
@@ -74,6 +75,8 @@
 	predicate = [[aDecoder decodeObjectForKey:kPREDICATE] retain];
 	
 	selectedIndexSet = [[aDecoder decodeObjectForKey:kSELECTED_INDEX_SET] retain];
+	
+	repeat = [aDecoder decodeBoolForKey:kREPEAT];
 		
 	return self;
 }
@@ -91,6 +94,8 @@
 	[aCoder encodeObject:predicate forKey:kPREDICATE];
 	
 	[aCoder encodeObject:selectedIndexSet forKey:kSELECTED_INDEX_SET];
+	
+	[aCoder encodeBool:repeat forKey:kREPEAT];
 	
 	[super encodeWithCoder:aCoder];
 }
@@ -113,6 +118,8 @@
 	[playlist setPredicate:[predicate copy]];
 	
 	[playlist setSelectedIndexSet:[selectedIndexSet copy]];
+	
+	[playlist setRepeat:repeat];
 	
 	return playlist;
 }
@@ -301,5 +308,19 @@
 	if (! write) return;
 	
 	title = newTitle;
+}
+
+- (void) toggleRepeat
+{
+	repeat = ! repeat;
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:kREPEAT_CHANGED_NOTIFICATION object:nil];
+}
+
+- (void) setRepeat:(BOOL) newRepeat
+{
+	repeat = newRepeat;
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:kREPEAT_CHANGED_NOTIFICATION object:nil];
 }
 @end

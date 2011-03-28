@@ -48,41 +48,84 @@
 	[progressSlider setTarget:self];
 	[progressSlider setAction:@selector(changeProgress)];
 	
+	[[playPauseMenuItem menu] setAutoenablesItems:NO];
+	
+	[playPauseMenuItem setTarget:self];
+	[playPauseMenuItem setAction:@selector(playPauseMenuItem)];
+	
+	[nextMenuItem setTarget:self];
+	[nextMenuItem setAction:@selector(nextMenuItem)];
+	[nextMenuItem setTitle:kNEXT_TEXT];
+	
+	[previousMenuItem setTarget:self];
+	[previousMenuItem setAction:@selector(previousMenuItem)];
+	[previousMenuItem setTitle:kPREVIOUS_TEXT];
+	
+	[playRecentMenuItem setTitle:kPLAY_RECENT_TEXT];
+	
+	[repeatMenuItem setTitle:kREPEAT_TEXT];
+	[repeatMenuItem setAction:@selector(toggleRepeat)];
+	
+	[shuffleMenuItem setTitle:kSHUFFLE_TEXT];
+	
+	[self updateRecentFiles];
+	[self updateRepeat];
+	[self updateShuffle];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(play) name:kPLAY_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pause) name:kPAUSE_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unpause) name:kUNPAUSE_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stop) name:kSTOP_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRepeat) name:kREPEAT_CHANGED_NOTIFICATION object:nil];
 	
 	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     
-	[self updatePlayPauseImage];
+	[self updatePlayPause];
+}
+
+- (void) updateRecentFiles
+{
+	[playRecentMenuItem setSubmenu:[[LPlayerController sharedInstance] recentFilesMenu]];
+}
+
+- (void) updateRepeat
+{
+	NSMenuItem * repeatMenu = [[LPlayerController sharedInstance] repeatMenuItem];
+	[repeatMenuItem setTarget:[repeatMenu target]];
+	[repeatMenuItem setState:[repeatMenu state]];
+}
+
+- (void) updateShuffle
+{
+	
 }
 
 - (void) play
 {
 	[self updateTime];
-	[self updatePlayPauseImage];
+	[self updatePlayPause];
+	[self updateRecentFiles];
 }
 
 - (void) pause
 {
 	[self updateTime];	
-	[self updatePlayPauseImage];
+	[self updatePlayPause];
 }
 
 - (void) unpause
 {
 	[self updateTime];
-	[self updatePlayPauseImage];
+	[self updatePlayPause];
 }
 
 - (void) stop
 {
 	[self updateTime];
-	[self updatePlayPauseImage];
+	[self updatePlayPause];
 }
 
-- (void) updatePlayPauseImage
+- (void) updatePlayPause
 {
 	BOOL isPlaying = [[LPlayerController sharedInstance] isPlaying];
     if (isPlaying) {
@@ -94,6 +137,7 @@
 			[self resizePlayPauseImage];
 			hasResizedPlay = YES;
 		}
+		[playPauseMenuItem setTitle:kPAUSE_TEXT];
     } else {
 		[playPauseButton setImage:[NSImage imageNamed:kPLAY_FILENAME]];
 		
@@ -103,6 +147,7 @@
 			[self resizePlayPauseImage];
 			hasResizedPause = YES;
 		}
+		[playPauseMenuItem setTitle:kPLAY_TEXT];
     }
 }
 
