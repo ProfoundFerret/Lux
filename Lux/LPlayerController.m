@@ -14,8 +14,7 @@
 #import "LuxAppDelegate.h"
 
 @implementation LPlayerController
-@synthesize player, recentFiles;
-@synthesize playerGui = _playerGui;
+@synthesize player, recentFiles, isPlaying;
 - (id)init
 {
     self = [super init];
@@ -109,16 +108,15 @@
 {
 	if (isPlaying)
 	{
-		[[NSNotificationCenter defaultCenter] postNotificationName:kPAUSE_NOTIFICATION object:nil];
 		[player pause];
+		isPlaying = ! isPlaying;
+		[[NSNotificationCenter defaultCenter] postNotificationName:kPAUSE_NOTIFICATION object:nil];
 	} else 
 	{
-		[[NSNotificationCenter defaultCenter] postNotificationName:kUNPAUSE_NOTIFICATION object:nil];
 		[player play];
+		isPlaying = ! isPlaying;
+		[[NSNotificationCenter defaultCenter] postNotificationName:kUNPAUSE_NOTIFICATION object:nil];
 	}
-	isPlaying = ! isPlaying;
-    [_playerGui changePlayPauseButtonImage:isPlaying];
-    NSLog(@"apres fonction");
 
 }
 

@@ -20,7 +20,5 @@
 - (void) changeProgress;
 - (void) changeVolume;
 - (void) updateTime;
-- (void) changePlayPauseButtonImage:(BOOL)isPlaying;
-
-
+- (void) updatePlayPauseImage;
 @end

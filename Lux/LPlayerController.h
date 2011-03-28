@@ -28,7 +28,6 @@
 #define kMAX_RECENT_FILES 10
 
 @interface LPlayerController : LControllerObject {
-    LPlayerGui * _playerGui;
 	LExtension <LPlayerDelegate> * player;
 	BOOL isPlaying;
 	NSMutableArray * recentFiles;
@@ -56,5 +55,5 @@
 
 @property (readonly) NSMutableArray * recentFiles;
 @property (readonly) LExtension <LPlayerDelegate> * player;
-@property (nonatomic, retain) LPlayerGui *playerGui;
+@property (readonly) BOOL isPlaying;
 @end

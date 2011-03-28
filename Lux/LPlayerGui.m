@@ -12,6 +12,9 @@
 
 #define controller [LPlayerController sharedInstance]
 
+#define kPAUSE_FILENAME @"Pause"
+#define kPLAY_FILENAME @"Play"
+
 @implementation LPlayerGui
 
 - (id)init
@@ -50,24 +53,35 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTime) name:kPAUSE_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTime) name:kSTOP_NOTIFICATION object:nil];
 	
-	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlayPauseImage) name:kPLAY_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlayPauseImage) name:kPAUSE_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlayPauseImage) name:kUNPAUSE_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlayPauseImage) name:kSTOP_NOTIFICATION object:nil];
 	
-	NSImage * playPauseImage = [playPauseButton image];
-	NSSize newSize = [playPauseImage size];
-	newSize.height = newSize.height * .7;
-	newSize.width = newSize.width * .7;
-	[playPauseImage setSize:newSize];
+	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     
+	[self updatePlayPauseImage];
 }
 
-- (void) changePlayPauseButtonImage:(BOOL)isPlaying
+- (void) updatePlayPauseImage
 {
+	BOOL isPlaying = [[LPlayerController sharedInstance] isPlaying];
     if (isPlaying) {
-    [playPauseButton setImage:[NSImage imageNamed:@"Forward.pdf"]];
+		[playPauseButton setImage:[NSImage imageNamed:kPAUSE_FILENAME]];
     } else {
-    [playPauseButton setImage:[NSImage imageNamed:@"Play.pdf"]];
+		[playPauseButton setImage:[NSImage imageNamed:kPLAY_FILENAME]];
     }
-    NSLog(@"changing image");
+//	static BOOL hasResized = NO;
+//	if (! hasResized)
+//	{
+//		NSImage * image = [playPauseButton image];
+//		NSSize newSize = [image size];
+//		newSize.height = newSize.height * .7;
+//		newSize.width = newSize.width * .7;
+//		[image setSize:newSize];
+//		
+//		hasResized = YES;
+//	}
 }
 
 - (void) updateTime;
