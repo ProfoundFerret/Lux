@@ -9,7 +9,6 @@
 #import "Lux.h"
 #import "LExtension.h"
 #import "_Test.h"
-//#import <Growl/Growl.h>
 
 
 @implementation Lux

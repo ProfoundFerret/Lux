@@ -112,6 +112,9 @@
 	[searchField setStringValue:[item search]];
 	
 	[[Lux sharedInstance] reloadData];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:kPLAYLIST_CHANGED_NOTIFICATION object:nil];
+
 }
 
 - (BOOL) outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item

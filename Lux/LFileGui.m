@@ -11,6 +11,7 @@
 #import "LExtension.h"
 #import "LPlayerController.h"
 #import "LPlaylistController.h"
+#import "Lux.h"
 
 #define controller [LFileController sharedInstance]
 #define kFILES_COUNT_TEXT @"%d Files"
@@ -75,6 +76,13 @@
 	[visiblePlaylist setSelectedIndexSet: indexSet];
 }
 
+- (void) tableView: (NSTableView *) tableView didClickTableColumn:(NSTableColumn *)tableColumn
+{
+	LPlaylist * playlist = [[LPlaylistController sharedInstance] visiblePlaylist];
+	[playlist setSort:[tableColumn identifier]];
+	[self reloadData];
+}
+
 - (void) doubleClickAction
 {
 	NSInteger clickedIndex = [fileList clickedRow];
@@ -93,7 +101,7 @@
 - (void) reloadData
 {
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
-	visibleFiles = [[[visiblePlaylist members] allValues] retain];
+	visibleFiles = [[visiblePlaylist members] retain];
 	[self updateColumns];
 	
 	[fileList reloadData];
@@ -130,6 +138,7 @@
 - (void) updateColumns
 {
 	NSMutableArray * columns = [NSArray arrayWithArray:[[[LPlaylistController sharedInstance] visiblePlaylist] columns]];
+	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	for (NSTableColumn * column in [fileList tableColumns])
 	{
 		NSString * ID = [column identifier];
@@ -144,6 +153,19 @@
 			
 			NSSize charSize = [totalString sizeWithAttributes:fontDictionary];
 			[column setWidth:charSize.width + kMARGIN_SIZE];
+		}
+		if ([ID isEqualToString:[visiblePlaylist sort]])
+		{
+			NSImage * indicatorImage;
+			if ([visiblePlaylist descending])
+			{
+				indicatorImage = [NSImage imageNamed:@"NSDescendingSortIndicator"];
+			} else {
+				indicatorImage = [NSImage imageNamed:@"NSAscendingSortIndicator"];
+			}
+			[fileList setIndicatorImage:indicatorImage inTableColumn:column];
+		} else {
+			[fileList setIndicatorImage:nil inTableColumn:column];
 		}
 	}
 }

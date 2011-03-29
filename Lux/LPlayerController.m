@@ -157,7 +157,7 @@
 
 - (LFile *) nextFile
 {
-	NSArray * allFiles = [[[[LPlaylistController sharedInstance] activePlaylist] members] allValues];
+	NSArray * allFiles = [[[LPlaylistController sharedInstance] activePlaylist] members];
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
 	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger nextIndex;
@@ -187,7 +187,7 @@
 
 - (LFile *) previousFile
 {
-	NSArray * allFiles = [[[[LPlaylistController sharedInstance] activePlaylist] members] allValues];
+	NSArray * allFiles = [[[LPlaylistController sharedInstance] activePlaylist] members];
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
 	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger nextIndex;

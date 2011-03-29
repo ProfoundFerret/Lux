@@ -20,6 +20,9 @@
 #define kSELECTED_INDEX_SET @"selectedIndexSet"
 #define kREPEAT @"repeat"
 #define kSHUFFLE @"shuffle"
+#define kSORT @"sort"
+#define kDESCENDING @"descending"
+#define kNEEDS_SORTED @"needsSorted"
 
 #define kREPEAT_CHANGED_NOTIFICATION @"repeatchanged_notification"
 #define kSHUFFLE_CHANGED_NOTIFICATION @"shufflechanged_notification"
@@ -27,8 +30,8 @@
 #define kUNTITLED_PLAYLIST @"Untitled Playlist"
 
 @interface LPlaylist : LStoredObject {
-	NSMutableDictionary * members;
-	NSMutableDictionary * searchMembers;
+	NSMutableArray * members;
+	NSMutableArray * searchMembers;
 	
 	NSArray * columns;
 	
@@ -39,8 +42,13 @@
 	
     NSString * predicate;
 	
+	NSString * sort;
+	
+	NSIndexSet * selectedIndexSet;
+	
 	BOOL needsUpdated;
 	BOOL needsSearched;
+	BOOL needsSorted;
 	
 	BOOL smart;
 	BOOL write;
@@ -48,15 +56,16 @@
 	BOOL repeat;
 	BOOL shuffle;
 	
-	NSIndexSet * selectedIndexSet;
+	BOOL descending;
 }
 - (void) update;
 - (void) updateSearch;
+- (NSArray *) updateSort: (NSArray *) files;
 
 - (void) setTitle: (NSString *) title;
 
-- (NSDictionary *) members;
-- (NSDictionary *) allMembers;
+- (NSArray *) members;
+- (NSArray *) allMembers;
 
 - (void) addFiles: (NSArray *) members;
 - (void) addFile: (LFile *) file;
@@ -68,7 +77,7 @@
 
 - (void) setSearch:(NSString *) aSearch;
 
-- (void) setMembers: (NSDictionary *) newMembers;
+- (void) setMembers: (NSArray *) newMembers;
 
 - (void) toggleRepeat;
 - (void) setRepeat: (BOOL) newRepeat;
@@ -91,4 +100,7 @@
 @property (readonly, assign) NSString * search;
 @property (readwrite, retain) NSIndexSet * selectedIndexSet;
 @property (readwrite, assign) BOOL needsSearched;
+@property (readwrite, assign) BOOL descending;
+@property (readwrite, assign, nonatomic) NSString * sort;
+@property (readwrite, assign) BOOL needsSorted;
 @end

@@ -25,6 +25,7 @@
 
 #define kVOLUME @"volume"
 #define kRELOAD_DATA_NOTIFICATION @"reloadData_notification"
+#define kPLAYLIST_CHANGED_NOTIFICATION @"playlistChanged_notification"
 
 @interface Lux : LSingleton {
     LExtensionController * extensionController;

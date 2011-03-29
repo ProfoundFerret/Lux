@@ -13,6 +13,7 @@
 #import "LPlaylist.h"
 #import "LPlaylistController.h"
 #import "LPlayerController.h"
+#import "Lux.h"
 
 
 @implementation LFile
@@ -106,8 +107,6 @@
 		if (attribute) { attribute = [[attribute lowercaseString] retain]; };
 		if (attribute && [attribute length]) [newsearchAttributes addObject:attribute];
 	}
-	
-	searchAttributes = [[NSArray alloc] initWithArray:newsearchAttributes];
 	return searchAttributes;
 }
 
@@ -122,11 +121,10 @@
 {
 	if (dictionary) return [NSDictionary dictionaryWithDictionary:dictionary];
 	
-	NSMutableDictionary * d = [NSMutableDictionary dictionaryWithDictionary:attributes];
-	[d setObject:[NSNumber numberWithInt:[self fileType]] forKey:kFILE_TYPE];
-	[d setObject:url forKey:kURL];
+	dictionary = [[NSMutableDictionary alloc] initWithDictionary:attributes];
+	[dictionary setObject:[NSNumber numberWithInt:[self fileType]] forKey:kFILE_TYPE];
+	[dictionary setObject:url forKey:kURL];
 	
-	dictionary = [[NSDictionary alloc] initWithDictionary:d];
 	return [self dictionary];
 }
 
@@ -154,7 +152,7 @@
 	NSMutableArray * playlists = [NSMutableArray array];
 	for (LPlaylist * playlist in [[LPlaylistController sharedInstance] getPlaylists])
 	{
-		if ([[playlist allMembers] objectForKey:[self url]]) [playlists addObject:playlist];
+		if ([[playlist allMembers] containsObject:self]) [playlists addObject:playlist];
 	}
 	return [NSArray arrayWithArray:playlists];
 }
@@ -164,7 +162,7 @@
 	NSMutableArray * playlists = [NSMutableArray array];
 	for (LPlaylist * playlist in [[LPlaylistController sharedInstance] getPlaylists])
 	{
-		if (! [[playlist allMembers] objectForKey:[self url]]) [playlists addObject:playlist];
+		if (! [[playlist allMembers] containsObject:[self url]]) [playlists addObject:playlist];
 	}
 	return [NSArray arrayWithArray:playlists];
 }

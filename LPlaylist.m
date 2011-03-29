@@ -17,26 +17,29 @@
 #define kSTREAMING @"Streaming"
 
 @implementation LPlaylist
-@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedIndexSet, needsSearched, repeat, shuffle;
+@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedIndexSet, needsSearched, repeat, shuffle, sort, descending, needsSorted;
 - (id)init
 {
     self = [super init];
     if (self) {
 		needsUpdated = YES;
 		needsSearched = YES;
+		needsSorted = YES;
+		
 		smart = NO;
 		write = YES;
 		
 		repeat = NO;
 		shuffle = NO;
 		
-		members = [[NSMutableDictionary alloc] init];
-		searchMembers = [[NSMutableDictionary alloc] init];
+		members = [[NSMutableArray alloc] init];
+		searchMembers = [[NSMutableArray alloc] init];
 		columns = [[NSArray alloc] initWithObjects:kINDEX, kTITLE, kARTIST, kALBUM, nil];
 		title = kUNTITLED_PLAYLIST;
 		search = @"";
 		oldSearch = @"";
 		predicate = @"";
+		sort = kARTIST;
 		
 		selectedIndexSet = [[NSIndexSet alloc] init];
     }
@@ -53,6 +56,9 @@
 	[title release];
 	[search release];
 	[oldSearch release];
+	[sort release];
+	[predicate release];
+	[sort release];
 	
 	[selectedIndexSet release];
 	
@@ -80,6 +86,10 @@
 	
 	repeat = [aDecoder decodeBoolForKey:kREPEAT];
 	shuffle = [aDecoder decodeBoolForKey:kSHUFFLE];
+	
+	sort = [aDecoder decodeObjectForKey:kSORT];
+	needsSorted = YES;
+	descending = [aDecoder decodeBoolForKey:kDESCENDING];
 		
 	return self;
 }
@@ -101,6 +111,10 @@
 	[aCoder encodeBool:repeat forKey:kREPEAT];
 	[aCoder encodeBool:shuffle forKey:kSHUFFLE];
 	
+	[aCoder encodeObject:sort forKey:kSORT];
+	[aCoder encodeBool:needsSorted forKey:kNEEDS_SORTED];
+	[aCoder encodeBool:descending forKey:kDESCENDING];
+	
 	[super encodeWithCoder:aCoder];
 }
 
@@ -113,18 +127,22 @@
 	
 	[playlist setSmart:smart];
 	
-	[playlist setMembers:[members copy]];
-	[playlist setColumns:[columns copy]];
+	[playlist setMembers:[[members copy] autorelease]];
+	[playlist setColumns:[[columns copy] autorelease]];
 	
-	[playlist setTitle:[title copy]];
+	[playlist setTitle:[[title copy] autorelease]];
 	
-	[playlist setSearch:[search copy]];
-	[playlist setPredicate:[predicate copy]];
+	[playlist setSearch:[[search copy] autorelease]];
+	[playlist setPredicate:[[predicate copy] autorelease]];
 	
-	[playlist setSelectedIndexSet:[selectedIndexSet copy]];
+	[playlist setSelectedIndexSet:[[selectedIndexSet copy] autorelease]];
 	
 	[playlist setRepeat:repeat];
 	[playlist setShuffle:shuffle];
+	
+	[playlist setSort:[[sort copy] autorelease]];
+	[playlist setNeedsSorted:needsSorted];
+	[playlist setDescending:descending];
 	
 	return playlist;
 }
@@ -136,47 +154,72 @@
 		if (! needsUpdated || ! smart) return;
 		needsUpdated = NO;
 		needsSearched = YES;
+		needsSorted = YES;
 		
 		[members release];
-		members = [[NSMutableDictionary alloc] init];
+		members = [[NSMutableArray alloc] init];
 		NSPredicate * pred = [NSPredicate predicateWithFormat:predicate];
-		NSDictionary * fileList = [[LFileController sharedInstance] files];
+		NSArray * fileList = [[[LFileController sharedInstance] files] allValues];
 
-		for (NSString * path in fileList)
+		for (LFile * file in fileList)
 		{
-			LFile * file = [fileList objectForKey:path];
-			BOOL shouldAdd = [pred evaluateWithObject:[file dictionary]];
+			BOOL shouldAdd = [pred evaluateWithObject:[file dictionary]] && ! [members containsObject:file];
 			if ( shouldAdd )
 			{
-				[members setObject:file forKey:[file url]];
+				[members addObject:file];
 			}
 		}
 	}
 }
 
-- (NSDictionary *) allMembers
+- (NSArray *) allMembers
 {
-	return [NSDictionary dictionaryWithDictionary:members];
+	[self update];
+	return [NSArray arrayWithArray:members];
 }
 
-- (void) setMembers: (NSDictionary *) newMembers
+- (void) setMembers: (NSArray *) newMembers
 {
 	members = [newMembers retain];
 }
 
-- (NSDictionary *) members
+- (NSArray *) members
 {
 	[self update];
 	
-	NSDictionary * mList;
+	NSArray * mList;
 	if ([search length])
 	{
 		[self updateSearch];
-		mList = [NSDictionary dictionaryWithDictionary:searchMembers];
+		mList = searchMembers;
 	} else {
-		mList = [NSDictionary dictionaryWithDictionary:members];
+		mList = members;
 	}
-	return mList;
+	
+	mList = [self updateSort: mList];
+	return [NSArray arrayWithArray:mList];
+}
+
+- (NSArray *) updateSort: (NSArray *) files
+{
+	if (! needsSorted) return files;
+	needsSorted = NO;
+	
+	NSString * key = [NSString stringWithFormat:@"dictionary.%@", sort];
+	NSString * keyArtist = [NSString stringWithFormat:@"dictionary.%@", kARTIST];
+	NSString * keyAlbum = [NSString stringWithFormat:@"dictionary.%@", kALBUM];
+	NSString * keyTitle = [NSString stringWithFormat:@"dictionary.%@", kTITLE];
+	
+	NSSortDescriptor * sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:key ascending:! descending];
+	NSSortDescriptor * sortDescriptorArtist = [NSSortDescriptor sortDescriptorWithKey:keyArtist ascending: YES];
+	NSSortDescriptor * sortDescriptorAlbum = [NSSortDescriptor sortDescriptorWithKey:keyAlbum ascending: YES];
+	NSSortDescriptor * sortDescriptorTitle = [NSSortDescriptor sortDescriptorWithKey:keyTitle ascending: YES];
+	
+	NSArray * sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, sortDescriptorArtist, sortDescriptorAlbum, sortDescriptorTitle, nil];
+	
+	files = [files sortedArrayUsingDescriptors:sortDescriptors];
+	
+	 return files;
 }
 
 - (void) updateSearch
@@ -184,25 +227,24 @@
 	if (! needsSearched || ! [search length]) return;
 	needsSearched = NO;
 	
-	NSDictionary * toBeSearched;
+	NSArray * toBeSearched;
 	
 	if ([search rangeOfString:oldSearch].location != NSNotFound) // If the new search contains the old one then use old results as a start
 	{
-		toBeSearched = [NSDictionary dictionaryWithDictionary:searchMembers];
+		toBeSearched = [NSArray arrayWithArray:searchMembers];
 	} else {
-		toBeSearched = [NSDictionary dictionaryWithDictionary:members];
+		toBeSearched = [NSArray arrayWithArray:members];
 	}
 	
 	NSArray * searchSet = [search componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	[searchMembers release];
-	searchMembers = [[NSMutableDictionary alloc] init];
+	searchMembers = [[NSMutableArray alloc] init];
 	
-	for (NSURL * url in toBeSearched)
+	for (LFile * f in toBeSearched)
 	{
-		LFile * f = [toBeSearched objectForKey:url];
 		if ([f matchesSearchSet: searchSet])
 		{
-			[searchMembers setObject:f forKey:[f url]];
+			[searchMembers addObject:f];
 		}
 	}
 }
@@ -238,6 +280,7 @@
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
 	[playlist setTitle:kVIDEO];
+	[playlist setSort:kTITLE];
 	
 	NSArray * columns = [NSArray arrayWithObjects:kINDEX, kTITLE, nil];
 	[playlist setColumns:columns];
@@ -256,6 +299,7 @@
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
 	[playlist setTitle:kSTREAMING];
+	[playlist setSort:kTITLE];
 	
 	NSArray * columns = [NSArray arrayWithObjects:kINDEX, kTITLE, nil];
 	[playlist setColumns:columns];
@@ -274,7 +318,7 @@
 {
 	for (LFile * file in newMembers)
 	{
-		[members setObject: file forKey: [file url]];
+		[members addObject:file];
 	}
 	
 	[[Lux sharedInstance] reloadData];
@@ -290,7 +334,7 @@
 {
 	for (LFile * file in newMembers)
 	{
-		[members removeObjectForKey:[file url]];
+		[members removeObject:file];
 	}
 	
 	[[Lux sharedInstance] reloadData];
@@ -341,5 +385,15 @@
 	if (newShuffle == shuffle) return;
 	shuffle = newShuffle;
 	[[NSNotificationCenter defaultCenter] postNotificationName:kSHUFFLE_CHANGED_NOTIFICATION object:nil];
+}
+
+- (void) setSort:(NSString *)newSort
+{
+	if ([sort isEqualToString:newSort])
+	{
+		descending = ! descending;
+	}
+	sort = [newSort retain];
+	needsSorted = YES;
 }
 @end

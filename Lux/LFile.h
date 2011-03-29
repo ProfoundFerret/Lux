@@ -24,7 +24,7 @@
 	NSArray * searchAttributes;
 	NSString * extension;
 	
-	NSDictionary * dictionary;
+	NSMutableDictionary * dictionary;
 }
 - (NSString *) extension;
 
