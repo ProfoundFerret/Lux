@@ -254,9 +254,9 @@
 	NSSortDescriptor * sortDescriptorAlbum = [NSSortDescriptor sortDescriptorWithKey:keyAlbum ascending: YES];
 	NSSortDescriptor * sortDescriptorTitle = [NSSortDescriptor sortDescriptorWithKey:keyTitle ascending: YES];
 	
-	//NSArray * sortDescriptors = [NSArray arrayWithObjects:sortDescriptor,sortDescriptorArtist, sortDescriptorAlbum, sortDescriptorTitle, nil];
+	NSArray * sortDescriptors = [NSArray arrayWithObjects:sortDescriptor,sortDescriptorArtist, sortDescriptorAlbum, sortDescriptorTitle, nil];
 	
-	members = [[members sortedArrayUsingDescriptors:sortDescriptors] retain];
+	//members = [[members sortedArrayUsingDescriptors:sortDescriptors] retain];
 	return;
 }
 
