@@ -60,7 +60,7 @@
 }
 - (void) update;
 - (void) updateSearch;
-- (NSArray *) updateSort: (NSArray *) files;
+- (void) updateSort;
 
 - (void) setTitle: (NSString *) title;
 

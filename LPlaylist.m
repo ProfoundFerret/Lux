@@ -147,31 +147,6 @@
 	return playlist;
 }
 
-- (void) update
-{
-	@synchronized(self)
-	{
-		if (! needsUpdated || ! smart) return;
-		needsUpdated = NO;
-		needsSearched = YES;
-		needsSorted = YES;
-		
-		[members release];
-		members = [[NSMutableArray alloc] init];
-		NSPredicate * pred = [NSPredicate predicateWithFormat:predicate];
-		NSArray * fileList = [[[LFileController sharedInstance] files] allValues];
-
-		for (LFile * file in fileList)
-		{
-			BOOL shouldAdd = [pred evaluateWithObject:[file dictionary]] && ! [members containsObject:file];
-			if ( shouldAdd )
-			{
-				[members addObject:file];
-			}
-		}
-	}
-}
-
 - (NSArray *) allMembers
 {
 	[self update];
@@ -186,6 +161,7 @@
 - (NSArray *) members
 {
 	[self update];
+	[self updateSort];
 	
 	NSArray * mList;
 	if ([search length])
@@ -196,30 +172,32 @@
 		mList = members;
 	}
 	
-	mList = [self updateSort: mList];
 	return [NSArray arrayWithArray:mList];
 }
 
-- (NSArray *) updateSort: (NSArray *) files
+- (void) update
 {
-	if (! needsSorted) return files;
-	needsSorted = NO;
-	
-	NSString * key = [NSString stringWithFormat:@"dictionary.%@", sort];
-	NSString * keyArtist = [NSString stringWithFormat:@"dictionary.%@", kARTIST];
-	NSString * keyAlbum = [NSString stringWithFormat:@"dictionary.%@", kALBUM];
-	NSString * keyTitle = [NSString stringWithFormat:@"dictionary.%@", kTITLE];
-	
-	NSSortDescriptor * sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:key ascending:! descending];
-	NSSortDescriptor * sortDescriptorArtist = [NSSortDescriptor sortDescriptorWithKey:keyArtist ascending: YES];
-	NSSortDescriptor * sortDescriptorAlbum = [NSSortDescriptor sortDescriptorWithKey:keyAlbum ascending: YES];
-	NSSortDescriptor * sortDescriptorTitle = [NSSortDescriptor sortDescriptorWithKey:keyTitle ascending: YES];
-	
-	NSArray * sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, sortDescriptorArtist, sortDescriptorAlbum, sortDescriptorTitle, nil];
-	
-	files = [files sortedArrayUsingDescriptors:sortDescriptors];
-	
-	 return files;
+	@synchronized(self)
+	{
+		if (! needsUpdated || ! smart) return;
+		needsUpdated = NO;
+		needsSearched = YES;
+		needsSorted = YES;
+		
+		[members release];
+		members = [[NSMutableArray alloc] init];
+		NSPredicate * pred = [NSPredicate predicateWithFormat:predicate];
+		NSArray * fileList = [[[LFileController sharedInstance] files] allValues];
+		
+		for (LFile * file in fileList)
+		{
+			BOOL shouldAdd = [pred evaluateWithObject:[file dictionary]] && ! [members containsObject:file];
+			if ( shouldAdd )
+			{
+				[members addObject:file];
+			}
+		}
+	}
 }
 
 - (void) updateSearch
@@ -259,6 +237,27 @@
 			[searchMembers addObject:f];
 		}
 	}
+}
+
+- (void) updateSort
+{
+	if (! needsSorted) return;
+	needsSorted = NO;
+	
+	NSString * key = [NSString stringWithFormat:@"dictionary.%@", sort];
+	NSString * keyArtist = [NSString stringWithFormat:@"dictionary.%@", kARTIST];
+	NSString * keyAlbum = [NSString stringWithFormat:@"dictionary.%@", kALBUM];
+	NSString * keyTitle = [NSString stringWithFormat:@"dictionary.%@", kTITLE];
+	
+	NSSortDescriptor * sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:key ascending:! descending];
+	NSSortDescriptor * sortDescriptorArtist = [NSSortDescriptor sortDescriptorWithKey:keyArtist ascending: YES];
+	NSSortDescriptor * sortDescriptorAlbum = [NSSortDescriptor sortDescriptorWithKey:keyAlbum ascending: YES];
+	NSSortDescriptor * sortDescriptorTitle = [NSSortDescriptor sortDescriptorWithKey:keyTitle ascending: YES];
+	
+	//NSArray * sortDescriptors = [NSArray arrayWithObjects:sortDescriptor,sortDescriptorArtist, sortDescriptorAlbum, sortDescriptorTitle, nil];
+	
+	members = [[members sortedArrayUsingDescriptors:sortDescriptors] retain];
+	return;
 }
 
 - (void) setSearch:(NSString *) aSearch

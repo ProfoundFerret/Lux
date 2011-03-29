@@ -60,9 +60,9 @@
 
 - (void) _update
 {
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init]; 
 	@synchronized(self)
 	{
+		NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 		NSLog(@"Updating");
 		
 		for (LExtension <LInputOutputDelegate> * extension in [self extensions])
@@ -74,8 +74,8 @@
 		NSLog(@"Update Finished");
 		
 		[[Lux sharedInstance] reloadData];
+		[pool drain];
 	}
-	[pool drain];
 }
 
 - (void) addFileByURL: (NSURL *) url
