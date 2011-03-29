@@ -71,24 +71,24 @@
 
 - (NSString *) searchAttributes
 {	
-	//if ([searchAttributes length]) return searchAttributes;
+	if ([searchAttributes length]) return searchAttributes;
 	
-	NSMutableArray * newsearchAttributes = [NSMutableArray array];
+	NSMutableArray * newSearchAttributes = [NSMutableArray array];
 	NSArray * attrList = [NSArray arrayWithObjects:kTITLE,kARTIST,kALBUM,nil];
 	
 	for (NSString * attr in attrList)
 	{
 		NSString * attribute = [attributes objectForKey:attr];
 		if (attribute) { attribute = [[attribute lowercaseString] retain]; };
-		if (attribute && [attribute length]) [newsearchAttributes addObject:attribute];
+		if (attribute && [attribute length]) [newSearchAttributes addObject:attribute];
 	}
-	searchAttributes = [newsearchAttributes componentsJoinedByString:@" "];
+	searchAttributes = [newSearchAttributes componentsJoinedByString:@" "];
 	return searchAttributes;
 }
 
 - (id) attributeForIdentifier: (id) identifier
 {
-	id attribute = [attributes objectForKey:identifier];
+	id attribute = [[self dictionary] objectForKey:identifier];
 	if (attribute) return attribute;
 	return @"";
 }
