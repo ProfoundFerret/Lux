@@ -84,7 +84,11 @@
 	NSMutableArray * playlistGroup = [self getPlaylistsFromGroup:name];
 	[playlistGroup removeObject:playlist];
 	
-	[[Lux sharedInstance] reloadData];
+	// Don't reloadData if it's the same playlist; reloadData will be run anyways when the new playlist is auto selected
+	if (playlist != activePlaylist) 
+	{
+		[[Lux sharedInstance] reloadData];
+	}
 }
 
 - (NSMutableArray *) getPlaylists

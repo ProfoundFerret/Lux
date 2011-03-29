@@ -286,7 +286,6 @@
 		7C5FE0BA13258F0D0008B7DC /* Lux */ = {
 			isa = PBXGroup;
 			children = (
-				7A89531C133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict */,
 				7C06031413319B02000C0556 /* Images */,
 				7C5FE0EF1325CC2B0008B7DC /* Lux.h */,
 				7C5FE0F01325CC2B0008B7DC /* Lux.m */,
@@ -309,6 +308,7 @@
 		7C5FE0BB13258F0D0008B7DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7A89531C133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict */,
 				7C3826A1133C598800FDD40E /* Subclasses */,
 				7C3B909F1328A794007B7DA5 /* Categories */,
 				7C5FE0BC13258F0D0008B7DC /* Lux-Info.plist */,
@@ -352,10 +352,10 @@
 		7CF9410A1326FE97004526D0 /* Playlist */ = {
 			isa = PBXGroup;
 			children = (
-				7C3B909913286BF8007B7DA5 /* LPlaylistGui.h */,
-				7C3B909A13286BF8007B7DA5 /* LPlaylistGui.m */,
 				7C2B7C37133EBC0F001BD5DC /* LPlaylist.h */,
 				7C2B7C38133EBC0F001BD5DC /* LPlaylist.m */,
+				7C3B909913286BF8007B7DA5 /* LPlaylistGui.h */,
+				7C3B909A13286BF8007B7DA5 /* LPlaylistGui.m */,
 				7C2B7C39133EBC0F001BD5DC /* LPlaylistController.h */,
 				7C2B7C3A133EBC0F001BD5DC /* LPlaylistController.m */,
 			);

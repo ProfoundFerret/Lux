@@ -16,7 +16,7 @@
 	
 	NSArray * visibleFiles;
 }
-- (void) showCorrectColumns;
+- (void) updateColumns;
 - (void) setupColumns;
 - (void) updateTotalFiles;
 @property (readwrite, assign) NSArray * visibleFiles;

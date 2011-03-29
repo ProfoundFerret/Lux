@@ -13,8 +13,9 @@
 #import "LPlaylistController.h"
 
 #define controller [LFileController sharedInstance]
-#define kFILES_COUNT_TEXT @"%d Files";
-#define kFILE_COUNT_TEXT @"%d File";
+#define kFILES_COUNT_TEXT @"%d Files"
+#define kFILE_COUNT_TEXT @"%d File"
+#define kMARGIN_SIZE 4
 
 @implementation LFileGui
 @synthesize visibleFiles;
@@ -93,7 +94,7 @@
 {
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	visibleFiles = [[[visiblePlaylist members] allValues] retain];
-	[self showCorrectColumns];
+	[self updateColumns];
 	
 	[fileList reloadData];
 	
@@ -106,15 +107,45 @@
 
 - (void) setupColumns
 {
-	NSMutableArray * columns = kKEEPER_ATTRIBUTES;
+	NSMutableArray * columns = [NSMutableArray arrayWithObject:kINDEX];
+	
+	[columns addObjectsFromArray:kKEEPER_ATTRIBUTES];
 	
 	for (NSString * col in columns)
 	{
 		NSTableColumn * column = [[[NSTableColumn alloc] initWithIdentifier:col] autorelease];
-		[[column headerCell] setStringValue:[col capitalizedString]];
+		if ([col isEqualToString:kINDEX])
+		{
+			[[column headerCell] setStringValue:@""];
+			[column setEditable:NO];
+			[column setResizingMask:NSTableColumnNoResizing];
+		} else {	
+			[[column headerCell] setStringValue:[col capitalizedString]];
+		}
 		[fileList addTableColumn:column];
 	}
-	[self showCorrectColumns];
+	[self updateColumns];
+}
+
+- (void) updateColumns
+{
+	NSMutableArray * columns = [NSArray arrayWithArray:[[[LPlaylistController sharedInstance] visiblePlaylist] columns]];
+	for (NSTableColumn * column in [fileList tableColumns])
+	{
+		NSString * ID = [column identifier];
+		[column setHidden:(! [columns containsObject:ID])];
+		if ([ID isEqualToString:kINDEX])
+		{
+			NSUInteger total = [visibleFiles count];
+			NSString * totalString = [NSString stringWithFormat:@"%d", total];
+			
+			NSFont * font = [[[[fileList tableColumns] objectAtIndex:0] dataCell] font]; 	
+			NSDictionary * fontDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+			
+			NSSize charSize = [totalString sizeWithAttributes:fontDictionary];
+			[column setWidth:charSize.width + kMARGIN_SIZE];
+		}
+	}
 }
 
 - (void) updateTotalFiles
@@ -130,15 +161,6 @@
 	}
 	
 	[totalFiles setStringValue:[NSString stringWithFormat:files, total]]; 
-}
-
-- (void) showCorrectColumns
-{
-	NSMutableArray * columns = [NSArray arrayWithArray:[[[LPlaylistController sharedInstance] visiblePlaylist] columns]];
-	for (NSTableColumn * column in [fileList tableColumns])
-	{
-		[column setHidden:(! [columns containsObject:[column identifier]])];
-	}
 }
 
 - (NSMenu *) menuForEvent: (NSEvent *) event

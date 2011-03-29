@@ -161,6 +161,7 @@
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
 	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger nextIndex;
+	if ([allFiles count] == 0) return nil;
 	if (! activeFile && ! [activePlaylist shuffle])
 	{
 		nextIndex = 0;
@@ -190,6 +191,8 @@
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
 	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger nextIndex;
+
+	if ([allFiles count] == 0) return nil;
 	if (! activeFile && ! [activePlaylist shuffle])
 	{
 		nextIndex = [allFiles count] - 1;
