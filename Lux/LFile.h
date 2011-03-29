@@ -21,14 +21,14 @@
 @interface LFile : LStoredObject {
     NSURL * url;
 	NSMutableDictionary * attributes;
-	NSArray * searchAttributes;
+	NSString * searchAttributes;
 	NSString * extension;
 	
 	NSMutableDictionary * dictionary;
 }
 - (NSString *) extension;
 
-- (NSArray *) searchAttributes;
+- (NSString *) searchAttributes;
 
 - (id) attributeForIdentifier: (id) identifier;
 

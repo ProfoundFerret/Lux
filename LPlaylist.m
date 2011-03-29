@@ -244,18 +244,15 @@
 	for (LFile * f in toBeSearched)
 	{
 		add = NO;
-		for (NSString * str in searchSet)
+		for (NSString * attribute in searchSet)
 		{
-			if (! [str length]) continue;
-			NSArray * searchAttributes = [f searchAttributes];
-			for (NSString * attribute in searchAttributes)
+			if (! [attribute length]) continue;
+			NSString * searchAttributes = [f searchAttributes];
+			if ([searchAttributes rangeOfString:attribute].location != NSNotFound)
 			{
-				if ([attribute rangeOfString:str].location != NSNotFound)
-				{
-					add = YES;
-				}
+				add = YES;
 			}
-			
+			if (add) continue;
 		}
 		if (add)
 		{

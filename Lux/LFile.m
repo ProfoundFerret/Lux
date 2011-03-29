@@ -24,7 +24,7 @@
     if (self) {
 		url = [[NSURL alloc] init];
 		attributes = [[NSMutableDictionary alloc] init];
-		searchAttributes = [[NSArray alloc] init];
+		searchAttributes = @"";
 		extension = @"";
 		
 		[attributes setObject:[NSDate date] forKey:kADD_DATE];
@@ -69,9 +69,9 @@
 	return extension;
 }
 
-- (NSArray *) searchAttributes
+- (NSString *) searchAttributes
 {	
-	if ([searchAttributes count]) return searchAttributes;
+	//if ([searchAttributes length]) return searchAttributes;
 	
 	NSMutableArray * newsearchAttributes = [NSMutableArray array];
 	NSArray * attrList = [NSArray arrayWithObjects:kTITLE,kARTIST,kALBUM,nil];
@@ -82,6 +82,7 @@
 		if (attribute) { attribute = [[attribute lowercaseString] retain]; };
 		if (attribute && [attribute length]) [newsearchAttributes addObject:attribute];
 	}
+	searchAttributes = [newsearchAttributes componentsJoinedByString:@" "];
 	return searchAttributes;
 }
 
@@ -116,7 +117,7 @@
 {
 	[[LMetadataController sharedInstance] parseMetadataForFile:self];
 	
-	searchAttributes = [[NSArray alloc] init];
+	searchAttributes = [NSString string];
 	[self searchAttributes];
 	
 	dictionary = nil;
