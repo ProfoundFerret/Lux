@@ -240,9 +240,24 @@
 	[searchMembers release];
 	searchMembers = [[NSMutableArray alloc] init];
 	
+	BOOL add;
 	for (LFile * f in toBeSearched)
 	{
-		if ([f matchesSearchSet: searchSet])
+		add = NO;
+		for (NSString * str in searchSet)
+		{
+			if (! [str length]) continue;
+			NSArray * searchAttributes = [f searchAttributes];
+			for (NSString * attribute in searchAttributes)
+			{
+				if ([attribute rangeOfString:str].location != NSNotFound)
+				{
+					add = YES;
+				}
+			}
+			
+		}
+		if (add)
 		{
 			[searchMembers addObject:f];
 		}

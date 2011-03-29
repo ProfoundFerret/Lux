@@ -69,31 +69,6 @@
 	return extension;
 }
 
-- (BOOL) matchesSearchSet: (NSArray *) searchSet
-{
-	BOOL add = YES;
-	for (NSString * str in searchSet)
-	{
-		if ([str length] && ! [self searchSubstringIsValid:str])
-		{
-			add = NO;
-		}
-	}
-	return add;
-}
-
-- (BOOL) searchSubstringIsValid: (NSString *) string
-{
-	for (NSString * attribute in [self searchAttributes])
-	{
-		if ([attribute rangeOfString:string].location != NSNotFound)
-		{
-			return YES;
-		}
-	}
-	return NO;
-}
-
 - (NSArray *) searchAttributes
 {	
 	if ([searchAttributes count]) return searchAttributes;

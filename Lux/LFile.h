@@ -28,9 +28,6 @@
 }
 - (NSString *) extension;
 
-- (BOOL) matchesSearchSet: (NSArray *) searchSet;
-- (BOOL) searchSubstringIsValid: (NSString *) string;
-
 - (NSArray *) searchAttributes;
 
 - (id) attributeForIdentifier: (id) identifier;
