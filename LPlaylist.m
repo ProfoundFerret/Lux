@@ -216,9 +216,16 @@
 {
 	[searchMembers autorelease];
 	searchMembers = [[NSMutableArray alloc] init];
-	NSString * predString = [self createPredicateFromSearch: search];
-	NSPredicate * pred = [NSPredicate predicateWithFormat:predString];
 	
+	NSString * predString = [self createPredicateFromSearch: search];
+	NSPredicate * pred;
+	
+	@try {
+		pred = [NSPredicate predicateWithFormat:predString];
+	}
+	@catch (NSException *exception) {
+		return;
+	}
 	register LFile * f;
 	for (f in [NSArray arrayWithArray:members])
 	{
