@@ -161,25 +161,24 @@
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
 	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger nextIndex;
-	if ([allFiles count] == 0) return nil;
-	if (! activeFile && ! [activePlaylist shuffle])
+	if ([activePlaylist shuffle])
+	{
+		nextIndex = arc4random() % [allFiles count];
+	}
+	else if (! activeFile && ! [activePlaylist shuffle])
 	{
 		nextIndex = 0;
 	} else {
-		if ([activePlaylist shuffle])
+		nextIndex = [allFiles indexOfObject:activeFile] + 1;
+	}
+
+	if ([allFiles count] <= nextIndex)
+	{
+		if ([activePlaylist repeat])
 		{
-			nextIndex = arc4random() % [allFiles count];
+			nextIndex = 0;
 		} else {
-			nextIndex = [allFiles indexOfObject:activeFile] + 1;
-		}
-		if ([allFiles count] <= nextIndex)
-		{
-			if ([activePlaylist repeat])
-			{
-				nextIndex = 0;
-			} else {
-				return nil;
-			}
+			return nil;
 		}
 	}
 	return [allFiles objectAtIndex:nextIndex];
@@ -192,26 +191,24 @@
 	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger nextIndex;
 
-	if ([allFiles count] == 0) return nil;
-	if (! activeFile && ! [activePlaylist shuffle])
+	if ([activePlaylist shuffle])
 	{
-		nextIndex = [allFiles count] - 1;
+		nextIndex = arc4random() % [allFiles count];
+	}
+	else if (! activeFile && ! [activePlaylist shuffle])
+	{
+		nextIndex = 0;
 	} else {
-		if ([allFiles indexOfObject:activeFile] == 0)
+		nextIndex = [allFiles indexOfObject:activeFile] - 1;
+	}
+	
+	if ([allFiles count] <= nextIndex)
+	{
+		if ([activePlaylist repeat])
 		{
-			if ([activePlaylist repeat])
-			{
-				nextIndex = [allFiles count] - 1;
-			} else {
-				return nil;
-			}
+			nextIndex = [allFiles count] - 1;
 		} else {
-			if ([activePlaylist shuffle])
-			{
-				nextIndex = arc4random() % [allFiles count];
-			} else {
-				nextIndex = [allFiles indexOfObject:activeFile] - 1;
-			}
+			return nil;
 		}
 	}
 	return [allFiles objectAtIndex:nextIndex];
