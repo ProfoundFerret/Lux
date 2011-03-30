@@ -65,13 +65,13 @@
 	
 	[repeatMenuItem setTitle:kREPEAT_TEXT];
 	[repeatMenuItem setAction:@selector(toggleRepeat)];
-    [repeatButton setTarget:[[[LPlayerController sharedInstance] repeatMenuItem] target]];
+	[repeatMenuItem setTarget:[LPlaylistController sharedInstance]];
     [repeatButton setAction:@selector(toggleRepeat)];
 	[repeatButton setTarget:[LPlaylistController sharedInstance]];
 	
 	[shuffleMenuItem setTitle:kSHUFFLE_TEXT];
 	[shuffleMenuItem setAction:@selector(toggleShuffle)];
-    [shuffleButton setTarget:[[[LPlayerController sharedInstance] shuffleMenuItem] target]];
+	[shuffleMenuItem setTarget:[LPlaylistController sharedInstance]];
     [shuffleButton setAction:@selector(toggleShuffle)];
 	[shuffleButton setTarget:[LPlaylistController sharedInstance]];
 	
