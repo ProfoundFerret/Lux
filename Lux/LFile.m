@@ -141,7 +141,7 @@
 	NSMutableArray * playlists = [NSMutableArray array];
 	for (LPlaylist * playlist in [[LPlaylistController sharedInstance] getPlaylists])
 	{
-		if (! [[playlist allMembers] containsObject:[self url]]) [playlists addObject:playlist];
+		if (! [[playlist allMembers] containsObject:self]) [playlists addObject:playlist];
 	}
 	return [NSArray arrayWithArray:playlists];
 }
