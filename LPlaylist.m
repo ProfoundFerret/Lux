@@ -205,7 +205,7 @@
 	if (! needsSearched || ! [search length]) return;
 	needsSearched = NO;
 	
-	NSArray * toBeSearched;
+	register NSArray * toBeSearched;
 	
 	if ([search rangeOfString:oldSearch].location != NSNotFound) // If the new search contains the old one then use old results as a start
 	{
@@ -218,23 +218,18 @@
 	[searchMembers release];
 	searchMembers = [[NSMutableArray alloc] init];
 	
-	BOOL add;
 	for (LFile * f in toBeSearched)
 	{
-		add = NO;
 		for (NSString * attribute in searchSet)
 		{
 			if (! [attribute length]) continue;
+			
 			NSString * searchAttributes = [f searchAttributes];
 			if ([searchAttributes rangeOfString:attribute].location != NSNotFound)
 			{
-				add = YES;
+				[searchMembers addObject:f];
+				continue;
 			}
-			if (add) continue;
-		}
-		if (add)
-		{
-			[searchMembers addObject:f];
 		}
 	}
 }
@@ -329,7 +324,10 @@
 {
 	for (LFile * file in newMembers)
 	{
-		[members addObject:file];
+		if (! [members containsObject:file])
+		{
+			[members addObject:file];
+		}
 	}
 	
 	[[Lux sharedInstance] reloadData];

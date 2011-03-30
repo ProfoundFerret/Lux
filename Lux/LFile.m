@@ -24,7 +24,6 @@
     if (self) {
 		url = [[NSURL alloc] init];
 		attributes = [[NSMutableDictionary alloc] init];
-		searchAttributes = @"";
 		extension = @"";
 		
 		[attributes setObject:[NSDate date] forKey:kADD_DATE];
@@ -55,7 +54,7 @@
 {
 	[url release];
 	[attributes release];
-	[searchAttributes release];
+	if (searchAttributes) [searchAttributes release];
 	
     [super dealloc];
 }
@@ -71,7 +70,10 @@
 
 - (NSString *) searchAttributes
 {	
-	if ([searchAttributes length]) return searchAttributes;
+	if (searchAttributes && [searchAttributes length])
+	{
+		return searchAttributes;
+	}
 	
 	NSMutableArray * newSearchAttributes = [NSMutableArray array];
 	NSArray * attrList = [NSArray arrayWithObjects:kTITLE,kARTIST,kALBUM,nil];
@@ -82,7 +84,7 @@
 		if (attribute) { attribute = [[attribute lowercaseString] retain]; };
 		if (attribute && [attribute length]) [newSearchAttributes addObject:attribute];
 	}
-	searchAttributes = [newSearchAttributes componentsJoinedByString:@" "];
+	searchAttributes = [[newSearchAttributes componentsJoinedByString:@" "] retain];
 	return searchAttributes;
 }
 

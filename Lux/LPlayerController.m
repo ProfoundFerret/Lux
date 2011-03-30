@@ -269,7 +269,7 @@
     if (activeFile) {
         if ([artist length])
         {
-            [currentSongInfo setTitle:[NSString stringWithFormat:@"%@ - %@", title, artist]];
+            [currentSongInfo setTitle:[NSString stringWithFormat:@"%@ %@ %@", title, kEM_DASH, artist]];
             [dockMenu addItem:currentSongInfo];
         } else {
             [currentSongInfo setTitle:title];

@@ -27,6 +27,8 @@
 #define kRELOAD_DATA_NOTIFICATION @"reloadData_notification"
 #define kPLAYLIST_CHANGED_NOTIFICATION @"playlistChanged_notification"
 
+#define kEM_DASH @"—"
+
 @interface Lux : LSingleton {
     LExtensionController * extensionController;
     LInputOutputController * ioController;
