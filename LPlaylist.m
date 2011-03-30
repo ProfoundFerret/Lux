@@ -205,11 +205,28 @@
 
 - (NSString *) createPredicateFromSearch: (NSString *) ss
 {
-	NSMutableString * smartSearch = [NSMutableString stringWithString:[ss substringFromIndex:1]];
+	NSMutableString * smartSearch = [NSMutableString stringWithString:ss];
 	
 	[smartSearch replaceOccurrencesOfString:@"=" withString:@"=[cd]" options:NSLiteralSearch range:NSMakeRange(0, [smartSearch length])];
 	[smartSearch replaceOccurrencesOfString:@"~" withString:@" contains[cd] " options:NSLiteralSearch range:NSMakeRange(0, [smartSearch length])];
 	return smartSearch;
+}
+
+- (void) preformSmartSearchWithString: (NSString *) string
+{
+	[searchMembers autorelease];
+	searchMembers = [[NSMutableArray alloc] init];
+	NSString * predString = [self createPredicateFromSearch: search];
+	NSPredicate * pred = [NSPredicate predicateWithFormat:predString];
+	
+	register LFile * f;
+	for (f in [NSArray arrayWithArray:members])
+	{
+		if ([pred evaluateWithObject:[f dictionary]])
+		{
+			[searchMembers addObject:f];
+		}
+	}
 }
 
 - (void) updateSearch
@@ -220,7 +237,6 @@
 	register NSArray * toBeSearched;
 	
 	register NSString * searchAttributes;
-	register LFile * f;
 	register NSString * attribute;
 	
 	if (oldSearch && [search rangeOfString:oldSearch].location != NSNotFound) // If the new search contains the old one then use old results as a start
@@ -232,19 +248,10 @@
 	
 	if ([[search substringToIndex:1] isEqualToString:kSMART_SEARCH_DELIMITER])
 	{
-		searchMembers = [[NSMutableArray alloc] init];
-		NSString * predString = [self createPredicateFromSearch: search];
-		NSPredicate * pred = [NSPredicate predicateWithFormat:predString];
-		
-		for (f in [NSArray arrayWithArray:members])
-		{
-			if ([pred evaluateWithObject:[f dictionary]])
-			{
-				[searchMembers addObject:f];
-			}
-		}
+		[self preformSmartSearchWithString:[search substringFromIndex:1]];
 		return;
 	}
+	register LFile * f;
 	
 	NSString * normSearch = [search lowercaseString];
 	
@@ -269,6 +276,12 @@
 		}
 		if (add) [searchMembers addObject:f];
 	}
+	
+	
+	if ([searchMembers count] == 0)
+	{
+		[self preformSmartSearchWithString:search];
+	}
 }
 
 - (void) updateSort
@@ -288,6 +301,7 @@
 	
 	NSArray * sortDescriptors = [NSArray arrayWithObjects:sortDescriptor,sortDescriptorArtist, sortDescriptorAlbum, sortDescriptorTitle, nil];
 	
+	(void) sortDescriptors;
 	//[members sortUsingDescriptors:sortDescriptors];
 	return;
 }

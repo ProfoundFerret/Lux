@@ -79,6 +79,7 @@
 
 - (void) setSearch:(NSString *) aSearch;
 - (NSString *) createPredicateFromSearch: (NSString *) smartSearch;
+- (void) preformSmartSearchWithString: (NSString *) string;
 
 - (void) setMembers: (NSArray *) newMembers;
 
