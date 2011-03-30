@@ -70,7 +70,6 @@
 	playlistController = [LPlaylistController sharedInstance];
     	
 	[ioController update];
-    
 
 }
 

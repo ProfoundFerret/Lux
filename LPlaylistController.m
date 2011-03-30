@@ -239,9 +239,54 @@
 	return menu;
 }
 
+- (BOOL) shuffle
+{
+	return [[self activePlaylist] shuffle];
+}
+
+- (BOOL) repeat
+{
+	return [[self activePlaylist] repeat];
+}
+
+- (void) setShuffle: (BOOL) shuffle
+{
+	[[self activePlaylist] setShuffle:shuffle];
+}
+
+- (void) setRepeat: (BOOL) repeat
+{
+	[[self activePlaylist] setRepeat:repeat];
+}
+
+- (void) toggleShuffle
+{
+	[[self activePlaylist] toggleShuffle];
+}
+
+- (void) toggleRepeat
+{
+	[[self activePlaylist] toggleRepeat];
+}
+
 - (void) reloadData
 {
 	[self prepPlaylistsForUpdate];
 	[super reloadData];
+}
+
+- (void) setActivePlaylist:(LPlaylist *)newActivePlaylist
+{
+	if (newActivePlaylist == [self activePlaylist]) return;
+	NSLog(@"WHee");
+	activePlaylist = newActivePlaylist;
+	[[NSNotificationCenter defaultCenter] postNotificationName:kPLAYLIST_ACTIVE_CHANGED_NOTIFICATION object:nil];
+}
+
+- (void) setVisiblePlaylist:(LPlaylist *)newVisiblePlaylist
+{
+	if (newVisiblePlaylist == [self visiblePlaylist]) return;
+	visiblePlaylist = newVisiblePlaylist;
+	[[NSNotificationCenter defaultCenter] postNotificationName:kPLAYLIST_VISIBLE_CHANGED_NOTIFICATION object:nil];
 }
 @end

@@ -65,11 +65,15 @@
 	
 	[repeatMenuItem setTitle:kREPEAT_TEXT];
 	[repeatMenuItem setAction:@selector(toggleRepeat)];
+	[repeatMenuItem setTarget:[LPlaylistController sharedInstance]];
     [repeatButton setAction:@selector(toggleRepeat)];
+	[repeatButton setTarget:[LPlaylistController sharedInstance]];
 	
 	[shuffleMenuItem setTitle:kSHUFFLE_TEXT];
 	[shuffleMenuItem setAction:@selector(toggleShuffle)];
+	[shuffleMenuItem setTarget:[LPlaylistController sharedInstance]];
     [shuffleButton setAction:@selector(toggleShuffle)];
+	[shuffleButton setTarget:[LPlaylistController sharedInstance]];
 	
 	[self updateRecentFiles];
 	[self updateRepeat];
@@ -82,6 +86,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stop) name:kSTOP_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(repeatChanged) name:kREPEAT_CHANGED_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shuffleChanged) name:kSHUFFLE_CHANGED_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(activePlaylistChanged) name:kPLAYLIST_ACTIVE_CHANGED_NOTIFICATION object:nil];
 	
 	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     
@@ -95,18 +100,28 @@
 
 - (void) updateRepeat
 {
-    [[[LPlaylistController sharedInstance] activePlaylist] repeat] ? [repeatButton setState:NSOnState] : [repeatButton setState:NSOffState];
-    NSMenuItem * repeatMenu = [[LPlayerController sharedInstance] repeatMenuItem];
-	[repeatMenuItem setTarget:[repeatMenu target]];
-	[repeatMenuItem setState:[repeatMenu state]];
+    BOOL repeat = [[LPlaylistController sharedInstance] repeat];
+	if (repeat)
+	{
+		[repeatButton setState:NSOnState];
+		[repeatMenuItem setState:NSOnState];
+	} else {
+		[repeatButton setState:NSOffState];
+		[repeatMenuItem setState:NSOffState];
+	}
 }
 
 - (void) updateShuffle
 {
-    [[[LPlaylistController sharedInstance] activePlaylist] shuffle] ? [shuffleButton setState:NSOnState] : [shuffleButton setState:NSOffState];
-    NSMenuItem * shuffleMenu = [[LPlayerController sharedInstance] shuffleMenuItem];
-	[shuffleMenuItem setTarget:[shuffleMenu target]];
-	[shuffleMenuItem setState:[shuffleMenu state]];                 
+    BOOL shuffle = [[LPlaylistController sharedInstance] shuffle];
+	if (shuffle)
+	{
+		[shuffleButton setState:NSOnState];
+		[shuffleMenuItem setState:NSOnState];
+	} else {
+		[shuffleButton setState:NSOffState];
+		[shuffleMenuItem setState:NSOffState];
+	}               
 }
 
 - (void) updateNextPrevious
@@ -129,6 +144,13 @@
 - (void) shuffleChanged
 {
     [self updateShuffle];
+}
+
+- (void) activePlaylistChanged
+{
+	NSLog(@"Active Playlist Changed");
+	[self shuffleChanged];
+	[self repeatChanged];
 }
 
 - (void) play

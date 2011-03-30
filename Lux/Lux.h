@@ -25,7 +25,8 @@
 
 #define kVOLUME @"volume"
 #define kRELOAD_DATA_NOTIFICATION @"reloadData_notification"
-#define kPLAYLIST_CHANGED_NOTIFICATION @"playlistChanged_notification"
+#define kPLAYLIST_VISIBLE_CHANGED_NOTIFICATION @"playlistVisibleChanged_notification"
+#define kPLAYLIST_ACTIVE_CHANGED_NOTIFICATION @"playlistActiveChanged_notification"
 
 #define kEM_DASH @"—"
 
