@@ -278,7 +278,6 @@
 - (void) setActivePlaylist:(LPlaylist *)newActivePlaylist
 {
 	if (newActivePlaylist == [self activePlaylist]) return;
-	NSLog(@"WHee");
 	activePlaylist = newActivePlaylist;
 	[[NSNotificationCenter defaultCenter] postNotificationName:kPLAYLIST_ACTIVE_CHANGED_NOTIFICATION object:nil];
 }

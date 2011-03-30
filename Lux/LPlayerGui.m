@@ -148,7 +148,6 @@
 
 - (void) activePlaylistChanged
 {
-	NSLog(@"Active Playlist Changed");
 	[self shuffleChanged];
 	[self repeatChanged];
 }
