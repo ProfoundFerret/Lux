@@ -17,8 +17,6 @@
 	
 	LFile * activeFile;
 }
-- (NSDictionary *) files;
-
 - (LFile *) createFileByURL: (NSURL *) url;
 - (BOOL) addFileByFile: (LFile *) file;
 - (void) addFilesByURL: (NSArray *) files;
@@ -32,4 +30,5 @@
 
 - (void) showInFinder: (NSMenuItem *) item;
 @property (readwrite, assign) LFile * activeFile;
+@property (readonly) NSMutableDictionary * files;
 @end

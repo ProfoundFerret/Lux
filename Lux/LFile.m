@@ -76,7 +76,7 @@
 	}
 	
 	NSMutableArray * newSearchAttributes = [NSMutableArray array];
-	NSArray * attrList = [NSArray arrayWithObjects:kTITLE,kARTIST,kALBUM,nil];
+	NSArray * attrList = [NSArray arrayWithObjects:kARTIST,kTITLE,kALBUM,nil];
 	
 	for (NSString * attr in attrList)
 	{
@@ -97,11 +97,12 @@
 
 - (NSDictionary *) dictionary
 {
-	if (dictionary) return [NSDictionary dictionaryWithDictionary:dictionary];
+	if (dictionary) return dictionary;
 	
-	dictionary = [[NSMutableDictionary alloc] initWithDictionary:attributes];
-	[dictionary setObject:[NSNumber numberWithInt:[self fileType]] forKey:kFILE_TYPE];
-	[dictionary setObject:url forKey:kURL];
+	register NSMutableDictionary * _dictionary = [[NSMutableDictionary alloc] initWithDictionary:attributes];
+	[_dictionary setObject:[NSNumber numberWithInt:[self fileType]] forKey:kFILE_TYPE];
+	[_dictionary setObject:url forKey:kURL];
+	dictionary = _dictionary;
 	
 	return [self dictionary];
 }

@@ -17,7 +17,7 @@
 #define kDELETE_FROM_TEXT @"Delete From"
 
 @implementation LFileController
-@synthesize activeFile;
+@synthesize activeFile, files;
 - (id)init
 {
     self = [super init];
@@ -47,11 +47,6 @@
 	[aCoder encodeObject:files forKey:kFILES];
 	
 	[super encodeWithCoder:aCoder];
-}
-
-- (NSDictionary *) files
-{
-	return [NSDictionary dictionaryWithDictionary:files];
 }
 
 - (LFile *) createFileByURL: (NSURL *) url;

@@ -160,42 +160,46 @@
 
 - (NSArray *) members
 {
-	[self update];
-	[self updateSort];
-	
-	NSArray * mList;
-	if ([search length])
+	@synchronized(self)
 	{
-		[self updateSearch];
-		mList = searchMembers;
-	} else {
-		mList = members;
+		[self update];
+		[self updateSort];
+		
+		NSArray * mList;
+		if ([search length])
+		{
+			[self updateSearch];
+			mList = searchMembers;
+		} else {
+			mList = members;
+		}
+		return [NSArray arrayWithArray:mList];
 	}
-	
-	return [NSArray arrayWithArray:mList];
 }
 
 - (void) update
 {
-	@synchronized(self)
+	if (! needsUpdated || ! smart) return;
+	needsUpdated = NO;
+	needsSearched = YES;
+	needsSorted = YES;
+	
+	oldSearch = nil;
+	
+	[members autorelease];
+	members = [[NSMutableArray alloc] init];
+	NSPredicate * pred = [NSPredicate predicateWithFormat:predicate];
+	NSMutableDictionary * fileList = [[LFileController sharedInstance] files];
+	
+	NSURL * url;
+	LFile * file;
+	
+	for (url in fileList)
 	{
-		if (! needsUpdated || ! smart) return;
-		needsUpdated = NO;
-		needsSearched = YES;
-		needsSorted = YES;
-		
-		[members release];
-		members = [[NSMutableArray alloc] init];
-		NSPredicate * pred = [NSPredicate predicateWithFormat:predicate];
-		NSArray * fileList = [[[LFileController sharedInstance] files] allValues];
-		
-		for (LFile * file in fileList)
+		file = [fileList objectForKey:url];
+		if ( [pred evaluateWithObject:[file dictionary]] )
 		{
-			BOOL shouldAdd = [pred evaluateWithObject:[file dictionary]] && ! [members containsObject:file];
-			if ( shouldAdd )
-			{
-				[members addObject:file];
-			}
+			[members addObject:file];
 		}
 	}
 }
@@ -207,7 +211,7 @@
 	
 	register NSArray * toBeSearched;
 	
-	if ([search rangeOfString:oldSearch].location != NSNotFound) // If the new search contains the old one then use old results as a start
+	if (oldSearch && [search rangeOfString:oldSearch].location != NSNotFound) // If the new search contains the old one then use old results as a start
 	{
 		toBeSearched = [NSArray arrayWithArray:searchMembers];
 	} else {
@@ -218,25 +222,32 @@
 	[searchMembers release];
 	searchMembers = [[NSMutableArray alloc] init];
 	
-	for (LFile * f in toBeSearched)
+	register NSString * searchAttributes;
+	register LFile * f;
+	register NSString * attribute;
+	
+	BOOL add;
+	for (f in toBeSearched)
 	{
-		for (NSString * attribute in searchSet)
+		add = YES;
+		for (attribute in searchSet)
 		{
 			if (! [attribute length]) continue;
 			
-			NSString * searchAttributes = [f searchAttributes];
-			if ([searchAttributes rangeOfString:attribute].location != NSNotFound)
+			searchAttributes = [f searchAttributes];
+			if ([searchAttributes rangeOfString:attribute].location == NSNotFound)
 			{
-				[searchMembers addObject:f];
-				continue;
+				add = NO;
+				break;
 			}
 		}
+		if (add) [searchMembers addObject:f];
 	}
 }
 
 - (void) updateSort
 {
-	if (! needsSorted) return;
+	if (! needsSorted || ! [members count]) return;
 	needsSorted = NO;
 	
 	NSString * key = [NSString stringWithFormat:@"dictionary.%@", sort];
