@@ -48,7 +48,19 @@
 - (void) deletePlaylistByMenuItem: (NSMenuItem *) menuItem;
 - (void) convertToRegularPlaylistByMenuItem: (NSMenuItem *) menuItem;
 
+- (BOOL) shuffle;
+- (BOOL) repeat;
+
+- (void) setShuffle: (BOOL) shuffle;
+- (void) setRepeat: (BOOL) repeat;
+
+- (void) toggleShuffle;
+- (void) toggleRepeat;
+
+- (void) setActivePlaylist: (LPlaylist *) newActivePlaylist;
+- (void) setVisiblePlaylist: (LPlaylist *) newVisiblePlaylist;
+
 @property (readwrite, assign) NSMutableDictionary * playlists;
-@property (readwrite, assign, nonatomic) LPlaylist * activePlaylist;
-@property (readwrite, assign, nonatomic) LPlaylist * visiblePlaylist;
+@property (readonly, nonatomic) LPlaylist * activePlaylist;
+@property (readonly, nonatomic) LPlaylist * visiblePlaylist;
 @end

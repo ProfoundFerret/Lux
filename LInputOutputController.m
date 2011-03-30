@@ -39,21 +39,15 @@
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init]; 
 	@synchronized(self)
 	{
-		NSLog(@"Saving");
 		[NSKeyedArchiver archiveRootObject:[Lux sharedInstance] toFile:kSAVE_FILE];
-		NSLog(@"Save Finished");
 	}
 	[pool drain];
 }
 
 - (void) load
 {
-	NSLog(@"Loading");
-	
 	[NSKeyedUnarchiver unarchiveObjectWithFile:kSAVE_FILE];
 	loaded = YES;
-	
-	NSLog(@"Load Finished");
 }
 
 - (void) update
@@ -66,15 +60,12 @@
 	@synchronized(self)
 	{
 		NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-		NSLog(@"Updating");
 		
 		for (LExtension <LInputOutputDelegate> * extension in [self extensions])
 		{
 			NSArray * extensionURLs = [extension update];
 			[[[Lux sharedInstance] fileController] addFilesByURL:extensionURLs];
 		}
-		
-		NSLog(@"Update Finished");
 		
 		needsSaved = YES;
 		[self save];

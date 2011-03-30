@@ -46,8 +46,8 @@
 {	
 	[aCoder encodeObject:url forKey:kURL];
 	[aCoder encodeObject:attributes forKey:kATTRIBUTES];
-	[aCoder encodeObject:[self searchAttributes] forKey:kSEARCHATTRIBUTES];
-	[aCoder encodeObject:[self extension] forKey:kEXTENSION];
+	[aCoder encodeObject:searchAttributes forKey:kSEARCHATTRIBUTES];
+	[aCoder encodeObject:extension forKey:kEXTENSION];
 }
 
 - (void)dealloc
@@ -76,13 +76,14 @@
 	}
 	
 	NSMutableArray * newSearchAttributes = [NSMutableArray array];
-	NSArray * attrList = [NSArray arrayWithObjects:kARTIST,kTITLE,kALBUM,nil];
-	
-	for (NSString * attr in attrList)
+	NSArray * attrList = [NSArray arrayWithObjects:kTITLE,kARTIST,kALBUM,nil];
+	NSString * attribute;
+	NSString * attr;
+	for (attr in attrList)
 	{
-		NSString * attribute = [attributes objectForKey:attr];
-		if (attribute) { attribute = [[attribute lowercaseString] retain]; };
-		if (attribute && [attribute length]) [newSearchAttributes addObject:attribute];
+		attribute = [attributes objectForKey:attr];
+		if (attribute) { attribute = [attribute lowercaseString]; }
+		if ([attribute length]) [newSearchAttributes addObject:attribute];
 	}
 	searchAttributes = [[newSearchAttributes componentsJoinedByString:@" "] retain];
 	return searchAttributes;

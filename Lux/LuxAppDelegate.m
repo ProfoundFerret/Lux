@@ -71,8 +71,6 @@
 	if (growlBundle && [growlBundle load]) {
 		// Register ourselves as a Growl delegate
 		[GrowlApplicationBridge setGrowlDelegate:self];
-        
-        NSLog(@"Growl Registered");
 	}
 	else {
 		NSLog(@"ERROR: Could not load Growl.framework");

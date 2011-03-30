@@ -112,7 +112,6 @@
 	[aCoder encodeBool:shuffle forKey:kSHUFFLE];
 	
 	[aCoder encodeObject:sort forKey:kSORT];
-	[aCoder encodeBool:needsSorted forKey:kNEEDS_SORTED];
 	[aCoder encodeBool:descending forKey:kDESCENDING];
 	
 	[super encodeWithCoder:aCoder];
@@ -247,7 +246,7 @@
 
 - (void) updateSort
 {
-	if (! needsSorted || ! [members count]) return;
+	if (! needsSorted || ! [members count] || ! sort) return;
 	needsSorted = NO;
 	
 	NSString * key = [NSString stringWithFormat:@"dictionary.%@", sort];

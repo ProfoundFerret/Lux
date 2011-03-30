@@ -22,6 +22,7 @@
 	IBOutlet NSMenuItem * playRecentMenuItem;
 	IBOutlet NSMenuItem * repeatMenuItem;
 	IBOutlet NSMenuItem * shuffleMenuItem;
+	
     IBOutlet NSButton   * repeatButton;
 	IBOutlet NSButton   * shuffleButton;
 
@@ -37,7 +38,7 @@
 - (void) pause;
 - (void) unpause;
 - (void) stop;
-
+- (void) activePlaylistChanged;
 - (void) repeatChanged;
 - (void) shuffleChanged;
 - (void) updateNextPrevious;

@@ -154,6 +154,7 @@
 			NSSize charSize = [totalString sizeWithAttributes:fontDictionary];
 			[column setWidth:charSize.width + kMARGIN_SIZE];
 		}
+
 		if ([ID isEqualToString:[visiblePlaylist sort]])
 		{
 			NSImage * indicatorImage;

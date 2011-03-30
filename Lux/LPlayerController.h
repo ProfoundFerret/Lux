@@ -39,7 +39,6 @@
     
 }
 - (void) playFile: (LFile *) file;
-- (void) playPauseOrStartPlaying;
 - (void) stopPlayer;
 - (void) fileDidEnd;
 - (void) updateVolume;

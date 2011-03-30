@@ -106,22 +106,6 @@
 
 - (void) playPause
 {
-	if (isPlaying)
-	{
-		[player pause];
-		isPlaying = ! isPlaying;
-		[[NSNotificationCenter defaultCenter] postNotificationName:kPAUSE_NOTIFICATION object:nil];
-	} else 
-	{
-		[player play];
-		isPlaying = ! isPlaying;
-		[[NSNotificationCenter defaultCenter] postNotificationName:kUNPAUSE_NOTIFICATION object:nil];
-	}
-    
-}
-
-- (void) playPauseOrStartPlaying
-{
 	if (! player)
 	{
 		LFile * file = [self nextFile];
@@ -129,7 +113,17 @@
 		[self playFile:file];
 		isPlaying = YES;
 	} else {
-		[self playPause];
+		if (isPlaying)
+		{
+			[player pause];
+			isPlaying = ! isPlaying;
+			[[NSNotificationCenter defaultCenter] postNotificationName:kPAUSE_NOTIFICATION object:nil];
+		} else 
+		{
+			[player play];
+			isPlaying = ! isPlaying;
+			[[NSNotificationCenter defaultCenter] postNotificationName:kUNPAUSE_NOTIFICATION object:nil];
+		}
 	}
 }
 
@@ -293,7 +287,7 @@
 		[playPauseOrStart setTitle:kPLAY_TEXT];
 	}
 	[playPauseOrStart setTarget:self];
-	[playPauseOrStart setAction:@selector(playPauseOrStartPlaying)];
+	[playPauseOrStart setAction:@selector(playPause)];
 	[dockMenu addItem:playPauseOrStart];
 	
 	NSMenuItem *nextTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
@@ -346,14 +340,12 @@
 }
 
 - (NSMenuItem *) repeatMenuItem
-{
-	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
-	
+{	
 	NSMenuItem * repeat = [[[NSMenuItem alloc] init] autorelease];
 	[repeat setTitle:kREPEAT_TEXT];
-	[repeat setTarget:activePlaylist];
+	[repeat setTarget:[LPlaylistController sharedInstance]];
 	[repeat setAction:@selector(toggleRepeat)];
-	if ([activePlaylist repeat])
+	if ([[LPlaylistController sharedInstance] repeat])
 	{
 		[repeat setState:NSOnState];
 	} else {
@@ -363,14 +355,12 @@
 }
 
 - (NSMenuItem *) shuffleMenuItem
-{
-	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
-	
+{	
 	NSMenuItem * shuffle = [[[NSMenuItem alloc] init] autorelease];
 	[shuffle setTitle:kSHUFFLE_TEXT];
-	[shuffle setTarget:activePlaylist];
+	[shuffle setTarget:[LPlaylistController sharedInstance]];
 	[shuffle setAction:@selector(toggleShuffle)];
-	if ([activePlaylist shuffle])
+	if ([[LPlaylistController sharedInstance] shuffle])
 	{
 		[shuffle setState:NSOnState];
 	} else {
