@@ -84,6 +84,8 @@
 	[playlistController reloadData];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kRELOAD_DATA_NOTIFICATION object:nil];
+	
+	[ioController setNeedsSaved:YES];
 }
 
 - (void) registerUserDefaults
