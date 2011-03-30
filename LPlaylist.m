@@ -262,7 +262,7 @@
 	
 	NSArray * sortDescriptors = [NSArray arrayWithObjects:sortDescriptor,sortDescriptorArtist, sortDescriptorAlbum, sortDescriptorTitle, nil];
 	
-	//members = [[members sortedArrayUsingDescriptors:sortDescriptors] retain];
+	[members sortUsingDescriptors:sortDescriptors];
 	return;
 }
 
