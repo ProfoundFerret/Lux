@@ -11,12 +11,12 @@
 #import "LExtensionController.h"
 
 @implementation LInputOutputController
-
+@synthesize needsSaved;
 - (id)init
 {
     self = [super init];
     if (self) {
-        // Initialization code here.
+		[NSTimer scheduledTimerWithTimeInterval:kAUTOSAVE_INTERVAL target:self selector:@selector(save) userInfo:nil repeats:YES];
     }
     
     return self;
@@ -34,12 +34,14 @@
 
 - (void) _save
 {
+	if (! needsSaved || ! loaded) return;
+	needsSaved = NO;
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init]; 
 	@synchronized(self)
 	{
 		NSLog(@"Saving");
-		
 		[NSKeyedArchiver archiveRootObject:[Lux sharedInstance] toFile:kSAVE_FILE];
+		NSLog(@"Save Finished");
 	}
 	[pool drain];
 }
@@ -49,6 +51,7 @@
 	NSLog(@"Loading");
 	
 	[NSKeyedUnarchiver unarchiveObjectWithFile:kSAVE_FILE];
+	loaded = YES;
 	
 	NSLog(@"Load Finished");
 }
@@ -71,6 +74,7 @@
 			[[[Lux sharedInstance] fileController] addFilesByURL:extensionURLs];
 		}
 		
+		needsSaved = YES;
 		NSLog(@"Update Finished");
 		
 		[[Lux sharedInstance] reloadData];
