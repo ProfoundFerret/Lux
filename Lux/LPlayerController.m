@@ -161,11 +161,11 @@
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
 	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger nextIndex;
-	if ([activePlaylist shuffle])
+	if ([activePlaylist shuffle] && [allFiles count])
 	{
 		nextIndex = arc4random() % [allFiles count];
 	}
-	else if (! activeFile && ! [activePlaylist shuffle])
+	else if (! activeFile)
 	{
 		nextIndex = 0;
 	} else {
@@ -191,11 +191,11 @@
 	LPlaylist * activePlaylist = [[LPlaylistController sharedInstance] activePlaylist];
 	NSUInteger nextIndex;
 
-	if ([activePlaylist shuffle])
+	if ([activePlaylist shuffle] && [allFiles count])
 	{
 		nextIndex = arc4random() % [allFiles count];
 	}
-	else if (! activeFile && ! [activePlaylist shuffle])
+	else if (! activeFile)
 	{
 		nextIndex = 0;
 	} else {
