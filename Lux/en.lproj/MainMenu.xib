@@ -700,7 +700,7 @@
 															<string key="NSFrameSize">{674, 448}</string>
 															<reference key="NSSuperview" ref="126523728"/>
 															<reference key="NSWindow"/>
-															<reference key="NSNextKeyView" ref="277529028"/>
+															<reference key="NSNextKeyView" ref="205942786"/>
 															<bool key="NSEnabled">YES</bool>
 															<object class="NSTableHeaderView" key="NSHeaderView" id="141653823">
 																<reference key="NSNextResponder" ref="277529028"/>
@@ -737,7 +737,7 @@
 																		<reference key="NSTextColor" ref="809083420"/>
 																	</object>
 																	<object class="NSTextFieldCell" key="NSDataCell" id="88083228">
-																		<int key="NSCellFlags">337772096</int>
+																		<int key="NSCellFlags">338296384</int>
 																		<int key="NSCellFlags2">2048</int>
 																		<string key="NSContents">Text Cell</string>
 																		<reference key="NSSupport" ref="1007137894"/>
@@ -817,7 +817,7 @@
 											<string key="NSFrameSize">{676, 466}</string>
 											<reference key="NSSuperview" ref="21983326"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="126523728"/>
+											<reference key="NSNextKeyView" ref="277529028"/>
 											<int key="NSsFlags">562</int>
 											<reference key="NSVScroller" ref="205942786"/>
 											<reference key="NSHScroller" ref="798217703"/>
@@ -873,6 +873,7 @@
 							<string key="NSFrame">{{680, 8}, {222, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="254724615">
 								<int key="NSCellFlags">605158976</int>
