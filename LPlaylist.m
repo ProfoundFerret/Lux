@@ -203,12 +203,25 @@
 	}
 }
 
+- (NSString *) createPredicateFromSearch: (NSString *) ss
+{
+	NSMutableString * smartSearch = [NSMutableString stringWithString:[ss substringFromIndex:1]];
+	
+	[smartSearch replaceOccurrencesOfString:@"=" withString:@"=[cd]" options:NSLiteralSearch range:NSMakeRange(0, [smartSearch length])];
+	[smartSearch replaceOccurrencesOfString:@"~" withString:@" contains[cd] " options:NSLiteralSearch range:NSMakeRange(0, [smartSearch length])];
+	return smartSearch;
+}
+
 - (void) updateSearch
 {
 	if (! needsSearched || ! [search length]) return;
 	needsSearched = NO;
 	
 	register NSArray * toBeSearched;
+	
+	register NSString * searchAttributes;
+	register LFile * f;
+	register NSString * attribute;
 	
 	if (oldSearch && [search rangeOfString:oldSearch].location != NSNotFound) // If the new search contains the old one then use old results as a start
 	{
@@ -217,13 +230,27 @@
 		toBeSearched = [NSArray arrayWithArray:members];
 	}
 	
-	NSArray * searchSet = [search componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	if ([[search substringToIndex:1] isEqualToString:kSMART_SEARCH_DELIMITER])
+	{
+		searchMembers = [[NSMutableArray alloc] init];
+		NSString * predString = [self createPredicateFromSearch: search];
+		NSPredicate * pred = [NSPredicate predicateWithFormat:predString];
+		
+		for (f in [NSArray arrayWithArray:members])
+		{
+			if ([pred evaluateWithObject:[f dictionary]])
+			{
+				[searchMembers addObject:f];
+			}
+		}
+		return;
+	}
+	
+	NSString * normSearch = [search lowercaseString];
+	
+	NSArray * searchSet = [normSearch componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	[searchMembers release];
 	searchMembers = [[NSMutableArray alloc] init];
-	
-	register NSString * searchAttributes;
-	register LFile * f;
-	register NSString * attribute;
 	
 	BOOL add;
 	for (f in toBeSearched)
@@ -261,7 +288,7 @@
 	
 	NSArray * sortDescriptors = [NSArray arrayWithObjects:sortDescriptor,sortDescriptorArtist, sortDescriptorAlbum, sortDescriptorTitle, nil];
 	
-	[members sortUsingDescriptors:sortDescriptors];
+	//[members sortUsingDescriptors:sortDescriptors];
 	return;
 }
 
@@ -269,7 +296,7 @@
 {
 	needsSearched = YES;
 	oldSearch = [search retain];
-	search = [[aSearch lowercaseString] retain];
+	search = [aSearch retain];
 	[[Lux sharedInstance] reloadData];
 }
 

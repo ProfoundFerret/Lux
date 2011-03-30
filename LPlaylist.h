@@ -29,6 +29,8 @@
 
 #define kUNTITLED_PLAYLIST @"Untitled Playlist"
 
+#define kSMART_SEARCH_DELIMITER @"?"
+
 @interface LPlaylist : LStoredObject {
 	NSMutableArray * members;
 	NSMutableArray * searchMembers;
@@ -76,6 +78,7 @@
 - (void) removeFilesByMenuItem: (NSMenuItem *) menuItem;
 
 - (void) setSearch:(NSString *) aSearch;
+- (NSString *) createPredicateFromSearch: (NSString *) smartSearch;
 
 - (void) setMembers: (NSArray *) newMembers;
 
