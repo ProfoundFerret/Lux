@@ -22,6 +22,8 @@
 	IBOutlet NSMenuItem * playRecentMenuItem;
 	IBOutlet NSMenuItem * repeatMenuItem;
 	IBOutlet NSMenuItem * shuffleMenuItem;
+    IBOutlet NSButton   * repeatButton;
+	IBOutlet NSButton   * shuffleButton;
 
 }
 - (void) changeProgress;
