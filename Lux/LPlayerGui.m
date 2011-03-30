@@ -34,7 +34,7 @@
 - (void) awakeFromNib
 {
 	[playPauseButton setTarget:controller];
-	[playPauseButton setAction:@selector(playPauseOrStartPlaying)];
+	[playPauseButton setAction:@selector(playPause)];
 	
 	[previousButton setTarget:controller];
 	[previousButton setAction:@selector(playPreviousFile)];
@@ -51,7 +51,7 @@
 	[[playPauseMenuItem menu] setAutoenablesItems:NO];
 	
 	[playPauseMenuItem setTarget:[LPlayerController sharedInstance]];
-	[playPauseMenuItem setAction:@selector(playPauseOrStartPlaying)];
+	[playPauseMenuItem setAction:@selector(playPause)];
 	
 	[nextMenuItem setTarget:[LPlayerController sharedInstance]];
 	[nextMenuItem setAction:@selector(playNextFile)];

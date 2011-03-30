@@ -106,22 +106,6 @@
 
 - (void) playPause
 {
-	if (isPlaying)
-	{
-		[player pause];
-		isPlaying = ! isPlaying;
-		[[NSNotificationCenter defaultCenter] postNotificationName:kPAUSE_NOTIFICATION object:nil];
-	} else 
-	{
-		[player play];
-		isPlaying = ! isPlaying;
-		[[NSNotificationCenter defaultCenter] postNotificationName:kUNPAUSE_NOTIFICATION object:nil];
-	}
-    
-}
-
-- (void) playPauseOrStartPlaying
-{
 	if (! player)
 	{
 		LFile * file = [self nextFile];
@@ -129,7 +113,17 @@
 		[self playFile:file];
 		isPlaying = YES;
 	} else {
-		[self playPause];
+		if (isPlaying)
+		{
+			[player pause];
+			isPlaying = ! isPlaying;
+			[[NSNotificationCenter defaultCenter] postNotificationName:kPAUSE_NOTIFICATION object:nil];
+		} else 
+		{
+			[player play];
+			isPlaying = ! isPlaying;
+			[[NSNotificationCenter defaultCenter] postNotificationName:kUNPAUSE_NOTIFICATION object:nil];
+		}
 	}
 }
 
@@ -293,7 +287,7 @@
 		[playPauseOrStart setTitle:kPLAY_TEXT];
 	}
 	[playPauseOrStart setTarget:self];
-	[playPauseOrStart setAction:@selector(playPauseOrStartPlaying)];
+	[playPauseOrStart setAction:@selector(playPause)];
 	[dockMenu addItem:playPauseOrStart];
 	
 	NSMenuItem *nextTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
