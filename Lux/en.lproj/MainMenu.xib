@@ -853,7 +853,7 @@
 							<string key="NSFrame">{{7, 3}, {41, 25}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="263313802"/>
+							<reference key="NSNextKeyView" ref="919087627"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="1000452279">
 								<int key="NSCellFlags">-2080244224</int>
@@ -873,25 +873,29 @@
 								<int key="NSPeriodicInterval">75</int>
 							</object>
 						</object>
-						<object class="NSButton" id="263313802">
+						<object class="NSButton" id="919087627">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">292</int>
-							<string key="NSFrame">{{255, 3}, {41, 25}}</string>
+							<string key="NSFrame">{{56, 3}, {41, 25}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="187964499"/>
+							<reference key="NSNextKeyView" ref="320004608"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="670250149">
+							<object class="NSButtonCell" key="NSCell" id="104115439">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">142606336</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="1007137894"/>
-								<reference key="NSControlView" ref="263313802"/>
-								<int key="NSButtonFlags">-926662401</int>
-								<int key="NSButtonFlags2">163</int>
+								<reference key="NSControlView" ref="919087627"/>
+								<int key="NSButtonFlags">-925613825</int>
+								<int key="NSButtonFlags2">35</int>
 								<object class="NSCustomResource" key="NSNormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">NSSlideshowTemplate</string>
+									<string key="NSResourceName">repeatOFF</string>
+								</object>
+								<object class="NSCustomResource" key="NSAlternateImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">repeatON</string>
 								</object>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
@@ -899,25 +903,29 @@
 								<int key="NSPeriodicInterval">75</int>
 							</object>
 						</object>
-						<object class="NSButton" id="187964499">
+						<object class="NSButton" id="320004608">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">292</int>
-							<string key="NSFrame">{{304, 3}, {41, 25}}</string>
+							<string key="NSFrame">{{105, 3}, {41, 25}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="249390720"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="763696109">
+							<object class="NSButtonCell" key="NSCell" id="206271613">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="1007137894"/>
-								<reference key="NSControlView" ref="187964499"/>
+								<reference key="NSControlView" ref="320004608"/>
 								<int key="NSButtonFlags">-926662401</int>
-								<int key="NSButtonFlags2">163</int>
+								<int key="NSButtonFlags2">35</int>
 								<object class="NSCustomResource" key="NSNormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">NSStopProgressFreestandingTemplate</string>
+									<string key="NSResourceName">shuffleOFF</string>
+								</object>
+								<object class="NSCustomResource" key="NSAlternateImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">shuffleON</string>
 								</object>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
@@ -2366,7 +2374,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">repeatButton</string>
 						<reference key="source" ref="330436886"/>
-						<reference key="destination" ref="263313802"/>
+						<reference key="destination" ref="919087627"/>
 					</object>
 					<int key="connectionID">705</int>
 				</object>
@@ -2374,7 +2382,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">shuffleButton</string>
 						<reference key="source" ref="330436886"/>
-						<reference key="destination" ref="187964499"/>
+						<reference key="destination" ref="320004608"/>
 					</object>
 					<int key="connectionID">706</int>
 				</object>
@@ -2806,8 +2814,8 @@
 							<reference ref="850210573"/>
 							<reference ref="249390720"/>
 							<reference ref="1058078860"/>
-							<reference ref="263313802"/>
-							<reference ref="187964499"/>
+							<reference ref="919087627"/>
+							<reference ref="320004608"/>
 						</object>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -3439,33 +3447,33 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">702</int>
-						<reference key="object" ref="187964499"/>
+						<reference key="object" ref="320004608"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="763696109"/>
+							<reference ref="206271613"/>
 						</object>
 						<reference key="parent" ref="439893737"/>
 						<string key="objectName">Shuffle</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">703</int>
-						<reference key="object" ref="763696109"/>
-						<reference key="parent" ref="187964499"/>
+						<reference key="object" ref="206271613"/>
+						<reference key="parent" ref="320004608"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">700</int>
-						<reference key="object" ref="263313802"/>
+						<reference key="object" ref="919087627"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="670250149"/>
+							<reference ref="104115439"/>
 						</object>
 						<reference key="parent" ref="439893737"/>
 						<string key="objectName">Repeat</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">701</int>
-						<reference key="object" ref="670250149"/>
-						<reference key="parent" ref="263313802"/>
+						<reference key="object" ref="104115439"/>
+						<reference key="parent" ref="919087627"/>
 					</object>
 				</object>
 			</object>
@@ -4265,9 +4273,11 @@
 				<string>NSAddTemplate</string>
 				<string>NSMenuCheckmark</string>
 				<string>NSMenuMixedState</string>
-				<string>NSSlideshowTemplate</string>
-				<string>NSStopProgressFreestandingTemplate</string>
 				<string>Play</string>
+				<string>repeatOFF</string>
+				<string>repeatON</string>
+				<string>shuffleOFF</string>
+				<string>shuffleON</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
@@ -4276,9 +4286,11 @@
 				<string>{8, 8}</string>
 				<string>{9, 8}</string>
 				<string>{7, 2}</string>
-				<string>{17, 14}</string>
-				<string>{83, 83}</string>
 				<string>{23, 23}</string>
+				<string>{20, 15}</string>
+				<string>{20, 15}</string>
+				<string>{18, 15}</string>
+				<string>{18, 15}</string>
 			</object>
 		</object>
 	</data>

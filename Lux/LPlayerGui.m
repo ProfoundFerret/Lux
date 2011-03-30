@@ -65,10 +65,12 @@
 	
 	[repeatMenuItem setTitle:kREPEAT_TEXT];
 	[repeatMenuItem setAction:@selector(toggleRepeat)];
+    [repeatButton setTarget:[[[LPlayerController sharedInstance] repeatMenuItem] target]];
     [repeatButton setAction:@selector(toggleRepeat)];
 	
 	[shuffleMenuItem setTitle:kSHUFFLE_TEXT];
 	[shuffleMenuItem setAction:@selector(toggleShuffle)];
+    [shuffleButton setTarget:[[[LPlayerController sharedInstance] shuffleMenuItem] target]];
     [shuffleButton setAction:@selector(toggleShuffle)];
 	
 	[self updateRecentFiles];
