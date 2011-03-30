@@ -65,9 +65,11 @@
 	
 	[repeatMenuItem setTitle:kREPEAT_TEXT];
 	[repeatMenuItem setAction:@selector(toggleRepeat)];
+    [repeatButton setAction:@selector(toggleRepeat)];
 	
 	[shuffleMenuItem setTitle:kSHUFFLE_TEXT];
 	[shuffleMenuItem setAction:@selector(toggleShuffle)];
+    [shuffleButton setAction:@selector(toggleShuffle)];
 	
 	[self updateRecentFiles];
 	[self updateRepeat];
@@ -93,16 +95,18 @@
 
 - (void) updateRepeat
 {
-	NSMenuItem * repeatMenu = [[LPlayerController sharedInstance] repeatMenuItem];
+    [[[LPlaylistController sharedInstance] activePlaylist] repeat] ? [repeatButton setState:NSOnState] : [repeatButton setState:NSOffState];
+    NSMenuItem * repeatMenu = [[LPlayerController sharedInstance] repeatMenuItem];
 	[repeatMenuItem setTarget:[repeatMenu target]];
 	[repeatMenuItem setState:[repeatMenu state]];
 }
 
 - (void) updateShuffle
 {
-	NSMenuItem * shuffleMenu = [[LPlayerController sharedInstance] shuffleMenuItem];
+    [[[LPlaylistController sharedInstance] activePlaylist] shuffle] ? [shuffleButton setState:NSOnState] : [shuffleButton setState:NSOffState];
+    NSMenuItem * shuffleMenu = [[LPlayerController sharedInstance] shuffleMenuItem];
 	[shuffleMenuItem setTarget:[shuffleMenu target]];
-	[shuffleMenuItem setState:[shuffleMenu state]];
+	[shuffleMenuItem setState:[shuffleMenu state]];                 
 }
 
 - (void) updateNextPrevious
@@ -118,13 +122,13 @@
 
 - (void) repeatChanged
 {
-	[self updateRepeat];
+    [self updateRepeat];
 	[self updateNextPrevious];
 }
 
 - (void) shuffleChanged
 {
-	[self updateShuffle];
+    [self updateShuffle];
 }
 
 - (void) play
