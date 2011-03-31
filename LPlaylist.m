@@ -95,7 +95,8 @@
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
-{	
+{
+	[self update];
 	[aCoder encodeObject:[NSNumber numberWithInt:smart] forKey:kSMART];
 	[aCoder encodeObject:[NSNumber numberWithInt:write] forKey:kWRITE];
 	
@@ -308,8 +309,7 @@
 	
 	NSArray * sortDescriptors = [NSArray arrayWithObjects:sortDescriptor,sortDescriptorArtist, sortDescriptorAlbum, sortDescriptorTitle, nil];
 	
-	(void) sortDescriptors;
-	//[members sortUsingDescriptors:sortDescriptors];
+	[members sortUsingDescriptors:sortDescriptors];
 	return;
 }
 

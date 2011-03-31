@@ -25,6 +25,7 @@
 		url = [[NSURL alloc] init];
 		attributes = [[NSMutableDictionary alloc] init];
 		extension = @"";
+		fileType = LFileTypeUnknown;
 		
 		[attributes setObject:[NSDate date] forKey:kADD_DATE];
     }
@@ -38,6 +39,7 @@
 	attributes = [[aDecoder decodeObjectForKey:kATTRIBUTES] retain];
 	searchAttributes = [[aDecoder decodeObjectForKey:kSEARCHATTRIBUTES] retain];
 	extension = [[aDecoder decodeObjectForKey:kEXTENSION] retain];
+	fileType = [aDecoder decodeIntForKey:kFILE_TYPE];
 	
 	return self;
 }
@@ -46,8 +48,9 @@
 {	
 	[aCoder encodeObject:url forKey:kURL];
 	[aCoder encodeObject:attributes forKey:kATTRIBUTES];
-	[aCoder encodeObject:searchAttributes forKey:kSEARCHATTRIBUTES];
-	[aCoder encodeObject:extension forKey:kEXTENSION];
+	[aCoder encodeObject:[self searchAttributes] forKey:kSEARCHATTRIBUTES];
+	[aCoder encodeObject:[self extension] forKey:kEXTENSION];
+	[aCoder encodeInt:[self fileType] forKey:kFILE_TYPE];
 }
 
 - (void)dealloc
@@ -103,6 +106,7 @@
 	register NSMutableDictionary * _dictionary = [[NSMutableDictionary alloc] initWithDictionary:attributes];
 	[_dictionary setObject:[NSNumber numberWithInt:[self fileType]] forKey:kFILE_TYPE];
 	[_dictionary setObject:url forKey:kURL];
+
 	dictionary = _dictionary;
 	
 	return [self dictionary];
@@ -110,9 +114,9 @@
 
 - (LFileType) fileType
 {
-	LFileController * fc = [LFileController sharedInstance];
+	if (fileType != LFileTypeUnknown) return fileType;
 	
-	LFileType fileType = [fc fileTypeForFile:self];
+	fileType = [[LFileController sharedInstance] fileTypeForFile:self];
 	
 	return fileType;
 }

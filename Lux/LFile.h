@@ -23,6 +23,7 @@
 	NSMutableDictionary * attributes;
 	NSString * searchAttributes;
 	NSString * extension;
+	LFileType fileType;
 	
 	NSMutableDictionary * dictionary;
 }

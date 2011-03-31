@@ -80,6 +80,7 @@
 - (void) applicationWillTerminate:(NSNotification *)notification
 {
 	[[[Lux sharedInstance] ioController] _save];
+	[[[Lux sharedInstance] playerController] stopPlayer];
 }
 
 
