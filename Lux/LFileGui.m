@@ -90,7 +90,7 @@
 	if (clickedIndex == -1) // Clicked item is a column heading
 	{
 		return;
-	}	
+	}
 	
 	id clickedItem = [visibleFiles objectAtIndex:clickedIndex];
 	if ([clickedItem isKindOfClass:[LFile class]])

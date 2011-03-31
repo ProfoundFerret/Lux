@@ -11,6 +11,7 @@
 #import "LFile.h"
 
 #define kFILES @"files"
+#define kACTIVE_FILE @"activeFile"
 
 @interface LFileController : LControllerObject {
 	NSMutableDictionary * files;

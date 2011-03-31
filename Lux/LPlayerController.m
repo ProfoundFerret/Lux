@@ -108,7 +108,8 @@
 {
 	if (! player)
 	{
-		LFile * file = [self nextFile];
+		LFile * file = [[LFileController sharedInstance] activeFile];
+		if (! file) file = [self nextFile];
 		
 		[self playFile:file];
 		isPlaying = YES;

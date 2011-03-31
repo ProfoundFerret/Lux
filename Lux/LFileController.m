@@ -38,6 +38,7 @@
 {
 	self = [super initWithCoder:aDecoder];
 	files = [[aDecoder decodeObjectForKey:kFILES] retain];
+	activeFile = [[aDecoder decodeObjectForKey:kACTIVE_FILE] retain];
 	
 	return [self retain];
 }
@@ -45,6 +46,7 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
 	[aCoder encodeObject:files forKey:kFILES];
+	[aCoder encodeObject:activeFile forKey:kACTIVE_FILE];
 	
 	[super encodeWithCoder:aCoder];
 }
