@@ -20,6 +20,7 @@
 {
     self = [super init];
     if (self) {
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(renamePlaylistByNotification:) name:kBEGIN_EDITING_PLAYLIST_NOTIFICATION object:nil];
     }
     
     return self;
@@ -167,6 +168,11 @@
 	[self renamePlaylist: playlist];
 }
 
+- (void) renamePlaylistByNotification: (NSNotification *) notification
+{
+	[self renamePlaylist:[notification object]];
+}
+
 - (void) renamePlaylist: (LPlaylist *) playlist
 {
 	[playlistList expandItem:nil expandChildren:YES];
@@ -198,17 +204,6 @@
 	LPlaylist * playlist = [playlistList itemAtRow:row];
 	
 	NSMenu * menu = [[LPlaylistController sharedInstance] menuForPlaylist: playlist];
-	
-	if ([playlist write])
-	{
-		NSMenuItem * rename = [[[NSMenuItem alloc] init] autorelease];
-		[menu addItem:rename];
-		[rename setTitle:kRENAME_TEXT];
-		[rename setAction:@selector(renamePlaylistByMenuItem:)];
-		[rename setTarget:self];
-		[rename setRepresentedObject:playlist];
-	}
-	
 	return menu;
 }
 @end

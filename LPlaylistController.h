@@ -33,6 +33,8 @@
 - (void) duplicatePlaylist: (LPlaylist *) playlist;
 - (void) convertToRegularPlaylist: (LPlaylist *) playlist;
 
+- (void) renamePlaylistByMenuItem: (NSMenuItem *) menuItem;
+
 - (NSMutableArray *) getPlaylists;
 - (NSMutableArray *) getPlaylistsFromGroup: (NSString *) name;
 - (NSMutableArray *) allPlaylists;

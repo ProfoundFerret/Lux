@@ -12,6 +12,7 @@
 #define kDUPLICATE_TEXT @"Duplicate"
 #define kDELETE_TEXT @"Delete"
 #define kCONVERT_TO_REGULAR_PLAYLIST_TEXT @"Convert to Regular Playlist"
+#define kRENAME_TEXT @"Rename"
 
 @implementation LPlaylistController
 @synthesize activePlaylist, playlists, visiblePlaylist;
@@ -175,6 +176,7 @@
 	[newPlaylist addFiles:files];
 	[self addPlaylist:newPlaylist];
 	[[Lux sharedInstance] reloadData];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kBEGIN_EDITING_PLAYLIST_NOTIFICATION object:newPlaylist];
 }
 
 - (void) addFilesToNewPlaylistByMenuItem: (NSMenuItem *) menuItem
@@ -194,6 +196,11 @@
 	LPlaylist * playlist = [menuItem representedObject];
 	
 	[self removePlaylist:playlist];
+}
+
+- (void) renamePlaylistByMenuItem: (NSMenuItem *) menuItem
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:kBEGIN_EDITING_PLAYLIST_NOTIFICATION object:[menuItem representedObject]];
 }
 
 - (void) convertToRegularPlaylistByMenuItem: (NSMenuItem *) menuItem
@@ -224,9 +231,15 @@
 		[convertToRegular setAction:@selector(convertToRegularPlaylistByMenuItem:)];
 		[convertToRegular setRepresentedObject:playlist];
 	}
-	
 	if ([playlist write])
 	{
+		NSMenuItem * rename = [[[NSMenuItem alloc] init] autorelease];
+		[menu addItem:rename];
+		[rename setTitle:kRENAME_TEXT];
+		[rename setAction:@selector(renamePlaylistByMenuItem:)];
+		[rename setTarget:self];
+		[rename setRepresentedObject:playlist];
+
 		[menu addItem:[NSMenuItem separatorItem]];
 		NSMenuItem * delete = [[[NSMenuItem alloc] init] autorelease];
 		[menu addItem:delete];
@@ -235,7 +248,6 @@
 		[delete setAction:@selector(deletePlaylistByMenuItem:)];
 		[delete setRepresentedObject:playlist];
 	}
-	
 	return menu;
 }
 

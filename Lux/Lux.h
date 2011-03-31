@@ -27,6 +27,7 @@
 #define kRELOAD_DATA_NOTIFICATION @"reloadData_notification"
 #define kPLAYLIST_VISIBLE_CHANGED_NOTIFICATION @"playlistVisibleChanged_notification"
 #define kPLAYLIST_ACTIVE_CHANGED_NOTIFICATION @"playlistActiveChanged_notification"
+#define kBEGIN_EDITING_PLAYLIST_NOTIFICATION @"beginEditingPlaylist_notification"
 
 #define kEM_DASH @"—"
 
