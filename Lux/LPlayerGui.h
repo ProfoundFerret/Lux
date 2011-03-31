@@ -38,7 +38,6 @@
 - (void) pause;
 - (void) unpause;
 - (void) stop;
-- (void) activePlaylistChanged;
 - (void) repeatChanged;
 - (void) shuffleChanged;
 - (void) updateNextPrevious;
