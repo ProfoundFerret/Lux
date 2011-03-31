@@ -472,6 +472,8 @@
 	if ([sort isEqualToString:newSort])
 	{
 		descending = ! descending;
+	} else {
+		descending = NO;
 	}
 	sort = [newSort retain];
 	needsSorted = YES;
