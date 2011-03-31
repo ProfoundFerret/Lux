@@ -7,7 +7,7 @@
 //
 
 #import "LExtension.h"
-
+#import "LPlaylist.h"
 
 @implementation LExtension
 
@@ -39,5 +39,15 @@
 - (int) minorVersion
 {
 	return 0;
+}
+
+- (NSArray *) menuItemsForFiles:(NSArray *)files
+{
+	return [NSArray array];
+}
+
+- (NSArray *) menuItemsForPlaylist:(LPlaylist *)playlist
+{
+	return [NSArray array];
 }
 @end

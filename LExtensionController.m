@@ -73,4 +73,25 @@
 	}
 	return [NSArray arrayWithArray:exts];
 }
+
+- (NSArray *)menuItemsForFiles:(NSArray *)files
+{
+	NSMutableArray * menuItems = [NSMutableArray array];
+	for (LExtension * ext in extensions)
+	{
+		[menuItems addObjectsFromArray:[ext menuItemsForFiles:files]];
+	}
+	 return menuItems;
+}
+
+- (NSArray *) menuItemsForPlaylist:(LPlaylist *)playlist
+{
+	NSMutableArray * menuItems = [NSMutableArray array];
+	for (LExtension * ext in extensions)
+	{
+		[menuItems addObjectsFromArray:[ext menuItemsForPlaylist:playlist]];
+	}
+	return menuItems;	
+}
+
 @end

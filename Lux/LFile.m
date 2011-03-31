@@ -137,7 +137,6 @@
 	}
 	
 	return lowercaseDictionary;
-	
 }
 
 - (LFileType) fileType

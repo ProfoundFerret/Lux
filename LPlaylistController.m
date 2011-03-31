@@ -248,6 +248,10 @@
 		[delete setAction:@selector(deletePlaylistByMenuItem:)];
 		[delete setRepresentedObject:playlist];
 	}
+	for (NSMenuItem * menuItem in [[LExtensionController sharedInstance] menuItemsForPlaylist:playlist])
+	{
+		[menu addItem:menuItem];
+	}
 	return menu;
 }
 

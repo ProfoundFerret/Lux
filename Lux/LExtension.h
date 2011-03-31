@@ -10,6 +10,8 @@
 #import "LStoredObject.h"
 #import "LFileType.h"
 
+@class LPlaylist;
+
 #define kINDEX @"index"
 #define kTITLE @"title"
 #define kARTIST @"artist"
@@ -72,4 +74,6 @@
 - (NSDictionary *) defaultUserDefaults;
 - (int) majorVersion;
 - (int) minorVersion;
+- (NSArray *) menuItemsForFiles: (NSArray *) files;
+- (NSArray *) menuItemsForPlaylist: (LPlaylist *) playlist;
 @end

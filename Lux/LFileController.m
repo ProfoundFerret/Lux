@@ -177,7 +177,7 @@
 	[finder setRepresentedObject:menuFiles];
 	
 	[menu addItem:[NSMenuItem separatorItem]];
-
+	
 	NSMenuItem * addToPlaylist = [[[NSMenuItem alloc] init] autorelease];
 	[addToPlaylist setTitle: kADD_TO_PLAYLIST_TEXT];
 	NSMenu * addToPlaylistMenu = [[[NSMenu alloc] init] autorelease];
@@ -220,6 +220,10 @@
 		[deleteFromPlaylist setRepresentedObject:menuFiles];
 	}
 	
+	for (NSMenuItem * menuItem in [[LExtensionController sharedInstance] menuItemsForFiles:menuFiles])
+	{
+		[menu addItem:menuItem];
+	}
 	return menu;
 }
 

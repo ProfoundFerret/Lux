@@ -10,6 +10,8 @@
 #import "LControllerObject.h"
 #import "LExtension.h"
 
+@class LPlaylist;
+
 #define kEXTENSIONS @"extensions"
 
 @interface LExtensionController : LControllerObject {
@@ -18,5 +20,8 @@
 - (void) loadDefaultExtensions;
 - (BOOL) addExtension: (LExtension *) extension;
 - (NSArray *) extensionsMatchingDelegate: (Protocol *) protocol;
+
+- (NSArray *) menuItemsForFiles: (NSArray *) files;
+- (NSArray *) menuItemsForPlaylist: (LPlaylist *) playlist;
 @property (readonly, assign) NSMutableArray * extensions;
 @end
