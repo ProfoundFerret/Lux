@@ -475,5 +475,6 @@
 	}
 	sort = [newSort retain];
 	needsSorted = YES;
+	[[Lux sharedInstance] reloadData];
 }
 @end

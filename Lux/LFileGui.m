@@ -82,7 +82,6 @@
 {
 	LPlaylist * playlist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	[playlist setSort:[tableColumn identifier]];
-	[self reloadData];
 }
 
 - (void) doubleClickAction
