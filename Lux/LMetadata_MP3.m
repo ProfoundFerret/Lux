@@ -33,8 +33,8 @@
 
 - (NSDictionary *) metadataForURL:(NSURL *)fileURL
 {
-	AudioFileID fileID = nil;
-	OSStatus err = noErr;
+	static AudioFileID fileID = nil;
+	static OSStatus err = noErr;
 	
 	err = AudioFileOpenURL((CFURLRef) fileURL, kAudioFileReadPermission, 0, &fileID);
 	if ( err != noErr )
@@ -108,15 +108,23 @@
 	NSMutableDictionary * piDict2 = (NSMutableDictionary *) piDict;
 	
 	NSString * numberAsString = [piDict2 objectForKey:@"approximate duration in seconds"];
-	NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
-	[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-	NSNumber * number = [formatter numberFromString:numberAsString];
+	static NSNumberFormatter * formatter;
+	if (! formatter)
+	{
+		formatter = [[[NSNumberFormatter alloc] init] autorelease];
+		[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+	}
+	static NSNumber * number;
+	number = [formatter numberFromString:numberAsString];
 	number = [NSNumber numberWithInt:([number intValue] * 1000)];
-	[formatter release];
 	
 	[piDict2 removeObjectForKey:@"approximate duration in seconds"];
 	
-	[piDict2 setObject:number forKey:@"time"];
+	[piDict2 setObject:number forKey:kTIME];
+	
+	static int year;
+	year = [[piDict2 objectForKey:kYEAR] intValue];
+	[piDict2 setObject:[NSNumber numberWithInt:year] forKey:kYEAR];
 	
 	return piDict2;
 }
