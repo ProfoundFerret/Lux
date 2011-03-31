@@ -14,6 +14,8 @@
 #define kCONVERT_TO_REGULAR_PLAYLIST_TEXT @"Convert to Regular Playlist"
 #define kRENAME_TEXT @"Rename"
 
+#define controller [LFileController sharedInstance]
+
 @implementation LPlaylistController
 @synthesize activePlaylist, playlists, visiblePlaylist;
 
@@ -289,6 +291,43 @@
 {
 	[self prepPlaylistsForUpdate];
 	[super reloadData];
+}
+
+- (void) toggleColumn: (NSString *) column
+{
+	LPlaylist * playlist = [self visiblePlaylist];
+	[playlist toggleColumn:column];
+}
+
+- (void) toggleColumnByMenuItem: (NSMenuItem *) menuItem
+{
+	[self toggleColumn:[menuItem representedObject]];
+}
+
+- (NSMenu *) columnMenu
+{
+	NSMenu * menu = [[NSMenu alloc] init];
+	[menu setAutoenablesItems:NO];
+	NSArray * columns = [[self visiblePlaylist] columns];
+	
+	NSArray * attributes = [kKEEPER_ATTRIBUTES sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+	for (NSString * str in attributes)
+	{
+		NSMenuItem * attribute = [[[NSMenuItem alloc] init] autorelease];
+		[menu addItem:attribute];
+		[attribute setTitle:[str capitalizedString]];
+		[attribute setTarget:self];
+		[attribute setAction:@selector(toggleColumnByMenuItem:)];
+		[attribute setRepresentedObject:str];
+		if ([columns containsObject:str])
+		{
+			[attribute setState:NSOnState];
+		} else {
+			[attribute setState:NSOffState];
+		}
+		[attribute setEnabled:YES];
+	}
+	return [menu autorelease];
 }
 
 - (void) setActivePlaylist:(LPlaylist *)newActivePlaylist

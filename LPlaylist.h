@@ -83,6 +83,8 @@
 
 - (void) setMembers: (NSArray *) newMembers;
 
+- (void) toggleColumn: (NSString *) column;
+
 - (void) toggleRepeat;
 - (void) setRepeat: (BOOL) newRepeat;
 

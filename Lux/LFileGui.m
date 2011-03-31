@@ -176,9 +176,11 @@
 				indicatorImage = [NSImage imageNamed:@"NSAscendingSortIndicator"];
 			}
 			[fileList setIndicatorImage:indicatorImage inTableColumn:column];
+			
 		} else {
 			[fileList setIndicatorImage:nil inTableColumn:column];
 		}
+		[[column headerCell] setMenu:[[LPlaylistController sharedInstance] columnMenu]];
 	}
 }
 

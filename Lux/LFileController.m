@@ -112,6 +112,7 @@
 	number = [NSNumber numberWithInt:increment];
 	[[file attributes] setObject:number forKey:kPLAY_COUNT];
 }
+
 - (void) fileStartedPlaying: (LFile *)file
 {
     NSString * title = [[file attributes] objectForKey:kTITLE];

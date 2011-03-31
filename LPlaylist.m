@@ -427,6 +427,18 @@
 	title = newTitle;
 }
 
+- (void) toggleColumn: (NSString *) column
+{
+	NSMutableArray * cols = [NSMutableArray arrayWithArray:columns];
+	if ([columns containsObject:column])
+	{
+		[cols removeObject:column];
+	} else {
+		[cols addObject:column];
+	}
+	columns = [[NSMutableArray alloc] initWithArray:cols];
+	[[LInputOutputController sharedInstance] setNeedsSaved:YES];
+}
 - (void) toggleRepeat
 {
 	repeat = ! repeat;

@@ -59,6 +59,10 @@
 - (void) toggleShuffle;
 - (void) toggleRepeat;
 
+- (NSMenu *) columnMenu;
+- (void) toggleColumn: (NSString *) column;
+- (void) toggleColumnByMenuItem: (NSMenuItem *) menuItem;
+
 - (void) setActivePlaylist: (LPlaylist *) newActivePlaylist;
 - (void) setVisiblePlaylist: (LPlaylist *) newVisiblePlaylist;
 
