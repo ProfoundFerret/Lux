@@ -292,6 +292,8 @@
 	if (newActivePlaylist == [self activePlaylist]) return;
 	activePlaylist = newActivePlaylist;
 	[[NSNotificationCenter defaultCenter] postNotificationName:kPLAYLIST_ACTIVE_CHANGED_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kSHUFFLE_CHANGED_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kREPEAT_CHANGED_NOTIFICATION object:nil];
 }
 
 - (void) setVisiblePlaylist:(LPlaylist *)newVisiblePlaylist

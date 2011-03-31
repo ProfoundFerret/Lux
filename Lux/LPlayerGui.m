@@ -86,7 +86,6 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stop) name:kSTOP_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(repeatChanged) name:kREPEAT_CHANGED_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shuffleChanged) name:kSHUFFLE_CHANGED_NOTIFICATION object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(activePlaylistChanged) name:kPLAYLIST_ACTIVE_CHANGED_NOTIFICATION object:nil];
 	
 	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     
@@ -144,12 +143,6 @@
 - (void) shuffleChanged
 {
     [self updateShuffle];
-}
-
-- (void) activePlaylistChanged
-{
-	[self shuffleChanged];
-	[self repeatChanged];
 }
 
 - (void) play
