@@ -17,7 +17,7 @@
 #define kPREDICATE @"predicate"
 #define kWRITE @"write"
 #define kCOLUMNS @"columns"
-#define kSELECTED_INDEX_SET @"selectedIndexSet"
+#define kSELECTED_FILES @"selectedFiles"
 #define kREPEAT @"repeat"
 #define kSHUFFLE @"shuffle"
 #define kSORT @"sort"
@@ -46,7 +46,7 @@
 	
 	NSString * sort;
 	
-	NSIndexSet * selectedIndexSet;
+	NSArray * selectedFiles;
 	
 	BOOL needsUpdated;
 	BOOL needsSearched;
@@ -102,7 +102,7 @@
 @property (readwrite, retain) NSArray * columns;
 @property (readwrite, retain) NSString * predicate;
 @property (readonly, assign) NSString * search;
-@property (readwrite, retain) NSIndexSet * selectedIndexSet;
+@property (readwrite, retain) NSArray * selectedFiles;
 @property (readwrite, assign) BOOL needsSearched;
 @property (readwrite, assign) BOOL descending;
 @property (readwrite, assign, nonatomic) NSString * sort;

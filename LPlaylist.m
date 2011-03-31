@@ -17,7 +17,7 @@
 #define kSTREAMING @"Streaming"
 
 @implementation LPlaylist
-@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedIndexSet, needsSearched, repeat, shuffle, sort, descending, needsSorted;
+@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedFiles, needsSearched, repeat, shuffle, sort, descending, needsSorted;
 - (id)init
 {
     self = [super init];
@@ -41,7 +41,7 @@
 		predicate = @"";
 		sort = kARTIST;
 		
-		selectedIndexSet = [[NSIndexSet alloc] init];
+		selectedFiles = [[NSArray alloc] init];
     }
     
     return self;
@@ -60,7 +60,7 @@
 	[predicate release];
 	[sort release];
 	
-	[selectedIndexSet release];
+	[selectedFiles release];
 	
     [super dealloc];
 }
@@ -82,12 +82,12 @@
 	search = [[aDecoder decodeObjectForKey:kSEARCH] retain];
 	predicate = [[aDecoder decodeObjectForKey:kPREDICATE] retain];
 	
-	selectedIndexSet = [[aDecoder decodeObjectForKey:kSELECTED_INDEX_SET] retain];
+	selectedFiles = [[aDecoder decodeObjectForKey:kSELECTED_FILES] retain];
 	
 	repeat = [aDecoder decodeBoolForKey:kREPEAT];
 	shuffle = [aDecoder decodeBoolForKey:kSHUFFLE];
 	
-	sort = [aDecoder decodeObjectForKey:kSORT];
+	sort = [[aDecoder decodeObjectForKey:kSORT] retain];
 	needsSorted = YES;
 	descending = [aDecoder decodeBoolForKey:kDESCENDING];
 		
@@ -107,7 +107,7 @@
 	[aCoder encodeObject:search forKey:kSEARCH];
 	[aCoder encodeObject:predicate forKey:kPREDICATE];
 	
-	[aCoder encodeObject:selectedIndexSet forKey:kSELECTED_INDEX_SET];
+	[aCoder encodeObject:selectedFiles forKey:kSELECTED_FILES];
 	
 	[aCoder encodeBool:repeat forKey:kREPEAT];
 	[aCoder encodeBool:shuffle forKey:kSHUFFLE];
@@ -135,7 +135,7 @@
 	[playlist setSearch:[[search copy] autorelease]];
 	[playlist setPredicate:[[predicate copy] autorelease]];
 	
-	[playlist setSelectedIndexSet:[[selectedIndexSet copy] autorelease]];
+	[playlist setSelectedFiles:[[selectedFiles copy] autorelease]];
 	
 	[playlist setRepeat:repeat];
 	[playlist setShuffle:shuffle];

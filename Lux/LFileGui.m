@@ -12,6 +12,7 @@
 #import "LPlayerController.h"
 #import "LPlaylistController.h"
 #import "Lux.h"
+#import "NSArrayCategory.h"
 
 #define controller [LFileController sharedInstance]
 #define kFILES_COUNT_TEXT @"%d Files"
@@ -70,10 +71,11 @@
 
 - (void) tableViewSelectionDidChange:(NSNotification *)notification
 {
-	NSIndexSet * indexSet = [fileList selectedRowIndexes];
+	NSArray * selectedFiles = [visibleFiles objectsAtIndexes:[fileList selectedRowIndexes]];
 	
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
-	[visiblePlaylist setSelectedIndexSet: indexSet];
+	[visiblePlaylist setSelectedFiles:selectedFiles];
+	[[LInputOutputController sharedInstance] setNeedsSaved:YES];
 }
 
 - (void) tableView: (NSTableView *) tableView didClickTableColumn:(NSTableColumn *)tableColumn
@@ -98,19 +100,27 @@
 	}
 }
 
+- (void) selectCorrectFiles
+{
+	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+	NSArray * selectedFiles = [visiblePlaylist selectedFiles];
+	
+	NSIndexSet * indexSet = [visibleFiles indexesForObjects:selectedFiles];
+	
+	[fileList selectRowIndexes:indexSet byExtendingSelection:NO];
+	[fileList scrollRowToVisible:[indexSet firstIndex]];
+}
+
 - (void) reloadData
 {
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	visibleFiles = [[visiblePlaylist members] retain];
-	[self updateColumns];
 	
 	[fileList reloadData];
-	
-	NSIndexSet * indexSet = [visiblePlaylist selectedIndexSet];
-	[fileList selectRowIndexes:indexSet byExtendingSelection:NO];
-	[fileList scrollRowToVisible:[indexSet firstIndex]];
+	[self selectCorrectFiles];
 	
 	[self updateTotalFiles];
+	[self updateColumns];
 }
 
 - (void) setupColumns
