@@ -208,6 +208,7 @@
 {
 	NSMutableString * smartSearch = [NSMutableString stringWithString:ss];
 	
+	[smartSearch replaceOccurrencesOfString:@":" withString:@"=[cd]" options:NSLiteralSearch range:NSMakeRange(0, [smartSearch length])];
 	[smartSearch replaceOccurrencesOfString:@"=" withString:@"=[cd]" options:NSLiteralSearch range:NSMakeRange(0, [smartSearch length])];
 	[smartSearch replaceOccurrencesOfString:@"~" withString:@" contains[cd] " options:NSLiteralSearch range:NSMakeRange(0, [smartSearch length])];
 	return smartSearch;
