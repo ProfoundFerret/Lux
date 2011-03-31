@@ -18,7 +18,7 @@
 		7C0603181331AD19000C0556 /* Backward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C0603171331AD19000C0556 /* Backward.pdf */; };
 		7C06031A1331AD30000C0556 /* Forward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C0603191331AD2F000C0556 /* Forward.pdf */; };
 		7C0B06CC13442B2900C23399 /* NSArrayCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0B06CB13442B2900C23399 /* NSArrayCategory.m */; };
-		7C0B06D01344647300C23399 /* NSStringCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0B06CF1344647200C23399 /* NSStringCategory.m */; };
+		7C22E7151344F28B00A46AB7 /* NSStringCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E7141344F28B00A46AB7 /* NSStringCategory.m */; };
 		7C2B7C36133EBBEC001BD5DC /* LExtensionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B7C35133EBBEC001BD5DC /* LExtensionController.m */; };
 		7C2B7C3B133EBC0F001BD5DC /* LPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B7C38133EBC0F001BD5DC /* LPlaylist.m */; };
 		7C2B7C3C133EBC0F001BD5DC /* LPlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B7C3A133EBC0F001BD5DC /* LPlaylistController.m */; };
@@ -87,8 +87,8 @@
 		7C0603191331AD2F000C0556 /* Forward.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Forward.pdf; sourceTree = "<group>"; };
 		7C0B06CA13442B2900C23399 /* NSArrayCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayCategory.h; sourceTree = "<group>"; };
 		7C0B06CB13442B2900C23399 /* NSArrayCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayCategory.m; sourceTree = "<group>"; };
-		7C0B06CE1344647200C23399 /* NSStringCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringCategory.h; sourceTree = "<group>"; };
-		7C0B06CF1344647200C23399 /* NSStringCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringCategory.m; sourceTree = "<group>"; };
+		7C22E7131344F28B00A46AB7 /* NSStringCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringCategory.h; sourceTree = "<group>"; };
+		7C22E7141344F28B00A46AB7 /* NSStringCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringCategory.m; sourceTree = "<group>"; };
 		7C2B7C34133EBBEC001BD5DC /* LExtensionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LExtensionController.h; sourceTree = "<group>"; };
 		7C2B7C35133EBBEC001BD5DC /* LExtensionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LExtensionController.m; sourceTree = "<group>"; };
 		7C2B7C37133EBC0F001BD5DC /* LPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPlaylist.h; sourceTree = "<group>"; };
@@ -247,8 +247,8 @@
 				7C3B909D1328A752007B7DA5 /* NSOutlineView+Lux.m */,
 				7C0B06CA13442B2900C23399 /* NSArrayCategory.h */,
 				7C0B06CB13442B2900C23399 /* NSArrayCategory.m */,
-				7C0B06CE1344647200C23399 /* NSStringCategory.h */,
-				7C0B06CF1344647200C23399 /* NSStringCategory.m */,
+				7C22E7131344F28B00A46AB7 /* NSStringCategory.h */,
+				7C22E7141344F28B00A46AB7 /* NSStringCategory.m */,
 			);
 			name = Categories;
 			path = ..;
@@ -491,7 +491,7 @@
 				7C2B7C3C133EBC0F001BD5DC /* LPlaylistController.m in Sources */,
 				7CDC965C13401AD300D59F77 /* LOutlineView.m in Sources */,
 				7C0B06CC13442B2900C23399 /* NSArrayCategory.m in Sources */,
-				7C0B06D01344647300C23399 /* NSStringCategory.m in Sources */,
+				7C22E7151344F28B00A46AB7 /* NSStringCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
