@@ -26,6 +26,7 @@
 	LFileType fileType;
 	
 	NSMutableDictionary * dictionary;
+	NSMutableDictionary * lowercaseDictionary;
 }
 - (NSString *) extension;
 
@@ -33,10 +34,13 @@
 
 - (id) attributeForIdentifier: (id) identifier;
 
+- (void) resetDictionary;
+
 - (LFileType) fileType;
 - (void) updateMetadata;
 
 - (NSDictionary *) dictionary;
+- (NSDictionary *) lowercaseDictionary;
 
 - (NSArray *) playlists;
 - (NSArray *) notPlaylists;

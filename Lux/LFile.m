@@ -99,6 +99,12 @@
 	return @"";
 }
 
+- (void) resetDictionary
+{
+	dictionary = nil;
+	lowercaseDictionary = nil;
+}
+
 - (NSDictionary *) dictionary
 {
 	if (dictionary) return dictionary;
@@ -109,7 +115,29 @@
 
 	dictionary = _dictionary;
 	
-	return [self dictionary];
+	lowercaseDictionary = nil;
+	
+	return dictionary;
+}
+
+- (NSDictionary *) lowercaseDictionary
+{
+	if (lowercaseDictionary) return lowercaseDictionary;
+	
+	lowercaseDictionary = [[NSMutableDictionary alloc] init];
+	
+	for (NSString * str in [self dictionary])
+	{
+		id obj = [[self dictionary] objectForKey:str];
+		if ([obj isKindOfClass:[NSString class]])
+		{
+			obj = [[obj lowercaseString] retain];
+		}
+		[lowercaseDictionary setObject:obj forKey:str];
+	}
+	
+	return lowercaseDictionary;
+	
 }
 
 - (LFileType) fileType

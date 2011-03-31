@@ -298,10 +298,10 @@
 	if (! needsSorted || ! [members count] || ! sort) return;
 	needsSorted = NO;
 	
-	NSString * key = [NSString stringWithFormat:@"dictionary.%@", sort];
-	NSString * keyArtist = [NSString stringWithFormat:@"dictionary.%@", kARTIST];
-	NSString * keyAlbum = [NSString stringWithFormat:@"dictionary.%@", kALBUM];
-	NSString * keyTitle = [NSString stringWithFormat:@"dictionary.%@", kTITLE];
+	NSString * key = [NSString stringWithFormat:@"lowercaseDictionary.%@", sort];
+	NSString * keyArtist = [NSString stringWithFormat:@"lowercaseDictionary.%@", kARTIST];
+	NSString * keyAlbum = [NSString stringWithFormat:@"lowercaseDictionary.%@", kALBUM];
+	NSString * keyTitle = [NSString stringWithFormat:@"lowercaseDictionary.%@", kTITLE];
 	
 	NSSortDescriptor * sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:key ascending:! descending];
 	NSSortDescriptor * sortDescriptorArtist = [NSSortDescriptor sortDescriptorWithKey:keyArtist ascending: YES];
