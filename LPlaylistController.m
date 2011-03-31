@@ -8,6 +8,7 @@
 
 #import "LPlaylistController.h"
 #import "Lux.h"
+#import "NSStringCategory.h"
 
 #define kDUPLICATE_TEXT @"Duplicate"
 #define kDELETE_TEXT @"Delete"
@@ -315,7 +316,7 @@
 	{
 		NSMenuItem * attribute = [[[NSMenuItem alloc] init] autorelease];
 		[menu addItem:attribute];
-		[attribute setTitle:[str capitalizedString]];
+		[attribute setTitle:[str unCamelCasedString]];
 		[attribute setTarget:self];
 		[attribute setAction:@selector(toggleColumnByMenuItem:)];
 		[attribute setRepresentedObject:str];

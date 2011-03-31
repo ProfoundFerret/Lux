@@ -13,6 +13,7 @@
 #import "LPlaylistController.h"
 #import "Lux.h"
 #import "NSArrayCategory.h"
+#import "NSStringCategory.h"
 
 #define controller [LFileController sharedInstance]
 #define kFILES_COUNT_TEXT @"%d Files"
@@ -138,7 +139,7 @@
 			[column setEditable:NO];
 			[column setResizingMask:NSTableColumnNoResizing];
 		} else {	
-			[[column headerCell] setStringValue:[col capitalizedString]];
+			[[column headerCell] setStringValue:[col unCamelCasedString]];
 		}
 		[fileList addTableColumn:column];
 	}
@@ -179,7 +180,7 @@
 		} else {
 			[fileList setIndicatorImage:nil inTableColumn:column];
 		}
-		[[column headerCell] setMenu:[[LPlaylistController sharedInstance] columnMenu]];
+		[[fileList headerView] setMenu:[[LPlaylistController sharedInstance] columnMenu]];
 	}
 }
 

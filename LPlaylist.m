@@ -437,7 +437,7 @@
 		[cols addObject:column];
 	}
 	columns = [[NSMutableArray alloc] initWithArray:cols];
-	[[LInputOutputController sharedInstance] setNeedsSaved:YES];
+	[[Lux sharedInstance] reloadData];
 }
 - (void) toggleRepeat
 {

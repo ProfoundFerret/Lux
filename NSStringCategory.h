@@ -10,4 +10,5 @@
 
 
 @interface NSString (NSStringCategory)
+- (NSString *) unCamelCasedString;
 @end
