@@ -72,7 +72,7 @@
 - (void) tableViewSelectionDidChange:(NSNotification *)notification
 {
 	NSArray * selectedFiles = [visibleFiles objectsAtIndexes:[fileList selectedRowIndexes]];
-	
+
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	[visiblePlaylist setSelectedFiles:selectedFiles];
 	[[LInputOutputController sharedInstance] setNeedsSaved:YES];
@@ -117,6 +117,7 @@
 	visibleFiles = [[visiblePlaylist members] retain];
 	
 	[fileList reloadData];
+	
 	[self selectCorrectFiles];
 	
 	[self updateTotalFiles];
