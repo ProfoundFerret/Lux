@@ -138,15 +138,6 @@
 	return NO;
 }
 
-- (LPlaylist *) visiblePlaylist
-{
-	if (! visiblePlaylist)
-	{
-		visiblePlaylist = [controller activePlaylist];
-	}
-	return visiblePlaylist;
-}
-
 - (void) searchChanged
 {
 	[controller searchChangedTo: [searchField stringValue]];
