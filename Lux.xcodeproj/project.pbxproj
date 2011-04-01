@@ -19,6 +19,8 @@
 		7C06031A1331AD30000C0556 /* Forward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C0603191331AD2F000C0556 /* Forward.pdf */; };
 		7C0B06CC13442B2900C23399 /* NSArrayCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0B06CB13442B2900C23399 /* NSArrayCategory.m */; };
 		7C22E7151344F28B00A46AB7 /* NSStringCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E7141344F28B00A46AB7 /* NSStringCategory.m */; };
+		7C2811CA1346817700F5169A /* LApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2811C91346817700F5169A /* LApplication.m */; };
+		7C2811CD1346822100F5169A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2811CC1346822100F5169A /* IOKit.framework */; };
 		7C2B7C36133EBBEC001BD5DC /* LExtensionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B7C35133EBBEC001BD5DC /* LExtensionController.m */; };
 		7C2B7C3B133EBC0F001BD5DC /* LPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B7C38133EBC0F001BD5DC /* LPlaylist.m */; };
 		7C2B7C3C133EBC0F001BD5DC /* LPlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B7C3A133EBC0F001BD5DC /* LPlaylistController.m */; };
@@ -90,6 +92,9 @@
 		7C0B06CB13442B2900C23399 /* NSArrayCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayCategory.m; sourceTree = "<group>"; };
 		7C22E7131344F28B00A46AB7 /* NSStringCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringCategory.h; sourceTree = "<group>"; };
 		7C22E7141344F28B00A46AB7 /* NSStringCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringCategory.m; sourceTree = "<group>"; };
+		7C2811C81346817700F5169A /* LApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LApplication.h; sourceTree = "<group>"; };
+		7C2811C91346817700F5169A /* LApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LApplication.m; sourceTree = "<group>"; };
+		7C2811CC1346822100F5169A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IOKit.framework; sourceTree = "<group>"; };
 		7C2B7C34133EBBEC001BD5DC /* LExtensionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LExtensionController.h; sourceTree = "<group>"; };
 		7C2B7C35133EBBEC001BD5DC /* LExtensionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LExtensionController.m; sourceTree = "<group>"; };
 		7C2B7C37133EBC0F001BD5DC /* LPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPlaylist.h; sourceTree = "<group>"; };
@@ -172,6 +177,7 @@
 				7C06031313318203000C0556 /* AudioToolbox.framework in Frameworks */,
 				7A2E601C133FC21200DFA2D7 /* Growl.framework in Frameworks */,
 				D9F2453C133FED7A0060B569 /* Sparkle.framework in Frameworks */,
+				7C2811CD1346822100F5169A /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +247,8 @@
 				7CDC965B13401AD300D59F77 /* LOutlineView.m */,
 				7C9D5D811345266400971F3F /* LTableHeaderCell.h */,
 				7C9D5D821345266400971F3F /* LTableHeaderCell.m */,
+				7C2811C81346817700F5169A /* LApplication.h */,
+				7C2811C91346817700F5169A /* LApplication.m */,
 			);
 			name = Subclasses;
 			sourceTree = "<group>";
@@ -292,6 +300,7 @@
 		7C5FE0B313258F0D0008B7DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C2811CC1346822100F5169A /* IOKit.framework */,
 				D9F2453B133FED7A0060B569 /* Sparkle.framework */,
 				7A2E601B133FC21200DFA2D7 /* Growl.framework */,
 				7A895375133FBC60004F7FA6 /* OSAKit.framework */,
@@ -498,6 +507,7 @@
 				7C0B06CC13442B2900C23399 /* NSArrayCategory.m in Sources */,
 				7C22E7151344F28B00A46AB7 /* NSStringCategory.m in Sources */,
 				7C9D5D831345266400971F3F /* LTableHeaderCell.m in Sources */,
+				7C2811CA1346817700F5169A /* LApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
