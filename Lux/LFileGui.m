@@ -46,7 +46,7 @@
 	[fileList setTarget:self];
 	[fileList setDelegate:self];
 	[fileList setDoubleAction:@selector(doubleClickAction)];
-	[fileList registerForDraggedTypes:[NSArray arrayWithObject:kARRAY_NSURLS_DRAG_TYPE]];
+	[fileList registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
 	
 	[self setupColumns];
 }
@@ -84,17 +84,24 @@
 {
 	LPlaylist * playlist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	[playlist setSort:[tableColumn identifier]];
+	
+	[[Lux sharedInstance] reloadData];
 }
 
 - (NSDragOperation) tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
 {
 	if (dropOperation == NSTableViewDropOn) return NSDragOperationNone;
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
-
+	
 	NSPasteboard * pboard = [info draggingPasteboard];
-	NSData * data = [pboard dataForType:kARRAY_NSURLS_DRAG_TYPE];
-	NSArray * urls = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-
+	NSArray * urlStrings = [pboard propertyListForType:NSFilenamesPboardType];
+	NSMutableArray * urls = [NSMutableArray array];
+	for (NSString * urlString in urlStrings)
+	{
+		NSURL * url = [NSURL fileURLWithPath:urlString];
+		[urls addObject:url];
+	}
+	
 	return [visiblePlaylist dragOperationForURLs:urls];
 }
 
@@ -104,27 +111,38 @@
 	NSMutableArray * urls = [NSMutableArray array];
 	for (LFile * file in files)
 	{
-		[urls addObject:[file url]];
+		[urls addObject:[[file url] path]];
 	}
-	[pboard declareTypes:[NSArray arrayWithObject:kARRAY_NSURLS_DRAG_TYPE] owner:self];
-	NSData * data = [NSKeyedArchiver archivedDataWithRootObject:urls];
-	[pboard setData:data forType:kARRAY_NSURLS_DRAG_TYPE];
+	[pboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:self];
+	[pboard setPropertyList:urls forType:NSFilenamesPboardType];
 	return YES;
 }
 
-- (BOOL) tableView:(NSTableView *)tableView acceptDrop: (id <NSDraggingInfo>) info
+- (BOOL) tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
 {
 	NSPasteboard * pboard = [info draggingPasteboard];
-	NSData * data = [pboard dataForType:kARRAY_NSURLS_DRAG_TYPE];
-	NSArray * urls = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	NSArray * urlStrings = [pboard propertyListForType:NSFilenamesPboardType];
 	
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	NSMutableArray * files = [NSMutableArray array];
+	NSMutableArray * urls = [NSMutableArray array];
+	
+	for (NSString * urlString in urlStrings)
+	{
+		NSURL * url = [NSURL fileURLWithPath:urlString];
+		[urls addObject:url];
+	}
+	
+	[[LFileController sharedInstance] unblacklistURLs:urls];
+	[[LFileController sharedInstance] addFilesByURL:urls];
 	
 	for (NSURL * url in urls)
 	{
-		[controller addFileByURL:url];
-		[files addObject:[[controller files] objectForKey:url]];
+		LFile * file = [[controller files] objectForKey:url];
+		if (url)
+		{
+			[urls addObject:file];
+		}
 	}
 	
 	[visiblePlaylist addFiles:files];
@@ -163,12 +181,12 @@
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	visibleFiles = [[visiblePlaylist members] retain];
 	
+	[self updateTotalFiles];
+	[self updateColumns];
+	
 	[fileList reloadData];
 	
 	[self selectCorrectFiles];
-	
-	[self updateTotalFiles];
-	[self updateColumns];
 }
 
 - (void) setupColumns

@@ -111,4 +111,5 @@
 @property (readwrite, assign) BOOL descending;
 @property (readwrite, assign, nonatomic) NSString * sort;
 @property (readwrite, assign) BOOL needsSorted;
+@property (readwrite, assign) NSString * oldSearch;
 @end

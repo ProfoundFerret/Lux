@@ -128,6 +128,7 @@
 	for (LPlaylist * p in [self allPlaylists])
 	{
 		[p setNeedsUpdated:YES];
+		[p setOldSearch:@""];
 	}
 }
 

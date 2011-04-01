@@ -40,7 +40,7 @@
 	[playlistList setDelegate:self];
 	[playlistList expandItem:nil expandChildren:YES];
 	[playlistList selectItem:[controller visiblePlaylist]];
-	[playlistList registerForDraggedTypes:[NSArray arrayWithObject:kARRAY_NSURLS_DRAG_TYPE]];
+	[playlistList registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
 	
 	[searchField setTarget:self];
 	[searchField setAction:@selector(searchChanged)];
@@ -138,13 +138,19 @@
 	}
 	return NO;
 }
+
 - (NSDragOperation) outlineView:(NSOutlineView *)outlineView validateDrop:(id<NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)index
 {
 	if ([item isKindOfClass:[LPlaylist class]])
 	{
 		NSPasteboard * pboard = [info draggingPasteboard];
-		NSData * data = [pboard dataForType:kARRAY_NSURLS_DRAG_TYPE];
-		NSArray * urls = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+		NSArray * urlStrings = [pboard propertyListForType:NSFilenamesPboardType];
+		NSMutableArray * urls = [NSMutableArray array];
+		
+		for (NSString * urlString in urlStrings)
+		{
+			[urls addObject:[NSURL fileURLWithPath:urlString]];
+		}
 		
 		return [item dragOperationForURLs:urls];
 	} else if (item)
@@ -156,17 +162,26 @@
 	}
 	return NSDragOperationNone;
 }
+
 - (BOOL) outlineView:(NSOutlineView *)outlineView acceptDrop:(id<NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)index
 {
 	NSPasteboard * pboard = [info draggingPasteboard];
-	NSData * data = [pboard dataForType:kARRAY_NSURLS_DRAG_TYPE];
-	NSArray * urls = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	NSArray * urlStrings = [pboard propertyListForType:NSFilenamesPboardType];
+	NSMutableArray * urls = [NSMutableArray array];
 	
 	NSMutableArray * files = [NSMutableArray array];
 	
+	for (NSString * urlString in urlStrings)
+	{
+		NSURL * url = [NSURL fileURLWithPath:urlString];
+		[urls addObject:url];
+	}
+	
+	[[LFileController sharedInstance] unblacklistURLs:urls];
+	[[LFileController sharedInstance] addFilesByURL:urls];
+	
 	for (NSURL * url in urls)
 	{
-		[[LFileController sharedInstance] addFileByURL:url];
 		[files addObject:[[[LFileController sharedInstance] files] objectForKey:url]];
 	}
 	

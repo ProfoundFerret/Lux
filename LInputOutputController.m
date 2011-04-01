@@ -60,17 +60,12 @@
 	@synchronized(self)
 	{
 		NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-		
+		NSMutableArray * urls = [NSMutableArray array];
 		for (LExtension <LInputOutputDelegate> * extension in [self extensions])
 		{
-			NSArray * extensionURLs = [extension update];
-			[[[Lux sharedInstance] fileController] addFilesByURL:extensionURLs];
+			[urls addObjectsFromArray:[extension update]];
 		}
-		
-		needsSaved = YES;
-		[self save];
-		
-		[[Lux sharedInstance] reloadData];
+		[[[Lux sharedInstance] fileController] addFilesByURL:urls];
 		[pool drain];
 	}
 }

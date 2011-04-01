@@ -65,10 +65,10 @@
 - (void) blacklistURL:(NSURL *)url
 {
 	NSArray * array = [NSArray arrayWithObject:url];
-	[self blacklistURLS:array];
+	[self blacklistURLs:array];
 }
 
-- (void) blacklistURLS: (NSArray *) urls
+- (void) blacklistURLs: (NSArray *) urls
 {
 	for (NSURL * url in urls)
 	{
@@ -77,7 +77,24 @@
 		[files removeObjectForKey:url];
 	}
 	[[Lux sharedInstance] reloadData];
-	[self reloadData];
+}
+
+- (void) unblacklistURL:(NSURL *)url
+{
+	NSArray * array = [NSArray arrayWithObject:url];
+	[self unblacklistURLs:array];
+}
+
+- (void) unblacklistURLs: (NSArray *) urls
+{
+	for (NSURL * url in urls)
+	{
+		if (! [blacklistURLs containsObject:url]) continue;
+		[blacklistURLs removeObject:url];
+	}
+	[[LInputOutputController sharedInstance] setNeedsSaved:YES];
+	
+	[[Lux sharedInstance] reloadData];
 }
 
 - (void) deleteURLSByMenuItem:(NSMenuItem *)menuItem
@@ -88,7 +105,7 @@
 		[urls addObject:[file url]];
 	}
 	
-	[self blacklistURLS:urls];
+	[self blacklistURLs:urls];
 }
 
 - (LFile *) createFileByURL: (NSURL *) url;
@@ -100,31 +117,44 @@
 	return [f autorelease];
 }
 
-- (BOOL) addFileByFile: (LFile *) file
+- (void) addFilesByFile:(NSArray *)newFiles
 {
-	if (! file) return NO;
-	if ([files objectForKey:[file url]]) return NO;
-	if ([blacklistURLs containsObject:[file url]]) return NO;
-	if ([file fileType] == LFileTypeUnknown) return NO;
-	
-	[files setObject:file forKey:[file url]];
-	[file updateMetadata];
-	
-	return YES;
+	NSMutableDictionary * filesWaitingList = [[NSMutableDictionary alloc] init];
+	for (LFile * file in newFiles)
+	{
+		if ([files objectForKey:[file url]]) continue;
+		if ([blacklistURLs containsObject:[file url]]) continue;
+		if ([file fileType] == LFileTypeUnknown) continue;
+		
+		[filesWaitingList setObject:file forKey:[file url]];
+		[file updateMetadata];
+	}
+	[files addEntriesFromDictionary:filesWaitingList];
+	[[Lux sharedInstance] reloadData];
+}
+
+- (void) addFileByFile: (LFile *) file
+{
+	if (! file) return;
+
+	[self addFilesByFile:[NSArray arrayWithObject:file]];
 }
 
 - (void) addFilesByURL: (NSArray *) fileURLs
 {
+	LFile * f;
+	NSMutableArray * newFiles = [NSMutableArray array];
 	for (NSURL * url in fileURLs)
 	{
-		[self addFileByURL:url];
+		f = [[self createFileByURL:url] retain];
+		[newFiles addObject:f];
 	}
+	[self addFilesByFile:newFiles];
 }
 
-- (BOOL) addFileByURL: (NSURL *) url
+- (void) addFileByURL: (NSURL *) url
 {
-	LFile * f = [[self createFileByURL:url] retain];
-	return [self addFileByFile:f];
+	[self addFilesByURL:[NSArray arrayWithObject:url]];
 }
 
 - (LFileType) fileTypeForFile:(LFile *)file

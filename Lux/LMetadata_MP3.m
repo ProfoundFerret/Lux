@@ -111,7 +111,7 @@
 	static NSNumberFormatter * formatter;
 	if (! formatter)
 	{
-		formatter = [[[NSNumberFormatter alloc] init] autorelease];
+		formatter = [[NSNumberFormatter alloc] init];
 		[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
 	}
 	static NSNumber * number;

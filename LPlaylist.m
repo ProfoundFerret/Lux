@@ -17,7 +17,7 @@
 #define kSTREAMING @"Streaming"
 
 @implementation LPlaylist
-@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedFiles, needsSearched, repeat, shuffle, sort, descending, needsSorted;
+@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedFiles, needsSearched, repeat, shuffle, sort, descending, needsSorted, oldSearch;
 - (id)init
 {
     self = [super init];
@@ -58,7 +58,6 @@
 	[oldSearch release];
 	[sort release];
 	[predicate release];
-	[sort release];
 	
 	[selectedFiles release];
 	
@@ -179,28 +178,39 @@
 
 - (void) update
 {
-	if (! needsUpdated || ! smart) return;
+	if (! needsUpdated) return;
 	needsUpdated = NO;
 	needsSearched = YES;
 	needsSorted = YES;
 	
-	oldSearch = nil;
-	
-	[members autorelease];
-	members = [[NSMutableArray alloc] init];
-	NSPredicate * pred = [NSPredicate predicateWithFormat:predicate];
-	NSMutableDictionary * fileList = [[LFileController sharedInstance] files];
-	
-	NSURL * url;
-	LFile * file;
-	
-	for (url in fileList)
+	if (smart)
 	{
-		file = [fileList objectForKey:url];
-		if ( [pred evaluateWithObject:[file dictionary]] )
+		[members autorelease];
+		members = [[NSMutableArray alloc] init];
+		NSPredicate * pred = [NSPredicate predicateWithFormat:predicate];
+		NSMutableDictionary * fileList = [[LFileController sharedInstance] files];
+		
+		NSURL * url;
+		LFile * file;
+		
+		for (url in fileList)
 		{
-			[members addObject:file];
+			file = [fileList objectForKey:url];
+			if ( [pred evaluateWithObject:[file dictionary]] )
+			{
+				[members addObject:file];
+			}
 		}
+	} else {
+		NSMutableArray * newMembers = [NSMutableArray array];
+		for (LFile * f in members)
+		{
+			if ([[[LFileController sharedInstance] files] objectForKey:[f url]])
+			{
+				[newMembers addObject:f];
+			}
+		}
+		members = [newMembers retain];
 	}
 }
 
@@ -248,7 +258,7 @@
 	register NSString * searchAttributes;
 	register NSString * attribute;
 	
-	if (oldSearch && [search rangeOfString:oldSearch].location != NSNotFound) // If the new search contains the old one then use old results as a start
+	if (oldSearch && [search rangeOfString:oldSearch].location != NSNotFound && [oldSearch length]) // If the new search contains the old one then use old results as a start
 	{
 		toBeSearched = [NSArray arrayWithArray:searchMembers];
 	} else {
@@ -319,7 +329,6 @@
 	needsSearched = YES;
 	oldSearch = [search retain];
 	search = [aSearch retain];
-	[[Lux sharedInstance] reloadData];
 }
 
 + (LPlaylist *) musicPlaylist
@@ -382,6 +391,7 @@
 - (void) addFiles: (NSArray *) newMembers
 {
 	if (smart) return;
+
 	for (LFile * file in newMembers)
 	{
 		if (! [members containsObject:file])
@@ -389,7 +399,7 @@
 			[members addObject:file];
 		}
 	}
-	
+
 	[[Lux sharedInstance] reloadData];
 }
 
@@ -476,9 +486,9 @@
 	} else {
 		descending = NO;
 	}
+	
 	sort = [newSort retain];
 	needsSorted = YES;
-	[[Lux sharedInstance] reloadData];
 }
 
 - (NSDragOperation) dragOperationForURLs:(NSArray *)urls
