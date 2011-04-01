@@ -12,9 +12,11 @@
 
 #define kFILES @"files"
 #define kACTIVE_FILE @"activeFile"
+#define kBLACKLIST_URLS @"blacklistURLs"
 
 @interface LFileController : LControllerObject {
 	NSMutableDictionary * files;
+	NSMutableArray * blacklistURLs;
 	
 	LFile * activeFile;
 }
@@ -23,6 +25,11 @@
 - (void) addFilesByURL: (NSArray *) files;
 - (void) addFileByURL: (NSURL *) url;
 - (LFileType) fileTypeForFile:(LFile *)file;
+
+- (void) blacklistURL: (NSURL *) url;
+- (void) blacklistURLS: (NSArray *) urls;
+
+- (void) deleteURLSByMenuItem: (NSMenuItem *) menuItem;
 
 - (void) fileFinishedPlaying: (LFile *)file;
 - (void) fileStartedPlaying: (LFile *)file;

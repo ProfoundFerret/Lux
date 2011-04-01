@@ -242,7 +242,14 @@
 		[rename setAction:@selector(renamePlaylistByMenuItem:)];
 		[rename setTarget:self];
 		[rename setRepresentedObject:playlist];
-
+	}
+	
+	for (NSMenuItem * menuItem in [[LExtensionController sharedInstance] menuItemsForPlaylist:playlist])
+	{
+		[menu addItem:menuItem];
+	}
+	if ([playlist write])
+	{
 		[menu addItem:[NSMenuItem separatorItem]];
 		NSMenuItem * delete = [[[NSMenuItem alloc] init] autorelease];
 		[menu addItem:delete];
@@ -250,10 +257,6 @@
 		[delete setTarget:self];
 		[delete setAction:@selector(deletePlaylistByMenuItem:)];
 		[delete setRepresentedObject:playlist];
-	}
-	for (NSMenuItem * menuItem in [[LExtensionController sharedInstance] menuItemsForPlaylist:playlist])
-	{
-		[menu addItem:menuItem];
 	}
 	return menu;
 }

@@ -15,6 +15,7 @@
 #define kADD_TO_PLAYLIST_TEXT @"Add To Playlist"
 #define kNEW_PLAYLIST @"New Playlist"
 #define kDELETE_FROM_TEXT @"Delete From"
+#define kDELETE_FROM_LIBRARY_TEXT @"Delete From Library"
 
 @implementation LFileController
 @synthesize activeFile, files;
@@ -23,6 +24,7 @@
     self = [super init];
     if (self) {
 		files = [[NSMutableDictionary alloc] init];
+		blacklistURLs = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -30,7 +32,8 @@
 
 - (void)dealloc
 {
-	[files dealloc];
+	[files release];
+	[blacklistURLs release];
     [super dealloc];
 }
 
@@ -39,6 +42,13 @@
 	self = [super initWithCoder:aDecoder];
 	files = [[aDecoder decodeObjectForKey:kFILES] retain];
 	activeFile = [[aDecoder decodeObjectForKey:kACTIVE_FILE] retain];
+	NSMutableArray * _blacklistURLs = [aDecoder decodeObjectForKey:kBLACKLIST_URLS];
+	if (_blacklistURLs)
+	{
+		blacklistURLs = [_blacklistURLs retain];
+	} else {
+		blacklistURLs = [[NSMutableArray alloc] init];
+	}
 	
 	return [self retain];
 }
@@ -47,8 +57,38 @@
 {
 	[aCoder encodeObject:files forKey:kFILES];
 	[aCoder encodeObject:activeFile forKey:kACTIVE_FILE];
+	[aCoder encodeObject:blacklistURLs forKey:kBLACKLIST_URLS];
 	
 	[super encodeWithCoder:aCoder];
+}
+
+- (void) blacklistURL:(NSURL *)url
+{
+	NSArray * array = [NSArray arrayWithObject:url];
+	[self blacklistURLS:array];
+}
+
+- (void) blacklistURLS: (NSArray *) urls
+{
+	for (NSURL * url in urls)
+	{
+		if ([blacklistURLs containsObject:url]) continue;
+		[blacklistURLs addObject:url];
+		[files removeObjectForKey:url];
+	}
+	[[Lux sharedInstance] reloadData];
+	[self reloadData];
+}
+
+- (void) deleteURLSByMenuItem:(NSMenuItem *)menuItem
+{
+	NSMutableArray * urls = [[NSMutableArray alloc] init];
+	for (LFile * file in [menuItem representedObject])
+	{
+		[urls addObject:[file url]];
+	}
+	
+	[self blacklistURLS:urls];
 }
 
 - (LFile *) createFileByURL: (NSURL *) url;
@@ -63,6 +103,7 @@
 {
 	if (! file) return NO;
 	if ([files objectForKey:[file url]]) return NO;
+	if ([blacklistURLs containsObject:[file url]]) return NO;
 	if ([file fileType] == LFileTypeUnknown) return NO;
 	
 	[files setObject:file forKey:[file url]];
@@ -210,6 +251,13 @@
 		
 		[addToPlaylistMenu addItem:playlistMenuItem];
 	}
+		
+	for (NSMenuItem * menuItem in [[LExtensionController sharedInstance] menuItemsForFiles:menuFiles])
+	{
+		[menu addItem:menuItem];
+	}
+	
+	[menu addItem:[NSMenuItem separatorItem]];
 	
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	if (! [visiblePlaylist smart])
@@ -223,10 +271,14 @@
 		[deleteFromPlaylist setRepresentedObject:menuFiles];
 	}
 	
-	for (NSMenuItem * menuItem in [[LExtensionController sharedInstance] menuItemsForFiles:menuFiles])
-	{
-		[menu addItem:menuItem];
-	}
+	NSMenuItem * deleteFromLibrary = [[[NSMenuItem alloc] init] autorelease];
+	[menu addItem:deleteFromLibrary];
+	[deleteFromLibrary setTitle:kDELETE_FROM_LIBRARY_TEXT];
+	[deleteFromLibrary setTarget:self];
+	[deleteFromLibrary setAction:@selector(deleteURLSByMenuItem:)];
+	[deleteFromLibrary setRepresentedObject:menuFiles];
+	[deleteFromLibrary setKeyEquivalent:[NSString stringWithFormat:@"%c", 0x08]]; // Delete Key
+	
 	return menu;
 }
 
