@@ -14,6 +14,8 @@
 #define kACTIVE_FILE @"activeFile"
 #define kBLACKLIST_URLS @"blacklistURLs"
 
+#define kARRAY_NSURLS_DRAG_TYPE @"NSArray_NSURL_DragType"
+
 @interface LFileController : LControllerObject {
 	NSMutableDictionary * files;
 	NSMutableArray * blacklistURLs;
@@ -23,7 +25,7 @@
 - (LFile *) createFileByURL: (NSURL *) url;
 - (BOOL) addFileByFile: (LFile *) file;
 - (void) addFilesByURL: (NSArray *) files;
-- (void) addFileByURL: (NSURL *) url;
+- (BOOL) addFileByURL: (NSURL *) url;
 - (LFileType) fileTypeForFile:(LFile *)file;
 
 - (void) blacklistURL: (NSURL *) url;

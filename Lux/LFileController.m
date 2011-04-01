@@ -93,6 +93,7 @@
 
 - (LFile *) createFileByURL: (NSURL *) url;
 {
+	if ([files objectForKey:url]) return [files objectForKey:url];
 	LFile * f = [[LFile alloc] init];
 	[f setUrl:url];
 	
@@ -120,10 +121,10 @@
 	}
 }
 
-- (void) addFileByURL: (NSURL *) url
+- (BOOL) addFileByURL: (NSURL *) url
 {
 	LFile * f = [[self createFileByURL:url] retain];
-	[self addFileByFile:f];
+	return [self addFileByFile:f];
 }
 
 - (LFileType) fileTypeForFile:(LFile *)file

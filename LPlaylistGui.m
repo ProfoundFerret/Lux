@@ -40,6 +40,7 @@
 	[playlistList setDelegate:self];
 	[playlistList expandItem:nil expandChildren:YES];
 	[playlistList selectItem:[controller visiblePlaylist]];
+	[playlistList registerForDraggedTypes:[NSArray arrayWithObject:kARRAY_NSURLS_DRAG_TYPE]];
 	
 	[searchField setTarget:self];
 	[searchField setAction:@selector(searchChanged)];
@@ -136,6 +137,47 @@
 		return [item write];
 	}
 	return NO;
+}
+- (NSDragOperation) outlineView:(NSOutlineView *)outlineView validateDrop:(id<NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)index
+{
+	if ([item isKindOfClass:[LPlaylist class]])
+	{
+		NSPasteboard * pboard = [info draggingPasteboard];
+		NSData * data = [pboard dataForType:kARRAY_NSURLS_DRAG_TYPE];
+		NSArray * urls = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+		
+		return [item dragOperationForURLs:urls];
+	} else if (item)
+	{
+		if ([item isEqualToString:kPLAYLISTS])
+		{
+			return NSDragOperationCopy;
+		}
+	}
+	return NSDragOperationNone;
+}
+- (BOOL) outlineView:(NSOutlineView *)outlineView acceptDrop:(id<NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)index
+{
+	NSPasteboard * pboard = [info draggingPasteboard];
+	NSData * data = [pboard dataForType:kARRAY_NSURLS_DRAG_TYPE];
+	NSArray * urls = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	
+	NSMutableArray * files = [NSMutableArray array];
+	
+	for (NSURL * url in urls)
+	{
+		[[LFileController sharedInstance] addFileByURL:url];
+		[files addObject:[[[LFileController sharedInstance] files] objectForKey:url]];
+	}
+	
+	if ([item isKindOfClass:[LPlaylist class]])
+	{
+		[item addFiles:files];
+	} else {
+		[controller addFilesToNewPlaylist:files];
+	}
+	
+	return YES;
 }
 
 - (void) searchChanged

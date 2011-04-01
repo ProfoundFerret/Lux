@@ -77,6 +77,8 @@
 - (void) addFilesByMenuItem: (NSMenuItem *) menuItem;
 - (void) removeFilesByMenuItem: (NSMenuItem *) menuItem;
 
+- (NSDragOperation) dragOperationForURLs: (NSArray *) urls;
+
 - (void) setSearch:(NSString *) aSearch;
 - (NSString *) createPredicateFromSearch: (NSString *) smartSearch;
 - (void) preformSmartSearchWithString: (NSString *) string;

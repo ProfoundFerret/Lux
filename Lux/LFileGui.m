@@ -46,6 +46,7 @@
 	[fileList setTarget:self];
 	[fileList setDelegate:self];
 	[fileList setDoubleAction:@selector(doubleClickAction)];
+	[fileList registerForDraggedTypes:[NSArray arrayWithObject:kARRAY_NSURLS_DRAG_TYPE]];
 	
 	[self setupColumns];
 }
@@ -85,6 +86,51 @@
 	[playlist setSort:[tableColumn identifier]];
 }
 
+- (NSDragOperation) tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
+{
+	if (dropOperation == NSTableViewDropOn) return NSDragOperationNone;
+	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+
+	NSPasteboard * pboard = [info draggingPasteboard];
+	NSData * data = [pboard dataForType:kARRAY_NSURLS_DRAG_TYPE];
+	NSArray * urls = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+
+	return [visiblePlaylist dragOperationForURLs:urls];
+}
+
+- (BOOL) tableView: (NSTableView *) tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
+{
+	NSArray * files = [visibleFiles objectsAtIndexes:rowIndexes];
+	NSMutableArray * urls = [NSMutableArray array];
+	for (LFile * file in files)
+	{
+		[urls addObject:[file url]];
+	}
+	[pboard declareTypes:[NSArray arrayWithObject:kARRAY_NSURLS_DRAG_TYPE] owner:self];
+	NSData * data = [NSKeyedArchiver archivedDataWithRootObject:urls];
+	[pboard setData:data forType:kARRAY_NSURLS_DRAG_TYPE];
+	return YES;
+}
+
+- (BOOL) tableView:(NSTableView *)tableView acceptDrop: (id <NSDraggingInfo>) info
+{
+	NSPasteboard * pboard = [info draggingPasteboard];
+	NSData * data = [pboard dataForType:kARRAY_NSURLS_DRAG_TYPE];
+	NSArray * urls = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	
+	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+	NSMutableArray * files = [NSMutableArray array];
+	
+	for (NSURL * url in urls)
+	{
+		[controller addFileByURL:url];
+		[files addObject:[[controller files] objectForKey:url]];
+	}
+	
+	[visiblePlaylist addFiles:files];
+	return YES;
+}
+
 - (void) doubleClickAction
 {
 	NSInteger clickedIndex = [fileList clickedRow];
@@ -106,6 +152,7 @@
 	NSArray * selectedFiles = [visiblePlaylist selectedFiles];
 	
 	NSIndexSet * indexSet = [visibleFiles indexesForObjects:selectedFiles];
+	if (! indexSet) indexSet = [NSIndexSet indexSet];
 	
 	[fileList selectRowIndexes:indexSet byExtendingSelection:NO];
 	[fileList scrollRowToVisible:[indexSet firstIndex]];

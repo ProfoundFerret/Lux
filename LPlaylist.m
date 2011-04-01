@@ -381,6 +381,7 @@
 
 - (void) addFiles: (NSArray *) newMembers
 {
+	if (smart) return;
 	for (LFile * file in newMembers)
 	{
 		if (! [members containsObject:file])
@@ -478,5 +479,18 @@
 	sort = [newSort retain];
 	needsSorted = YES;
 	[[Lux sharedInstance] reloadData];
+}
+
+- (NSDragOperation) dragOperationForURLs:(NSArray *)urls
+{
+	if (! smart) return NSDragOperationCopy;
+	NSDictionary * fileList = [[LFileController sharedInstance] files];
+
+	for (NSURL * url in urls)
+	{
+		if (! [fileList objectForKey:url]) return NSDragOperationCopy;
+	}
+	
+	return NSDragOperationNone;
 }
 @end
