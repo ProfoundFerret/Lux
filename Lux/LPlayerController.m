@@ -135,12 +135,14 @@
 
 - (void) updateVolume
 {
-	[player setVolume:[self volumeForFile: [[LFileController sharedInstance] activeFile]]];
+	[player setVolume:[self volume]];
     
 }
 
 - (void) setTime: (int) newTime
 {
+	int totalTime = [player totalTime];
+	newTime = (newTime > totalTime) ? totalTime : newTime;
 	[player setTime: newTime];
 }
 
@@ -230,6 +232,68 @@
 	double volume = [[defaults objectForKey:kVOLUME] doubleValue];
 	
 	return volume;
+}
+
+- (void) setVolume: (double) volume
+{	
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	
+	volume = (volume > 1) ? 1 : volume;
+	volume = (volume < 0) ? 0 : volume;
+	
+	[defaults setObject:[NSNumber numberWithDouble:volume] forKey:kVOLUME];
+	
+	[self updateVolume];
+}
+
+- (double) volume
+{
+	return [self volumeForFile: [[LFileController sharedInstance] activeFile]];
+}
+
+- (void) incrementTime
+{	
+	int time = [self curTime];
+	time += kTIME_INCREMENT;
+	[self setTime:time];
+	
+	NSLog(@"Incrementing Time");
+}
+
+- (void) decrementTime
+{
+	int time = [self curTime];
+	time -= kTIME_INCREMENT;
+	[self setTime:time];
+}
+
+- (void) incrementVolume
+{
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	double volume = [[defaults objectForKey:kVOLUME] doubleValue];
+	
+	[self setVolume: volume + kVOLUME_INCREMENT];
+}
+
+- (void) decrementVolume
+{
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	double volume = [[defaults objectForKey:kVOLUME] doubleValue];
+	
+	[self setVolume: volume - kVOLUME_INCREMENT];
+}
+
+- (void) startTimeScrubbing // TODO: Doesn't work yet
+{
+	[self stopTimeScrubbing];
+	timeScrubbingTimer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:kTIME_SCRUB_FREQUENCY target:self selector:@selector(incrementTime) userInfo:nil repeats:YES];
+}
+
+- (void) stopTimeScrubbing
+{
+	if (! timeScrubbingTimer) return;
+	[timeScrubbingTimer invalidate];
+	[timeScrubbingTimer autorelease];
 }
 
 - (int) curTime
@@ -396,10 +460,12 @@
 {
 	switch(buttonIdentifier) {
 		case kRemoteButtonPlus:
-			// Volume Up		
+			// Volume Up	
+			if (! pressedDown) [self incrementVolume];	
 			break;
 		case kRemoteButtonMinus:
 			// Volume Down
+			if (! pressedDown) [self decrementVolume];
 			break;			
 		case kRemoteButtonMenu:
 			// Menu
@@ -407,6 +473,7 @@
 		case kRemoteButtonPlay:
 			// Play
 			if (! pressedDown) [self playPause];
+			[self startTimeScrubbing];
 			break;			
 		case kRemoteButtonRight:	
 			// Right
@@ -418,9 +485,11 @@
 			break;			
 		case kRemoteButtonRight_Hold:
 			// Right Hold
+			[self startTimeScrubbing];
 			break;	
 		case kRemoteButtonLeft_Hold:
-			// Left Hold	
+			// Left Hold
+			//[self stopTimeScrubbing];
 			break;			
 		case kRemoteButtonPlus_Hold:
 			// Volume Up Hold

@@ -35,6 +35,9 @@
 #define kSHUFFLE_TEXT @"Shuffle"
 
 #define kMAX_RECENT_FILES 10
+#define kVOLUME_INCREMENT .08
+#define kTIME_INCREMENT 1000 * 5
+#define kTIME_SCRUB_FREQUENCY 0.4
 
 @interface LPlayerController : LControllerObject {
 	LExtension <LPlayerDelegate> * player;
@@ -43,7 +46,8 @@
 	
 	AppleRemote * remoteControl;
 	MultiClickRemoteBehavior * remoteBehavior;
-    
+	
+	NSTimer * timeScrubbingTimer;
 }
 - (void) playFile: (LFile *) file;
 - (void) stopPlayer;
@@ -57,6 +61,7 @@
 - (void) playNextFile;
 - (void) playPreviousFile;
 - (double) volumeForFile: (LFile *) file;
+- (double) volume;
 - (int) curTime;
 - (int) totalTime;
 - (void) playMenuItem: (NSMenuItem *) menuItem;
@@ -65,6 +70,17 @@
 - (NSMenu *) recentFilesMenu;
 - (NSMenuItem *) repeatMenuItem;
 - (NSMenuItem *) shuffleMenuItem;
+
+- (void) setVolume: (double) volume;
+
+- (void) incrementVolume;
+- (void) decrementVolume;
+
+- (void) incrementTime;
+- (void) decrementTime;
+
+- (void) startTimeScrubbing;
+- (void) stopTimeScrubbing;
 
 - (NSArray *) extensions;
 
