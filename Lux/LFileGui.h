@@ -16,7 +16,7 @@
 	
 	NSArray * visibleFiles;
 	
-	BOOL reloadingData;
+	NSUInteger columnsToGo;
 }
 - (void) updateColumns;
 - (void) setupColumns;

@@ -84,6 +84,7 @@
 
 - (void) tableView: (NSTableView *) tableView didClickTableColumn:(NSTableColumn *)tableColumn
 {
+	if ([[tableColumn identifier] isEqualToString:kINDEX]) return;
 	LPlaylist * playlist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	[playlist setSort:[tableColumn identifier]];
 	
@@ -153,8 +154,12 @@
 
 - (void) tableViewColumnDidResize:(NSNotification *)notification
 {
-	NSLog(@"%d", reloadingData);
 	if (! [visibleFiles count]) return;
+	if (columnsToGo > 0)
+	{
+		columnsToGo--;
+		return;
+	}
 	
 	NSTableColumn * column = [[notification userInfo] objectForKey:NS_TABLE_COLUMN];
 	id ID = [column identifier];
@@ -300,8 +305,6 @@
 
 - (void) reloadData
 {
-	reloadingData = YES;
-	
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	visibleFiles = [[visiblePlaylist members] retain];
 	
@@ -309,10 +312,10 @@
 	
 	[self updateColumns];
 	
+	columnsToGo = [[visiblePlaylist columns] count];
+	
 	[fileList reloadData];
 	
 	[self selectCorrectFiles];
-	
-	reloadingData = NO;
 }
 @end
