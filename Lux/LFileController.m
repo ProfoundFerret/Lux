@@ -119,7 +119,7 @@
 
 - (void) addFilesByFile:(NSArray *)newFiles
 {
-	NSMutableDictionary * filesWaitingList = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary * filesWaitingList = [NSMutableDictionary dictionary];
 	for (LFile * file in newFiles)
 	{
 		if ([files objectForKey:[file url]]) continue;

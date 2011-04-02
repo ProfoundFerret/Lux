@@ -35,7 +35,7 @@
 	NSMutableArray * members;
 	NSMutableArray * searchMembers;
 	
-	NSArray * columns;
+	NSMutableDictionary * columns;
 	
 	NSString * title;
 	
@@ -93,6 +93,9 @@
 - (void) toggleShuffle;
 - (void) setShuffle: (BOOL) newShuffle;
 
+- (void) setWidth: (double) width forColumn: (NSString *) column;
+- (double) widthForColumn: (NSString *) column;
+
 + (LPlaylist *) musicPlaylist;
 + (LPlaylist *) videoPlaylist;
 + (LPlaylist *) streamingPlaylist;
@@ -103,7 +106,7 @@
 @property (readwrite, assign) BOOL write;
 @property (readonly) BOOL repeat;
 @property (readonly) BOOL shuffle;
-@property (readwrite, retain) NSArray * columns;
+@property (readwrite, retain) NSMutableDictionary * columns;
 @property (readwrite, retain) NSString * predicate;
 @property (readonly, assign) NSString * search;
 @property (readwrite, retain) NSArray * selectedFiles;

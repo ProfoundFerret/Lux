@@ -13,5 +13,5 @@
 @private
     
 }
-
+- (void) mediaKeyEvent: (int) key state: (BOOL) keyDown repeat: (BOOL) repeat;
 @end

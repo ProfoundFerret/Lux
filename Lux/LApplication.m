@@ -26,7 +26,7 @@
 {
 	[super dealloc];
 }
-/*
+
 - (void) mediaKeyEvent: (int) key state: (BOOL) keyDown repeat: (BOOL) repeat
 {
 	switch (key) {
@@ -60,9 +60,9 @@
 		int keyState = (((keyFlags & 0xFF00) >> 8)) == 0xA;
 		
 		[self mediaKeyEvent:keyCode state:keyState repeat:NO];
+		return;
 	}
 	
 	[super sendEvent:event];
 }
- */
 @end

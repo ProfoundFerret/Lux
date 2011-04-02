@@ -20,6 +20,8 @@
 #define kFILE_COUNT_TEXT @"%d File"
 #define kMARGIN_SIZE 4
 
+#define NS_TABLE_COLUMN @"NSTableColumn"
+
 @implementation LFileGui
 @synthesize visibleFiles;
 
@@ -149,6 +151,20 @@
 	return YES;
 }
 
+- (void) tableViewColumnDidResize:(NSNotification *)notification
+{
+	if (! [visibleFiles count]) return;
+	
+	NSTableColumn * column = [[notification userInfo] objectForKey:NS_TABLE_COLUMN];
+	id ID = [column identifier];
+	
+	if (! ID) return;
+	
+	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+	
+	[visiblePlaylist setWidth:[column width] forColumn:ID];
+}
+
 - (void) doubleClickAction
 {
 	NSInteger clickedIndex = [fileList clickedRow];
@@ -176,19 +192,6 @@
 	[fileList scrollRowToVisible:[indexSet firstIndex]];
 }
 
-- (void) reloadData
-{
-	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
-	visibleFiles = [[visiblePlaylist members] retain];
-	
-	[self updateTotalFiles];
-	[self updateColumns];
-	
-	[fileList reloadData];
-	
-	[self selectCorrectFiles];
-}
-
 - (void) setupColumns
 {
 	NSMutableArray * columns = [NSMutableArray arrayWithObject:kINDEX];
@@ -213,25 +216,37 @@
 
 - (void) updateColumns
 {
-	NSMutableArray * columns = [NSArray arrayWithArray:[[[LPlaylistController sharedInstance] visiblePlaylist] columns]];
+	NSDictionary * columns = [[[LPlaylistController sharedInstance] visiblePlaylist] columns];
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+	
+	NSString * sort = [visiblePlaylist sort];
+	[fileList setFocusedColumn:[[columns allKeys] indexOfObject:sort]];
 	for (NSTableColumn * column in [fileList tableColumns])
 	{
 		NSString * ID = [column identifier];
-		[column setHidden:(! [columns containsObject:ID])];
+		if ([columns objectForKey:ID])
+		{
+			[column setHidden:NO];
+		} else {
+			[column setHidden:YES];
+			continue;
+		}
+		
 		if ([ID isEqualToString:kINDEX])
 		{
 			NSUInteger total = [visibleFiles count];
 			NSString * totalString = [NSString stringWithFormat:@"%d", total];
 			
-			NSFont * font = [[[[fileList tableColumns] objectAtIndex:0] dataCell] font]; 	
-			NSDictionary * fontDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-			
+			NSFont * font = [[[[fileList tableColumns] objectAtIndex:0] dataCell] font];    
+			NSDictionary * fontDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];   
 			NSSize charSize = [totalString sizeWithAttributes:fontDictionary];
 			[column setWidth:charSize.width + kMARGIN_SIZE];
+		} else {
+			double width = [visiblePlaylist widthForColumn:ID];
+			[column setWidth:width];
 		}
-
-		if ([ID isEqualToString:[visiblePlaylist sort]])
+		
+		if ([ID isEqualToString:sort])
 		{
 			NSImage * indicatorImage;
 			if ([visiblePlaylist descending])
@@ -245,7 +260,6 @@
 		} else {
 			[fileList setIndicatorImage:nil inTableColumn:column];
 		}
-		[[fileList headerView] setMenu:[[LPlaylistController sharedInstance] columnMenu]];
 	}
 }
 
@@ -281,5 +295,19 @@
 	}
 		
 	return [[LFileController sharedInstance] menuForFiles: files];
+}
+
+- (void) reloadData
+{
+	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+	visibleFiles = [[visiblePlaylist members] retain];
+	
+	[self updateTotalFiles];
+	
+	[fileList reloadData];
+	
+	[self updateColumns];
+	
+	[self selectCorrectFiles];
 }
 @end

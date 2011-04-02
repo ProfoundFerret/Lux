@@ -313,7 +313,7 @@
 {
 	NSMenu * menu = [[NSMenu alloc] init];
 	[menu setAutoenablesItems:NO];
-	NSArray * columns = [[self visiblePlaylist] columns];
+	NSMutableDictionary * columns = [[self visiblePlaylist] columns];
 	
 	NSArray * attributes = [kKEEPER_ATTRIBUTES sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 	for (NSString * str in attributes)
@@ -324,7 +324,7 @@
 		[attribute setTarget:self];
 		[attribute setAction:@selector(toggleColumnByMenuItem:)];
 		[attribute setRepresentedObject:str];
-		if ([columns containsObject:str])
+		if ([columns objectForKey:str])
 		{
 			[attribute setState:NSOnState];
 		} else {

@@ -16,6 +16,8 @@
 #define kVIDEO @"Video"
 #define kSTREAMING @"Streaming"
 
+#define ZERO [NSNumber numberWithInt:0]
+
 @implementation LPlaylist
 @synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedFiles, needsSearched, repeat, shuffle, sort, descending, needsSorted, oldSearch;
 - (id)init
@@ -34,7 +36,7 @@
 		
 		members = [[NSMutableArray alloc] init];
 		searchMembers = [[NSMutableArray alloc] init];
-		columns = [[NSArray alloc] initWithObjects:kINDEX, kTITLE, kARTIST, kALBUM, nil];
+		columns = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:ZERO,ZERO,ZERO,ZERO, nil] forKeys:[NSArray arrayWithObjects:kINDEX,kTITLE, kARTIST, kALBUM, nil]];
 		title = kUNTITLED_PLAYLIST;
 		search = @"";
 		oldSearch = @"";
@@ -356,7 +358,7 @@
 	[playlist setTitle:kVIDEO];
 	[playlist setSort:kTITLE];
 	
-	NSArray * columns = [NSArray arrayWithObjects:kINDEX, kTITLE, nil];
+	NSMutableDictionary * columns = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:ZERO,ZERO, nil] forKeys:[NSArray arrayWithObjects:kINDEX,kTITLE, nil]];
 	[playlist setColumns:columns];
 	
 	[playlist setWrite:NO];
@@ -375,7 +377,7 @@
 	[playlist setTitle:kSTREAMING];
 	[playlist setSort:kTITLE];
 	
-	NSArray * columns = [NSArray arrayWithObjects:kINDEX, kTITLE, nil];
+	NSMutableDictionary * columns = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:ZERO,ZERO, nil] forKeys:[NSArray arrayWithObjects:kINDEX,kTITLE, nil]];
 	[playlist setColumns:columns];
 	
 	[playlist setWrite:NO];
@@ -440,16 +442,15 @@
 
 - (void) toggleColumn: (NSString *) column
 {
-	NSMutableArray * cols = [NSMutableArray arrayWithArray:columns];
-	if ([columns containsObject:column])
+	if ([columns objectForKey:column])
 	{
-		[cols removeObject:column];
+		[columns removeObjectForKey:column];
 	} else {
-		[cols addObject:column];
+		[columns setObject:ZERO forKey:column];
 	}
-	columns = [[NSMutableArray alloc] initWithArray:cols];
 	[[Lux sharedInstance] reloadData];
 }
+
 - (void) toggleRepeat
 {
 	repeat = ! repeat;
@@ -489,6 +490,25 @@
 	
 	sort = [newSort retain];
 	needsSorted = YES;
+}
+
+- (void) setWidth: (double) width forColumn: (NSString *) column
+{
+	if (! [columns objectForKey:column] || [column isEqualToString:kINDEX]) return;
+	[columns setObject:[NSNumber numberWithDouble:width] forKey:column];
+	
+	[[LInputOutputController sharedInstance] setNeedsSaved:YES];
+}
+
+- (double) widthForColumn: (NSString *) column
+{
+	if (! [columns objectForKey:column]) return 0;
+	double width = [[columns objectForKey:column] doubleValue];
+	if (width == 0.0)
+	{
+		width = 250;
+	}
+	return width;
 }
 
 - (NSDragOperation) dragOperationForURLs:(NSArray *)urls
