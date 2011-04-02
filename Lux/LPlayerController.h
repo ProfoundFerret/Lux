@@ -12,6 +12,10 @@
 #import "LFile.h"
 #import "LPlayerGui.h"
 
+#import "AppleRemote.h"
+#import "MultiClickRemoteBehavior.h"
+#import "HIDRemoteControlDevice.h"
+
 #define kUNPAUSE_NOTIFICATION @"unpause_notification"
 #define kPAUSE_NOTIFICATION @"unpause_notification"
 #define kPLAY_NOTIFICATION @"play_notification"
@@ -36,6 +40,9 @@
 	LExtension <LPlayerDelegate> * player;
 	BOOL isPlaying;
 	NSMutableArray * recentFiles;
+	
+	AppleRemote * remoteControl;
+	MultiClickRemoteBehavior * remoteBehavior;
     
 }
 - (void) playFile: (LFile *) file;
@@ -60,6 +67,9 @@
 - (NSMenuItem *) shuffleMenuItem;
 
 - (NSArray *) extensions;
+
+- (void) setupRemoteControl;
+- (void) remoteButton: (RemoteControlEventIdentifier)buttonIdentifier pressedDown: (BOOL) pressedDown clickCount: (unsigned int)clickCount;
 
 @property (readonly) NSMutableArray * recentFiles;
 @property (readonly) LExtension <LPlayerDelegate> * player;

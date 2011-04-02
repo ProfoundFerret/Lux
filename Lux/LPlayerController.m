@@ -20,6 +20,8 @@
     self = [super init];
     if (self) {
 		recentFiles = [[NSMutableArray alloc] init];
+		
+		[self setupRemoteControl];
     }
     
     return self;
@@ -28,6 +30,7 @@
 - (void)dealloc
 {
 	[player release];
+	[remoteControl release];
     [super dealloc];
 }
 
@@ -41,6 +44,8 @@
 	self = [super initWithCoder:aDecoder];
 	
 	recentFiles = [[aDecoder decodeObjectForKey:kRECENT_FILES] retain];
+	
+	[self setupRemoteControl];
 	return [self retain];
 }
 
@@ -368,6 +373,68 @@
 		[shuffle setState:NSOffState];
 	}
 	return shuffle;
+}
+
+- (void) setupRemoteControl
+{	
+	if (! remoteControl)
+	{
+		remoteControl = [[AppleRemote alloc] initWithDelegate:self];
+		
+		remoteBehavior = [MultiClickRemoteBehavior new];
+		[remoteBehavior setDelegate:self];
+		[remoteControl setDelegate:remoteBehavior];
+		
+		[remoteControl retain];
+		
+		[remoteControl startListening:self];
+		[remoteControl setOpenInExclusiveMode:YES];
+	}
+}
+
+- (void) remoteButton: (RemoteControlEventIdentifier)buttonIdentifier pressedDown: (BOOL) pressedDown clickCount: (unsigned int)clickCount
+{
+	switch(buttonIdentifier) {
+		case kRemoteButtonPlus:
+			// Volume Up		
+			break;
+		case kRemoteButtonMinus:
+			// Volume Down
+			break;			
+		case kRemoteButtonMenu:
+			// Menu
+			break;			
+		case kRemoteButtonPlay:
+			// Play
+			if (! pressedDown) [self playPause];
+			break;			
+		case kRemoteButtonRight:	
+			// Right
+			if (! pressedDown) [self playNextFile];
+			break;			
+		case kRemoteButtonLeft:
+			// Left
+			if (! pressedDown) [self playPreviousFile];
+			break;			
+		case kRemoteButtonRight_Hold:
+			// Right Hold
+			break;	
+		case kRemoteButtonLeft_Hold:
+			// Left Hold	
+			break;			
+		case kRemoteButtonPlus_Hold:
+			// Volume Up Hold
+			break;				
+		case kRemoteButtonMinus_Hold:			
+			// Volume Down Hold	
+			break;
+		case kRemoteButtonMenu_Hold:
+			break;
+		case kRemoteControl_Switched:
+			break;
+		default:
+			break;
+	}
 }
 
 @end

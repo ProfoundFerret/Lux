@@ -48,6 +48,11 @@
 		7C67EA95132AC9CA00E055B2 /* LPlayer_QTKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67EA94132AC9CA00E055B2 /* LPlayer_QTKit.m */; };
 		7C67EA97132ACF9900E055B2 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C67EA96132ACF9900E055B2 /* QTKit.framework */; };
 		7C772136133D355E0078411C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7C772135133D355E0078411C /* icon.icns */; };
+		7C93D4301346A24700880297 /* AppleRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C93D4281346A24700880297 /* AppleRemote.m */; };
+		7C93D4311346A24700880297 /* HIDRemoteControlDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C93D42A1346A24700880297 /* HIDRemoteControlDevice.m */; };
+		7C93D4321346A24700880297 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7C93D42B1346A24700880297 /* license.txt */; };
+		7C93D4331346A24700880297 /* MultiClickRemoteBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C93D42D1346A24700880297 /* MultiClickRemoteBehavior.m */; };
+		7C93D4341346A24700880297 /* RemoteControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C93D42F1346A24700880297 /* RemoteControl.m */; };
 		7C9D5D831345266400971F3F /* LTableHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D5D821345266400971F3F /* LTableHeaderCell.m */; };
 		7CC5F5BF133EB3A600D82E44 /* LFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC5F5BE133EB3A600D82E44 /* LFileController.m */; };
 		7CDC964B13400E3900D59F77 /* Pause.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CDC964A13400E3900D59F77 /* Pause.pdf */; };
@@ -150,6 +155,15 @@
 		7C67EA94132AC9CA00E055B2 /* LPlayer_QTKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPlayer_QTKit.m; sourceTree = "<group>"; };
 		7C67EA96132ACF9900E055B2 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QTKit.framework; sourceTree = "<group>"; };
 		7C772135133D355E0078411C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		7C93D4271346A24700880297 /* AppleRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleRemote.h; sourceTree = "<group>"; };
+		7C93D4281346A24700880297 /* AppleRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleRemote.m; sourceTree = "<group>"; };
+		7C93D4291346A24700880297 /* HIDRemoteControlDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIDRemoteControlDevice.h; sourceTree = "<group>"; };
+		7C93D42A1346A24700880297 /* HIDRemoteControlDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIDRemoteControlDevice.m; sourceTree = "<group>"; };
+		7C93D42B1346A24700880297 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		7C93D42C1346A24700880297 /* MultiClickRemoteBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiClickRemoteBehavior.h; sourceTree = "<group>"; };
+		7C93D42D1346A24700880297 /* MultiClickRemoteBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiClickRemoteBehavior.m; sourceTree = "<group>"; };
+		7C93D42E1346A24700880297 /* RemoteControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteControl.h; sourceTree = "<group>"; };
+		7C93D42F1346A24700880297 /* RemoteControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteControl.m; sourceTree = "<group>"; };
 		7C9D5D811345266400971F3F /* LTableHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTableHeaderCell.h; sourceTree = "<group>"; };
 		7C9D5D821345266400971F3F /* LTableHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTableHeaderCell.m; sourceTree = "<group>"; };
 		7CC5F5BE133EB3A600D82E44 /* LFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFileController.m; sourceTree = "<group>"; };
@@ -348,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				7A89531C133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict */,
+				7C93D4251346A20E00880297 /* Apple Remote Control */,
 				7C3826A1133C598800FDD40E /* Subclasses */,
 				7C3B909F1328A794007B7DA5 /* Categories */,
 				7C5FE0BC13258F0D0008B7DC /* Lux-Info.plist */,
@@ -386,6 +401,22 @@
 				7C67EA8E132AC95800E055B2 /* LPlayerController.m */,
 			);
 			name = Player;
+			sourceTree = "<group>";
+		};
+		7C93D4251346A20E00880297 /* Apple Remote Control */ = {
+			isa = PBXGroup;
+			children = (
+				7C93D4271346A24700880297 /* AppleRemote.h */,
+				7C93D4281346A24700880297 /* AppleRemote.m */,
+				7C93D4291346A24700880297 /* HIDRemoteControlDevice.h */,
+				7C93D42A1346A24700880297 /* HIDRemoteControlDevice.m */,
+				7C93D42B1346A24700880297 /* license.txt */,
+				7C93D42C1346A24700880297 /* MultiClickRemoteBehavior.h */,
+				7C93D42D1346A24700880297 /* MultiClickRemoteBehavior.m */,
+				7C93D42E1346A24700880297 /* RemoteControl.h */,
+				7C93D42F1346A24700880297 /* RemoteControl.m */,
+			);
+			name = "Apple Remote Control";
 			sourceTree = "<group>";
 		};
 		7CF9410A1326FE97004526D0 /* Playlist */ = {
@@ -468,6 +499,7 @@
 				D9256E171343D1E1008B4045 /* shuffleON.png in Resources */,
 				D9256E181343D1E1008B4045 /* shuffleOFF.png in Resources */,
 				D9256E1E1343D951008B4045 /* plusOFF.png in Resources */,
+				7C93D4321346A24700880297 /* license.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +540,10 @@
 				7C22E7151344F28B00A46AB7 /* NSStringCategory.m in Sources */,
 				7C9D5D831345266400971F3F /* LTableHeaderCell.m in Sources */,
 				7C2811CA1346817700F5169A /* LApplication.m in Sources */,
+				7C93D4301346A24700880297 /* AppleRemote.m in Sources */,
+				7C93D4311346A24700880297 /* HIDRemoteControlDevice.m in Sources */,
+				7C93D4331346A24700880297 /* MultiClickRemoteBehavior.m in Sources */,
+				7C93D4341346A24700880297 /* RemoteControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

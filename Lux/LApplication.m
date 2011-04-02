@@ -26,8 +26,7 @@
 {
 	[super dealloc];
 }
-
-
+/*
 - (void) mediaKeyEvent: (int) key state: (BOOL) keyDown repeat: (BOOL) repeat
 {
 	switch (key) {
@@ -65,4 +64,5 @@
 	
 	[super sendEvent:event];
 }
+ */
 @end
