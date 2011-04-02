@@ -95,6 +95,12 @@
 - (id) attributeForIdentifier: (id) identifier
 {
 	id attribute = [[self dictionary] objectForKey:identifier];
+	if ([attribute isKindOfClass:[NSDate class]])
+	{
+		NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+		attribute = [dateFormatter stringFromDate:attribute];
+	}
 	if (attribute) return attribute;
 	return @"";
 }

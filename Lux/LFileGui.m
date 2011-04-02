@@ -226,7 +226,7 @@
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	
 	NSString * sort = [visiblePlaylist sort];
-	[fileList setFocusedColumn:[[columns allKeys] indexOfObject:sort]];
+	[[fileList headerView] setMenu:[[LPlaylistController sharedInstance] columnMenu]];
 	for (NSTableColumn * column in [fileList tableColumns])
 	{
 		NSString * ID = [column identifier];

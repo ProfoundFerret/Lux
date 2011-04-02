@@ -208,16 +208,15 @@
 			file = [fileList objectForKey:url];
 			if ( [pred evaluateWithObject:[file dictionary]] )
 			{
-				[members addObject:file];	
-				i++;
-				
 				if (limit != kNO_LIMIT)
 				{
-					if ( limit < i)
+					if ( limit <= i)
 					{
 						break;
 					}
+					i++;
 				}
+				[members addObject:file];
 			}
 		}
 	} else {
@@ -374,7 +373,6 @@
 	[playlist setSmart:YES];
 	[playlist setTitle:kVIDEO];
 	[playlist setSort:kTITLE];
-	[playlist setLimit:5];
 	
 	NSMutableDictionary * columns = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:ZERO,ZERO, nil] forKeys:[NSArray arrayWithObjects:kINDEX,kTITLE, nil]];
 	[playlist setColumns:columns];
