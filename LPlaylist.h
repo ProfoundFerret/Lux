@@ -23,9 +23,12 @@
 #define kSORT @"sort"
 #define kDESCENDING @"descending"
 #define kNEEDS_SORTED @"needsSorted"
+#define kLIMIT @"limit"
 
 #define kREPEAT_CHANGED_NOTIFICATION @"repeatchanged_notification"
 #define kSHUFFLE_CHANGED_NOTIFICATION @"shufflechanged_notification"
+
+#define kNO_LIMIT -1
 
 #define kUNTITLED_PLAYLIST @"Untitled Playlist"
 
@@ -59,6 +62,8 @@
 	BOOL shuffle;
 	
 	BOOL descending;
+	
+	int limit;
 }
 - (void) update;
 - (void) updateSearch;
@@ -115,4 +120,5 @@
 @property (readwrite, assign, nonatomic) NSString * sort;
 @property (readwrite, assign) BOOL needsSorted;
 @property (readwrite, assign) NSString * oldSearch;
+@property (readwrite) int limit;
 @end

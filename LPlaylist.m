@@ -19,7 +19,7 @@
 #define ZERO [NSNumber numberWithInt:0]
 
 @implementation LPlaylist
-@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedFiles, needsSearched, repeat, shuffle, sort, descending, needsSorted, oldSearch;
+@synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedFiles, needsSearched, repeat, shuffle, sort, descending, needsSorted, oldSearch, limit;
 - (id)init
 {
     self = [super init];
@@ -42,6 +42,8 @@
 		oldSearch = @"";
 		predicate = @"";
 		sort = kARTIST;
+		
+		limit = kNO_LIMIT;
 		
 		selectedFiles = [[NSArray alloc] init];
     }
@@ -91,6 +93,8 @@
 	sort = [[aDecoder decodeObjectForKey:kSORT] retain];
 	needsSorted = YES;
 	descending = [aDecoder decodeBoolForKey:kDESCENDING];
+	
+	limit = [aDecoder decodeIntForKey:kLIMIT];
 		
 	return self;
 }
@@ -115,6 +119,8 @@
 	
 	[aCoder encodeObject:sort forKey:kSORT];
 	[aCoder encodeBool:descending forKey:kDESCENDING];
+	
+	[aCoder encodeInt:limit forKey:kLIMIT];
 	
 	[super encodeWithCoder:aCoder];
 }
@@ -195,12 +201,23 @@
 		NSURL * url;
 		LFile * file;
 		
+		int i = 0;
+		
 		for (url in fileList)
 		{
 			file = [fileList objectForKey:url];
 			if ( [pred evaluateWithObject:[file dictionary]] )
 			{
-				[members addObject:file];
+				[members addObject:file];	
+				i++;
+				
+				if (limit != kNO_LIMIT)
+				{
+					if ( limit < i)
+					{
+						break;
+					}
+				}
 			}
 		}
 	} else {
@@ -357,6 +374,7 @@
 	[playlist setSmart:YES];
 	[playlist setTitle:kVIDEO];
 	[playlist setSort:kTITLE];
+	[playlist setLimit:5];
 	
 	NSMutableDictionary * columns = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:ZERO,ZERO, nil] forKeys:[NSArray arrayWithObjects:kINDEX,kTITLE, nil]];
 	[playlist setColumns:columns];

@@ -153,6 +153,7 @@
 
 - (void) tableViewColumnDidResize:(NSNotification *)notification
 {
+	NSLog(@"%d", reloadingData);
 	if (! [visibleFiles count]) return;
 	
 	NSTableColumn * column = [[notification userInfo] objectForKey:NS_TABLE_COLUMN];
@@ -299,15 +300,19 @@
 
 - (void) reloadData
 {
+	reloadingData = YES;
+	
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	visibleFiles = [[visiblePlaylist members] retain];
 	
 	[self updateTotalFiles];
 	
-	[fileList reloadData];
-	
 	[self updateColumns];
 	
+	[fileList reloadData];
+	
 	[self selectCorrectFiles];
+	
+	reloadingData = NO;
 }
 @end

@@ -15,6 +15,8 @@
 	IBOutlet NSTextField *totalFiles;
 	
 	NSArray * visibleFiles;
+	
+	BOOL reloadingData;
 }
 - (void) updateColumns;
 - (void) setupColumns;
