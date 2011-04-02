@@ -131,7 +131,7 @@
 		id obj = [[self dictionary] objectForKey:str];
 		if ([obj isKindOfClass:[NSString class]])
 		{
-			obj = [obj lowercaseString];
+			obj = [[obj lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 		}
 		[lowercaseDictionary setObject:obj forKey:str];
 	}
