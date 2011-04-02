@@ -15,7 +15,6 @@
 #import "LPlayerController.h"
 #import "Lux.h"
 
-
 @implementation LFile
 @synthesize url, attributes, extension;
 - (id)init
@@ -100,6 +99,47 @@
 		NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
 		attribute = [dateFormatter stringFromDate:attribute];
+	} else if ([identifier isEqualToString:kRATING])
+	{
+		int rating = [attribute intValue];
+		NSMutableString * stars = [NSMutableString string];
+		
+		while (rating)
+		{
+			if (rating >= 2)
+			{
+				[stars appendString:kSTAR];
+				rating -= 2;
+			} else {
+				[stars appendString:kHALF_STAR];
+				rating -= 1;
+			}
+		}
+		
+		attribute = stars;
+	} else if ([identifier isEqualToString:kTIME])
+	{
+		NSUInteger seconds;
+		NSUInteger minutes;
+		NSUInteger hours;
+		
+		NSUInteger time = [attribute intValue] / 1000;
+		
+		hours = time / 3600;
+		minutes = (time / 60) % 60;
+		seconds = time % 60;
+		
+		NSMutableString * string = [NSMutableString string];
+		
+		if (hours)
+		{
+			string = [NSString stringWithFormat:@"%u:%02u:%02u", hours, minutes, seconds];
+		} else {
+			string = [NSString stringWithFormat:@"%u:%02u", minutes, seconds];
+		}
+		
+		attribute = string;
+		
 	}
 	if (attribute) return attribute;
 	return @"";
@@ -118,6 +158,7 @@
 	register NSMutableDictionary * _dictionary = [[NSMutableDictionary alloc] initWithDictionary:attributes];
 	[_dictionary setObject:[NSNumber numberWithInt:[self fileType]] forKey:kFILE_TYPE];
 	[_dictionary setObject:url forKey:kURL];
+	[_dictionary setObject:[self extension] forKey:kEXTENSION];
 
 	dictionary = _dictionary;
 	

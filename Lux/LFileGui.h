@@ -15,8 +15,6 @@
 	IBOutlet NSTextField *totalFiles;
 	
 	NSArray * visibleFiles;
-	
-	NSUInteger columnsToGo;
 }
 - (void) updateColumns;
 - (void) setupColumns;

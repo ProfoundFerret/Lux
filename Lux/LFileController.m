@@ -185,6 +185,12 @@
 	int increment = [number intValue] + 1;
 	number = [NSNumber numberWithInt:increment];
 	[[file attributes] setObject:number forKey:kPLAY_COUNT];
+	
+	[[file attributes] setObject:[NSDate date] forKey:kLAST_PLAY_DATE];
+	
+	[file resetDictionary];
+	
+	[[Lux sharedInstance] reloadData];
 }
 
 - (void) fileStartedPlaying: (LFile *)file

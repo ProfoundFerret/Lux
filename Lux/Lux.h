@@ -30,6 +30,8 @@
 #define kBEGIN_EDITING_PLAYLIST_NOTIFICATION @"beginEditingPlaylist_notification"
 
 #define kEM_DASH @"—"
+#define kSTAR [NSString stringWithFormat:@"%C", 0x2605]
+#define kHALF_STAR [NSString stringWithFormat:@"%C", 0x2729]
 
 @interface Lux : LSingleton {
     LExtensionController * extensionController;

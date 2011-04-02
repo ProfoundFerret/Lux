@@ -155,11 +155,6 @@
 - (void) tableViewColumnDidResize:(NSNotification *)notification
 {
 	if (! [visibleFiles count]) return;
-	if (columnsToGo > 0)
-	{
-		columnsToGo--;
-		return;
-	}
 	
 	NSTableColumn * column = [[notification userInfo] objectForKey:NS_TABLE_COLUMN];
 	id ID = [column identifier];
@@ -310,11 +305,9 @@
 	
 	[self updateTotalFiles];
 	
-	[self updateColumns];
-	
-	columnsToGo = [[visiblePlaylist columns] count];
-	
 	[fileList reloadData];
+	
+	[self updateColumns];
 	
 	[self selectCorrectFiles];
 }
