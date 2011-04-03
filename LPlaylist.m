@@ -511,6 +511,7 @@
 - (void) setWidth: (double) width forColumn: (NSString *) column
 {
 	if (! [columns objectForKey:column] || [column isEqualToString:kINDEX]) return;
+	
 	[columns setObject:[NSNumber numberWithDouble:width] forKey:column];
 	
 	[[LInputOutputController sharedInstance] setNeedsSaved:YES];

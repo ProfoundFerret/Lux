@@ -49,6 +49,7 @@
 	[fileList setDelegate:self];
 	[fileList setDoubleAction:@selector(doubleClickAction)];
 	[fileList registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+	[fileList setAutoresizesSubviews:NO];
 	
 	[totalFiles setStringValue:@""];
 	
@@ -297,7 +298,6 @@
 			[column setWidth:charSize.width + kMARGIN_SIZE];
 		} else {
 			double width = [visiblePlaylist widthForColumn:ID];
-			NSLog(@"%@ = %f", ID, width);
 			[column setWidth:width];
 		}
 		
