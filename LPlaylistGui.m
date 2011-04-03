@@ -113,9 +113,6 @@
 	id item = [playlistList itemAtRow:row];
 	[controller setVisiblePlaylist:item];
 	[searchField setStringValue:[item search]];
-	
-	[[Lux sharedInstance] reloadData];
-
 }
 
 - (BOOL) outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item
