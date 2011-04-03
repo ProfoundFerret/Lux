@@ -12,6 +12,7 @@
 
 #define kPLAY_TEXT @"Play"
 #define kSHOW_IN_FINDER_TEXT @"Show In Finder"
+#define kSHOW_IN_PLAYLIST @"Show In Playlist"
 #define kADD_TO_PLAYLIST_TEXT @"Add To Playlist"
 #define kNEW_PLAYLIST @"New Playlist"
 #define kDELETE_FROM_TEXT @"Delete From"
@@ -228,14 +229,35 @@
 
 }
 
+- (void) showFiles: (NSArray *) selectFiles inPlaylist: (LPlaylist *) playlist
+{
+	[[LPlaylistController sharedInstance] setVisiblePlaylist:playlist];
+	
+	[[Lux sharedInstance] reloadData];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:kSELECT_FILES_NOTIFICATION object:selectFiles];
+}
+
+- (void) showFilesInPlaylistByMenuItem: (NSMenuItem *) menuItem
+{
+	NSArray * selectedFiles = [[menuItem representedObject] objectForKey:kFILES];
+	LPlaylist * playlist = [[menuItem representedObject] objectForKey:kPLAYLISTS];
+	
+	[self showFiles:selectedFiles inPlaylist:playlist];
+}
+
 - (NSMenu *) menuForFiles: (NSArray *) menuFiles
 {
 	NSArray * addToPlaylists;
+	NSArray * playlists;
+	
 	if ([menuFiles count] == 1)
 	{
 		addToPlaylists = [[menuFiles objectAtIndex:0] notPlaylists];
+		playlists = [[menuFiles objectAtIndex:0] playlists];
 	} else {
 		addToPlaylists = [[LPlaylistController sharedInstance] getPlaylists];
+		playlists = [[LPlaylistController sharedInstance] allPlaylists];
 	}
 	
 	NSMenu * menu = [[[NSMenu alloc] init] autorelease];
@@ -287,6 +309,29 @@
 		[playlistMenuItem setRepresentedObject:menuFiles];
 		
 		[addToPlaylistMenu addItem:playlistMenuItem];
+	}
+	
+	if ([playlists count])
+	{
+		NSMenuItem * showInPlaylist = [[[NSMenuItem alloc] init] autorelease];
+		[showInPlaylist setTitle: kSHOW_IN_PLAYLIST];
+		NSMenu * showInPlaylistMenu = [[[NSMenu alloc] init] autorelease];
+		[showInPlaylistMenu setAutoenablesItems:NO];
+		[showInPlaylist setSubmenu: showInPlaylistMenu];
+		[menu addItem: showInPlaylist];
+
+		for (LPlaylist * playlist in playlists)
+		{
+			NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:menuFiles, playlist, nil] forKeys:[NSArray arrayWithObjects:kFILES, kPLAYLISTS, nil]];
+			
+			NSMenuItem * playlistMenuItem = [[[NSMenuItem alloc] init] autorelease];
+			[playlistMenuItem setTitle: [playlist title]];
+			[playlistMenuItem setTarget:self];
+			[playlistMenuItem setAction:@selector(showFilesInPlaylistByMenuItem:)];
+			[playlistMenuItem setRepresentedObject:dict];
+			
+			[showInPlaylistMenu addItem:playlistMenuItem];
+		}
 	}
 		
 	for (NSMenuItem * menuItem in [[LExtensionController sharedInstance] menuItemsForFiles:menuFiles])

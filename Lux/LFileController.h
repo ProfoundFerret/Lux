@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LControllerObject.h"
 #import "LFile.h"
+#import "LPlaylist.h"
 
 #define kFILES @"files"
 #define kACTIVE_FILE @"activeFile"
@@ -39,6 +40,9 @@
 - (void) fileStartedPlaying: (LFile *)file;
 
 - (NSMenu *) menuForFiles: (NSArray *) files;
+
+- (void) showFiles: (NSArray *) selectFiles inPlaylist: (LPlaylist *) playlist;
+- (void) showFilesInPlaylistByMenuItem: (NSMenuItem *) menuItem;
 
 - (void) showInFinder: (NSMenuItem *) item;
 @property (readwrite, assign) LFile * activeFile;

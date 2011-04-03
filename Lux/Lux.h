@@ -28,6 +28,7 @@
 #define kPLAYLIST_VISIBLE_CHANGED_NOTIFICATION @"playlistVisibleChanged_notification"
 #define kPLAYLIST_ACTIVE_CHANGED_NOTIFICATION @"playlistActiveChanged_notification"
 #define kBEGIN_EDITING_PLAYLIST_NOTIFICATION @"beginEditingPlaylist_notification"
+#define kSELECT_FILES_NOTIFICATION @"selectFiles_notification"
 
 #define kEM_DASH @"—"
 #define kSTAR [NSString stringWithFormat:@"%C", 0x2605]

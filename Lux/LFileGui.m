@@ -32,6 +32,7 @@
 		visibleFiles = [[NSArray alloc] init];
 		
 		[controller addGui:self];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectFilesByNotification:) name:kSELECT_FILES_NOTIFICATION object:nil];
     }
     
     return self;
@@ -209,11 +210,21 @@
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	NSArray * selectedFiles = [visiblePlaylist selectedFiles];
 	
-	NSIndexSet * indexSet = [visibleFiles indexesForObjects:selectedFiles];
+	[self selectFiles: selectedFiles];
+}
+
+- (void) selectFiles: (NSArray *) files
+{
+	NSIndexSet * indexSet = [visibleFiles indexesForObjects:files];
 	if (! indexSet) indexSet = [NSIndexSet indexSet];
 	
 	[fileList selectRowIndexes:indexSet byExtendingSelection:NO];
 	[fileList scrollRowToVisible:[indexSet firstIndex]];
+}
+
+- (void) selectFilesByNotification : (NSNotification *) notification
+{
+	[self selectFiles:[notification object]];
 }
 
 - (void) setupColumns
