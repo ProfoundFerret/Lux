@@ -188,7 +188,7 @@
 	
 	[[file attributes] setObject:[NSDate date] forKey:kLAST_PLAY_DATE];
 	
-	[file resetDictionary];
+	[file resetCachedData];
 	
 	[[Lux sharedInstance] reloadData];
 }

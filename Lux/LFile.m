@@ -91,7 +91,7 @@
 	return searchAttributes;
 }
 
-- (id) attributeForIdentifier: (id) identifier
+- (id) formatedAttributeForIdentifier: (id) identifier
 {
 	id attribute = [[self dictionary] objectForKey:identifier];
 	if ([attribute isKindOfClass:[NSDate class]])
@@ -101,18 +101,18 @@
 		attribute = [dateFormatter stringFromDate:attribute];
 	} else if ([identifier isEqualToString:kRATING])
 	{
-		int rating = [attribute intValue];
+		float rating = [attribute floatValue];
 		NSMutableString * stars = [NSMutableString string];
 		
 		while (rating)
 		{
-			if (rating >= 2)
+			if (rating >= 1)
 			{
 				[stars appendString:kSTAR];
-				rating -= 2;
+				rating -= 1;
 			} else {
 				[stars appendString:kHALF_STAR];
-				rating -= 1;
+				rating -= 0.5;
 			}
 		}
 		
@@ -145,10 +145,11 @@
 	return @"";
 }
 
-- (void) resetDictionary
+- (void) resetCachedData
 {
 	dictionary = nil;
 	lowercaseDictionary = nil;
+	searchAttributes = nil;
 }
 
 - (NSDictionary *) dictionary

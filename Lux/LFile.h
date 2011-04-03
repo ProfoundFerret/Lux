@@ -32,9 +32,9 @@
 
 - (NSString *) searchAttributes;
 
-- (id) attributeForIdentifier: (id) identifier;
+- (id) formatedAttributeForIdentifier: (id) identifier;
 
-- (void) resetDictionary;
+- (void) resetCachedData;
 
 - (LFileType) fileType;
 - (void) updateMetadata;

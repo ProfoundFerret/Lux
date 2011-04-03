@@ -69,7 +69,7 @@
 		return [NSNumber numberWithLong:row + 1];
 	} else {
 		NSString * attr = [tableColumn identifier];
-		return [f attributeForIdentifier:attr];
+		return [f formatedAttributeForIdentifier:attr];
 	}
 }
 
@@ -80,6 +80,29 @@
 	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
 	[visiblePlaylist setSelectedFiles:selectedFiles];
 	[[LInputOutputController sharedInstance] setNeedsSaved:YES];
+}
+
+- (BOOL) tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+	id ID = [tableColumn identifier];
+	if ([ID isEqualToString:kINDEX]) return NO;
+	if ([ID isEqualToString:kTIME]) return NO;
+	if ([ID isEqualToString:kRATING]) return NO;
+	if ([ID isEqualToString:kADD_DATE]) return NO;
+	if ([ID isEqualToString:kLAST_PLAY_DATE]) return NO;
+	if ([ID isEqualToString:kPLAY_COUNT]) return NO;
+	
+	return YES;
+}
+
+- (void) tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+	id ID = [tableColumn identifier];
+	LFile * file = [visibleFiles objectAtIndex:row];
+	[[file attributes] setObject:object forKey:ID];
+	[file resetCachedData];
+	
+	[[Lux sharedInstance] reloadData];
 }
 
 - (void) tableView: (NSTableView *) tableView didClickTableColumn:(NSTableColumn *)tableColumn
