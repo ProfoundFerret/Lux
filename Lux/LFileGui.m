@@ -32,8 +32,6 @@
 		visibleFiles = [[NSArray alloc] init];
 		
 		[controller addGui:self];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectFilesByNotification:) name:kSELECT_FILES_NOTIFICATION object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kPLAYLIST_VISIBLE_CHANGED_NOTIFICATION object:nil];
     }
     
     return self;
@@ -51,6 +49,11 @@
 	[fileList setDelegate:self];
 	[fileList setDoubleAction:@selector(doubleClickAction)];
 	[fileList registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectFilesByNotification:) name:kSELECT_FILES_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kPLAYLIST_VISIBLE_CHANGED_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kPLAY_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kSTOP_NOTIFICATION object:nil];
 	
 	[self setupColumns];
 }
@@ -190,6 +193,19 @@
 	
 	[visiblePlaylist setWidth:[column width] forColumn:ID];
 }
+
+- (void) tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+	LFile * file = [visibleFiles objectAtIndex:row];
+	LFile * activeFile = [[LFileController sharedInstance] activeFile];
+	if (file == activeFile)
+	{
+		[cell setFont:[NSFont boldSystemFontOfSize:12]];
+	} else {
+		[cell setFont:[NSFont systemFontOfSize:12]];
+	}
+}
+
 
 - (void) doubleClickAction
 {
