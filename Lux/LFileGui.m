@@ -50,6 +50,8 @@
 	[fileList setDoubleAction:@selector(doubleClickAction)];
 	[fileList registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
 	
+	[totalFiles setStringValue:@""];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectFilesByNotification:) name:kSELECT_FILES_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kPLAYLIST_VISIBLE_CHANGED_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kPLAY_NOTIFICATION object:nil];
@@ -214,12 +216,6 @@
 	{
 		return;
 	}
-	
-	NSArray * cols = [fileList tableColumns];
-	NSRange range = NSMakeRange(0, [cols count]);
-	NSMutableIndexSet * columns = [NSMutableIndexSet indexSetWithIndexesInRange:range];
-	
-	[fileList reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:clickedIndex] columnIndexes:columns];
 	
 	id clickedItem = [visibleFiles objectAtIndex:clickedIndex];
 	if ([clickedItem isKindOfClass:[LFile class]])
