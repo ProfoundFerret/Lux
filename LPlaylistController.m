@@ -350,4 +350,63 @@
 	visiblePlaylist = newVisiblePlaylist;
 	[[NSNotificationCenter defaultCenter] postNotificationName:kPLAYLIST_VISIBLE_CHANGED_NOTIFICATION object:nil];
 }
+
+// Returns playlists in the PLAYLIST header that any of the files are in
+- (NSArray *) playlistsForFiles: (NSArray *) files
+{
+	NSMutableArray * plists = [NSMutableArray array];
+	
+	for (LPlaylist * playlist in [self getPlaylists])
+	{
+		for (LFile * file in files)
+		{
+			if ( [[playlist members] containsObject:file] )
+			{
+				[plists addObject:playlist];
+				break;
+			}
+		}
+	}
+	
+	return plists;
+}
+
+// Returns playlists in the PLAYLIST header that any of the files aren't in
+- (NSArray *) notPlaylistsForFiles: (NSArray *) files
+{
+	NSMutableArray * plists = [NSMutableArray array];
+	
+	for (LPlaylist * playlist in [self getPlaylists])
+	{
+		for (LFile * file in files)
+		{
+			if (! [[playlist members] containsObject:file] )
+			{
+				[plists addObject:playlist];
+				break;
+			}
+		}
+	}
+	return plists;
+}
+
+// Returns playlists in all playlists that any of the files are in
+- (NSArray *) allPlaylistsForFiles: (NSArray *) files
+{
+	NSMutableArray * plists = [NSMutableArray array];
+	
+	for (LPlaylist * playlist in [self allPlaylists])
+	{
+		for (LFile * file in files)
+		{
+			if ( [[playlist members] containsObject:file] )
+			{
+				[plists addObject:playlist];
+				break;
+			}
+		}
+	}
+	
+	return plists;
+}
 @end

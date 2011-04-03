@@ -96,7 +96,7 @@
 	id attribute = [[self dictionary] objectForKey:identifier];
 	if ([attribute isKindOfClass:[NSDate class]])
 	{
-		NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+		NSDateFormatter * dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 		[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
 		attribute = [dateFormatter stringFromDate:attribute];
 	} else if ([identifier isEqualToString:kRATING])
@@ -129,7 +129,7 @@
 		minutes = (time / 60) % 60;
 		seconds = time % 60;
 		
-		NSMutableString * string = [NSMutableString string];
+		NSMutableString * string;
 		
 		if (hours)
 		{

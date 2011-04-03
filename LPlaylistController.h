@@ -39,6 +39,10 @@
 - (NSMutableArray *) getPlaylistsFromGroup: (NSString *) name;
 - (NSMutableArray *) allPlaylists;
 
+- (NSArray *) playlistsForFiles: (NSArray *) files;
+- (NSArray *) notPlaylistsForFiles: (NSArray *) files;
+- (NSArray *) allPlaylistsForFiles: (NSArray *) files;
+
 - (NSMenu *) menuForPlaylist: (LPlaylist *) playlist;
 
 - (void) prepPlaylistsForUpdate;

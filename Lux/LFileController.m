@@ -248,17 +248,8 @@
 
 - (NSMenu *) menuForFiles: (NSArray *) menuFiles
 {
-	NSArray * addToPlaylists;
-	NSArray * playlists;
-	
-	if ([menuFiles count] == 1)
-	{
-		addToPlaylists = [[menuFiles objectAtIndex:0] notPlaylists];
-		playlists = [[menuFiles objectAtIndex:0] playlists];
-	} else {
-		addToPlaylists = [[LPlaylistController sharedInstance] getPlaylists];
-		playlists = [[LPlaylistController sharedInstance] allPlaylists];
-	}
+	NSArray * addToPlaylists = [[LPlaylistController sharedInstance] playlistsForFiles:menuFiles];
+	NSArray * playlists = [[LPlaylistController sharedInstance] allPlaylistsForFiles:menuFiles];
 	
 	NSMenu * menu = [[[NSMenu alloc] init] autorelease];
 	[menu setAutoenablesItems:NO];
