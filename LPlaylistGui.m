@@ -204,6 +204,19 @@
 - (void) reloadData
 {
 	[playlistList reloadData];
+	[self selectVisiblePlaylist];
+}
+
+- (void) selectPlaylist: (LPlaylist *) playlist
+{
+	[playlistList expandItem:nil expandChildren:YES];
+	[playlistList selectItem:playlist];
+}
+
+- (void) selectVisiblePlaylist
+{
+	LPlaylist * visiblePlaylist = [[LPlaylistController sharedInstance] visiblePlaylist];
+	[self selectPlaylist:visiblePlaylist];
 }
 
 - (void) addPlaylist
@@ -224,8 +237,7 @@
 
 - (void) renamePlaylist: (LPlaylist *) playlist
 {
-	[playlistList expandItem:nil expandChildren:YES];
-	[playlistList selectItem:playlist];
+	[self selectPlaylist:playlist];
 	
 	NSInteger fileRow = [playlistList rowForItem:playlist];
 	

@@ -25,4 +25,8 @@
 
 - (void) renamePlaylist: (LPlaylist *) playlist;
 - (void) renamePlaylistByNotification: (NSNotification *) notification;
+
+
+- (void) selectPlaylist: (LPlaylist *) playlist;
+- (void) selectVisiblePlaylist;
 @end
