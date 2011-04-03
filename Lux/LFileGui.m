@@ -215,6 +215,12 @@
 		return;
 	}
 	
+	NSArray * cols = [fileList tableColumns];
+	NSRange range = NSMakeRange(0, [cols count]);
+	NSMutableIndexSet * columns = [NSMutableIndexSet indexSetWithIndexesInRange:range];
+	
+	[fileList reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:clickedIndex] columnIndexes:columns];
+	
 	id clickedItem = [visibleFiles objectAtIndex:clickedIndex];
 	if ([clickedItem isKindOfClass:[LFile class]])
 	{
@@ -295,6 +301,7 @@
 			[column setWidth:charSize.width + kMARGIN_SIZE];
 		} else {
 			double width = [visiblePlaylist widthForColumn:ID];
+			NSLog(@"%@ = %f", ID, width);
 			[column setWidth:width];
 		}
 		

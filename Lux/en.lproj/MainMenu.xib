@@ -687,7 +687,7 @@
 										<bool key="EncodedWithXMLCoder">YES</bool>
 										<object class="NSScrollView" id="1019675338">
 											<reference key="NSNextResponder" ref="21983326"/>
-											<int key="NSvFlags">18</int>
+											<int key="NSvFlags">274</int>
 											<object class="NSMutableArray" key="NSSubviews">
 												<bool key="EncodedWithXMLCoder">YES</bool>
 												<object class="NSClipView" id="126523728">
@@ -697,7 +697,7 @@
 														<bool key="EncodedWithXMLCoder">YES</bool>
 														<object class="NSTableView" id="396097257">
 															<reference key="NSNextResponder" ref="126523728"/>
-															<int key="NSvFlags">4352</int>
+															<int key="NSvFlags">4096</int>
 															<string key="NSFrameSize">{674, 448}</string>
 															<reference key="NSSuperview" ref="126523728"/>
 															<reference key="NSWindow"/>
