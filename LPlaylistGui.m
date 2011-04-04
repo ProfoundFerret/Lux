@@ -41,7 +41,7 @@
 	[playlistList setDelegate:self];
 	[playlistList expandItem:nil expandChildren:YES];
 	[playlistList selectItem:[controller visiblePlaylist]];
-	[playlistList registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+	[playlistList registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
 	
 	[searchField setTarget:self];
 	[searchField setAction:@selector(searchChanged)];
@@ -100,12 +100,13 @@
 
 - (void) outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
+	
 	if ([item isKindOfClass:[NSString class]])
 	{
 		NSMutableAttributedString *newTitle = [[cell attributedStringValue] mutableCopy];
 		[newTitle replaceCharactersInRange:NSMakeRange(0,[newTitle length]) withString:[[newTitle string] uppercaseString]];
 		[cell setAttributedStringValue:newTitle];
-		[newTitle release];
+		[newTitle autorelease];
 	}
 }
 
@@ -120,6 +121,11 @@
 - (BOOL) outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item
 {
 	return (! [item isKindOfClass:[NSString class]]);
+}
+
+- (BOOL) outlineView:(NSOutlineView *)outlineView shouldShowOutlineCellForItem:(id)item
+{
+	return (! [self outlineView:outlineView isGroupItem:item]);
 }
 
 - (void) outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
@@ -141,9 +147,10 @@
 
 - (NSDragOperation) outlineView:(NSOutlineView *)outlineView validateDrop:(id<NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)index
 {
+	NSPasteboard * pboard = [info draggingPasteboard];
+
 	if ([item isKindOfClass:[LPlaylist class]])
 	{
-		NSPasteboard * pboard = [info draggingPasteboard];
 		NSArray * urlStrings = [pboard propertyListForType:NSFilenamesPboardType];
 		NSMutableArray * urls = [NSMutableArray array];
 		

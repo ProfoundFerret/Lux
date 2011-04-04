@@ -258,13 +258,14 @@
 	for (NSString * col in columns)
 	{
 		NSTableColumn * column = [[[NSTableColumn alloc] initWithIdentifier:col] autorelease];
+		NSString * ID = [col unCamelCasedString];
 		if ([col isEqualToString:kINDEX])
 		{
 			[[column headerCell] setStringValue:@""];
 			[column setEditable:NO];
 			[column setResizingMask:NSTableColumnNoResizing];
 		} else {	
-			[[column headerCell] setStringValue:[col unCamelCasedString]];
+			[[column headerCell] setStringValue:ID];
 		}
 		[fileList addTableColumn:column];
 	}
