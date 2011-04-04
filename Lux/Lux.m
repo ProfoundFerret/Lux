@@ -50,8 +50,6 @@
 	fileController = [aDecoder decodeObjectForKey:kFILE_CONTROLLER];
 	playlistController = [aDecoder decodeObjectForKey:kPLAYLIST_CONTROLLER];
 	
-	NSLog(@"Finished Initing");
-	
 	[self reloadData];
 	
 	//[[_Test alloc] init];
