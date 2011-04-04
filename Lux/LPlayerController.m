@@ -12,6 +12,7 @@
 #import "LPlaylistController.h"
 #import "Lux.h"
 #import "LuxAppDelegate.h"
+#import "LDefinitions.h"
 
 @implementation LPlayerController
 @synthesize player, recentFiles, isPlaying;

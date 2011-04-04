@@ -8,6 +8,7 @@
 
 #import "LExtensionController.h"
 #import	"LExtension.h"
+#import "LDefinitions.h"
 
 //
 #import "LInputOutput_Computer.h"

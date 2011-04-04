@@ -15,12 +15,8 @@
 #import "NSArrayCategory.h"
 #import "NSStringCategory.h"
 
-#define controller [LFileController sharedInstance]
-#define kFILES_COUNT_TEXT @"%d Files"
-#define kFILE_COUNT_TEXT @"%d File"
-#define kMARGIN_SIZE 4
 
-#define NS_TABLE_COLUMN @"NSTableColumn"
+#define controller [LFileController sharedInstance]
 
 @implementation LFileGui
 @synthesize visibleFiles;
@@ -258,13 +254,14 @@
 	for (NSString * col in columns)
 	{
 		NSTableColumn * column = [[[NSTableColumn alloc] initWithIdentifier:col] autorelease];
+		NSString * ID = [col unCamelCasedString];
 		if ([col isEqualToString:kINDEX])
 		{
 			[[column headerCell] setStringValue:@""];
 			[column setEditable:NO];
 			[column setResizingMask:NSTableColumnNoResizing];
 		} else {	
-			[[column headerCell] setStringValue:[col unCamelCasedString]];
+			[[column headerCell] setStringValue:ID];
 		}
 		[fileList addTableColumn:column];
 	}

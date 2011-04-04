@@ -10,11 +10,6 @@
 #import "LControllerObject.h"
 #import "LPlaylist.h"
 
-#define kPLAYLISTS @"Playlists"
-#define kLIBRARY @"Library"
-#define kACTIVE_PLAYLIST @"activePlaylist"
-#define kVISIBLE_PLAYLIST @"visiblePlaylist"
-
 @interface LPlaylistController : LControllerObject {
     NSMutableDictionary * playlists;
 	LPlaylist * activePlaylist;

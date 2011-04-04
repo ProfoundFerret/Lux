@@ -16,29 +16,6 @@
 #import "MultiClickRemoteBehavior.h"
 #import "HIDRemoteControlDevice.h"
 
-#define kUNPAUSE_NOTIFICATION @"unpause_notification"
-#define kPAUSE_NOTIFICATION @"unpause_notification"
-#define kPLAY_NOTIFICATION @"play_notification"
-#define kSTOP_NOTIFICATION @"stop_notification"
-#define kNOTHING_PLAYING @"Nothing Playing"
-#define kIT_IS_PAUSED @"(Paused)"
-
-
-#define kRECENT_FILES @"recentFiles"
-
-#define kPLAY_TEXT @"Play"
-#define kPAUSE_TEXT @"Pause"
-#define kNEXT_TEXT @"Next"
-#define kPREVIOUS_TEXT @"Previous"
-#define kPLAY_RECENT_TEXT @"Play Recent"
-#define kREPEAT_TEXT @"Repeat"
-#define kSHUFFLE_TEXT @"Shuffle"
-
-#define kMAX_RECENT_FILES 10
-#define kVOLUME_INCREMENT .08
-#define kTIME_INCREMENT 1000 * 5
-#define kTIME_SCRUB_FREQUENCY 0.4
-
 @interface LPlayerController : LControllerObject {
 	LExtension <LPlayerDelegate> * player;
 	BOOL isPlaying;

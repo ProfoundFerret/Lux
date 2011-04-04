@@ -10,30 +10,6 @@
 #import "LStoredObject.h"
 #import "LFile.h"
 
-#define kMEMBERS @"members"
-#define kPLAYLIST_TITLE @"playlistTitle"
-#define kSEARCH @"search"
-#define kSMART @"smart"
-#define kPREDICATE @"predicate"
-#define kWRITE @"write"
-#define kCOLUMNS @"columns"
-#define kSELECTED_FILES @"selectedFiles"
-#define kREPEAT @"repeat"
-#define kSHUFFLE @"shuffle"
-#define kSORT @"sort"
-#define kDESCENDING @"descending"
-#define kNEEDS_SORTED @"needsSorted"
-#define kLIMIT @"limit"
-
-#define kREPEAT_CHANGED_NOTIFICATION @"repeatchanged_notification"
-#define kSHUFFLE_CHANGED_NOTIFICATION @"shufflechanged_notification"
-
-#define kNO_LIMIT -1
-
-#define kUNTITLED_PLAYLIST @"Untitled Playlist"
-
-#define kSMART_SEARCH_DELIMITER @"?"
-
 @interface LPlaylist : LStoredObject {
 	NSMutableArray * members;
 	NSMutableArray * searchMembers;
