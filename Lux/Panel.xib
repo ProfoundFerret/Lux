@@ -44,11 +44,13 @@
 			<object class="NSWindowTemplate" id="618109721">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{196, 371}, {252, 130}}</string>
+				<string key="NSWindowRect">{{517, 662}, {252, 130}}</string>
 				<int key="NSWTFlags">880279552</int>
 				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">NSPanel</string>
 				<nil key="NSViewClass"/>
+				<string key="NSWindowContentMaxSize">{252, 130}</string>
+				<string key="NSWindowContentMinSize">{252, 130}</string>
 				<object class="NSView" key="NSWindowView" id="539467561">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -58,17 +60,16 @@
 							<reference key="NSNextResponder" ref="539467561"/>
 							<int key="NSvFlags">1325</int>
 							<object class="NSPSMatrix" key="NSDrawMatrix"/>
-							<string key="NSFrame">{{110, 36}, {32, 32}}</string>
+							<string key="NSFrame">{{110, 31}, {32, 32}}</string>
 							<reference key="NSSuperview" ref="539467561"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<int key="NSpiFlags">20490</int>
 							<double key="NSMaxValue">100</double>
 						</object>
 						<object class="NSTextField" id="335857995">
 							<reference key="NSNextResponder" ref="539467561"/>
 							<int key="NSvFlags">266</int>
-							<string key="NSFrame">{{68, 87}, {116, 17}}</string>
+							<string key="NSFrame">{{68, 82}, {116, 17}}</string>
 							<reference key="NSSuperview" ref="539467561"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="451797146"/>
@@ -109,8 +110,9 @@
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="335857995"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1280, 1002}}</string>
-				<string key="NSMaxSize">{1e+13, 1e+13}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
+				<string key="NSMinSize">{252, 152}</string>
+				<string key="NSMaxSize">{252, 152}</string>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">

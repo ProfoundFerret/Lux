@@ -65,6 +65,7 @@
 		D9256E1E1343D951008B4045 /* plusOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = D9256E1D1343D951008B4045 /* plusOFF.png */; };
 		D9E10429134A450D009D3015 /* PanelWithIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E10427134A450D009D3015 /* PanelWithIndicator.m */; };
 		D9E1042A134A450D009D3015 /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E10428134A450D009D3015 /* Panel.xib */; };
+		D9E10436134A63EF009D3015 /* LSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E10435134A63EF009D3015 /* LSplitView.m */; };
 		D9F2453C133FED7A0060B569 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F2453B133FED7A0060B569 /* Sparkle.framework */; };
 		D9F2453E133FED840060B569 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9F2453B133FED7A0060B569 /* Sparkle.framework */; };
 /* End PBXBuildFile section */
@@ -120,7 +121,6 @@
 		7C3B909A13286BF8007B7DA5 /* LPlaylistGui.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPlaylistGui.m; sourceTree = "<group>"; };
 		7C3B909C1328A750007B7DA5 /* NSOutlineView+Lux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutlineView+Lux.h"; sourceTree = "<group>"; };
 		7C3B909D1328A752007B7DA5 /* NSOutlineView+Lux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutlineView+Lux.m"; sourceTree = "<group>"; };
-		7C461302134A4B750095C9B8 /* LDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LDefinitions.h; path = ../LDefinitions.h; sourceTree = "<group>"; };
 		7C5132C81325E76900469177 /* LInputOutputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutputController.h; sourceTree = "<group>"; };
 		7C5132C91325E76A00469177 /* LInputOutputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LInputOutputController.m; sourceTree = "<group>"; };
 		7C58363D13260BA300B81F6C /* LInputOutput_Computer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutput_Computer.h; sourceTree = "<group>"; };
@@ -183,6 +183,10 @@
 		D9E10426134A450D009D3015 /* PanelWithIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelWithIndicator.h; sourceTree = "<group>"; };
 		D9E10427134A450D009D3015 /* PanelWithIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelWithIndicator.m; sourceTree = "<group>"; };
 		D9E10428134A450D009D3015 /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Panel.xib; sourceTree = "<group>"; };
+		D9E10430134A621A009D3015 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/LDefinitions.h; sourceTree = "<group>"; };
+		D9E10433134A622A009D3015 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/LDefinitions.h; sourceTree = "<group>"; };
+		D9E10434134A63EF009D3015 /* LSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSplitView.h; sourceTree = "<group>"; };
+		D9E10435134A63EF009D3015 /* LSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSplitView.m; sourceTree = "<group>"; };
 		D9F2453B133FED7A0060B569 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -261,6 +265,8 @@
 		7C3826A1133C598800FDD40E /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				D9E10434134A63EF009D3015 /* LSplitView.h */,
+				D9E10435134A63EF009D3015 /* LSplitView.m */,
 				7C38269E133C595100FDD40E /* LTableView.h */,
 				7C38269F133C595200FDD40E /* LTableView.m */,
 				7CDC965A13401AD300D59F77 /* LOutlineView.h */,
@@ -348,7 +354,7 @@
 				7C06031413319B02000C0556 /* Images */,
 				7C5FE0EF1325CC2B0008B7DC /* Lux.h */,
 				7C5FE0F01325CC2B0008B7DC /* Lux.m */,
-				7C461302134A4B750095C9B8 /* LDefinitions.h */,
+				D9E10431134A621A009D3015 /* LDefinitions.h */,
 				7C5FE0C613258F0D0008B7DC /* LuxAppDelegate.h */,
 				7C5FE0C713258F0D0008B7DC /* LuxAppDelegate.m */,
 				7C3B909313285D1B007B7DA5 /* _Test.h */,
@@ -556,6 +562,7 @@
 				7C93D4331346A24700880297 /* MultiClickRemoteBehavior.m in Sources */,
 				7C93D4341346A24700880297 /* RemoteControl.m in Sources */,
 				D9E10429134A450D009D3015 /* PanelWithIndicator.m in Sources */,
+				D9E10436134A63EF009D3015 /* LSplitView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +591,16 @@
 				7C5FE0CA13258F0D0008B7DC /* en */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		D9E10431134A621A009D3015 /* LDefinitions.h */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9E10430134A621A009D3015 /* en */,
+				D9E10433134A622A009D3015 /* fr */,
+			);
+			name = LDefinitions.h;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
