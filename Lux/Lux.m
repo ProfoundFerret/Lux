@@ -58,7 +58,9 @@
 
 - (void) setup
 {
-	ioController = [LInputOutputController sharedInstance];
+    NSLog(@"setup start...");
+ 
+    ioController = [LInputOutputController sharedInstance];
 	[ioController load];
 	
     extensionController = [LExtensionController sharedInstance];
@@ -70,6 +72,8 @@
 	playlistController = [LPlaylistController sharedInstance];
     	
 	[ioController update];
+
+    NSLog(@"setup done...");
 
 }
 

@@ -21,6 +21,22 @@
 
 }
 
+- (void) applicationDidFinishLaunching:(NSNotification *)notification
+{
+    if (![[NSFileManager defaultManager] fileExistsAtPath: kSAVE_FILE]) {
+        NSLog(@"The luxData.plist file doesn't exist ... Let's build it !");
+        if (panel == nil) {
+            panel = [[PanelWithIndicator alloc] init];
+        }
+        
+        [NSThread detachNewThreadSelector:@selector(launchThread) toTarget:self withObject:nil];
+        
+        [panel withParentWindow:window];
+    } else {
+        NSLog(@"the data file already exists");
+    }
+}
+
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender
                     hasVisibleWindows:(BOOL)flag
 {
@@ -54,35 +70,26 @@
 	if(getenv("NSZombieEnabled") || getenv("NSAutoreleaseFreedObjectCheckEnabled")) {
         NSLog(@"NSZombieEnabled/NSAutoreleaseFreedObjectCheckEnabled enabled!");
 	}
-	
-	[[Lux sharedInstance] setup];
+    
+    [[Lux sharedInstance] setup];
     
     [self setupGrowl]; 
-              
+        
 	return self;
 }
 
-
-- (IBAction) push: sender {
-	if (panel == nil) {
-		panel = [[PanelWithIndicator alloc] init];
-	}
-	
-	[NSThread detachNewThreadSelector:@selector(launchThread) toTarget:self withObject:nil];
-    
-	[panel withParentWindow:window];
-	
-}
 
 - (void) stopIndicator {
 	[panel performSelectorOnMainThread:@selector(end) withObject:nil waitUntilDone:YES];
 }
 
 - (void) launchThread {
-    
-	sleep(3); // your code
-	
-    
+       
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+
+    [[[Lux sharedInstance] ioController] update];
+
+    [pool drain];
     
 	[self stopIndicator];
 }

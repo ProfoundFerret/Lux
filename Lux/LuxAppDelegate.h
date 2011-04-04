@@ -17,8 +17,6 @@
 }
 
 - (void) setupGrowl;
-- (IBAction) push: sender;
-
 
 @property (assign) IBOutlet NSWindow *window;
 
