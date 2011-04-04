@@ -29,6 +29,7 @@
 - (void) awakeFromNib
 {
 	[splitView setDelegate:self];
+	[splitView setAutosaveName:kSPLITVIEW_NAME];
 }
 
 - (CGFloat) splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex

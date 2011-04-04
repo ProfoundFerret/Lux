@@ -102,6 +102,6 @@
 #define NS_TABLE_COLUMN @"NSTableColumn"
 
 #define kMIN_SPLIT_SIZE 175
-
+#define kSPLITVIEW_NAME @"MainSplitView"
 
 #import "LLocalization.h"
