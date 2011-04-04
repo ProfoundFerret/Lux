@@ -218,12 +218,22 @@
 
 - (void) playNextFile
 {
+	BOOL playing = isPlaying;
 	[self playFile:[self nextFile]];
+	if (! playing)
+	{
+		[self playPause];
+	}
 }
 
 - (void) playPreviousFile
 {
+	BOOL playing = isPlaying;
 	[self playFile:[self previousFile]];
+	if (! playing)
+	{
+		[self playPause];
+	}
 }
 
 - (double) volumeForFile: (LFile *) file;

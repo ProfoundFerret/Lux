@@ -123,7 +123,7 @@
 	NSMutableDictionary * filesWaitingList = [NSMutableDictionary dictionary];
 	for (LFile * file in newFiles)
 	{
-		if ([files objectForKey:[file url]]) continue;
+		if ([files objectForKey:[file url]]) 
 		if ([blacklistURLs containsObject:[file url]]) continue;
 		if ([file fileType] == LFileTypeUnknown) continue;
 		
