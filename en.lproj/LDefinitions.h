@@ -34,8 +34,10 @@
 #define kNOTHING_PLAYING @"Nothing Playing"
 
 #define kEM_DASH [NSString stringWithFormat: @"%C", 0x2014]
+
 #define kSTAR [NSString stringWithFormat:@"%C", 0x2605]
 #define kHALF_STAR [NSString stringWithFormat:@"%C", 0x00BD]
+#define kNO_STAR [NSString stringWithFormat:@"%C",0x00B7]
 
 #define kINDEX @"index"
 #define kTITLE @"title"
