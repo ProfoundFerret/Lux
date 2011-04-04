@@ -89,6 +89,7 @@
 			}
 		}
 	}
+	[extensions removeObject:@"m4p"];
 	return extensions;
 }
 
