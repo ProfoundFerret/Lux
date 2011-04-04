@@ -50,6 +50,8 @@
 	fileController = [aDecoder decodeObjectForKey:kFILE_CONTROLLER];
 	playlistController = [aDecoder decodeObjectForKey:kPLAYLIST_CONTROLLER];
 	
+	NSLog(@"Finished Initing");
+	
 	[self reloadData];
 	
 	//[[_Test alloc] init];
@@ -79,8 +81,8 @@
 
 - (void) reloadData
 {
-	[fileController reloadData];
 	[playlistController reloadData];
+	[fileController reloadData];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kRELOAD_DATA_NOTIFICATION object:nil];
 	

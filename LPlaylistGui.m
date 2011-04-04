@@ -54,6 +54,8 @@
 	
 	[newPlaylistMenuItem setTarget:self];
 	[newPlaylistMenuItem setAction:@selector(addPlaylist)];
+	
+	[self reloadData];
 }
 
 - (NSInteger) outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item

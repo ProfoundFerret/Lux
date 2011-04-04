@@ -60,6 +60,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kSTOP_NOTIFICATION object:nil];
 	
 	[self setupColumns];
+	[self reloadData];
 }
 
 #pragma mark Data Source Methods
