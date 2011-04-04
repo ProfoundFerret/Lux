@@ -184,7 +184,6 @@
 		D9E10427134A450D009D3015 /* PanelWithIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelWithIndicator.m; sourceTree = "<group>"; };
 		D9E10428134A450D009D3015 /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Panel.xib; sourceTree = "<group>"; };
 		D9E10430134A621A009D3015 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/LDefinitions.h; sourceTree = "<group>"; };
-		D9E10433134A622A009D3015 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/LDefinitions.h; sourceTree = "<group>"; };
 		D9E10434134A63EF009D3015 /* LSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSplitView.h; sourceTree = "<group>"; };
 		D9E10435134A63EF009D3015 /* LSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSplitView.m; sourceTree = "<group>"; };
 		D9F2453B133FED7A0060B569 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
@@ -597,7 +596,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D9E10430134A621A009D3015 /* en */,
-				D9E10433134A622A009D3015 /* fr */,
 			);
 			name = LDefinitions.h;
 			path = ..;
