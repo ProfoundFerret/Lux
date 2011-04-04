@@ -205,24 +205,4 @@
 	
 	dictionary = nil;
 }
-
-- (NSArray *) playlists
-{
-	NSMutableArray * playlists = [NSMutableArray array];
-	for (LPlaylist * playlist in [[LPlaylistController sharedInstance] getPlaylists])
-	{
-		if ([[playlist allMembers] containsObject:self]) [playlists addObject:playlist];
-	}
-	return [NSArray arrayWithArray:playlists];
-}
-
-- (NSArray *) notPlaylists
-{
-	NSMutableArray * playlists = [NSMutableArray array];
-	for (LPlaylist * playlist in [[LPlaylistController sharedInstance] getPlaylists])
-	{
-		if (! [[playlist allMembers] containsObject:self]) [playlists addObject:playlist];
-	}
-	return [NSArray arrayWithArray:playlists];
-}
 @end
