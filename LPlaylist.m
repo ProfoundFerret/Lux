@@ -32,7 +32,7 @@
 		members = [[NSMutableArray alloc] init];
 		searchMembers = [[NSMutableArray alloc] init];
 		columns = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:ZERO,ZERO,ZERO,ZERO, nil] forKeys:[NSArray arrayWithObjects:kINDEX,kTITLE, kARTIST, kALBUM, nil]];
-		title = kUNTITLED_PLAYLIST;
+		title = kUNTITLED_PLAYLIST_TEXT;
 		search = @"";
 		oldSearch = @"";
 		predicate = @"";
@@ -351,7 +351,7 @@
 	NSString * predicate = [NSString stringWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeAudio];
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
-	[playlist setTitle:kMUSIC];
+	[playlist setTitle:kMUSIC_FOLDER];
 	
 	[playlist setWrite:NO];
 	
@@ -366,7 +366,7 @@
 	
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
-	[playlist setTitle:kVIDEO];
+	[playlist setTitle:kVIDEO_TEXT];
 	[playlist setSort:kTITLE];
 	
 	NSMutableDictionary * columns = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:ZERO,ZERO, nil] forKeys:[NSArray arrayWithObjects:kINDEX,kTITLE, nil]];
@@ -385,7 +385,7 @@
 
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
-	[playlist setTitle:kSTREAMING];
+	[playlist setTitle:kSTREAMING_TEXT];
 	[playlist setSort:kTITLE];
 	
 	NSMutableDictionary * columns = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:ZERO,ZERO, nil] forKeys:[NSArray arrayWithObjects:kINDEX,kTITLE, nil]];

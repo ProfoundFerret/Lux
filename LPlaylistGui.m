@@ -162,7 +162,7 @@
 		return [item dragOperationForURLs:urls];
 	} else if (item)
 	{
-		if ([item isEqualToString:kPLAYLISTS])
+		if ([item isEqualToString:kPLAYLISTS_TEXT])
 		{
 			return NSDragOperationCopy;
 		}

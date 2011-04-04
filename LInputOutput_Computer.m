@@ -77,7 +77,7 @@
 {
 	NSMutableDictionary * stdDefaults = [NSMutableDictionary dictionary];
 	NSMutableArray * fileSearchLocations = [NSMutableArray array];
-	[fileSearchLocations addObject:[kMUSIC_FOLDER stringByStandardizingPath]];
+	[fileSearchLocations addObject:[kMUSIC_FOLDER_FOLDER stringByStandardizingPath]];
 	
 	[stdDefaults setObject:fileSearchLocations forKey:kFILE_SEARCH_LOCATIONS];
 	

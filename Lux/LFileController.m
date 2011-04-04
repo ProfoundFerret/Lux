@@ -234,7 +234,7 @@
 - (void) showFilesInPlaylistByMenuItem: (NSMenuItem *) menuItem
 {
 	NSArray * selectedFiles = [[menuItem representedObject] objectForKey:kFILES];
-	LPlaylist * playlist = [[menuItem representedObject] objectForKey:kPLAYLISTS];
+	LPlaylist * playlist = [[menuItem representedObject] objectForKey:kPLAYLISTS_TEXT];
 	
 	[self showFiles:selectedFiles inPlaylist:playlist];
 }
@@ -306,7 +306,7 @@
 
 		for (LPlaylist * playlist in playlists)
 		{
-			NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:menuFiles, playlist, nil] forKeys:[NSArray arrayWithObjects:kFILES, kPLAYLISTS, nil]];
+			NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:menuFiles, playlist, nil] forKeys:[NSArray arrayWithObjects:kFILES, kPLAYLISTS_TEXT, nil]];
 			
 			NSMenuItem * playlistMenuItem = [[[NSMenuItem alloc] init] autorelease];
 			[playlistMenuItem setTitle: [playlist title]];

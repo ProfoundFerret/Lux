@@ -35,7 +35,7 @@
 {
 	self = [super initWithCoder:aDecoder];
 	
-	playlists = [[aDecoder decodeObjectForKey:kPLAYLISTS] retain];
+	playlists = [[aDecoder decodeObjectForKey:kPLAYLISTS_TEXT] retain];
 	activePlaylist = [[aDecoder decodeObjectForKey:kACTIVE_PLAYLIST] retain];
 	visiblePlaylist = [[aDecoder decodeObjectForKey:kVISIBLE_PLAYLIST] retain];
 	
@@ -44,7 +44,7 @@
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {	
-	[aCoder encodeObject:playlists forKey:kPLAYLISTS];
+	[aCoder encodeObject:playlists forKey:kPLAYLISTS_TEXT];
 	[aCoder encodeObject:activePlaylist forKey:kACTIVE_PLAYLIST];
 	[aCoder encodeObject:visiblePlaylist forKey:kVISIBLE_PLAYLIST];
 }
@@ -52,7 +52,7 @@
 - (void) setupLibraryPlaylists
 {
 	playlists = [[NSMutableDictionary alloc] init];
-	NSMutableArray * library = [self getPlaylistsFromGroup:kLIBRARY];
+	NSMutableArray * library = [self getPlaylistsFromGroup:kLIBRARY_TEXT];
 	[library removeAllObjects];
 	
 	[library addObject:[LPlaylist musicPlaylist]];
@@ -64,13 +64,13 @@
 
 - (void) addPlaylist: (LPlaylist *) playlist
 {
-	[self addPlaylist:playlist toGroupNamed:kPLAYLISTS];
+	[self addPlaylist:playlist toGroupNamed:kPLAYLISTS_TEXT];
 }
 
 - (void) removePlaylist:(LPlaylist *)playlist
 {
 	if (! [playlist write]) return;
-	[self removePlaylist:playlist fromGroupNamed:kPLAYLISTS];
+	[self removePlaylist:playlist fromGroupNamed:kPLAYLISTS_TEXT];
 }
 
 - (void) addPlaylist: (LPlaylist *) playlist toGroupNamed:(NSString *) name
@@ -93,7 +93,7 @@
 
 - (NSMutableArray *) getPlaylists
 {
-	return [self getPlaylistsFromGroup:kPLAYLISTS];
+	return [self getPlaylistsFromGroup:kPLAYLISTS_TEXT];
 }
 
 - (NSMutableArray *) getPlaylistsFromGroup: (NSString *) name
@@ -132,7 +132,7 @@
 {
 	if (activePlaylist == nil)
 	{
-		activePlaylist = [[self getPlaylistsFromGroup:kLIBRARY] objectAtIndex:0];
+		activePlaylist = [[self getPlaylistsFromGroup:kLIBRARY_TEXT] objectAtIndex:0];
 	}
 	return activePlaylist;
 }

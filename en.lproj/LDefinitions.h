@@ -64,21 +64,6 @@
 
 #define kKEEPER_ATTRIBUTES [NSArray arrayWithObjects:kTITLE, kARTIST, kALBUM, kTIME, kGENRE, kRATING, kPLAY_COUNT, kLAST_PLAY_DATE, kADD_DATE, kYEAR, nil]
 
-#define kPLAY_TEXT @"Play"
-#define kPAUSE_TEXT @"Pause"
-#define kNEXT_TEXT @"Next"
-#define kPREVIOUS_TEXT @"Previous"
-#define kPLAY_RECENT_TEXT @"Play Recent"
-#define kREPEAT_TEXT @"Repeat"
-#define kSHUFFLE_TEXT @"Shuffle"
-#define kIT_IS_PAUSED @"(Paused)"
-#define kSHOW_IN_FINDER_TEXT @"Show In Finder"
-#define kSHOW_IN_PLAYLIST @"Show In Playlist"
-#define kADD_TO_PLAYLIST_TEXT @"Add To Playlist"
-#define kNEW_PLAYLIST @"New Playlist"
-#define kDELETE_FROM_TEXT @"Delete From"
-#define kDELETE_FROM_LIBRARY_TEXT @"Delete From Library"
-
 #define kMAX_RECENT_FILES 10
 #define kVOLUME_INCREMENT .08
 #define kTIME_INCREMENT 1000 * 5
@@ -108,24 +93,13 @@
 
 #define kNO_LIMIT -1
 
-#define kUNTITLED_PLAYLIST @"Untitled Playlist"
-
 #define kSMART_SEARCH_DELIMITER @"?"
 
-#define kMUSIC @"Music"
-#define kVIDEO @"Video"
-#define kSTREAMING @"Streaming"
-
 #define ZERO [NSNumber numberWithInt:0]
-
-#define kPLAYLISTS @"Playlists"
-#define kLIBRARY @"Library"
 #define kACTIVE_PLAYLIST @"activePlaylist"
 #define kVISIBLE_PLAYLIST @"visiblePlaylist"
 
-#define kDUPLICATE_TEXT @"Duplicate"
-#define kDELETE_TEXT @"Delete"
-#define kCONVERT_TO_REGULAR_PLAYLIST_TEXT @"Convert to Regular Playlist"
-#define kRENAME_TEXT @"Rename"
-
 #define NS_TABLE_COLUMN @"NSTableColumn"
+
+
+#import "LLocalization.h"

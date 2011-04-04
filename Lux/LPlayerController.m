@@ -349,7 +349,7 @@
         }
         if (! isPlaying) {
             [itispaused setEnabled:NO];
-            [itispaused setTitle:kIT_IS_PAUSED];
+            [itispaused setTitle:kPAUSED_TEXT];
             [dockMenu addItem:itispaused];
         }
     } else {

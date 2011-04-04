@@ -170,6 +170,7 @@
 		7C9D5D811345266400971F3F /* LTableHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTableHeaderCell.h; sourceTree = "<group>"; };
 		7C9D5D821345266400971F3F /* LTableHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTableHeaderCell.m; sourceTree = "<group>"; };
 		7CC5F5BE133EB3A600D82E44 /* LFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFileController.m; sourceTree = "<group>"; };
+		7CD8F779134A6A31002FC6D3 /* LLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLocalization.h; sourceTree = "<group>"; };
 		7CDC964A13400E3900D59F77 /* Pause.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Pause.pdf; sourceTree = "<group>"; };
 		7CDC965A13401AD300D59F77 /* LOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOutlineView.h; sourceTree = "<group>"; };
 		7CDC965B13401AD300D59F77 /* LOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOutlineView.m; sourceTree = "<group>"; };
@@ -354,6 +355,7 @@
 				7C5FE0EF1325CC2B0008B7DC /* Lux.h */,
 				7C5FE0F01325CC2B0008B7DC /* Lux.m */,
 				D9E10431134A621A009D3015 /* LDefinitions.h */,
+				7CD8F779134A6A31002FC6D3 /* LLocalization.h */,
 				7C5FE0C613258F0D0008B7DC /* LuxAppDelegate.h */,
 				7C5FE0C713258F0D0008B7DC /* LuxAppDelegate.m */,
 				7C3B909313285D1B007B7DA5 /* _Test.h */,
