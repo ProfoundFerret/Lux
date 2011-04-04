@@ -15,12 +15,8 @@
 #import "NSArrayCategory.h"
 #import "NSStringCategory.h"
 
-#define controller [LFileController sharedInstance]
-#define kFILES_COUNT_TEXT @"%d Files"
-#define kFILE_COUNT_TEXT @"%d File"
-#define kMARGIN_SIZE 4
 
-#define NS_TABLE_COLUMN @"NSTableColumn"
+#define controller [LFileController sharedInstance]
 
 @implementation LFileGui
 @synthesize visibleFiles;

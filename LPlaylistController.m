@@ -9,11 +9,7 @@
 #import "LPlaylistController.h"
 #import "Lux.h"
 #import "NSStringCategory.h"
-
-#define kDUPLICATE_TEXT @"Duplicate"
-#define kDELETE_TEXT @"Delete"
-#define kCONVERT_TO_REGULAR_PLAYLIST_TEXT @"Convert to Regular Playlist"
-#define kRENAME_TEXT @"Rename"
+#import "LDefinitions.h"
 
 #define controller [LFileController sharedInstance]
 

@@ -120,6 +120,7 @@
 		7C3B909A13286BF8007B7DA5 /* LPlaylistGui.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPlaylistGui.m; sourceTree = "<group>"; };
 		7C3B909C1328A750007B7DA5 /* NSOutlineView+Lux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutlineView+Lux.h"; sourceTree = "<group>"; };
 		7C3B909D1328A752007B7DA5 /* NSOutlineView+Lux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutlineView+Lux.m"; sourceTree = "<group>"; };
+		7C461302134A4B750095C9B8 /* LDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LDefinitions.h; path = ../LDefinitions.h; sourceTree = "<group>"; };
 		7C5132C81325E76900469177 /* LInputOutputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutputController.h; sourceTree = "<group>"; };
 		7C5132C91325E76A00469177 /* LInputOutputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LInputOutputController.m; sourceTree = "<group>"; };
 		7C58363D13260BA300B81F6C /* LInputOutput_Computer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LInputOutput_Computer.h; sourceTree = "<group>"; };
@@ -347,6 +348,7 @@
 				7C06031413319B02000C0556 /* Images */,
 				7C5FE0EF1325CC2B0008B7DC /* Lux.h */,
 				7C5FE0F01325CC2B0008B7DC /* Lux.m */,
+				7C461302134A4B750095C9B8 /* LDefinitions.h */,
 				7C5FE0C613258F0D0008B7DC /* LuxAppDelegate.h */,
 				7C5FE0C713258F0D0008B7DC /* LuxAppDelegate.m */,
 				7C3B909313285D1B007B7DA5 /* _Test.h */,

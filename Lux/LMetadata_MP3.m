@@ -7,6 +7,7 @@
 //
 
 #import "LMetadata_MP3.h"
+#import "LDefinitions.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 @implementation LMetadata_MP3

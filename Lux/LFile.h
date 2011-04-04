@@ -10,12 +10,6 @@
 #import "LStoredObject.h"
 #import "LFileType.h"
 
-#define kURL @"url"
-#define kATTRIBUTES @"attributes"
-#define kSEARCHATTRIBUTES @"searchAttributes"
-#define kFILE_TYPE @"fileType"
-#define kEXTENSION @"extension"
-
 #define kIMAGE @"image"
 
 @interface LFile : LStoredObject {

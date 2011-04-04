@@ -11,9 +11,6 @@
 #import "LFile.h"
 #import "LPlaylist.h"
 
-#define kFILES @"files"
-#define kACTIVE_FILE @"activeFile"
-#define kBLACKLIST_URLS @"blacklistURLs"
 
 @interface LFileController : LControllerObject {
 	NSMutableDictionary * files;

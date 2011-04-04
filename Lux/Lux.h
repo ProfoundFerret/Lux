@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LSingleton.h"
+#import "LDefinitions.h"
 
 #import "LuxAppDelegate.h"
 
@@ -16,23 +17,6 @@
 #import "LFileController.h"
 #import "LPlaylistController.h"
 #import "LPlayerController.h"
-
-#define kIO_CONTROLLER @"ioController"
-#define kPLAYER_CONTROLLER @"playerController"
-#define kPLAYLIST_CONTROLLER @"playlistController"
-#define kFILE_CONTROLLER @"fileController"
-#define kEXTENSION_CONTROLLER @"extensionController"
-
-#define kVOLUME @"volume"
-#define kRELOAD_DATA_NOTIFICATION @"reloadData_notification"
-#define kPLAYLIST_VISIBLE_CHANGED_NOTIFICATION @"playlistVisibleChanged_notification"
-#define kPLAYLIST_ACTIVE_CHANGED_NOTIFICATION @"playlistActiveChanged_notification"
-#define kBEGIN_EDITING_PLAYLIST_NOTIFICATION @"beginEditingPlaylist_notification"
-#define kSELECT_FILES_NOTIFICATION @"selectFiles_notification"
-
-#define kEM_DASH @"—"
-#define kSTAR [NSString stringWithFormat:@"%C", 0x2605]
-#define kHALF_STAR [NSString stringWithFormat:@"%C", 0x2729]
 
 @interface Lux : LSingleton {
     LExtensionController * extensionController;

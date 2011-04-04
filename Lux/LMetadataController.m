@@ -8,6 +8,7 @@
 
 #import "LMetadataController.h"
 #import "LExtensionController.h"
+#import "LDefinitions.h"
 
 @implementation LMetadataController
 

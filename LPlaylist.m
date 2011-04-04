@@ -11,12 +11,7 @@
 #import "LFileController.h"
 #import "LExtension.h"
 #import "Lux.h"
-
-#define kMUSIC @"Music"
-#define kVIDEO @"Video"
-#define kSTREAMING @"Streaming"
-
-#define ZERO [NSNumber numberWithInt:0]
+#import "LDefinitions.h"
 
 @implementation LPlaylist
 @synthesize title, needsUpdated, columns, smart, predicate, search, write, selectedFiles, needsSearched, repeat, shuffle, sort, descending, needsSorted, oldSearch, limit;

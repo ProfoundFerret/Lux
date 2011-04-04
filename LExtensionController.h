@@ -12,8 +12,6 @@
 
 @class LPlaylist;
 
-#define kEXTENSIONS @"extensions"
-
 @interface LExtensionController : LControllerObject {
 	NSMutableArray * extensions;
 }

@@ -10,13 +10,6 @@
 #import	"LPlaylistController.h"
 #import "Lux.h"
 
-#define kPLAY_TEXT @"Play"
-#define kSHOW_IN_FINDER_TEXT @"Show In Finder"
-#define kSHOW_IN_PLAYLIST @"Show In Playlist"
-#define kADD_TO_PLAYLIST_TEXT @"Add To Playlist"
-#define kNEW_PLAYLIST @"New Playlist"
-#define kDELETE_FROM_TEXT @"Delete From"
-#define kDELETE_FROM_LIBRARY_TEXT @"Delete From Library"
 
 @implementation LFileController
 @synthesize activeFile, files;
