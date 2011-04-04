@@ -28,7 +28,7 @@
             panel = [[PanelWithIndicator alloc] init];
         }
         
-        [NSThread detachNewThreadSelector:@selector(launchThread) toTarget:self withObject:nil];
+        [NSThread detachNewThreadSelector:@selector(showFilesLoadingWindow) toTarget:self withObject:nil];
         
         [panel withParentWindow:window];
     } else {
@@ -82,13 +82,9 @@
 	[panel performSelectorOnMainThread:@selector(end) withObject:nil waitUntilDone:YES];
 }
 
-- (void) launchThread {
-       
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-
+- (void) showFilesLoadingWindow {
+	
     [[[Lux sharedInstance] ioController] _update];
-
-    [pool drain];
     
 	[self stopIndicator];
 }

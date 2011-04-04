@@ -207,7 +207,6 @@
 	}
 }
 
-
 - (void) doubleClickAction
 {
 	NSInteger clickedIndex = [fileList clickedRow];
@@ -311,6 +310,7 @@
 			}
 			[fileList setIndicatorImage:indicatorImage inTableColumn:column];
 			
+			[fileList setHighlightedTableColumn:column];
 		} else {
 			[fileList setIndicatorImage:nil inTableColumn:column];
 		}

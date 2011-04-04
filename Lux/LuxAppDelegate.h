@@ -17,6 +17,7 @@
 }
 
 - (void) setupGrowl;
+- (void) showFilesLoadingWindow;
 
 @property (assign) IBOutlet NSWindow *window;
 
