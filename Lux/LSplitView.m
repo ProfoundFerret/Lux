@@ -22,7 +22,7 @@
 
 - (CGFloat)minPossiblePositionOfDividerAtIndex:(NSInteger)dividerIndex
 {
-	return 120;
+	return 100;
 }
 
 - (void)dealloc
