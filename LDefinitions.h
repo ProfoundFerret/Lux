@@ -6,6 +6,15 @@
 //  Copyright 2011 ProfoundFerret. All rights reserved.
 //
 
+#define DEV
+
+#ifdef DEV
+	#define kSAVE_FILE [@"~/Music/DevLuxData.plist" stringByExpandingTildeInPath]
+#else
+	#define kSAVE_FILE[@"~/Music/LuxData.plist" stringByExpandingTildeInPath]
+#endif
+
+#define kAUTOSAVE_INTERVAL 10.0
 
 #define kIO_CONTROLLER @"ioController"
 #define kPLAYER_CONTROLLER @"playerController"
