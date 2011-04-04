@@ -63,6 +63,8 @@
 		D9256E171343D1E1008B4045 /* shuffleON.png in Resources */ = {isa = PBXBuildFile; fileRef = D9256E131343D1E1008B4045 /* shuffleON.png */; };
 		D9256E181343D1E1008B4045 /* shuffleOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = D9256E141343D1E1008B4045 /* shuffleOFF.png */; };
 		D9256E1E1343D951008B4045 /* plusOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = D9256E1D1343D951008B4045 /* plusOFF.png */; };
+		D9E10429134A450D009D3015 /* PanelWithIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E10427134A450D009D3015 /* PanelWithIndicator.m */; };
+		D9E1042A134A450D009D3015 /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E10428134A450D009D3015 /* Panel.xib */; };
 		D9F2453C133FED7A0060B569 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F2453B133FED7A0060B569 /* Sparkle.framework */; };
 		D9F2453E133FED840060B569 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9F2453B133FED7A0060B569 /* Sparkle.framework */; };
 /* End PBXBuildFile section */
@@ -177,6 +179,9 @@
 		D9256E131343D1E1008B4045 /* shuffleON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuffleON.png; sourceTree = "<group>"; };
 		D9256E141343D1E1008B4045 /* shuffleOFF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuffleOFF.png; sourceTree = "<group>"; };
 		D9256E1D1343D951008B4045 /* plusOFF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusOFF.png; sourceTree = "<group>"; };
+		D9E10426134A450D009D3015 /* PanelWithIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelWithIndicator.h; sourceTree = "<group>"; };
+		D9E10427134A450D009D3015 /* PanelWithIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelWithIndicator.m; sourceTree = "<group>"; };
+		D9E10428134A450D009D3015 /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Panel.xib; sourceTree = "<group>"; };
 		D9F2453B133FED7A0060B569 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -346,6 +351,9 @@
 				7C5FE0C713258F0D0008B7DC /* LuxAppDelegate.m */,
 				7C3B909313285D1B007B7DA5 /* _Test.h */,
 				7C3B909413285D1C007B7DA5 /* _Test.m */,
+				D9E10426134A450D009D3015 /* PanelWithIndicator.h */,
+				D9E10427134A450D009D3015 /* PanelWithIndicator.m */,
+				D9E10428134A450D009D3015 /* Panel.xib */,
 				7C5FE0C913258F0D0008B7DC /* MainMenu.xib */,
 				7C5FE0DC1325C9C60008B7DC /* Superclasses */,
 				7C67EA8C132AC8EB00E055B2 /* Player */,
@@ -500,6 +508,7 @@
 				D9256E181343D1E1008B4045 /* shuffleOFF.png in Resources */,
 				D9256E1E1343D951008B4045 /* plusOFF.png in Resources */,
 				7C93D4321346A24700880297 /* license.txt in Resources */,
+				D9E1042A134A450D009D3015 /* Panel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +553,7 @@
 				7C93D4311346A24700880297 /* HIDRemoteControlDevice.m in Sources */,
 				7C93D4331346A24700880297 /* MultiClickRemoteBehavior.m in Sources */,
 				7C93D4341346A24700880297 /* RemoteControl.m in Sources */,
+				D9E10429134A450D009D3015 /* PanelWithIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

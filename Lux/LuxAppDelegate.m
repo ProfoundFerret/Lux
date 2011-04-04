@@ -9,6 +9,7 @@
 #import "LuxAppDelegate.h"
 #import "Lux.h"
 #import "LPlayerController.h"
+#import "PanelWithIndicator.h"
 
 
 @implementation LuxAppDelegate
@@ -61,6 +62,30 @@
 	return self;
 }
 
+
+- (IBAction) push: sender {
+	if (panel == nil) {
+		panel = [[PanelWithIndicator alloc] init];
+	}
+	
+	[NSThread detachNewThreadSelector:@selector(launchThread) toTarget:self withObject:nil];
+    
+	[panel withParentWindow:window];
+	
+}
+
+- (void) stopIndicator {
+	[panel performSelectorOnMainThread:@selector(end) withObject:nil waitUntilDone:YES];
+}
+
+- (void) launchThread {
+    
+	sleep(3); // your code
+	
+    
+    
+	[self stopIndicator];
+}
 
 - (void) setupGrowl
 {

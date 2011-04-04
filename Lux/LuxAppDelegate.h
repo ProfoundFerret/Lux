@@ -9,12 +9,16 @@
 #import <Cocoa/Cocoa.h>
 #import <Growl/Growl.h>
 
+@class PanelWithIndicator;
 
 @interface LuxAppDelegate : NSObject <NSApplicationDelegate> {
 	NSWindow *window;
+    PanelWithIndicator *panel;
 }
 
--(void) setupGrowl;
+- (void) setupGrowl;
+- (IBAction) push: sender;
+
 
 @property (assign) IBOutlet NSWindow *window;
 
