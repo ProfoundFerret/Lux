@@ -18,6 +18,7 @@
 		7C0603181331AD19000C0556 /* Backward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C0603171331AD19000C0556 /* Backward.pdf */; };
 		7C06031A1331AD30000C0556 /* Forward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C0603191331AD2F000C0556 /* Forward.pdf */; };
 		7C0B06CC13442B2900C23399 /* NSArrayCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0B06CB13442B2900C23399 /* NSArrayCategory.m */; };
+		7C0F786E134A72800009C016 /* LuxGui.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F786D134A72800009C016 /* LuxGui.m */; };
 		7C22E7151344F28B00A46AB7 /* NSStringCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E7141344F28B00A46AB7 /* NSStringCategory.m */; };
 		7C2811CA1346817700F5169A /* LApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2811C91346817700F5169A /* LApplication.m */; };
 		7C2811CD1346822100F5169A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2811CC1346822100F5169A /* IOKit.framework */; };
@@ -98,6 +99,8 @@
 		7C0603191331AD2F000C0556 /* Forward.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Forward.pdf; sourceTree = "<group>"; };
 		7C0B06CA13442B2900C23399 /* NSArrayCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayCategory.h; sourceTree = "<group>"; };
 		7C0B06CB13442B2900C23399 /* NSArrayCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayCategory.m; sourceTree = "<group>"; };
+		7C0F786C134A72800009C016 /* LuxGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuxGui.h; sourceTree = SOURCE_ROOT; };
+		7C0F786D134A72800009C016 /* LuxGui.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuxGui.m; sourceTree = SOURCE_ROOT; };
 		7C22E7131344F28B00A46AB7 /* NSStringCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringCategory.h; sourceTree = "<group>"; };
 		7C22E7141344F28B00A46AB7 /* NSStringCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringCategory.m; sourceTree = "<group>"; };
 		7C2811C81346817700F5169A /* LApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LApplication.h; sourceTree = "<group>"; };
@@ -236,6 +239,32 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		7C0F786F134A72A10009C016 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				7C5FE0EF1325CC2B0008B7DC /* Lux.h */,
+				7C5FE0F01325CC2B0008B7DC /* Lux.m */,
+				7C0F786C134A72800009C016 /* LuxGui.h */,
+				7C0F786D134A72800009C016 /* LuxGui.m */,
+				D9E10431134A621A009D3015 /* LDefinitions.h */,
+				7CD8F779134A6A31002FC6D3 /* LLocalization.h */,
+				7C5FE0C613258F0D0008B7DC /* LuxAppDelegate.h */,
+				7C5FE0C713258F0D0008B7DC /* LuxAppDelegate.m */,
+				7C3B909313285D1B007B7DA5 /* _Test.h */,
+				7C3B909413285D1C007B7DA5 /* _Test.m */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+		7C0F7870134A72B70009C016 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				D9E10428134A450D009D3015 /* Panel.xib */,
+				7C5FE0C913258F0D0008B7DC /* MainMenu.xib */,
+			);
+			name = XIBs;
+			sourceTree = "<group>";
+		};
 		7C329B6D1325D6B500377547 /* File */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,19 +381,9 @@
 			isa = PBXGroup;
 			children = (
 				7C06031413319B02000C0556 /* Images */,
-				7C5FE0EF1325CC2B0008B7DC /* Lux.h */,
-				7C5FE0F01325CC2B0008B7DC /* Lux.m */,
-				D9E10431134A621A009D3015 /* LDefinitions.h */,
-				7CD8F779134A6A31002FC6D3 /* LLocalization.h */,
-				7C5FE0C613258F0D0008B7DC /* LuxAppDelegate.h */,
-				7C5FE0C713258F0D0008B7DC /* LuxAppDelegate.m */,
-				7C3B909313285D1B007B7DA5 /* _Test.h */,
-				7C3B909413285D1C007B7DA5 /* _Test.m */,
-				D9E10426134A450D009D3015 /* PanelWithIndicator.h */,
-				D9E10427134A450D009D3015 /* PanelWithIndicator.m */,
-				D9E10428134A450D009D3015 /* Panel.xib */,
-				7C5FE0C913258F0D0008B7DC /* MainMenu.xib */,
 				7C5FE0DC1325C9C60008B7DC /* Superclasses */,
+				7C0F786F134A72A10009C016 /* General */,
+				7C0F7870134A72B70009C016 /* XIBs */,
 				7C67EA8C132AC8EB00E055B2 /* Player */,
 				7C329B6D1325D6B500377547 /* File */,
 				7CF9410A1326FE97004526D0 /* Playlist */,
@@ -378,6 +397,8 @@
 		7C5FE0BB13258F0D0008B7DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D9E10426134A450D009D3015 /* PanelWithIndicator.h */,
+				D9E10427134A450D009D3015 /* PanelWithIndicator.m */,
 				7A89531C133F7BAB004F7FA6 /* Growl Registration Ticket.growlRegDict */,
 				7C93D4251346A20E00880297 /* Apple Remote Control */,
 				7C3826A1133C598800FDD40E /* Subclasses */,
@@ -564,6 +585,7 @@
 				7C93D4341346A24700880297 /* RemoteControl.m in Sources */,
 				D9E10429134A450D009D3015 /* PanelWithIndicator.m in Sources */,
 				D9E10436134A63EF009D3015 /* LSplitView.m in Sources */,
+				7C0F786E134A72800009C016 /* LuxGui.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,6 +672,8 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Lux/Lux-Prefix.pch";
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Lux/Lux-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -669,6 +693,8 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Lux/Lux-Prefix.pch";
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Lux/Lux-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

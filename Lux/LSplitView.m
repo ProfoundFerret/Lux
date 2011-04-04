@@ -20,14 +20,13 @@
     return self;
 }
 
-- (CGFloat)minPossiblePositionOfDividerAtIndex:(NSInteger)dividerIndex
-{
-	return 100;
-}
-
 - (void)dealloc
 {
     [super dealloc];
 }
 
+- (CGFloat) dividerThickness
+{
+	return 5.0;
+}
 @end

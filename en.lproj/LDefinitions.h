@@ -101,5 +101,7 @@
 
 #define NS_TABLE_COLUMN @"NSTableColumn"
 
+#define kMIN_SPLIT_SIZE 175
+
 
 #import "LLocalization.h"
