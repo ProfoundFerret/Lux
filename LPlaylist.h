@@ -111,7 +111,7 @@
 @property (readwrite, assign) BOOL write;
 @property (readonly) BOOL repeat;
 @property (readonly) BOOL shuffle;
-@property (readwrite, retain) NSMutableDictionary * columns;
+@property (readwrite, retain, nonatomic) NSMutableDictionary * columns;
 @property (readwrite, retain) NSString * predicate;
 @property (readonly, assign) NSString * search;
 @property (readwrite, retain) NSArray * selectedFiles;

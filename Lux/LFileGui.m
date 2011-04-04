@@ -50,6 +50,7 @@
 	[fileList setDoubleAction:@selector(doubleClickAction)];
 	[fileList registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
 	[fileList setAutoresizesSubviews:NO];
+	[[fileList headerView] setAutoresizesSubviews:NO];
 	
 	[totalFiles setStringValue:@""];
 	
