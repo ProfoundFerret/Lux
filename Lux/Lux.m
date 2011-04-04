@@ -58,8 +58,6 @@
 
 - (void) setup
 {
-    NSLog(@"setup start...");
- 
     ioController = [LInputOutputController sharedInstance];
 	[ioController load];
 	
@@ -70,11 +68,6 @@
 	
 	fileController = [LFileController sharedInstance];
 	playlistController = [LPlaylistController sharedInstance];
-    	
-	[ioController update];
-
-    NSLog(@"setup done...");
-
 }
 
 - (NSDictionary *)registrationDictionaryForGrowl {

@@ -24,7 +24,6 @@
 - (void) applicationDidFinishLaunching:(NSNotification *)notification
 {
     if (![[NSFileManager defaultManager] fileExistsAtPath: kSAVE_FILE]) {
-        NSLog(@"The luxData.plist file doesn't exist ... Let's build it !");
         if (panel == nil) {
             panel = [[PanelWithIndicator alloc] init];
         }
@@ -33,7 +32,7 @@
         
         [panel withParentWindow:window];
     } else {
-        NSLog(@"the data file already exists");
+		[[[Lux sharedInstance] ioController] update];
     }
 }
 
@@ -87,7 +86,7 @@
        
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 
-    [[[Lux sharedInstance] ioController] update];
+    [[[Lux sharedInstance] ioController] _update];
 
     [pool drain];
     
