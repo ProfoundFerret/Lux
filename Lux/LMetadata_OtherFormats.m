@@ -37,13 +37,13 @@
     
     NSMutableDictionary *mdDict = [[[NSMutableDictionary alloc] init] autorelease];
     
-    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemMusicalGenre] forKey:kGENRE];
-    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemTitle] forKey:kTITLE];
-    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemAuthors] forKey:kARTIST];
-    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemComposer] forKey:kCOMPOSER];
-    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemAlbum] forKey:kALBUM];
-    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemDurationSeconds] forKey:kTIME];
-    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemRecordingYear] forKey:kYEAR];
+    if ([mdDictTMP objectForKey:(NSString *)kMDItemMusicalGenre]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemMusicalGenre] forKey:kGENRE];
+    if ([mdDictTMP objectForKey:(NSString *)kMDItemTitle]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemTitle] forKey:kTITLE];
+    if ([mdDictTMP objectForKey:(NSString *)kMDItemAuthors]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemAuthors] forKey:kARTIST];
+    if ([mdDictTMP objectForKey:(NSString *)kMDItemComposer]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemComposer] forKey:kCOMPOSER];
+    if ([mdDictTMP objectForKey:(NSString *)kMDItemAlbum]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemAlbum] forKey:kALBUM];
+   // if ([mdDictTMP objectForKey:(NSString *)kMDItemDurationSeconds]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemDurationSeconds] forKey:kTIME]; // Todo
+    if ([mdDictTMP objectForKey:(NSNumber *)kMDItemRecordingYear]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemRecordingYear] forKey:kYEAR];
 	
 	return mdDict;
 }
