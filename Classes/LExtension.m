@@ -50,4 +50,9 @@
 {
 	return [NSArray array];
 }
+
+- (BOOL) requiresMainThread
+{
+	return NO;
+}
 @end

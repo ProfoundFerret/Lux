@@ -29,6 +29,11 @@
 
 - (void) parseMetadataForFile: (LFile *) file
 {
+	[self performSelectorOnMainThread:@selector(_parseMetadataForFile:) withObject:file waitUntilDone:YES];
+}
+
+- (void) _parseMetadataForFile:(LFile *)file
+{	
 	NSString * ext = [file extension];
 	NSMutableDictionary * newAttributes = [NSMutableDictionary dictionary];
 	for (LExtension <LMetadataDelegate> * extension in [self extensions])

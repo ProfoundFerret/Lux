@@ -19,7 +19,7 @@
 }
 
 - (NSDictionary *) metadataForURL:(NSURL *)fileURL
-{
+{	
 	static AudioFileID fileID = nil;
 	static OSStatus err = noErr;
 	
@@ -44,8 +44,6 @@
     [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemAlbum] forKey:kALBUM];
     [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemDurationSeconds] forKey:kTIME];
     [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemRecordingYear] forKey:kYEAR];
-    
-	NSLog(@"> %@", mdDict);
 	
 	return mdDict;
 }
@@ -64,6 +62,11 @@
 - (void)dealloc
 {
     [super dealloc];
+}
+
+- (BOOL) requiresMainThread
+{
+	return YES;
 }
 
 @end

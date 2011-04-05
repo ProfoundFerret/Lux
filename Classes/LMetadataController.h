@@ -15,5 +15,6 @@
     
 }
 - (void) parseMetadataForFile: (LFile *) file;
+- (void) _parseMetadataForFile:(LFile *)file;
 - (NSArray *) extensions;
 @end
