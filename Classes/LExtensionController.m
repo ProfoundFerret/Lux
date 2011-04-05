@@ -36,7 +36,7 @@
 	[self addExtension: [[LInputOutput_Computer alloc] init]];
 	[self addExtension: [[LPlayer_QTKit alloc] init]];
 	[self addExtension: [[LMetadata_MP3 alloc] init]];
-    [self addExtension: [[LMetadata_OtherFormats alloc] init]];
+ //   [self addExtension: [[LMetadata_OtherFormats alloc] init]];
 }
 
 - (void)dealloc

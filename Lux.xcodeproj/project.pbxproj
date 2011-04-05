@@ -62,6 +62,8 @@
 		D9256E171343D1E1008B4045 /* shuffleON.png in Resources */ = {isa = PBXBuildFile; fileRef = D9256E131343D1E1008B4045 /* shuffleON.png */; };
 		D9256E181343D1E1008B4045 /* shuffleOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = D9256E141343D1E1008B4045 /* shuffleOFF.png */; };
 		D9256E1E1343D951008B4045 /* plusOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = D9256E1D1343D951008B4045 /* plusOFF.png */; };
+		D9613493134BB28600DAB8BF /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9613492134BB28600DAB8BF /* QuickLook.framework */; };
+		D9613497134BB37900DAB8BF /* NSImage+QuickLook.m in Sources */ = {isa = PBXBuildFile; fileRef = D9613496134BB37900DAB8BF /* NSImage+QuickLook.m */; };
 		D9A8FFC5134B78CE00A8FE6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9A8FFC2134B78CE00A8FE6A /* Localizable.strings */; };
 		D9CFAEF5134B98BA00DACAC1 /* LMetadata_OtherFormats.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CFAEF4134B98BA00DACAC1 /* LMetadata_OtherFormats.m */; };
 		D9D8F4EC134B7A96003697AB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D8F4EB134B7A96003697AB /* MainMenu.xib */; };
@@ -198,6 +200,9 @@
 		D9416318134B7F8E007CC825 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9416319134B7F90007CC825 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D941631A134B7F93007CC825 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9613492134BB28600DAB8BF /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		D9613495134BB37900DAB8BF /* NSImage+QuickLook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+QuickLook.h"; sourceTree = "<group>"; };
+		D9613496134BB37900DAB8BF /* NSImage+QuickLook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+QuickLook.m"; sourceTree = "<group>"; };
 		D9A8FFC3134B78CE00A8FE6A /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9A8FFC4134B78CE00A8FE6A /* fr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9CFAEF3134B98BA00DACAC1 /* LMetadata_OtherFormats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMetadata_OtherFormats.h; sourceTree = "<group>"; };
@@ -219,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9613493134BB28600DAB8BF /* QuickLook.framework in Frameworks */,
 				7A895376133FBC60004F7FA6 /* OSAKit.framework in Frameworks */,
 				7C5FE0B513258F0D0008B7DC /* Cocoa.framework in Frameworks */,
 				7C67EA97132ACF9900E055B2 /* QTKit.framework in Frameworks */,
@@ -339,6 +345,8 @@
 				7C0B06CB13442B2900C23399 /* NSArrayCategory.m */,
 				7C22E7131344F28B00A46AB7 /* NSStringCategory.h */,
 				7C22E7141344F28B00A46AB7 /* NSStringCategory.m */,
+				D9613495134BB37900DAB8BF /* NSImage+QuickLook.h */,
+				D9613496134BB37900DAB8BF /* NSImage+QuickLook.m */,
 			);
 			name = Categories;
 			path = ..;
@@ -378,6 +386,7 @@
 		7C5FE0B313258F0D0008B7DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D9613492134BB28600DAB8BF /* QuickLook.framework */,
 				7C2811CC1346822100F5169A /* IOKit.framework */,
 				D9F2453B133FED7A0060B569 /* Sparkle.framework */,
 				7A2E601B133FC21200DFA2D7 /* Growl.framework */,
@@ -636,6 +645,7 @@
 				7C0F786E134A72800009C016 /* LuxGui.m in Sources */,
 				7C356055134A807500C41FF6 /* LPlayerVideo.m in Sources */,
 				D9CFAEF5134B98BA00DACAC1 /* LMetadata_OtherFormats.m in Sources */,
+				D9613497134BB37900DAB8BF /* NSImage+QuickLook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
