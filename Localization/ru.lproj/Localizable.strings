@@ -1,0 +1,38 @@
+//
+//  Created by Adrien Bertrand on 4/5/11.
+//  Copyright 2011 Adrien Bertrand. All rights reserved.
+//
+
+"%d Files" = "%d Files";
+"%d File" = "%d File";
+
+"Play" = "Play";
+"Pause" = "Pause";
+"Next" = "Next";
+"Previous" = "Previous";
+"Play Recent" = "Play Recent";
+"Repeat" = "Repeat";
+"Shuffle" = "Shuffle";
+"(Paused)" = "(Paused)";
+"Show In Finder" = "Show In Finder";
+"Show In Playlist" = "Show In Playlist";
+"Add To Playlist" = "Add To Playlist";
+"New Playlist" = "New Playlist";
+"Delete From" = "Delete From";
+"Delete From Library" = "Delete From Library";
+
+"Duplicate" = "Duplicate";
+"Delete" = "Delete";
+"Convert to Regular Playlist" = "Convert to Regular Playlist";
+"Rename" = "Rename";
+
+"Music" = "Music";
+"Video" = "Video";
+"Streaming" = "Streaming";
+
+"Playlists" = "Playlists";
+"Library" = "Library";
+
+"Untitled Playlist" = "Untitled Playlist";
+
+"Nothing Playing" = "Nothing Playing";
