@@ -159,17 +159,9 @@
 	[movieView setControllerVisible:NO];
 	[movieView setPreservesAspectRatio:YES];
 	[movieView setDelegate:self];
+	int mask = NSViewMinXMargin + NSViewWidthSizable + NSViewMaxXMargin + NSViewMinYMargin + NSViewHeightSizable + NSViewMaxYMargin;
+	[movieView setAutoresizingMask:mask];
 	[view addSubview:movieView];
-}
-
-- (void) enterFullScreen
-{
-	[movieView enterFullScreenMode:[NSScreen mainScreen] withOptions:[NSDictionary dictionary]];
-}
-
-- (void) exitFullScreen
-{
-	[movieView exitFullScreenModeWithOptions:[NSDictionary dictionary]];
 }
 
 - (int) majorVersion

@@ -69,6 +69,7 @@
 #define kPAUSE_NOTIFICATION @"unpause_notification"
 #define kPLAY_NOTIFICATION @"play_notification"
 #define kSTOP_NOTIFICATION @"stop_notification"
+#define kFULLSCREEN_CHANGED @"fullscreen_notification"
 
 
 #pragma mark Characters

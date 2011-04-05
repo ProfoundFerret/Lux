@@ -12,6 +12,6 @@
 @interface LPlayerVideo : NSObject {
 	NSWindow * window;
 }
-- (NSView *) videoView;
+- (NSWindow *) window;
 - (void) setupWindow;
 @end

@@ -26,14 +26,14 @@
     [super dealloc];
 }
 
-- (NSView *) videoView
+- (NSWindow *) window
 {
 	if (! window) [self setupWindow];
 	
 	[window makeKeyAndOrderFront:NSApp];
 	NSView * view = [window contentView];
 	[view setAutoresizesSubviews:YES];
-	return view;
+	return window;
 }
 
 - (void) setupWindow

@@ -84,8 +84,11 @@
 		
 		if ([file fileType] == LFileTypeVideo)
 		{
-			NSView * view = [video videoView];
+			NSView * view = [[video window] contentView];
 			[player playVideoInView:view];
+		} else {
+			[self setFullscreen:NO];
+			[[video window] close];
 		}
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:kPLAY_NOTIFICATION object:nil];
@@ -564,14 +567,16 @@
 
 - (void) setFullscreen: (BOOL) newFullScreen
 {
+	if (fullscreen == newFullScreen) return;
 	fullscreen = newFullScreen;
 	
 	if (fullscreen)
 	{
-		[player enterFullScreen];
+		[[[video window] contentView] enterFullScreenMode:[NSScreen mainScreen] withOptions:[NSDictionary dictionary]];
 	} else {
-		[player exitFullScreen];
+		[[[video window] contentView] exitFullScreenModeWithOptions:[NSDictionary dictionary]];
 	}
+	[[NSNotificationCenter defaultCenter] postNotificationName:kFULLSCREEN_CHANGED object:nil];
 }
 
 - (void) toggleFullscreen
