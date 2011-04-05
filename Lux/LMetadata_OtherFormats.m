@@ -34,19 +34,19 @@
     CFArrayRef metadataDict = MDItemCopyAttributeNames(item);
     
 	NSMutableDictionary * mdDictTMP = (NSMutableDictionary *) [NSMakeCollectable(MDItemCopyAttributes(item, metadataDict)) autorelease];
-	
-	NSLog(@"%@",mdDictTMP);
     
     NSMutableDictionary *mdDict = [[[NSMutableDictionary alloc] init] autorelease];
     
-    [mdDict setObject:[mdDictTMP objectForKey:kMDItemMusicalGenre] forKey:kGENRE];
-    [mdDict setObject:[mdDictTMP objectForKey:kMDItemTitle] forKey:kTITLE];
-    [mdDict setObject:[mdDictTMP objectForKey:kMDItemAuthors] forKey:kARTIST];
-    [mdDict setObject:[mdDictTMP objectForKey:kMDItemComposer] forKey:kCOMPOSER];
-    [mdDict setObject:[mdDictTMP objectForKey:kMDItemAlbum] forKey:kALBUM];
-    [mdDict setObject:[mdDictTMP objectForKey:kMDItemDurationSeconds] forKey:kTIME];
-    [mdDict setObject:[mdDictTMP objectForKey:kMDItemRecordingYear] forKey:kYEAR];
+    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemMusicalGenre] forKey:kGENRE];
+    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemTitle] forKey:kTITLE];
+    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemAuthors] forKey:kARTIST];
+    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemComposer] forKey:kCOMPOSER];
+    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemAlbum] forKey:kALBUM];
+    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemDurationSeconds] forKey:kTIME];
+    [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemRecordingYear] forKey:kYEAR];
     
+	NSLog(@"> %@", mdDict);
+	
 	return mdDict;
 }
 

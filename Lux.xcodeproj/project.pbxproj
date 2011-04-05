@@ -304,10 +304,10 @@
 		7C329B741325DE2E00377547 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7C2B7C34133EBBEC001BD5DC /* LExtensionController.h */,
-				7C2B7C35133EBBEC001BD5DC /* LExtensionController.m */,
 				7C329B711325DDBA00377547 /* LExtension.h */,
 				7C329B721325DDBB00377547 /* LExtension.m */,
+				7C2B7C34133EBBEC001BD5DC /* LExtensionController.h */,
+				7C2B7C35133EBBEC001BD5DC /* LExtensionController.m */,
 			);
 			name = Extension;
 			path = ..;

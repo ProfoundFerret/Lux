@@ -91,12 +91,11 @@
 			[[video window] close];
 		}
 		
-		[[NSNotificationCenter defaultCenter] postNotificationName:kPLAY_NOTIFICATION object:nil];
-		
 		[recentFiles removeObject:file];
 		if ([recentFiles count] > kMAX_RECENT_FILES) [recentFiles removeObjectAtIndex:0];
 		[recentFiles addObject:file];
-        
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:kPLAY_NOTIFICATION object:nil];
 	}
 }
 - (LExtension <LPlayerDelegate> *) playerForFile: (LFile *) file

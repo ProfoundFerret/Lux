@@ -30,7 +30,6 @@
 {
 	if (! window) [self setupWindow];
 	
-	[window makeKeyAndOrderFront:NSApp];
 	NSView * view = [window contentView];
 	[view setAutoresizesSubviews:YES];
 	return window;
@@ -41,5 +40,6 @@
 	NSRect frame = NSMakeRect(0, 0, 200, 200);
 	int mask = NSTitledWindowMask + NSResizableWindowMask + NSClosableWindowMask + NSMiniaturizableWindowMask;
 	window  = [[NSWindow alloc] initWithContentRect:frame styleMask:mask backing:NSBackingStoreBuffered defer:NO];
+	[window makeKeyAndOrderFront:NSApp];
 }
 @end
