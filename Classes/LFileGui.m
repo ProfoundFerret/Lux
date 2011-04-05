@@ -197,10 +197,9 @@
 
 - (void) tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	if ([[LPlaylistController sharedInstance] activePlaylist] != [[LPlaylistController sharedInstance] visiblePlaylist]) return;
 	LFile * file = [visibleFiles objectAtIndex:row];
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
-	if (file == activeFile)
+	if (file == activeFile && [[LPlaylistController sharedInstance] activePlaylist] == [[LPlaylistController sharedInstance] visiblePlaylist])
 	{
 		[cell setFont:[NSFont boldSystemFontOfSize:12]];
 	} else {
