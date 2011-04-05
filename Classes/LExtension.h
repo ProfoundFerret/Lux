@@ -68,4 +68,5 @@
 - (int) minorVersion;
 - (NSArray *) menuItemsForFiles: (NSArray *) files;
 - (NSArray *) menuItemsForPlaylist: (LPlaylist *) playlist;
+- (BOOL) requiresMainThread;
 @end
