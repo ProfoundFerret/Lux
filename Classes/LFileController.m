@@ -9,8 +9,6 @@
 #import "LFileController.h"
 #import	"LPlaylistController.h"
 #import "Lux.h"
-#import "NSImage+QuickLook.h"
-
 
 @implementation LFileController
 @synthesize activeFile, files;
@@ -188,7 +186,7 @@
 	[[Lux sharedInstance] reloadData];
 }
 
-- (void) fileStartedPlaying: (LFile *)file
+- (void) showGrowlForFile: (LFile *) file
 {
     NSString * title = [[file attributes] objectForKey:kTITLE];
 	NSMutableString * artist = [[file attributes] objectForKey:kARTIST];
@@ -210,30 +208,22 @@
 		albumText = [NSMutableString stringWithString:@""];
 	}
 	
-    if ([[[[LFileController sharedInstance] activeFile] url] path]) {
-        NSImage *image = [NSImage imageWithPreviewOfFileAtPath:[[[[LFileController sharedInstance] activeFile] url] path] ofSize:NSSizeFromString(@"{width=64;height=64}") asIcon:YES]; 
-        NSData *imageData = [image TIFFRepresentation];
-        [GrowlApplicationBridge notifyWithTitle:title
-                                    description:[NSString stringWithFormat:@"%@%@", artistText, albumText]
-                               notificationName:@"Basic"
-                                       iconData:imageData
-                                       priority:0
-                                       isSticky:NO
-                                   clickContext:nil];
-    } else {
-        
-        NSImage * image = [[file dictionary] objectForKey:kIMAGE];
-        NSData * imageData = [image TIFFRepresentation];
-        
-        [GrowlApplicationBridge notifyWithTitle:title
-                                    description:[NSString stringWithFormat:@"%@%@", artistText, albumText]
-                               notificationName:@"Basic"
-                                       iconData:imageData
-                                       priority:0
-                                       isSticky:NO
-                                   clickContext:nil];
-    }
-   	
+	NSImage * image = [file image];
+
+	NSData * imageData = [image TIFFRepresentation];
+	
+	[GrowlApplicationBridge notifyWithTitle:title
+								description:[NSString stringWithFormat:@"%@%@", artistText, albumText]
+						   notificationName:kSONG_CHANGED_TEXT
+								   iconData:imageData
+								   priority:0
+								   isSticky:NO
+							   clickContext:nil];
+}
+
+- (void) fileStartedPlaying: (LFile *)file
+{
+   	[self showGrowlForFile:file];
 }
 
 - (void) showFiles: (NSArray *) selectFiles inPlaylist: (LPlaylist *) playlist

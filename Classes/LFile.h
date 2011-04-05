@@ -36,6 +36,8 @@
 - (NSDictionary *) dictionary;
 - (NSDictionary *) lowercaseDictionary;
 
+- (NSImage *) image;
+
 @property (readwrite, assign) NSURL * url;
 @property (readwrite, assign) NSMutableDictionary * attributes;
 @property (readwrite, assign, nonatomic) NSString * extension;

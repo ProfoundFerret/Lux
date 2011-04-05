@@ -14,6 +14,7 @@
 #import "LPlaylistController.h"
 #import "LPlayerController.h"
 #import "Lux.h"
+#import "NSImage+QuickLook.h"
 
 @implementation LFile
 @synthesize url, attributes, extension;
@@ -204,5 +205,15 @@
 	[self searchAttributes];
 	
 	dictionary = nil;
+}
+
+- (NSImage *) image
+{
+	NSImage * image = [[self dictionary] objectForKey:kIMAGE];
+	if (! image)
+	{
+		image = [NSImage imageWithPreviewOfFileAtPath:[url path] ofSize:NSMakeSize(256,256) asIcon:YES]; 
+	}
+	return image;
 }
 @end

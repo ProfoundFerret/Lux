@@ -38,6 +38,8 @@
 
 - (NSMenu *) menuForFiles: (NSArray *) files;
 
+- (void) showGrowlForFile: (LFile *) file;
+
 - (void) showFiles: (NSArray *) selectFiles inPlaylist: (LPlaylist *) playlist;
 - (void) showFilesInPlaylistByMenuItem: (NSMenuItem *) menuItem;
 
