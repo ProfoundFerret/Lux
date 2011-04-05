@@ -152,6 +152,26 @@
 	return LFileTypeUnknown;
 }
 
+- (void) playVideoInView:(NSView *)view
+{
+	movieView = [[QTMovieView alloc] initWithFrame:[view frame]];
+	[movieView setMovie:player];
+	[movieView setControllerVisible:NO];
+	[movieView setPreservesAspectRatio:YES];
+	[movieView setDelegate:self];
+	[view addSubview:movieView];
+}
+
+- (void) enterFullScreen
+{
+	[movieView enterFullScreenMode:[NSScreen mainScreen] withOptions:[NSDictionary dictionary]];
+}
+
+- (void) exitFullScreen
+{
+	[movieView exitFullScreenModeWithOptions:[NSDictionary dictionary]];
+}
+
 - (int) majorVersion
 {
 	return 1;
@@ -160,6 +180,11 @@
 - (int) minorVersion
 {
 	return 0;
+}
+
+- (NSMenu *) menuForEventDelegate:(NSEvent *)event
+{
+	return [[LPlayerController sharedInstance] videoMenu];
 }
 
 @end

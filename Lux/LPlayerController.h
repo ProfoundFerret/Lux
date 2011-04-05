@@ -10,7 +10,7 @@
 #import "LControllerObject.h"
 #import "LExtension.h"
 #import "LFile.h"
-#import "LPlayerGui.h"
+#import "LPlayerVideo.h"
 
 #import "AppleRemote.h"
 #import "MultiClickRemoteBehavior.h"
@@ -19,7 +19,9 @@
 @interface LPlayerController : LControllerObject {
 	LExtension <LPlayerDelegate> * player;
 	BOOL isPlaying;
+	BOOL fullscreen;
 	NSMutableArray * recentFiles;
+	LPlayerVideo * video;
 	
 	AppleRemote * remoteControl;
 	MultiClickRemoteBehavior * remoteBehavior;
@@ -42,11 +44,21 @@
 - (int) curTime;
 - (int) totalTime;
 - (void) playMenuItem: (NSMenuItem *) menuItem;
-- (NSMenu *) dockMenu;
 
-- (NSMenu *) recentFilesMenu;
+- (NSMenu *) dockMenu;
+- (NSMenu *) videoMenu;
+
+- (NSMenuItem *) recentFilesMenuItem;
+- (NSMenuItem *) currentTrackMenuItem;
+- (NSMenuItem *) previousTrackMenuItem;
+- (NSMenuItem *) playpauseMenuItem;
+- (NSMenuItem *) nextTrackMenuItem;
 - (NSMenuItem *) repeatMenuItem;
 - (NSMenuItem *) shuffleMenuItem;
+- (NSMenuItem *) fullscreenMenuItem;
+
+- (void) setFullscreen: (BOOL) newFullScreen;
+- (void) toggleFullscreen;
 
 - (void) setVolume: (double) volume;
 

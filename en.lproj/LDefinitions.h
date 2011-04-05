@@ -31,7 +31,8 @@
 #define kPAUSE_NOTIFICATION @"unpause_notification"
 #define kPLAY_NOTIFICATION @"play_notification"
 #define kSTOP_NOTIFICATION @"stop_notification"
-#define kNOTHING_PLAYING @"Nothing Playing"
+#define kREPEAT_CHANGED_NOTIFICATION @"repeatchanged_notification"
+#define kSHUFFLE_CHANGED_NOTIFICATION @"shufflechanged_notification"
 
 #define kEM_DASH [NSString stringWithFormat: @"%C", 0x2014]
 
@@ -89,9 +90,6 @@
 #define kDESCENDING @"descending"
 #define kNEEDS_SORTED @"needsSorted"
 #define kLIMIT @"limit"
-
-#define kREPEAT_CHANGED_NOTIFICATION @"repeatchanged_notification"
-#define kSHUFFLE_CHANGED_NOTIFICATION @"shufflechanged_notification"
 
 #define kNO_LIMIT -1
 

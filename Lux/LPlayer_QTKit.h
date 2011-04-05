@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "LExtension.h"
 #import <QTKit/QTKit.h>
+#import <QTKit/QTMovieView.h>
 
 @interface LPlayer_QTKit : LExtension <LPlayerDelegate> {
 	QTMovie * player;
+	QTMovieView * movieView;
 	BOOL isPlaying;
 }
 - (void) fileEnded;
+- (NSMenu *) menuForEventDelegate:(NSEvent *)event;
 @end

@@ -94,7 +94,7 @@
 
 - (void) updateRecentFiles
 {
-	[playRecentMenuItem setSubmenu:[[LPlayerController sharedInstance] recentFilesMenu]];
+	[playRecentMenuItem setSubmenu:[[[LPlayerController sharedInstance] recentFilesMenuItem] submenu]];
 }
 
 - (void) updateRepeat

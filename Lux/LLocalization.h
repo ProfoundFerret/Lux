@@ -21,6 +21,7 @@
 #define kDELETE_FROM_TEXT @"Delete From"
 #define kDELETE_FROM_LIBRARY_TEXT @"Delete From Library"
 
+#define kNOTHING_PLAYING @"Nothing Playing"
 #define kDUPLICATE_TEXT @"Duplicate"
 #define kDELETE_TEXT @"Delete"
 #define kCONVERT_TO_REGULAR_PLAYLIST_TEXT @"Convert to Regular Playlist"
@@ -34,3 +35,5 @@
 #define kLIBRARY_TEXT @"Library"
 
 #define kUNTITLED_PLAYLIST_TEXT @"Untitled Playlist"
+
+#define kFULLSCREEN_TEXT @"Full Screen"

@@ -21,6 +21,7 @@
     self = [super init];
     if (self) {
 		recentFiles = [[NSMutableArray alloc] init];
+		video = [[LPlayerVideo alloc] init];
 		
 		[self setupRemoteControl];
     }
@@ -81,6 +82,12 @@
 		[[LFileController sharedInstance] fileStartedPlaying:file];
 		isPlaying = YES;
 		
+		if ([file fileType] == LFileTypeVideo)
+		{
+			NSView * view = [video videoView];
+			[player playVideoInView:view];
+		}
+		
 		[[NSNotificationCenter defaultCenter] postNotificationName:kPLAY_NOTIFICATION object:nil];
 		
 		[recentFiles removeObject:file];
@@ -89,7 +96,6 @@
         
 	}
 }
-
 - (LExtension <LPlayerDelegate> *) playerForFile: (LFile *) file
 {
 	NSString * fileExtension = [file extension];
@@ -267,8 +273,6 @@
 	int time = [self curTime];
 	time += kTIME_INCREMENT;
 	[self setTime:time];
-	
-	NSLog(@"Incrementing Time");
 }
 
 - (void) decrementTime
@@ -326,40 +330,8 @@
     return [menuItem isEnabled];
 }
 
-- (NSMenu *) dockMenu {
-	NSMenu * dockMenu = [[[NSMenu alloc] init] autorelease];
-    
-    LFile * activeFile = [[LFileController sharedInstance] activeFile];
-    
-    NSString * artist = [[activeFile attributes] objectForKey:kARTIST];
-    NSString * title = [[activeFile attributes] objectForKey:kTITLE];
-	
-	NSMenuItem *currentSongInfo = [[[NSMenuItem alloc] init] autorelease];
-    [currentSongInfo setEnabled:NO];
-    NSMenuItem *itispaused = [[[NSMenuItem alloc] init] autorelease];
-    
-    if (activeFile) {
-        if ([artist length])
-        {
-            [currentSongInfo setTitle:[NSString stringWithFormat:@"%@ %@ %@", title, kEM_DASH, artist]];
-            [dockMenu addItem:currentSongInfo];
-        } else {
-            [currentSongInfo setTitle:title];
-            [dockMenu addItem:currentSongInfo];
-        }
-        if (! isPlaying) {
-            [itispaused setEnabled:NO];
-            [itispaused setTitle:kPAUSED_TEXT];
-            [dockMenu addItem:itispaused];
-        }
-    } else {
-        [currentSongInfo setTitle:kNOTHING_PLAYING];
-        [dockMenu addItem:currentSongInfo];
-
-    }
-    
-    [dockMenu addItem:[NSMenuItem separatorItem]];
-    
+- (NSMenuItem *) playpauseMenuItem
+{
 	NSMenuItem *playPauseOrStart = [[[NSMenuItem alloc] init] autorelease];
 	if (isPlaying)
 	{
@@ -369,44 +341,62 @@
 	}
 	[playPauseOrStart setTarget:self];
 	[playPauseOrStart setAction:@selector(playPause)];
-	[dockMenu addItem:playPauseOrStart];
 	
-	NSMenuItem *nextTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
-	[nextTrackDockMenu setTitle:kNEXT_TEXT];
-	[nextTrackDockMenu setTarget:self];
-	[nextTrackDockMenu setAction:@selector(playNextFile)];
-	[dockMenu addItem:nextTrackDockMenu];
-	
-	NSMenuItem *previousTrackDockMenu = [[[NSMenuItem alloc] init] autorelease];
-	[previousTrackDockMenu setTitle:kPREVIOUS_TEXT];
-	[previousTrackDockMenu setTarget:self];
-	[previousTrackDockMenu setAction:@selector(playPreviousFile)];
-	[dockMenu addItem:previousTrackDockMenu];
-	
-	if ([recentFiles count] > 1)
-	{
-		NSMenuItem *playRecent = [[[NSMenuItem alloc] init] autorelease];
-		[playRecent setTitle:kPLAY_RECENT_TEXT];
-		[dockMenu addItem:playRecent];
-		NSMenu * recentFileMenu = [self recentFilesMenu];
-		[playRecent setSubmenu:recentFileMenu];
-	}
-	
-	[dockMenu addItem:[NSMenuItem separatorItem]];
-	
-	[dockMenu addItem:[self repeatMenuItem]];
-	
-	[dockMenu addItem:[self shuffleMenuItem]];
-	 
-	
-	return dockMenu;
+	return playPauseOrStart;
 }
 
-- (NSMenu *) recentFilesMenu
+- (NSMenuItem *) nextTrackMenuItem
 {
+	NSMenuItem *nextTrackMenuItem = [[[NSMenuItem alloc] init] autorelease];
+	[nextTrackMenuItem setTitle:kNEXT_TEXT];
+	[nextTrackMenuItem setTarget:self];
+	[nextTrackMenuItem setAction:@selector(playNextFile)];
+	
+	return nextTrackMenuItem;
+}
+
+- (NSMenuItem *) previousTrackMenuItem
+{
+	NSMenuItem *previousTrackMenuItem = [[[NSMenuItem alloc] init] autorelease];
+	[previousTrackMenuItem setTitle:kPREVIOUS_TEXT];
+	[previousTrackMenuItem setTarget:self];
+	[previousTrackMenuItem setAction:@selector(playPreviousFile)];
+	
+	return previousTrackMenuItem;
+}
+
+- (NSMenuItem *) currentTrackMenuItem
+{
+    LFile * activeFile = [[LFileController sharedInstance] activeFile];
+    NSString * artist = [[activeFile attributes] objectForKey:kARTIST];
+    NSString * title = [[activeFile attributes] objectForKey:kTITLE];
+	
+	NSMenuItem *currentSongMenuItem = [[[NSMenuItem alloc] init] autorelease];
+    [currentSongMenuItem setEnabled:NO];
+    
+    if (activeFile) {
+        if ([artist length])
+        {
+            [currentSongMenuItem setTitle:[NSString stringWithFormat:@"%@ %@ %@", title, kEM_DASH, artist]];
+        } else {
+            [currentSongMenuItem setTitle:title];
+        }
+        if (! isPlaying) {
+            [currentSongMenuItem setTitle:kPAUSED_TEXT];
+        }
+    } else {
+        [currentSongMenuItem setTitle:kNOTHING_PLAYING];
+    }
+	return currentSongMenuItem;
+}
+
+- (NSMenuItem *) recentFilesMenuItem
+{
+	NSMenuItem *playRecent = [[[NSMenuItem alloc] init] autorelease];
+	[playRecent setTitle:kPLAY_RECENT_TEXT];
 	NSMenu * recentFileMenu = [[[NSMenu alloc] init] autorelease];
 	
-	for (NSInteger i = [recentFiles count] - 2; i >= 0; i--) // Subtract 2 because: index starts at 0 AND exclude the current song
+	for (NSInteger i = [recentFiles count] - 2; i >= 0; i--)
 	{
 		LFile * file = [recentFiles objectAtIndex:i];
 		NSMenuItem * fileMenuItem = [[[NSMenuItem alloc] init] autorelease];
@@ -417,7 +407,46 @@
 		[recentFileMenu addItem:fileMenuItem];	
 	}
 	
-	return recentFileMenu;
+	[playRecent setSubmenu:recentFileMenu];
+	
+	return playRecent;
+}
+
+- (NSMenu *) videoMenu
+{
+	NSMenu * menu = [[[NSMenu alloc] init] autorelease];
+	
+	[menu addItem:[self playpauseMenuItem]];
+	[menu addItem:[self fullscreenMenuItem]];
+	
+	return menu;
+}
+
+- (NSMenu *) dockMenu {
+	NSMenu * menu = [[[NSMenu alloc] init] autorelease];
+    
+    [menu addItem:[NSMenuItem separatorItem]];
+    
+	[menu addItem:[self playpauseMenuItem]];
+	
+	[menu addItem:[self nextTrackMenuItem]];
+	
+	[menu addItem:[self previousTrackMenuItem]];
+	
+	if ([recentFiles count] > 1)
+	{
+		[menu addItem:[self recentFilesMenuItem]];
+	}
+	
+	[menu addItem:[NSMenuItem separatorItem]];
+	
+	[menu addItem:[self repeatMenuItem]];
+	
+	[menu addItem:[self shuffleMenuItem]];
+	
+	[menu addItem:[self fullscreenMenuItem]]; 
+	
+	return menu;
 }
 
 - (NSMenuItem *) repeatMenuItem
@@ -433,6 +462,22 @@
 		[repeat setState:NSOffState];
 	}
 	return repeat;
+}
+
+- (NSMenuItem *) fullscreenMenuItem
+{
+	NSMenuItem * fullscreenMenuItem = [[[NSMenuItem alloc] init] autorelease];
+	[fullscreenMenuItem setTitle:kFULLSCREEN_TEXT];
+	[fullscreenMenuItem setTarget:self];
+	[fullscreenMenuItem setAction:@selector(toggleFullscreen)];
+	if (fullscreen)
+	{
+		[fullscreenMenuItem setState:NSOnState];
+	} else {
+		[fullscreenMenuItem setState:NSOffState];
+	}
+	
+	return fullscreenMenuItem;
 }
 
 - (NSMenuItem *) shuffleMenuItem
@@ -517,4 +562,20 @@
 	}
 }
 
+- (void) setFullscreen: (BOOL) newFullScreen
+{
+	fullscreen = newFullScreen;
+	
+	if (fullscreen)
+	{
+		[player enterFullScreen];
+	} else {
+		[player exitFullScreen];
+	}
+}
+
+- (void) toggleFullscreen
+{
+	[self setFullscreen: ! fullscreen];
+}
 @end

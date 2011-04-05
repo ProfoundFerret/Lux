@@ -51,6 +51,11 @@
 
 - (LFileType) fileTypeForExtension: (NSString *) extension; // FileType representing extension, will only be run once per extension per application launch
 - (NSArray *) supportedExtensions; // NSArray of all supported extensions in lower case
+
+@optional
+- (void) enterFullScreen;
+- (void) exitFullScreen;
+- (void) playVideoInView: (NSView *) view;
 @end
 
 @interface LExtension : LStoredObject <NSCoding> {

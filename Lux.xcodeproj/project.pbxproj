@@ -27,6 +27,7 @@
 		7C2B7C3C133EBC0F001BD5DC /* LPlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B7C3A133EBC0F001BD5DC /* LPlaylistController.m */; };
 		7C329B6B1325D6B100377547 /* LFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B6A1325D6B000377547 /* LFile.m */; };
 		7C329B731325DDBD00377547 /* LExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C329B721325DDBB00377547 /* LExtension.m */; };
+		7C356055134A807500C41FF6 /* LPlayerVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C356054134A807500C41FF6 /* LPlayerVideo.m */; };
 		7C3826A0133C595400FDD40E /* LTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C38269F133C595200FDD40E /* LTableView.m */; };
 		7C3B909513285D1C007B7DA5 /* _Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909413285D1C007B7DA5 /* _Test.m */; };
 		7C3B909B13286BF9007B7DA5 /* LPlaylistGui.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B909A13286BF8007B7DA5 /* LPlaylistGui.m */; };
@@ -116,6 +117,8 @@
 		7C329B6A1325D6B000377547 /* LFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFile.m; sourceTree = "<group>"; };
 		7C329B711325DDBA00377547 /* LExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LExtension.h; path = Lux/LExtension.h; sourceTree = "<group>"; };
 		7C329B721325DDBB00377547 /* LExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LExtension.m; path = Lux/LExtension.m; sourceTree = "<group>"; };
+		7C356053134A807400C41FF6 /* LPlayerVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPlayerVideo.h; sourceTree = "<group>"; };
+		7C356054134A807500C41FF6 /* LPlayerVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPlayerVideo.m; sourceTree = "<group>"; };
 		7C38269E133C595100FDD40E /* LTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTableView.h; sourceTree = "<group>"; };
 		7C38269F133C595200FDD40E /* LTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTableView.m; sourceTree = "<group>"; };
 		7C3B909313285D1B007B7DA5 /* _Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Test.h; sourceTree = "<group>"; };
@@ -435,6 +438,8 @@
 				7C67EA94132AC9CA00E055B2 /* LPlayer_QTKit.m */,
 				7C67EA90132AC97F00E055B2 /* LPlayerGui.h */,
 				7C67EA91132AC97F00E055B2 /* LPlayerGui.m */,
+				7C356053134A807400C41FF6 /* LPlayerVideo.h */,
+				7C356054134A807500C41FF6 /* LPlayerVideo.m */,
 				7C67EA8D132AC95800E055B2 /* LPlayerController.h */,
 				7C67EA8E132AC95800E055B2 /* LPlayerController.m */,
 			);
@@ -586,6 +591,7 @@
 				D9E10429134A450D009D3015 /* PanelWithIndicator.m in Sources */,
 				D9E10436134A63EF009D3015 /* LSplitView.m in Sources */,
 				7C0F786E134A72800009C016 /* LuxGui.m in Sources */,
+				7C356055134A807500C41FF6 /* LPlayerVideo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
