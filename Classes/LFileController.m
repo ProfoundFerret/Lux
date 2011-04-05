@@ -214,7 +214,7 @@
 	
 	[GrowlApplicationBridge notifyWithTitle:title
 								description:[NSString stringWithFormat:@"%@%@", artistText, albumText]
-						   notificationName:kSONG_CHANGED_TEXT
+						   notificationName:@"Basic"
 								   iconData:imageData
 								   priority:0
 								   isSticky:NO

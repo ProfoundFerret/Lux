@@ -46,8 +46,6 @@
 #define kNOTHING_PLAYING_TEXT NSLocalizedString(@"Nothing Playing",nil)
 #define kFULLSCREEN_TEXT NSLocalizedString(@"Full Screen",nil)
 
-#define kSONG_CHANGED_TEXT NSLocalizedString(@"Song Changed", nil)
-
 
 #pragma mark Controllers
 
