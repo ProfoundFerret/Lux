@@ -15,7 +15,7 @@
 
 - (NSArray *) supportedMetadataExtensions
 {
-	return [NSArray arrayWithObjects:@"aac", @"m4a", @"mp3", @"wav", @"wma", @"m4p", @"mov", @"avi", @"wmv", @"mp4", @"flv", @"m4v", nil];
+	return [NSArray arrayWithObjects:@"aac", @"m4a", @"mp3", @"wav", @"m4p", @"avi", @"mp4", @"flv", nil];
 }
 
 - (NSDictionary *) metadataForURL:(NSURL *)fileURL
@@ -37,13 +37,43 @@
     
     NSMutableDictionary *mdDict = [[[NSMutableDictionary alloc] init] autorelease];
     
-    if ([mdDictTMP objectForKey:(NSString *)kMDItemMusicalGenre]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemMusicalGenre] forKey:kGENRE];
-    if ([mdDictTMP objectForKey:(NSString *)kMDItemTitle]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemTitle] forKey:kTITLE];
-    if ([mdDictTMP objectForKey:(NSString *)kMDItemAuthors]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemAuthors] forKey:kARTIST];
-    if ([mdDictTMP objectForKey:(NSString *)kMDItemComposer]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemComposer] forKey:kCOMPOSER];
-    if ([mdDictTMP objectForKey:(NSString *)kMDItemAlbum]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemAlbum] forKey:kALBUM];
-   // if ([mdDictTMP objectForKey:(NSString *)kMDItemDurationSeconds]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemDurationSeconds] forKey:kTIME]; // Todo
-    if ([mdDictTMP objectForKey:(NSNumber *)kMDItemRecordingYear]) [mdDict setObject:[mdDictTMP objectForKey:(NSString *)kMDItemRecordingYear] forKey:kYEAR];
+	NSString * genre = [mdDictTMP objectForKey:(NSString *)kMDItemMusicalGenre];
+	NSArray * artists = [mdDictTMP objectForKey:(NSString *)kMDItemAuthors];
+	NSString * composer = [mdDictTMP objectForKey:(NSString *)kMDItemComposer];
+	NSString * album = [mdDictTMP objectForKey:(NSString *)kMDItemAlbum];
+	NSNumber * time = [mdDictTMP objectForKey:(NSString *)kMDItemDurationSeconds];
+	NSNumber * year = [mdDictTMP objectForKey:(NSString *)kMDItemRecordingYear];
+	
+	if (genre)
+	{
+		[mdDict setObject:genre forKey:kGENRE];
+	}
+	
+	if (artists)
+	{
+		[mdDict setObject:[artists objectAtIndex:0] forKey:kARTIST];
+	}
+	
+	if (composer)
+	{
+		[mdDict setObject:composer forKey:kCOMPOSER];
+	}
+	
+	if (album)
+	{
+		[mdDict setObject:album forKey:kALBUM];
+	}
+	
+	if (time)
+	{
+		time = [NSNumber numberWithInt:[time intValue] * 1000];
+		[mdDict setObject:time forKey:kTIME];
+	}
+	
+	if (year)
+	{
+		[mdDict setObject:year forKey:kYEAR];
+	}
 	
 	return mdDict;
 }
