@@ -27,6 +27,7 @@
  kALBUM (NSString),
  kTIME: in milliseconds (NSNumber),
  kGENRE (NSString),
+ kCOMPOSER (NSString),
  kRATING: 0 through 10 (NSNumber),
  kPLAY_COUNT (NSNumber),
  kLAST_PLAY_COUNT (NSDate),
