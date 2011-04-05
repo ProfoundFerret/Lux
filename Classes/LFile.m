@@ -87,7 +87,7 @@
 		if (attribute) { attribute = [attribute lowercaseString]; }
 		if ([attribute length]) [newSearchAttributes addObject:attribute];
 	}
-	searchAttributes = [[[newSearchAttributes componentsJoinedByString:@" "] lowercaseString] retain];
+	searchAttributes = [[newSearchAttributes componentsJoinedByString:@" "] retain];
 	return searchAttributes;
 }
 

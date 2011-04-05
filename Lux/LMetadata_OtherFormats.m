@@ -33,7 +33,7 @@
     MDItemRef item = MDItemCreateWithURL(NULL,(CFURLRef)fileURL);
     CFArrayRef metadataDict = MDItemCopyAttributeNames(item);
     
-	NSMutableDictionary * mdDictTMP = (NSMutableDictionary *) [NSMakeCollectable(MDItemCopyAttributes(item, metadataDict)) autorelease];
+	NSDictionary * mdDictTMP = NSMakeCollectable(MDItemCopyAttributes(item, metadataDict));
     
     NSMutableDictionary *mdDict = [[[NSMutableDictionary alloc] init] autorelease];
     
