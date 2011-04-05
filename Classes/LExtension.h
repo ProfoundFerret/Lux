@@ -27,7 +27,7 @@
  kALBUM (NSString),
  kTIME: in milliseconds (NSNumber),
  kGENRE (NSString),
- kRATING: 0 through 10 (NSNumber),
+ kRATING: 0 through 5 (NSNumber),
  kPLAY_COUNT (NSNumber),
  kLAST_PLAY_COUNT (NSDate),
  kADD_DATE: only include if importing from another application (NSDate)
