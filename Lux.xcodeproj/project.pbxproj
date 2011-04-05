@@ -189,6 +189,7 @@
 		D9D8F4EB134B7A96003697AB /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		D9D8F4ED134B7AD1003697AB /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		D9D8F4EE134B7AD1003697AB /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		D9D8F4F1134B7B97003697AB /* LDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDefinitions.h; sourceTree = "<group>"; };
 		D9E10426134A450D009D3015 /* PanelWithIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelWithIndicator.h; sourceTree = "<group>"; };
 		D9E10427134A450D009D3015 /* PanelWithIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelWithIndicator.m; sourceTree = "<group>"; };
 		D9E10428134A450D009D3015 /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Panel.xib; sourceTree = "<group>"; };
@@ -246,6 +247,7 @@
 		7C0F786F134A72A10009C016 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D9D8F4F1134B7B97003697AB /* LDefinitions.h */,
 				7C5FE0EF1325CC2B0008B7DC /* Lux.h */,
 				7C5FE0F01325CC2B0008B7DC /* Lux.m */,
 				7C0F786C134A72800009C016 /* LuxGui.h */,
