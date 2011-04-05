@@ -54,7 +54,6 @@
             notifications, GROWL_NOTIFICATIONS_DEFAULT, nil];
     
     return (dict);
-    
 }
 
 - (void) awakeFromNib

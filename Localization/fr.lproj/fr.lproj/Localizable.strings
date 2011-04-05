@@ -9,14 +9,14 @@
 "Play" = "Jouer";
 "Pause" = "Pause";
 "Next" = "Suivant";
-"Previous" = "Pr√©c√©dent";
-"Play Recent" = "Jou√©s r√©cemment";
-"Repeat" = "R√©p√©ter";
-"Shuffle" = "M√©langer";
+"Previous" = "Précédent";
+"Play Recent" = "Joués récemment";
+"Repeat" = "Répéter";
+"Shuffle" = "Mélanger";
 "(Paused)" = "(En Pause)";
 "Show In Finder" = "Afficher dans le Finder";
 "Show In Playlist" = "Afficher dans la Playlist";
-"Add To Playlist" = "Ajouter √† la Playlist";
+"Add To Playlist" = "Ajouter à la Playlist";
 "New Playlist" = "Nnouvelle Playlist";
 "Delete From" = "Supprimer depuis";
 "Delete From Library" = "Supprimer depuis la librairie";
@@ -27,12 +27,14 @@
 "Rename" = "Renommer";
 
 "Music" = "Musique";
-"Video" = "Vid√©o";
+"Video" = "Vidéo";
 "Streaming" = "Streaming";
 
 "Playlists" = "Playlists";
-"Library" = "Biblioth√®que";
+"Library" = "Bibliothèque";
 
 "Untitled Playlist" = "Playlist sans titre";
 
 "Nothing Playing" = "Aucune lecture en cours";
+
+"Full Screen" = "Plein écran";
