@@ -54,6 +54,7 @@
 	
 	[newPlaylistMenuItem setTarget:self];
 	[newPlaylistMenuItem setAction:@selector(addPlaylist)];
+	[newPlaylistMenuItem setTitle:kNEW_PLAYLIST_TEXT];
 	
 	[self reloadData];
 }

@@ -10,7 +10,7 @@
 #import "LExtension.h"
 
 #define kFILE_SEARCH_LOCATIONS @"_IO_fileSearchLocations"
-#define kMUSIC_FOLDER_FOLDER @"~/Music/"
+#define kMUSIC_FOLDER @"~/Music/"
 
 @interface LInputOutput_Computer : LExtension <LInputOutputDelegate> {
     

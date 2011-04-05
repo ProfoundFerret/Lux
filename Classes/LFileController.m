@@ -274,7 +274,7 @@
 	
 	NSMenuItem * addToNewPlaylist = [[[NSMenuItem alloc] init] autorelease];
 	[addToPlaylistMenu addItem:addToNewPlaylist];
-	[addToNewPlaylist setTitle:kNEW_PLAYLIST];
+	[addToNewPlaylist setTitle:kNEW_PLAYLIST_TEXT];
 	[addToNewPlaylist setTarget:[LPlaylistController sharedInstance]];
 	[addToNewPlaylist setAction:@selector(addFilesToNewPlaylistByMenuItem:)];
 	[addToNewPlaylist setRepresentedObject:menuFiles];
@@ -298,7 +298,7 @@
 	if ([playlists count])
 	{
 		NSMenuItem * showInPlaylist = [[[NSMenuItem alloc] init] autorelease];
-		[showInPlaylist setTitle: kSHOW_IN_PLAYLIST];
+		[showInPlaylist setTitle: kSHOW_IN_PLAYLIST_TEXT];
 		NSMenu * showInPlaylistMenu = [[[NSMenu alloc] init] autorelease];
 		[showInPlaylistMenu setAutoenablesItems:NO];
 		[showInPlaylist setSubmenu: showInPlaylistMenu];

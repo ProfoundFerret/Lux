@@ -385,7 +385,7 @@
             [currentSongMenuItem setTitle:kPAUSED_TEXT];
         }
     } else {
-        [currentSongMenuItem setTitle:kNOTHING_PLAYING];
+        [currentSongMenuItem setTitle:kNOTHING_PLAYING_TEXT];
     }
 	return currentSongMenuItem;
 }

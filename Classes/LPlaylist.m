@@ -351,7 +351,7 @@
 	NSString * predicate = [NSString stringWithFormat:@"%@ = %d", kFILE_TYPE, LFileTypeAudio];
 	[playlist setPredicate:predicate];
 	[playlist setSmart:YES];
-	[playlist setTitle:kMUSIC_FOLDER];
+	[playlist setTitle:kMUSIC_TEXT];
 	
 	[playlist setWrite:NO];
 	
