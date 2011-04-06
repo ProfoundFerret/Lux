@@ -96,7 +96,7 @@
 
 #pragma mark Code
 
-#define kKEEPER_ATTRIBUTES [NSArray arrayWithObjects:kTITLE, kARTIST, kCOMPOSER, kALBUM, kTIME, kGENRE, kRATING, kPLAY_COUNT, kLAST_PLAY_DATE, kADD_DATE, kYEAR, nil]
+#define kKEEPER_ATTRIBUTES [NSArray arrayWithObjects:kTITLE, kARTIST, kCOMPOSER, kALBUM, kTIME, kGENRE, kRATING, kPLAY_COUNT, kLAST_PLAY_DATE, kADD_DATE, kYEAR, kWIDTH, kHEIGHT, nil]
 
 
 #pragma mark General
@@ -113,6 +113,8 @@
 #define kLAST_PLAY_DATE @"lastPlayDate"
 #define kADD_DATE @"addDate"
 #define kYEAR @"year"
+#define kWIDTH @"width"
+#define kHEIGHT @"height"
 #define kVOLUME @"volume"
 #define kURL @"url"
 

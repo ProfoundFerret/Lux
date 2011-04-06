@@ -60,7 +60,17 @@
 	[previousMenuItem setTarget:[LPlayerController sharedInstance]];
 	[previousMenuItem setAction:@selector(playPreviousFile)];
 	[previousMenuItem setTitle:kPREVIOUS_TEXT];
-	
+    
+    [fullScreenMenuItem setTarget:[LPlayerController sharedInstance]];
+	[fullScreenMenuItem setAction:@selector(toggleFullscreen)];
+	[fullScreenMenuItem setTitle:kFULLSCREEN_TEXT];
+	if ([[LPlayerController sharedInstance] isFullScreen])
+	{
+		[fullScreenMenuItem setState:NSOnState]; // won't be seen anyway
+	} else {
+		[fullScreenMenuItem setState:NSOffState];
+	}
+    
 	[playRecentMenuItem setTitle:kPLAY_RECENT_TEXT];
 	
 	[repeatMenuItem setTitle:kREPEAT_TEXT];
@@ -221,5 +231,6 @@
 {
 	[controller setTime:[progressSlider intValue]];
 }
+
 
 @end

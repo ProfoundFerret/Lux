@@ -23,6 +23,8 @@
 
 - (void) applicationDidFinishLaunching:(NSNotification *)notification
 {
+    [window makeKeyAndOrderFront:nil];
+
     if (![[NSFileManager defaultManager] fileExistsAtPath: kSAVE_FILE]) {
         if (panel == nil) {
             panel = [[PanelWithIndicator alloc] init];

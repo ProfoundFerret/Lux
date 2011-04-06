@@ -15,7 +15,7 @@
 
 - (NSArray *) supportedMetadataExtensions
 {
-	return [NSArray arrayWithObjects:@"aac", @"m4a", @"mp3", @"wav", @"m4p", @"avi", @"mp4", @"flv", nil];
+	return [NSArray arrayWithObjects:@"aac", @"m4a", @"mp3", @"wav", @"m4p", @"avi", @"mp4", @"flv", @"m4v", nil];
 }
 
 - (NSDictionary *) metadataForURL:(NSURL *)fileURL
@@ -36,14 +36,16 @@
 	NSDictionary * mdDictTMP = NSMakeCollectable(MDItemCopyAttributes(item, metadataDict));
     
     NSMutableDictionary *mdDict = [[[NSMutableDictionary alloc] init] autorelease];
-    
+        
 	NSString * genre = [mdDictTMP objectForKey:(NSString *)kMDItemMusicalGenre];
 	NSArray * artists = [mdDictTMP objectForKey:(NSString *)kMDItemAuthors];
 	NSString * composer = [mdDictTMP objectForKey:(NSString *)kMDItemComposer];
 	NSString * album = [mdDictTMP objectForKey:(NSString *)kMDItemAlbum];
-	NSNumber * time = [mdDictTMP objectForKey:(NSString *)kMDItemDurationSeconds];
-	NSNumber * year = [mdDictTMP objectForKey:(NSString *)kMDItemRecordingYear];
-	
+	NSNumber * time = [mdDictTMP objectForKey:(NSNumber *)kMDItemDurationSeconds];
+    NSNumber * width = [mdDictTMP objectForKey:(NSNumber *)kMDItemPixelWidth];
+	NSNumber * height = [mdDictTMP objectForKey:(NSNumber *)kMDItemPixelHeight];
+	NSNumber * year = [mdDictTMP objectForKey:(NSNumber *)kMDItemRecordingYear];
+	    
 	if (genre)
 	{
 		[mdDict setObject:genre forKey:kGENRE];
@@ -66,13 +68,23 @@
 	
 	if (time)
 	{
-		time = [NSNumber numberWithInt:[time intValue] * 1000];
+		time = [NSNumber numberWithInt:[time intValue] * 1000]; // converting seconds to miliseconds
 		[mdDict setObject:time forKey:kTIME];
 	}
 	
 	if (year)
 	{
 		[mdDict setObject:year forKey:kYEAR];
+	}
+	
+    if (height)
+	{
+		[mdDict setObject:height forKey:kHEIGHT];
+	}
+	
+    if (width)
+	{
+		[mdDict setObject:width forKey:kWIDTH];
 	}
 	
 	return mdDict;

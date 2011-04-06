@@ -22,6 +22,8 @@
 	IBOutlet NSMenuItem * playRecentMenuItem;
 	IBOutlet NSMenuItem * repeatMenuItem;
 	IBOutlet NSMenuItem * shuffleMenuItem;
+    
+    IBOutlet NSMenuItem * fullScreenMenuItem;
 	
     IBOutlet NSButton   * repeatButton;
 	IBOutlet NSButton   * shuffleButton;
@@ -45,4 +47,5 @@
 - (void) updateRecentFiles;
 - (void) updateRepeat;
 - (void) updateShuffle;
+
 @end

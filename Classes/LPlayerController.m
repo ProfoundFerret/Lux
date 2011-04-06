@@ -568,18 +568,46 @@
 {
 	if (fullscreen == newFullScreen) return;
 	fullscreen = newFullScreen;
-	
+    
 	if (fullscreen)
 	{
-		[[[video window] contentView] enterFullScreenMode:[NSScreen mainScreen] withOptions:[NSDictionary dictionary]];
+        [[video window]
+         setFrame:[[video window] frameRectForContentRect:[[[video window] screen] frame]]
+         display:YES
+         animate:YES];
+        [[[video window] contentView] enterFullScreenMode:[NSScreen mainScreen] withOptions:[NSDictionary dictionary]];
+
 	} else {
-		[[[video window] contentView] exitFullScreenModeWithOptions:[NSDictionary dictionary]];
-	}
+        NSNumber *height = [[[[LFileController sharedInstance] activeFile] attributes] objectForKey:kHEIGHT];
+        NSNumber *width = [[[[LFileController sharedInstance] activeFile] attributes] objectForKey:kWIDTH];
+               
+        if ([height floatValue] < 50.0 || [width floatValue] < 50.0) {
+            height = [NSNumber numberWithFloat:300.0];
+            width = [NSNumber numberWithFloat:300.0];
+        }
+        
+        NSRect frame = NSMakeRect(([[NSScreen mainScreen] frame].size.width/2), [[NSScreen mainScreen] frame].size.height/2, [width floatValue], [height floatValue]);
+        [[[video window] contentView] exitFullScreenModeWithOptions:[NSDictionary dictionary]];
+        [[video window]
+         setFrame:[[video window] frameRectForContentRect:frame]
+         display:YES
+         animate:YES];
+    }
+       
 	[[NSNotificationCenter defaultCenter] postNotificationName:kFULLSCREEN_CHANGED object:nil];
 }
 
 - (void) toggleFullscreen
 {
-	[self setFullscreen: ! fullscreen];
+    if ([[[LFileController sharedInstance] activeFile] fileType] == LFileTypeVideo) {
+        [self setFullscreen: ! fullscreen];
+    } else {
+        NSLog(@"Trying to toggle Full Screen from a non-video window !");
+    }
+}
+
+- (bool) isFullScreen
+{
+	return fullscreen;
 }
 @end
