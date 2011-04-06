@@ -43,6 +43,8 @@
 - (void) repeatChanged;
 - (void) shuffleChanged;
 - (void) updateNextPrevious;
+- (void) fullscreenChanged;
+- (void) updateFullscreen;
 
 - (void) updateRecentFiles;
 - (void) updateRepeat;
