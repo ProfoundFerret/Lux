@@ -64,12 +64,6 @@
     [fullScreenMenuItem setTarget:[LPlayerController sharedInstance]];
 	[fullScreenMenuItem setAction:@selector(toggleFullscreen)];
 	[fullScreenMenuItem setTitle:kFULLSCREEN_TEXT];
-	if ([[LPlayerController sharedInstance] isFullScreen])
-	{
-		[fullScreenMenuItem setState:NSOnState]; // won't be seen anyway
-	} else {
-		[fullScreenMenuItem setState:NSOffState];
-	}
     
 	[playRecentMenuItem setTitle:kPLAY_RECENT_TEXT];
 	
@@ -96,6 +90,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stop) name:kSTOP_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(repeatChanged) name:kREPEAT_CHANGED_NOTIFICATION object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shuffleChanged) name:kSHUFFLE_CHANGED_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fullscreenChanged) name:kFULLSCREEN_CHANGED object:nil];
 	
 	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     
@@ -153,6 +148,16 @@
 - (void) shuffleChanged
 {
     [self updateShuffle];
+}
+
+- (void) updateFullscreen
+{
+	[fullScreenMenuItem setState:[[[LPlayerController sharedInstance] fullscreenMenuItem] state]];
+}
+
+- (void) fullscreenChanged
+{
+	[self updateFullscreen];
 }
 
 - (void) play
