@@ -569,13 +569,23 @@
 	if (fullscreen == newFullScreen) return;
 	fullscreen = newFullScreen;
     
+    NSArray *objects = [NSArray arrayWithObjects:
+               [NSNumber numberWithUnsignedInt:(1 << 1)],
+               [NSNumber numberWithUnsignedInt:(1 << 2)],
+               nil];
+    
+    NSArray *keys = [NSArray arrayWithObjects:
+            @"NSFullScreenModeApplicationPresentationOptions",
+            @"NSFullScreenModeApplicationPresentationOptions",
+            nil];
+        
 	if (fullscreen)
 	{
         [[video window]
          setFrame:[[video window] frameRectForContentRect:[[[video window] screen] frame]]
          display:YES
          animate:YES];
-        [[[video window] contentView] enterFullScreenMode:[NSScreen mainScreen] withOptions:[NSDictionary dictionary]];
+        [[[video window] contentView] enterFullScreenMode:[NSScreen mainScreen] withOptions:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
 
 	} else {
         NSNumber *height = [[[[LFileController sharedInstance] activeFile] attributes] objectForKey:kHEIGHT];
@@ -586,12 +596,12 @@
             width = [NSNumber numberWithFloat:300.0];
         }
         
-        NSRect frame = NSMakeRect(([[NSScreen mainScreen] frame].size.width/2), [[NSScreen mainScreen] frame].size.height/2, [width floatValue], [height floatValue]);
-        [[[video window] contentView] exitFullScreenModeWithOptions:[NSDictionary dictionary]];
-        [[video window]
-         setFrame:[[video window] frameRectForContentRect:frame]
+NSRect frame = NSMakeRect(([[NSScreen mainScreen] frame].size.width/2)-[width floatValue]/2, [[NSScreen mainScreen] frame].size.height/2-[height floatValue]/2, [width floatValue]+20, [height floatValue]);
+        [[[video window] contentView] exitFullScreenModeWithOptions:nil];
+        [[video window] setFrame:[[video window] frameRectForContentRect:frame]
          display:YES
          animate:YES];
+        [NSApp setPresentationOptions:NSApplicationPresentationDefault];
     }
        
 	[[NSNotificationCenter defaultCenter] postNotificationName:kFULLSCREEN_CHANGED object:nil];
