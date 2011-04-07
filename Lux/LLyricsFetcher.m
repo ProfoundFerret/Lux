@@ -15,15 +15,18 @@
 
 - (void) fetchLyricsForFile : (LFile *) file;
 {
-	[self fetchLyricsForFiles:[NSArray arrayWithObject:file]];
+	[self fetchLyricsForFiles:[NSArray arrayWithObject:file] forced:NO];
 }
 
-- (void) fetchLyricsForFiles: (NSArray *) files
+- (void) fetchLyricsForFiles: (NSArray *)files forced:(BOOL)forced
 {
-	@synchronized(self)
+    
+    @synchronized(self)
 	{
 		for (LFile * file in files)
 		{
+            if (forced || ! [[file attributes] objectForKey:kLYRICS]) {
+            
 			NSString * title = [[file attributes] objectForKey:kTITLE];
 			NSMutableString * artist = [[file attributes] objectForKey:kARTIST];
 			
@@ -42,7 +45,7 @@
 							 stringWithFormat:@"http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=%@&song=%@",
 							 escapedArtist,
 							 escapedName];
-			
+            			
 			NSMutableURLRequest *request = [[NSMutableURLRequest new] autorelease];
 			[request setURL:[NSURL URLWithString:url]];
 			[request setHTTPMethod:@"GET"];
@@ -58,28 +61,30 @@
 			if ([response statusCode] >= 200 && [response statusCode] < 300) {
 				NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:data] autorelease];
 				[parser setDelegate:self];
-				lyrics = nil;
+
 				if (![parser parse])
 					continue;
-				
+                
+                [[file attributes] setObject:lyrics forKey:kLYRICS];
+
 				NSLog(@"lyrics found : %@",lyrics);
 				continue;
 			}
 			
 			NSLog(@"Request to chartlyrics.com gets error code : %ld", [response statusCode]);
 			
-			[[file attributes] setObject:lyrics forKey:kLYRICS];
 			
 			continue;
 		}
-	}
-	
+        
+    }
+}
 	[[LInputOutputController sharedInstance] setNeedsSaved:YES];
 }
 
 - (void) fetchLyricsForFilesFromMenuItem: (NSMenuItem *) menuItem
 {
-	[self fetchLyricsForFiles:[menuItem representedObject]];
+	[self fetchLyricsForFiles:[menuItem representedObject] forced:YES];
 }
 
 - (void) fetchLyricsForSong
@@ -107,7 +112,7 @@
     [menuItem setTitle:@"Update Lyrics"];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
-    [menuItem setAction:@selector(fetchLyricsForSong)];
+    [menuItem setAction:@selector(fetchLyricsForFilesFromMenuItem:)];
 	[menuItem setRepresentedObject:files];
         
     NSArray * array = [NSArray arrayWithObject:menuItem];
