@@ -84,7 +84,7 @@
 		
 		if ([file fileType] == LFileTypeVideo)
 		{
-			NSView * view = [[video window] contentView];
+            NSView * view = [[video window] contentView];
 			[player playVideoInView:view];
 		} else {
 			[self setFullscreen:NO];

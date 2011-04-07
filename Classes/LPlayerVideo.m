@@ -29,12 +29,17 @@
 
 - (NSWindow *) window
 {
-	if (! window) [self setupWindow];
+    if ([[[LFileController sharedInstance] activeFile] fileType] == LFileTypeVideo) {
+
+        if (! window) [self setupWindow];
 	
-	[window makeKeyAndOrderFront:NSApp];
-	NSView * view = [window contentView];
-	[view setAutoresizesSubviews:YES];
-	return window;
+        [window makeKeyAndOrderFront:NSApp];
+        NSView * view = [window contentView];
+        [view setAutoresizesSubviews:YES];
+        return window;
+    } else {
+        return nil;
+    }
 }
 
 - (void) setupWindow
@@ -54,8 +59,10 @@
 	window  = [[NSWindow alloc] initWithContentRect:frame styleMask:mask backing:NSBackingStoreBuffered defer:NO];
     
     if ([ratio intValue] == 0) [window setAspectRatio:NSMakeSize([width floatValue], [height floatValue])];
+    [window setOpaque:NO];
     [window setBackgroundColor:[NSColor blackColor]];
     [window setMovableByWindowBackground:YES];
+    [window setAllowsConcurrentViewDrawing:NO];
     
     LFile * activeFile = [[LFileController sharedInstance] activeFile];
     NSString * artist = [[activeFile attributes] objectForKey:kARTIST];

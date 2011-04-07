@@ -119,7 +119,7 @@
 {
 	NSArray * extensions;
 	
-	extensions = [NSArray arrayWithObjects:@"mp3",@"aac",@"wav",@"wma",@"m4a",@"m4p",NULL];
+	extensions = [NSArray arrayWithObjects:@"mp3", @"mid", @"aac",@"wav",@"wma",@"m4a",@"m4p",NULL];
 	
 	for (NSString * ext in extensions)
 	{
