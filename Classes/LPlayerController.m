@@ -88,7 +88,7 @@
 			[player playVideoInView:view];
 		} else {
 			[self setFullscreen:NO];
-			[video hideWindow];
+			[[video window] close];
 		}
 		
 		[recentFiles removeObject:file];
