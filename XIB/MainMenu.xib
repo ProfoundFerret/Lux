@@ -702,7 +702,7 @@
 															<string key="NSFrameSize">{735, 448}</string>
 															<reference key="NSSuperview" ref="126523728"/>
 															<reference key="NSWindow"/>
-															<reference key="NSNextKeyView" ref="205942786"/>
+															<reference key="NSNextKeyView" ref="277529028"/>
 															<bool key="NSEnabled">YES</bool>
 															<object class="NSTableHeaderView" key="NSHeaderView" id="141653823">
 																<reference key="NSNextResponder" ref="277529028"/>
@@ -819,7 +819,7 @@
 											<string key="NSFrameSize">{737, 466}</string>
 											<reference key="NSSuperview" ref="21983326"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="277529028"/>
+											<reference key="NSNextKeyView" ref="126523728"/>
 											<int key="NSsFlags">562</int>
 											<reference key="NSVScroller" ref="205942786"/>
 											<reference key="NSHScroller" ref="798217703"/>
@@ -1029,7 +1029,6 @@ xcjGRsbDx0HHv8g9yLzJOsm5yjjKt8s2y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ
 							<string key="NSFrame">{{680, 8}, {222, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="254724615">
 								<int key="NSCellFlags">605158976</int>
@@ -4188,7 +4187,7 @@ xcjGRsbDx0HHv8g9yLzJOsm5yjjKt8s2y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">724</int>
+			<int key="maxID">725</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

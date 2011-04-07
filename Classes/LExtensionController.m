@@ -15,6 +15,7 @@
 #import "LPlayer_QTKit.h"
 #import "LMetadata_MP3.h"
 #import "LMetadata_OtherFormats.h"
+#import "LLyricsFetcher.h"
 //
 
 @implementation LExtensionController
@@ -37,6 +38,7 @@
 	[self addExtension: [[LPlayer_QTKit alloc] init]];
 	//[self addExtension: [[LMetadata_MP3 alloc] init]];
     [self addExtension: [[LMetadata_OtherFormats alloc] init]];
+    [self addExtension: [[LLyricsFetcher alloc] init]];
 }
 
 - (void)dealloc

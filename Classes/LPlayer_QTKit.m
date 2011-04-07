@@ -38,8 +38,9 @@
 	NSError * error = nil;
 	
 	player = [[QTMovie alloc] initWithURL:url error:&error];
-	
-	[self setVolume: volume];
+    [player setMovieAttributes:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:QTMovieEditableAttribute]]; // doesnt work idk why ><
+	    
+    [self setVolume: volume];
 	[self play];
 }
 
@@ -139,7 +140,7 @@
 		}
 	}
 	
-	extensions = [NSArray arrayWithObjects:@"m3u",NULL];
+	extensions = [NSArray arrayWithObjects:@"m3u", @"pls" ,NULL];
 	
 	for (NSString * ext in extensions)
 	{

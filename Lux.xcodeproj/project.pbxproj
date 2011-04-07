@@ -74,6 +74,7 @@
 		D9E10436134A63EF009D3015 /* LSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E10435134A63EF009D3015 /* LSplitView.m */; };
 		D9F2453C133FED7A0060B569 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F2453B133FED7A0060B569 /* Sparkle.framework */; };
 		D9F2453E133FED840060B569 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9F2453B133FED7A0060B569 /* Sparkle.framework */; };
+		D9FF195C134E5350008F3286 /* LLyricsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FF195B134E5350008F3286 /* LLyricsFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -217,6 +218,8 @@
 		D9E10434134A63EF009D3015 /* LSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LSplitView.h; path = Classes/LSplitView.h; sourceTree = SOURCE_ROOT; };
 		D9E10435134A63EF009D3015 /* LSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LSplitView.m; path = Classes/LSplitView.m; sourceTree = SOURCE_ROOT; };
 		D9F2453B133FED7A0060B569 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		D9FF195A134E5350008F3286 /* LLyricsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LLyricsFetcher.h; sourceTree = "<group>"; };
+		D9FF195B134E5350008F3286 /* LLyricsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLyricsFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +244,8 @@
 		7C05ED8E1330474A00986D46 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				D9FF195A134E5350008F3286 /* LLyricsFetcher.h */,
+				D9FF195B134E5350008F3286 /* LLyricsFetcher.m */,
 				D9CFAEF3134B98BA00DACAC1 /* LMetadata_OtherFormats.h */,
 				D9CFAEF4134B98BA00DACAC1 /* LMetadata_OtherFormats.m */,
 				7C06030E13318110000C0556 /* LMetadata_MP3.h */,
@@ -646,6 +651,7 @@
 				7C356055134A807500C41FF6 /* LPlayerVideo.m in Sources */,
 				D9CFAEF5134B98BA00DACAC1 /* LMetadata_OtherFormats.m in Sources */,
 				D9613497134BB37900DAB8BF /* NSImage+QuickLook.m in Sources */,
+				D9FF195C134E5350008F3286 /* LLyricsFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
