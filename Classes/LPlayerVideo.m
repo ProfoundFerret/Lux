@@ -27,7 +27,7 @@
     [super dealloc];
 }
 
-- (NSWindow *) window
+- (void) showWindow
 {
     if ([[[LFileController sharedInstance] activeFile] fileType] == LFileTypeVideo) {
 
@@ -42,7 +42,7 @@
     }
 }
 
-- (void) setupWindow
+- (void) hideWindow
 {
     NSNumber *height = [[[[LFileController sharedInstance] activeFile] attributes] objectForKey:kHEIGHT];
     NSNumber *width = [[[[LFileController sharedInstance] activeFile] attributes] objectForKey:kWIDTH];
@@ -78,9 +78,88 @@
     } else {
         [window setTitle:kNOTHING_PLAYING_TEXT];
     }
+	
+	[self updateSize];
+	
+	return window;
+}
+
+- (void) updateSize
+{
+	NSRect rect = [self windowRect];
+	
+	CGFloat height = rect.size.height;
+	CGFloat width = rect.size.width;
+	
+	if (height && width)
+	{
+		[window setAspectRatio:rect.size];
+	}
+}
+
+- (NSRect) windowRect
+{
+    LFile * activeFile = [[LFileController sharedInstance] activeFile];
+	NSNumber * width = [[activeFile attributes] objectForKey:kWIDTH];
+	NSNumber * height = [[activeFile attributes] objectForKey:kHEIGHT];  
+	
+    if ([height floatValue] < 50.0 || [width floatValue] < 50.0) {
+        height = [NSNumber numberWithFloat:300.0];
+        width = [NSNumber numberWithFloat:300.0];
+    }
+	
+	NSScreen * screen = [NSScreen mainScreen];
+	
+	NSRect frame = NSMakeRect(([screen frame].size.width/2)-[width floatValue]/2, [screen frame].size.height/2-[height floatValue]/2, [width floatValue]+20, [height floatValue]);
+	
+	return frame;
+}
+
+- (void) setupWindow
+{
+	if (window) return;
+	
+	int mask = NSTitledWindowMask + NSResizableWindowMask + NSClosableWindowMask + NSMiniaturizableWindowMask;
+	NSRect frame = [self windowRect];
+	window  = [[NSWindow alloc] initWithContentRect:frame styleMask:mask backing:NSBackingStoreBuffered defer:NO];
     
-    [window makeKeyAndOrderFront:nil];
+    [window setBackgroundColor:[NSColor blackColor]];
+    [window setMovableByWindowBackground:YES];
     
 	[window retain];
+	
+	[self setupView];
+}
+
+- (void) setupView
+{
+	NSView * view = [window contentView];
+	[view setAutoresizesSubviews:YES];
+	[view drawRect:[view frame]];
+}
+
+- (void) setFullscreen:(BOOL)fullscreen
+{
+	[self window];
+	BOOL currentFullscreen = [[window contentView] isInFullScreenMode];
+	if (currentFullscreen == fullscreen) return;
+	if (fullscreen)
+	{
+		NSArray *objects = [NSArray arrayWithObjects: [NSNumber numberWithUnsignedInt:(1 << 1)], [NSNumber numberWithUnsignedInt:(1 << 2)], nil];
+		NSArray *keys = [NSArray arrayWithObjects: NSFullScreenModeApplicationPresentationOptions, NSFullScreenModeApplicationPresentationOptions, nil];
+		NSDictionary * options = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+		
+		[window setFrame:[window frameRectForContentRect:[[window screen] frame]] display:YES animate:YES];	
+		[[window contentView] enterFullScreenMode:[NSScreen mainScreen] withOptions:options];
+		[NSApp setPresentationOptions:NSApplicationPresentationAutoHideMenuBar | NSApplicationPresentationHideDock];
+	} else
+	{
+		NSRect frame = [self windowRect];
+		[[window contentView] exitFullScreenModeWithOptions:nil];
+		[window setFrame:[window frameRectForContentRect:frame] display:YES animate:YES];
+		[NSApp setPresentationOptions:NSApplicationPresentationDefault];
+    }
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:kFULLSCREEN_CHANGED object:nil];
 }
 @end

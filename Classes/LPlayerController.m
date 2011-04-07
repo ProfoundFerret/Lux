@@ -15,7 +15,7 @@
 #import "LDefinitions.h"
 
 @implementation LPlayerController
-@synthesize player, recentFiles, isPlaying;
+@synthesize player, recentFiles, isPlaying, fullScreen;
 - (id)init
 {
     self = [super init];
@@ -88,7 +88,7 @@
 			[player playVideoInView:view];
 		} else {
 			[self setFullscreen:NO];
-			[[video window] close];
+			[video hideWindow];
 		}
 		
 		[recentFiles removeObject:file];
@@ -566,6 +566,10 @@
 
 - (void) setFullscreen: (BOOL) newFullScreen
 {
+	LFile * activeFile = [[LFileController sharedInstance] activeFile];
+	if (! activeFile ) newFullScreen = NO;
+	if ([activeFile fileType] != LFileTypeVideo) newFullScreen = NO;
+	
 	if (fullscreen == newFullScreen) return;
 	fullscreen = newFullScreen;
     
@@ -609,15 +613,6 @@ NSRect frame = NSMakeRect(([[NSScreen mainScreen] frame].size.width/2)-[width fl
 
 - (void) toggleFullscreen
 {
-    if ([[[LFileController sharedInstance] activeFile] fileType] == LFileTypeVideo) {
-        [self setFullscreen: ! fullscreen];
-    } else {
-        NSLog(@"Trying to toggle Full Screen from a non-video window !");
-    }
-}
-
-- (bool) isFullScreen
-{
-	return fullscreen;
+	[self setFullscreen: ! fullscreen];
 }
 @end
