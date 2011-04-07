@@ -75,9 +75,9 @@
 
 - (void) setupRemoteControl;
 - (void) remoteButton: (RemoteControlEventIdentifier)buttonIdentifier pressedDown: (BOOL) pressedDown clickCount: (unsigned int)clickCount;
-- (bool) isFullScreen;
 
 @property (readonly) NSMutableArray * recentFiles;
 @property (readonly) LExtension <LPlayerDelegate> * player;
 @property (readonly) BOOL isPlaying;
+@property (readonly) BOOL fullScreen;
 @end

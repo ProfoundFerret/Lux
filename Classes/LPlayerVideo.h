@@ -14,4 +14,10 @@
 }
 - (NSWindow *) window;
 - (void) setupWindow;
+- (NSRect) windowRect;
+- (void) updateSize;
+- (void) setupView;
+- (void) showWindow;
+- (void) hideWindow;
+- (void) setFullscreen:(BOOL)fullscreen;
 @end
