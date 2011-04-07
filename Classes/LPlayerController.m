@@ -570,12 +570,12 @@
 	fullscreen = newFullScreen;
     
     NSArray *objects = [NSArray arrayWithObjects:
-               [NSNumber numberWithUnsignedInt:(1 << 1)],
-               [NSNumber numberWithUnsignedInt:(1 << 2)],
+                        [NSNumber numberWithUnsignedInteger:
+                         NSApplicationPresentationHideDock +
+                         NSApplicationPresentationAutoHideMenuBar],
                nil];
     
     NSArray *keys = [NSArray arrayWithObjects:
-            @"NSFullScreenModeApplicationPresentationOptions",
             @"NSFullScreenModeApplicationPresentationOptions",
             nil];
         
