@@ -15,7 +15,7 @@
 
 - (NSArray *) supportedMetadataExtensions
 {
-	return [NSArray arrayWithObjects:@"aac", @"m4a", @"mp3", @"wav", @"m4p", @"avi", @"mp4", @"flv", nil];
+	return [NSArray arrayWithObjects:@"aac", @"m4a", @"mp3", @"wav", @"m4p", @"avi", @"mp4", @"flv", @"m4v", nil];
 }
 
 - (NSDictionary *) metadataForURL:(NSURL *)fileURL
