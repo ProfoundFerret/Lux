@@ -10,6 +10,8 @@
 #import "LExtension.h"
 #import "Lux.h"
 
+#define kLYRICS_FOUND @"lyricsfound_notification"
+
 @interface LLyricsFetcher : LExtension <NSXMLParserDelegate> {
 	NSString * lyrics;
 }    
