@@ -11,10 +11,12 @@
 #import "Lux.h"
 
 @interface LLyricsFetcher : LExtension <NSXMLParserDelegate> {
-
-    NSString *lyrics;
+	NSString * lyrics;
 }    
 
-- (NSString *) fetchLyricsForSong;
+- (void) fetchLyricsForSong;
+- (void) fetchLyricsForFile : (LFile *) file;
+- (void) fetchLyricsForFiles: (NSArray *) files;
+- (void) fetchLyricsForFilesFromMenuItem: (NSMenuItem *) menuItem;
 
 @end
