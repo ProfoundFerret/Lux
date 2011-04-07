@@ -85,10 +85,11 @@
 		if ([file fileType] == LFileTypeVideo)
 		{
             NSView * view = [[video window] contentView];
+			[video showWindow];
 			[player playVideoInView:view];
 		} else {
 			[self setFullscreen:NO];
-			[[video window] close];
+			[video hideWindow];
 		}
 		
 		[recentFiles removeObject:file];
@@ -572,43 +573,8 @@
 	
 	if (fullscreen == newFullScreen) return;
 	fullscreen = newFullScreen;
-    
-    NSArray *objects = [NSArray arrayWithObjects:
-                        [NSNumber numberWithUnsignedInteger:
-                         NSApplicationPresentationHideDock +
-                         NSApplicationPresentationAutoHideMenuBar],
-               nil];
-    
-    NSArray *keys = [NSArray arrayWithObjects:
-            @"NSFullScreenModeApplicationPresentationOptions",
-            nil];
-        
-	if (fullscreen)
-	{
-        [[video window]
-         setFrame:[[video window] frameRectForContentRect:[[[video window] screen] frame]]
-         display:YES
-         animate:YES];
-        [[[video window] contentView] enterFullScreenMode:[NSScreen mainScreen] withOptions:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
-
-	} else {
-        NSNumber *height = [[[[LFileController sharedInstance] activeFile] attributes] objectForKey:kHEIGHT];
-        NSNumber *width = [[[[LFileController sharedInstance] activeFile] attributes] objectForKey:kWIDTH];
-               
-        if ([height floatValue] < 50.0 || [width floatValue] < 50.0) {
-            height = [NSNumber numberWithFloat:300.0];
-            width = [NSNumber numberWithFloat:300.0];
-        }
-        
-NSRect frame = NSMakeRect(([[NSScreen mainScreen] frame].size.width/2)-[width floatValue]/2, [[NSScreen mainScreen] frame].size.height/2-[height floatValue]/2, [width floatValue]+20, [height floatValue]);
-        [[[video window] contentView] exitFullScreenModeWithOptions:nil];
-        [[video window] setFrame:[[video window] frameRectForContentRect:frame]
-         display:YES
-         animate:YES];
-        [NSApp setPresentationOptions:NSApplicationPresentationDefault];
-    }
-       
-	[[NSNotificationCenter defaultCenter] postNotificationName:kFULLSCREEN_CHANGED object:nil];
+	
+	[video setFullscreen: newFullScreen];
 }
 
 - (void) toggleFullscreen
