@@ -115,7 +115,7 @@
 #define kYEAR @"year"
 #define kWIDTH @"width"
 #define kHEIGHT @"height"
-#define kLYRICS @"_lyrics"
+#define kLYRICS @"lyrics"
 #define kVOLUME @"volume"
 #define kURL @"url"
 

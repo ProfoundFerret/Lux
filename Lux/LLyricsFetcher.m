@@ -107,7 +107,7 @@
     [menuItem setTitle:@"Update Lyrics"];
     [menuItem setEnabled:YES];
     [menuItem setTarget:self];
-    [menuItem setAction:@selector(fetchLyricsForSong)];
+    [menuItem setAction:@selector(fetchLyricsForFilesFromMenuItem:)];
 	[menuItem setRepresentedObject:files];
         
     NSArray * array = [NSArray arrayWithObject:menuItem];
