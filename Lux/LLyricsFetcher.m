@@ -13,71 +13,94 @@
 
 @implementation LLyricsFetcher
 
-- (void) fetchLyricsForFile : (LFile *) file;
+- (id)init
 {
-	[self fetchLyricsForFiles:[NSArray arrayWithObject:file]];
+    self = [super init];
+    if (self) {
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchLyricsForSong) name:kPLAY_NOTIFICATION object:nil];
+    }
+    
+    return self;
 }
 
-- (void) fetchLyricsForFiles: (NSArray *) files
+- (void)dealloc
 {
-	@synchronized(self)
+    [super dealloc];
+}
+
+- (void) fetchLyricsForFile : (LFile *) file;
+{
+	[self fetchLyricsForFiles:[NSArray arrayWithObject:file] forced:NO];
+}
+
+- (void) fetchLyricsForFiles: (NSArray *)files forced:(BOOL)forced
+{
+    
+    @synchronized(self)
 	{
 		for (LFile * file in files)
 		{
-			NSString * title = [[file attributes] objectForKey:kTITLE];
-			NSMutableString * artist = [[file attributes] objectForKey:kARTIST];
-			
-			NSMutableString * artistText;
-			if ([artist length])
-			{
-				artistText = [NSString stringWithFormat:@"%@\n", artist];
-			} else {
-				artistText = [NSMutableString stringWithString:@""];
-			}
-			
-			NSString *escapedArtist = [artistText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-			NSString *escapedName   = [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-			
-			NSString *url = [NSString 
-							 stringWithFormat:@"http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=%@&song=%@",
-							 escapedArtist,
-							 escapedName];
-			
-			NSMutableURLRequest *request = [[NSMutableURLRequest new] autorelease];
-			[request setURL:[NSURL URLWithString:url]];
-			[request setHTTPMethod:@"GET"];
-			
-			NSHTTPURLResponse *response = nil;  
-			NSError *error = [NSError new];
-			NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];  
-			if (data == nil) {
-				NSLog(@"Request to chartlyrics.com failed with error: %@", [error localizedDescription]);
-				continue;
-			}
-			
-			if ([response statusCode] >= 200 && [response statusCode] < 300) {
-				NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:data] autorelease];
-				[parser setDelegate:self];
-				if (![parser parse])
-					continue;
-				
-				[[file attributes] setObject:lyrics forKey:kLYRICS];
-				continue;
-			}
-			
-			NSLog(@"Request to chartlyrics.com gets error code : %ld", [response statusCode]);
-			
-			
-			continue;
-		}
-	}
-	
+            if ([file fileType] == LFileTypeAudio) {
+                
+                if (forced || ! [[file attributes] objectForKey:kLYRICS]) {
+                                        
+                    NSString * title = [[file attributes] objectForKey:kTITLE];
+                    NSMutableString * artist = [[file attributes] objectForKey:kARTIST];
+                    
+                    NSMutableString * artistText;
+                    if ([artist length])
+                    {
+                        artistText = [NSString stringWithFormat:@"%@\n", artist];
+                    } else {
+                        artistText = [NSMutableString stringWithString:@""];
+                    }
+                    
+                    NSString *escapedArtist = [artistText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    NSString *escapedName   = [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    
+                    NSString *url = [NSString 
+                                     stringWithFormat:@"http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=%@&song=%@",
+                                     escapedArtist,
+                                     escapedName];
+                    
+                    NSMutableURLRequest *request = [[NSMutableURLRequest new] autorelease];
+                    [request setURL:[NSURL URLWithString:url]];
+                    [request setHTTPMethod:@"GET"];
+                    
+                    NSHTTPURLResponse *response = nil;  
+                    NSError *error = [NSError new];
+                    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];  
+                    if (data == nil) {
+                        NSLog(@"Request to chartlyrics.com failed with error: %@", [error localizedDescription]);
+                        continue;
+                    }
+                    
+                    if ([response statusCode] >= 200 && [response statusCode] < 300) {
+                        NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:data] autorelease];
+                        [parser setDelegate:self];
+                        
+                        if (![parser parse])
+                            continue;
+                        
+                        [[file attributes] setObject:lyrics forKey:kLYRICS];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kLYRICS_FOUND object:file];
+                        
+                        continue;
+                    }
+                    
+                    NSLog(@"Something went wrong ... Maybe : Request to chartlyrics.com gets error code : %ld", [response statusCode]);
+                                        
+                    continue;
+                }
+            }
+        }
+    }
 	[[LInputOutputController sharedInstance] setNeedsSaved:YES];
 }
 
 - (void) fetchLyricsForFilesFromMenuItem: (NSMenuItem *) menuItem
 {
-	[self fetchLyricsForFiles:[menuItem representedObject]];
+	[self fetchLyricsForFiles:[menuItem representedObject] forced:YES];
 }
 
 - (void) fetchLyricsForSong
