@@ -79,5 +79,5 @@
 @property (readonly) NSMutableArray * recentFiles;
 @property (readonly) LExtension <LPlayerDelegate> * player;
 @property (readonly) BOOL isPlaying;
-@property (readonly) BOOL fullScreen;
+@property (readonly) BOOL fullscreen;
 @end

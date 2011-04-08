@@ -58,17 +58,15 @@
 			if ([response statusCode] >= 200 && [response statusCode] < 300) {
 				NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:data] autorelease];
 				[parser setDelegate:self];
-				lyrics = nil;
 				if (![parser parse])
 					continue;
 				
-				NSLog(@"lyrics found : %@",lyrics);
+				[[file attributes] setObject:lyrics forKey:kLYRICS];
 				continue;
 			}
 			
 			NSLog(@"Request to chartlyrics.com gets error code : %ld", [response statusCode]);
 			
-			[[file attributes] setObject:lyrics forKey:kLYRICS];
 			
 			continue;
 		}

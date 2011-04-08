@@ -15,7 +15,7 @@
 #import "LDefinitions.h"
 
 @implementation LPlayerController
-@synthesize player, recentFiles, isPlaying, fullScreen;
+@synthesize player, recentFiles, isPlaying, fullscreen;
 - (id)init
 {
     self = [super init];
