@@ -38,4 +38,9 @@
 	return [LTableView defaultMenu];
 }
 
+-(void)keyDown:(NSEvent *)theEvent {
+    NSLog(@"MyTableView: keyDown: %c", [[theEvent characters] characterAtIndex:0]);
+    [super keyDown:theEvent];
+}
+
 @end

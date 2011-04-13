@@ -28,14 +28,10 @@
     [super dealloc];
 }
 
-- (void) fetchLyricsForFile : (LFile *) file;
+- (void) fetchLyricsForFiles: (NSArray *)files
 {
-	[self fetchLyricsForFiles:[NSArray arrayWithObject:file] forced:NO];
-}
+    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 
-- (void) fetchLyricsForFiles: (NSArray *)files forced:(BOOL)forced
-{
-    
     @synchronized(self)
 	{
 		for (LFile * file in files)
@@ -95,18 +91,23 @@
             }
         }
     }
+    
+    [pool drain];
+    
 	[[LInputOutputController sharedInstance] setNeedsSaved:YES];
 }
 
 - (void) fetchLyricsForFilesFromMenuItem: (NSMenuItem *) menuItem
 {
-	[self fetchLyricsForFiles:[menuItem representedObject] forced:YES];
+    forced = YES;
+    [NSThread detachNewThreadSelector:@selector(fetchLyricsForFiles:) toTarget:self withObject:[NSArray arrayWithObject:[menuItem representedObject]]];
 }
 
 - (void) fetchLyricsForSong
 {
 	LFile * activeFile = [[LFileController sharedInstance] activeFile];
-	[self fetchLyricsForFile:activeFile];
+    forced = NO;
+    [NSThread detachNewThreadSelector:@selector(fetchLyricsForFiles:) toTarget:self withObject:[NSArray arrayWithObject:activeFile]];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {

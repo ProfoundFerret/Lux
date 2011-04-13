@@ -14,11 +14,11 @@
 
 @interface LLyricsFetcher : LExtension <NSXMLParserDelegate> {
 	NSString * lyrics;
+    bool forced;
 }    
 
 - (void) fetchLyricsForSong;
-- (void) fetchLyricsForFile : (LFile *) file;
-- (void) fetchLyricsForFiles: (NSArray *)files forced:(BOOL)forced;
+- (void) fetchLyricsForFiles: (NSArray *)files;
 - (void) fetchLyricsForFilesFromMenuItem: (NSMenuItem *) menuItem;
 
 @end
